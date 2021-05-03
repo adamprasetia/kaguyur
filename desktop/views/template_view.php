@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115449429-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-115449429-1');
+    </script>
+
     <meta charset="utf-8" />
     <title><?php echo isset($meta['title']) ? $meta['title'] : 'Kaguyur'; ?></title>
     <meta name="description" content="<?php echo isset($meta['description']) ? $meta['description'] : 'Komunitas Guppy Cianjur'; ?>" />
@@ -9,15 +18,14 @@
     <meta property="og:title" content="<?php echo isset($meta['title']) ? $meta['title'] : 'Kaguyur'; ?>" />
     <meta property="og:type" content="<?php echo isset($meta['type']) ? $meta['type'] : ''; ?>" />
     <meta property="og:url" content="<?php echo isset($meta['url']) ? $meta['url'] : ''; ?>" />
-    <meta property="og:image" content="<?php echo config_item('assets'); ?>images/logo2.jpg" />
+    <meta property="og:image" content="<?php echo config_item('assets'); ?>images/logo.jpg" />
     <meta property="og:site_name" content="-" />
     <meta property="og:description" content="<?php echo isset($meta['description'])?$meta['description']:'Komunitas Guppy Cianjur' ?>" />
-    <meta property="fb:app_id" content="324557847592228" />
 
     <!-- S:tweeter card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@kompascom" />
-    <meta name="twitter:creator" content="@kompascom">
+    <meta name="twitter:site" content="@kaguyur" />
+    <meta name="twitter:creator" content="@kaguyur">
     <meta name="twitter:title" content="<?php echo isset($meta['title'])?$meta['title']:'Kaguyur' ?>" />
     <meta name="twitter:description" content="<?php echo isset($meta['description'])?$meta['description']:'Komunitas Guppy Cianjur' ?>" />
     <meta name="twitter:image" content="<?php echo config_item('assets'); ?>images/logo2.jpg" />
