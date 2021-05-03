@@ -28,11 +28,22 @@
 
     <!-- css -->
     <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/tailwind.css?v=1" />
-    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/styles.css?v=5" />
+    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/styles.css" />
 
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;900&display=swap" rel="stylesheet"/>
     <script type="text/javascript" src="<?php echo config_item('assets'); ?>js/jquery.min.js"></script>
+    <style>
+    .header, .header.scroller {
+      color:white;
+      background:black;
+    }
+    @media (max-width: 768px){
+      .header, .header.scroller {
+      color:black;
+      }
+    }
+    </style>
   </head>
 
   <body>
@@ -40,11 +51,11 @@
       <div class="container px-5 mx-auto">
         <div class="grid grid-cols-6 relative">
           <a class="col-span-2 md:col-span-1" href="<?php echo base_url(); ?>">
-            <img src="<?php echo config_item('assets'); ?>images/logo2.jpg" alt="" style="width:50px"/>
+            <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" style="width:50px"/>
           </a>
           <div class="flex lg:hidden col-span-4 md:col-span-5 justify-end items-center">
             <div class="header__mobile">
-              <img src="<?php echo config_item('assets'); ?>images/menu.svg" alt="" />
+              <img src="<?php echo config_item('assets'); ?>images/menuwhite.svg" alt="" />
             </div>
           </div>
           <div class="header__menu hidden lg:flex col-span-5 justify-end items-center">
@@ -81,7 +92,7 @@
         <div class="grid grid-cols-6">
           <div class="col-span-6 md:col-span-3 flex items-end justify-center md:justify-start mb-10 md:mb-0">
             <div class="w-32">
-              <img src="<?php echo config_item('assets'); ?>images/logo2.jpg" alt="" />
+              <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" />
             </div>
           </div>  
           <?php if(!empty($member)){ ?>
