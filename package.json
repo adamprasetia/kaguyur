@@ -1,0 +1,25 @@
+{
+  "name": "terhubungdarirumah",
+  "version": "1.0.0",
+  "description": "Repository  visiblestory.id",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.kompas.com:gomed/terhubungdarirumah.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@iflix/events-receiver-client": "^1.1.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
