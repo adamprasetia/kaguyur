@@ -5,7 +5,7 @@
       <div class="col-span-6 md:col-span-3 md:pr-10">
         <div>
           <h1 class="font-bold uppercase">KAGUYUR</h1>
-          <p class="mb-5">Komunitas Guppy Cianjur</p>
+          <p class="mb-5"><b>K</b>OMUNIT<b>A</b>S <b>GU</b>PP<b>Y</b> CIANJ<b>UR</b></p>
         </div>
 
         <img src="<?php echo config_item('assets'); ?>images/bukber.jpeg" alt="" />
