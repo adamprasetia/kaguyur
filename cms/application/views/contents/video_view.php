@@ -29,7 +29,7 @@ img {max-width: 100%;height: auto;}.item {width: 300px;min-height: 120px;max-hei
 					<?php if ($this->input->get('modals')==''): ?>
 						<button data-module="<?php echo 'video/delete' ?>" class="btn btn-danger btn-xs" type="button" data-url="<?php echo base_url('video/delete/'.$row->id) ?>" name="button" onclick="return deleteData(this)" data-redirect="<?php echo base_url('video/index').get_query_string() ?>"><i class="fa fa-trash"></i> Delete</button>
 					<?php else: ?>
-						<button data-module="#" class="btn btn-success btn-xs btn_add_video videodata-<?php echo $row->id ?>" type="button" data-target-thumb="<?php echo $this->input->get('target_thumb') ?>" data-target-value="<?php echo $this->input->get('target_value') ?>" data-src="<?php echo $row->link ?>" data-embed="<?php echo $row->embed ?>" data-title="<?php echo $row->title; ?>" data-id="<?php echo $row->id ?>" name="button"><i class="fa fa-check"></i> Choose</button>
+						<button data-module="#" class="btn btn-success btn-xs btn_add_video videodata-<?php echo $row->id ?>" type="button" data-target-thumb="<?php echo $this->input->get('target_thumb') ?>" data-target-value="<?php echo $this->input->get('target_value') ?>" data-src="<?php echo $row->url ?>" data-embed="<?php echo 'https://www.youtube.com/embed/'.$row->id_youtube ?>" data-title="<?php echo $row->title; ?>" data-id="<?php echo $row->id ?>" name="button"><i class="fa fa-check"></i> Choose</button>
 					<?php endif; ?>
 				</div>
 				<div style="position:absolute;right:10px;top:10px;margin-right:15px"></div>
