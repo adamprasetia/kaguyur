@@ -110,7 +110,7 @@
 	{
 	    if (isset($date) && $date <> '0000-00-00 00:00:00' && $date <> null) {
 	        $date = date_create($date);
-	        $date = date_format($date,'d-M-Y H:i:s');
+	        $date = date_format($date,'d M Y H:i:s');
 	        return $date;
 	    }
 	}

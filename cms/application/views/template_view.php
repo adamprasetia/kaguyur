@@ -95,7 +95,11 @@
             <?php if(in_array(1, $_SESSION['session_login']['module']) || in_array(2, $_SESSION['session_login']['module'])): ?>
             <li class="<?php echo ($this->uri->segment(1)=='member'?'active':''); ?>"><a href="<?php echo base_url('member'); ?>"><i class="fa fa-user"></i> <span>Anggota</span></a></li>
             <?php endif ?>
+            <?php if(in_array(1, $_SESSION['session_login']['module']) || in_array(4, $_SESSION['session_login']['module'])): ?>
+            <li class="<?php echo ($this->uri->segment(1)=='article'?'active':''); ?>"><a href="<?php echo base_url('article'); ?>"><i class="fa fa-newspaper-o"></i> <span>Artikel</span></a></li>
+            <?php endif ?>
             <li class="<?php echo ($this->uri->segment(1)=='photo'?'active':''); ?>"><a href="<?php echo base_url('photo'); ?>"><i class="fa fa-image"></i> <span>Asset Photo</span></a></li>
+            <li class="<?php echo ($this->uri->segment(1)=='video'?'active':''); ?>"><a href="<?php echo base_url('video'); ?>"><i class="fa fa-video-camera"></i> <span>Asset Video</span></a></li>
             <?php if(in_array(1, $_SESSION['session_login']['module'])): ?>
             <li class="header">ADMIN</li>
             <li class="<?php echo ($this->uri->segment(1)=='users'?'active':''); ?>"><a href="<?php echo base_url('users'); ?>"><i class="fa fa-user"></i> <span>Users</span></a></li>
