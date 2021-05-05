@@ -37,6 +37,7 @@
     <!-- css -->
     <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/tailwind.css?v=1" />
     <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/styles.css" />
+    <link rel="stylesheet" href="<?php echo config_item('assets').'plugins/sweetalert/css/sweetalert.css'; ?>">
 
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;900&display=swap" rel="stylesheet"/>
@@ -87,6 +88,13 @@
               <li>
                 <a class="<?php echo $s1=='berita'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="#"> JUAL BELI </a>
               </li>
+              <?php if(!empty($this->user_login['name'])){ ?>
+                <li>
+                  <a class="<?php echo $s1=='profile'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('profile') ?>"> 
+                  <?php echo $this->user_login['name'] ?>
+                  </a>
+                </li>
+              <?php } ?>
             </ul>
           </div>
         </div>
@@ -126,7 +134,9 @@
     <div id="overlay"></div>
 
     <?php echo isset($modals)?$modals:''; ?>
+    <?php $this->load->view('script/general') ?>
     <?php echo isset($script)?$script:''; ?>
+    <script src="<?php echo config_item('assets').'plugins/sweetalert/js/sweetalert.min.js'; ?>"></script>
     <script type="text/javascript" src="<?php echo config_item('assets'); ?>js/micromodal.min.js"></script>
     <script type="text/javascript" src="<?php echo config_item('assets'); ?>js/tiny-slider.js"></script>
     <script type="text/javascript" src="<?php echo config_item('assets'); ?>js/main.js?v=4"></script>

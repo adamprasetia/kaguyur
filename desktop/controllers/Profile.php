@@ -1,24 +1,35 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Anggota extends MY_Controller
+class Profile extends MY_Controller
 {
 	public function __construct()
 	{
 	    parent::__construct();
+		if(!$this->user_login['id']){
+			redirect('login');
+		}
 	}
 
 	public function index()
 	{	
+		$this->load->model('global_model');		
+		$profile = $this->global_model->get([
+			'table'=>'member',
+			'where'=>[
+				'id'=>$this->user_login['id']
+			]
+		])->row();
 		$member = @json_decode(file_get_contents('./assets/json/member.json'));
-		$data['content'] = $this->load->view('content/anggota_view', [
-			'member'=>$member
+		$data['content'] = $this->load->view('content/profile_view', [
+			'member'=>$member,
+			'profile'=>$profile,
 		], true);
 		
 		$this->load->view('template_view', $data);
 	}
 
-	public function register()
+	public function update()
 	{
 		$this->load->model('general_model');
 		$this->load->library(['form_validation', 'upload']);
@@ -27,8 +38,6 @@ class Anggota extends MY_Controller
 		$this->form_validation->set_rules('address', 'Alamat', 'trim|required');
 		$this->form_validation->set_rules('start', 'Start', 'trim');
 		$this->form_validation->set_rules('phone', 'No Telepon/Wa', 'trim|required|callback_unique_tlp');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|callback_unique_email');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
 		$this->form_validation->set_rules('strain','Strain Guppy','trim|required');
 		$this->form_validation->set_rules('photo','Pas Foto','callback_required_photo');
 		$this->form_validation->set_rules('logo','Logo','callback_required_logo');
@@ -44,8 +53,6 @@ class Anggota extends MY_Controller
 			}
 
 		}else{			
-			$photo   = uploadFile('photo');
-			$logo   = uploadFile('logo');
 			
 			$data = [
 				'farm'=> $this->input->post('farm', true),
@@ -56,28 +63,38 @@ class Anggota extends MY_Controller
 				'email'=> $this->input->post('email', true),
 				'password'=> md5($this->input->post('password', true)),
 				'strain'=> $this->input->post('strain', true),
-				'photo'=> $photo['data'],
-				'logo'=> $logo['data'],
 				'ig'=> $this->input->post('ig', true),
 				'tw'=> $this->input->post('tw', true),
 				'fb'=> $this->input->post('fb', true),
 			];
-			$data['date_created'] = date('Y-m-d H:i:s');
-			$data['status'] = 'PENDING';
+			if(!empty($_FILES['photo']['name'])){
+				$photo   = uploadFile('photo');	
+				if(!empty($photo['data'])){
+					$data['photo'] = $photo['data'];
+				}
+			}
+			if(!empty($_FILES['logo']['name'])){
+				$logo   = uploadFile('logo');	
+				if(!empty($logo['data'])){
+					$data['logo'] = $logo['data'];
+				}
+			}
+			$data['date_updated'] = date('Y-m-d H:i:s');
 
-			$add = $this->general_model->add('member', $data);
-			if($add)
+			$id = $this->user_login['id'];
+			$edit = $this->general_model->edit('member', $id, $data);
+			if($edit)
 			{	
-				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Registrasi berhasil']);
+				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Update profil berhasil']);
 			}else{
-				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Registrasi Gagal']);
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Update profil Gagal']);
 			}
 		}		
 	}
 
 	public function unique_tlp($data){
 		$this->form_validation->set_message('unique_tlp','No Telepon sudah dipakai');
-		$unique = $this->general_model->get('member', 'phone', array('phone'=>$data));
+		$unique = $this->general_model->get('member', 'phone', array('phone'=>$data,'phone != '=>$this->user_login['phone']));
 		if($unique && $unique->num_rows() > 0){
 			return false;
 		}
@@ -95,10 +112,7 @@ class Anggota extends MY_Controller
 
 	public function required_photo($foto){
 		$status = true;
-		if(empty($_FILES['photo']['name'])){
-			$this->form_validation->set_message('required_photo','Pas Foto harus diisi'); 
-			$status = false;
-		}elseif ($_FILES['photo']['size'] > 204800) {
+		if (!empty($_FILES['photo']) && $_FILES['photo']['size'] > 204800) {
 			$this->form_validation->set_message('required_photo','Pas Foto max 200KB');
 			$status = false;
 		}
@@ -106,10 +120,7 @@ class Anggota extends MY_Controller
     }
 	public function required_logo($foto){
 		$status = true;
-		if(empty($_FILES['logo']['name'])){
-			$this->form_validation->set_message('required_logo','Logo harus diisi'); 
-			$status = false;
-		}elseif ($_FILES['logo']['size'] > 204800) {
+		if (!empty($_FILES['logo']) && $_FILES['logo']['size'] > 204800) {
 			$this->form_validation->set_message('required_logo','Logo max 200KB');
 			$status = false;
 		}

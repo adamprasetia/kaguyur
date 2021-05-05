@@ -1,3 +1,4 @@
+<?php if(empty($this->user_login)): ?>
 <div class="col-span-6 md:col-span-3 relative mb-5">     
     <div class="relative">
         <h3 class="text-md font-bold">Anda seorang penghoby atau breeder ikan guppy yang berdomisili di Kabupaten Cianjur ?</h3>
@@ -12,7 +13,6 @@
 </div>
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="<?php echo config_item('assets').'plugins/sweetalert/css/sweetalert.css'; ?>">
 <style type="text/css">
   .iconrefresh{position:absolute;top:50%;left:50%;font-size:30px;margin:0;}
   .fa-refresh:before{color:white;content:"\f021";}
@@ -37,7 +37,7 @@
           <small>#Kaguyur untuk Cianjur yang sejahtera</small>
         </div>
         <div class="p-5 text-sm">
-          <form method="post" id="form_data">
+          <form method="post" id="form_data" action="<?php echo base_url('anggota/register'); ?>">
             <div class="mb-3">
               <label class="font-semibold block">Nama Farm</label>
               <input class="field w-full" type="text" name="farm" id="farm"/>
@@ -84,8 +84,17 @@
               <label class="font-semibold block">Twitter</label>
               <input type="text" name="tw" id="tw" class="field w-full"/>
             </div>
+            <strong class="pt-5 block">Akun</strong>
+            <div class="mb-3">
+              <label class="font-semibold block">Email</label>
+              <input class="field w-full" type="text" name="email" id="email"/>
+            </div>
+            <div class="mb-3">
+              <label class="font-semibold block">Password</label>
+              <input class="field w-full" type="text" name="password" id="password"/>
+            </div>
             <div class="flex items-center justify-center my-5">
-              <button type="button" class="btn btn__black" id="btn_daftar" data-idle="DAFTAR" data-process="Saving..." data-form="#form_data" data-action="<?php echo base_url('anggota/register'); ?>" data-redirect="<?php echo current_url(); ?>">DAFTAR</button>
+              <button type="button" class="btn btn__black btn_action" id="btn_daftar" data-idle="DAFTAR" data-process="Saving..." data-form="#form_data" data-redirect="<?php echo current_url(); ?>">DAFTAR</button>
             </div>
           </form>
         </div>
@@ -135,86 +144,18 @@
     </div>
   </div>
 </div>
-
-<script src="<?php echo config_item('assets').'plugins/sweetalert/js/sweetalert.min.js'; ?>"></script>
-<script>
-    $(document).ready(function()
-{
-	$('form').submit(function(e) {
-		e.preventDefault();
-	});
-
-	function updateButton(t, status) {
-		if (!status) {
-			$(t).html($(t).attr('data-idle'));
-			$(t).prop('disabled', false);
-			$('#overlay').attr('class','');
-			$('#text').remove();
-		} else {
-			$(t).html($(t).attr('data-process'));
-			$(t).prop('disabled', true);
-			$('#overlay').addClass('backdrop__ backdrop__in');
-			$('#overlay').append('<div id="text"><i class="iconrefresh fa fa-refresh fa-spin"></i></div>');
-		}
-	}
-
-	$("#btn_daftar").click(function()
-	{
-		var t = $(this);
-		var form = $(this).attr('data-form');
-		var action = $(this).attr('data-action');
-		var redirect = $(this).attr('data-redirect');
-		$.ajax({
-			url: action,
-			method:'post',
-			data: new FormData($(form)[0]),
-			processData: false,
-			contentType: false,
-			beforeSend: function() {
-				updateButton(t,true);
-			},
-			success:function(str){
-				var obj = jQuery.parseJSON(str);
-				var tipe  = 'success';
-				var title = 'Success!';
-				var message = 'Your data has been successfully';
-
-				if (obj.tipe != undefined) {
-					tipe = obj.tipe;
-				}
-				if (obj.title != undefined) {
-					title = obj.title;
-				}
-				if (obj.message != undefined) {
-					message = obj.message;
-				}
-
-        swal({
-          title: title,
-          type: tipe,
-          text: message,
-          timer: 2000,
-          showConfirmButton: false
-        });
-
-        if(obj.tipe !='error'){
-
-          if (redirect) {
-            setTimeout(function() {
-              window.location = redirect;
-            }, 2000);
-          }
-
-        }
-
-        updateButton(t, false);
-			},
-			error: function(xhr, textStatus, errorThrown){
-				sweetAlert("Oops...", "Something went wrong!", "error");
-				updateButton(t,false);
-			}
-		});
-	});
-});
-</script>
-
+<?php else: ?>
+  <div class="col-span-6 md:col-span-3 relative mb-5">     
+    <div class="relative">
+        <h3 class="text-md font-bold">Selamat Datang <?php echo $this->user_login['name'] ?>!</h3>
+            <div class="mt-5 md:pr-20">
+              <img style="width:200px" src="<?php echo $this->user_login['logo'] ?>" alt="">
+              <p><?php echo $this->user_login['farm'] ?></p>
+            </div>
+        <div class="flex mt-10">
+            <a href="<?php echo base_url('profile') ?>" class="btn btn__black mr-2">LIHAT PROFIL</a>
+            <a href="<?php echo base_url('login/logout') ?>" class="btn btn__black mr-2">KELUAR</a>
+        </div>
+    </div>             
+</div>
+<?php endif ?>

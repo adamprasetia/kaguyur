@@ -35,20 +35,15 @@ class General_model extends CI_Model
         }
 	}
 
-	function get_event($params)
+	function edit($table,$id,$data)
 	{
-		try{
-			$this->load->database();
-			$this->db->select('e.title, e.image, e.url');
-			$this->db->where(['e.category_id'=>$params['category_id'], 'e.status'=>1, 'c.status'=>1]);
-			$this->db->order_by('date_created desc');
-			$this->db->limit(6);
-			$this->db->join('category as c', 'c.id = e.category_id');
-
-			return $this->db->get('event as e');
-
-		}catch (Exception $e) {
-            return $this->db->error();
-        }
+		$this->load->database();
+		$this->db->where('id',$id);
+		if($this->db->update($table,$data)){
+			return true;
+		}else{
+			return false;
+		}
 	}
+
 }

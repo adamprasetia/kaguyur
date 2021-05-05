@@ -7,11 +7,8 @@ class MY_Controller extends CI_Controller
 	{
         parent::__construct();
         
-		if (empty($this->session->userdata('kompas_id'))) {
-			include_once("../data/general/SsoClient.php");
-			redirect(SsoClient::getLoginUrl(base_url($this->uri->segment(2))));
-			exit();
-		}
+		$this->load->library('session');
+		$this->user_login = $this->session->userdata('user_login');
     }
 }
 ?>

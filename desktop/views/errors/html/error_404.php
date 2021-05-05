@@ -1,35 +1,62 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php
-        $meta['site_name'] = 'home';
-        $meta['title'] = 'Halaman tidak ditemukan - Kompas.com' ; 
-        include_once('../data/general/header_meta.php');
-    ?>
-    <link rel="stylesheet" href="https://asset.kompas.com/data/2017/wp/css/kcm2017-404.min.css" type="text/css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:200,300,700|Roboto:100,300,300i,400,400i,500,700,700i">
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o)
-    ,m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<meta charset="utf-8">
+<title>404 Page Not Found</title>
+<style type="text/css">
 
-    ga('create', 'UA-8183126-2', 'auto');
-    ga('set', 'title', '<?php echo $_SERVER['HTTP_HOST']."-".$_SERVER['SERVER_ADDR'] ?>');
-    ga('send', 'pageview');
-    </script>
+::selection { background-color: #E13300; color: white; }
+::-moz-selection { background-color: #E13300; color: white; }
+
+body {
+    background-color: #fff;
+    margin: 40px;
+    font: 13px/20px normal Helvetica, Arial, sans-serif;
+    color: #4F5155;
+}
+
+a {
+    color: #003399;
+    background-color: transparent;
+    font-weight: normal;
+}
+
+h1 {
+    color: #444;
+    background-color: transparent;
+    border-bottom: 1px solid #D0D0D0;
+    font-size: 19px;
+    font-weight: normal;
+    margin: 0 0 14px 0;
+    padding: 14px 15px 10px 15px;
+}
+
+code {
+    font-family: Consolas, Monaco, Courier New, Courier, monospace;
+    font-size: 12px;
+    background-color: #f9f9f9;
+    border: 1px solid #D0D0D0;
+    color: #002166;
+    display: block;
+    margin: 14px 0 14px 0;
+    padding: 12px 10px 12px 10px;
+}
+
+#container {
+    margin: 10px;
+    border: 1px solid #D0D0D0;
+    box-shadow: 0 0 8px #D0D0D0;
+}
+
+p {
+    margin: 12px 15px 12px 15px;
+}
+</style>
 </head>
-<body class="theme--news">
-    <?php include_once('../data/general/header_menu.php') ?>
-
-    <!-- container-->
-    <div class="container clearfix">
-        <?php echo gen_404_json(0,0); ?>
-    </div>
-
-    <!-- footer-->
-    <?php include_once('../data/general/footer_menu.php') ?>
-    <?php include_once('../data/general/footer_meta.php') ?>
+<body>
+    <div id="container">
+        <h1>404 Page Not Found</h1>
+        <p>The page you requested was not found.</p>    </div>
 </body>
 </html>
