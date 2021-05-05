@@ -11,8 +11,7 @@ class Profile extends MY_Controller
 		}
 	}
 
-	public function index()
-	{	
+	public function index(){
 		$this->load->model('global_model');		
 		$profile = $this->global_model->get([
 			'table'=>'member',
@@ -22,6 +21,23 @@ class Profile extends MY_Controller
 		])->row();
 		$member = @json_decode(file_get_contents('./assets/json/member.json'));
 		$data['content'] = $this->load->view('content/profile_view', [
+			'member'=>$member,
+			'profile'=>$profile,
+		], true);
+		
+		$this->load->view('template_view', $data);
+	}
+	public function edit()
+	{	
+		$this->load->model('global_model');		
+		$profile = $this->global_model->get([
+			'table'=>'member',
+			'where'=>[
+				'id'=>$this->user_login['id']
+			]
+		])->row();
+		$member = @json_decode(file_get_contents('./assets/json/member.json'));
+		$data['content'] = $this->load->view('content/profile_edit_view', [
 			'member'=>$member,
 			'profile'=>$profile,
 		], true);
@@ -60,8 +76,6 @@ class Profile extends MY_Controller
 				'address'=> $this->input->post('address', true),
 				'start'=> $this->input->post('start', true),
 				'phone'=> $this->input->post('phone', true),
-				'email'=> $this->input->post('email', true),
-				'password'=> md5($this->input->post('password', true)),
 				'strain'=> $this->input->post('strain', true),
 				'ig'=> $this->input->post('ig', true),
 				'tw'=> $this->input->post('tw', true),

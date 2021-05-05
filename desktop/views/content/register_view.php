@@ -6,8 +6,11 @@
               <p>Mari bergabung untuk memajukan dunia perguppian di Kabupaten Cianjur</p>
             </div>
         <div class="flex mt-10">
-            <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-daftarbelanja">DAFTAR</a>
-            <a href="javascript:void(0);" class="btn btn__black" data-micromodal-trigger="modal-daftarbelanja-syarat">SYARAT &amp; KETENTUAN</a>
+            <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-login">MASUK</a>
+            <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-register">DAFTAR</a>
+        </div>
+        <div class="flex mt-5">
+            <a href="javascript:void(0);" class="btns" data-micromodal-trigger="modal-register-syarat"><u>Syarat &amp; Ketentuan</u></a>
         </div>
     </div>             
 </div>
@@ -22,8 +25,7 @@
   .backdrop__out { filter:alpha(opacity=0);opacity:0; }
 </style>
 
-<!-- [modal-daftarbelanja] -->
-<div class="modal modal__dark micromodal-slide" id="modal-daftarbelanja" aria-hidden="true">
+<div class="modal modal__dark micromodal-slide" id="modal-register" aria-hidden="true">
   <div class="modal__overlay" tabindex="-1" data-micromodal-close>
     <div class="modal__container modal__container__fix" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
       <header class="modal__header">
@@ -104,8 +106,41 @@
   </div>
 </div>
 
-<!-- [modal-daftarbelanja-syarat] -->
-<div class="modal modal__dark micromodal-slide" id="modal-daftarbelanja-syarat" aria-hidden="true">
+<div class="modal modal__dark micromodal-slide" id="modal-login" aria-hidden="true">
+  <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+    <div class="modal__container modal__container__fix" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+      <header class="modal__header">
+        <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+      </header>
+      <main class="modal__content" id="modal-1-content">
+        <div class="bg__yellow p-5">
+          <h3 class="font-bold uppercase text-md">
+            LOGIN
+          </h3>
+          <small>#Kaguyur untuk Cianjur yang sejahtera</small>
+        </div>
+        <div class="p-5 text-sm">
+          <form method="post" id="form_login" action="<?php echo base_url('login/do_login'); ?>">
+            <div class="mb-3">
+              <label class="font-semibold block">Email</label>
+              <input class="field w-full" type="text" name="email" id="email"/>
+            </div>
+            <div class="mb-3">
+              <label class="font-semibold block">Password</label>
+              <input class="field w-full" type="text" name="password" id="password"/>
+            </div>
+            <div class="flex items-center justify-center my-5">
+              <button type="button" class="btn btn__black btn_action" id="btn_daftar" data-idle="MASUK" data-process="Saving..." data-form="#form_login" data-redirect="<?php echo current_url(); ?>">MASUK</button>
+            </div>
+          </form>
+        </div>
+      </main>
+      <footer class="modal__footer"></footer>
+    </div>
+  </div>
+</div>
+
+<div class="modal modal__dark micromodal-slide" id="modal-register-syarat" aria-hidden="true">
   <div class="modal__overlay" tabindex="-1" data-micromodal-close>
     <div class="modal__container modal__container__fix" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
       <header class="modal__header">
@@ -148,13 +183,13 @@
   <div class="col-span-6 md:col-span-3 relative mb-5">     
     <div class="relative">
         <h3 class="text-md font-bold">Selamat Datang <?php echo $this->user_login['name'] ?>!</h3>
-            <div class="mt-5 md:pr-20">
-              <img style="width:200px" src="<?php echo $this->user_login['logo'] ?>" alt="">
-              <p><?php echo $this->user_login['farm'] ?></p>
-            </div>
+        <div class="mt-5 md:pr-20">
+          <img style="width:200px" src="<?php echo $this->user_login['logo'] ?>" alt="">
+          <p><?php echo $this->user_login['farm'] ?></p>
+        </div>
         <div class="flex mt-10">
-            <a href="<?php echo base_url('profile') ?>" class="btn btn__black mr-2">LIHAT PROFIL</a>
-            <a href="<?php echo base_url('login/logout') ?>" class="btn btn__black mr-2">KELUAR</a>
+          <a href="<?php echo base_url('profile') ?>" class="btn btn__black mr-2">LIHAT PROFIL</a>
+          <a href="<?php echo base_url('login/logout') ?>" class="btn btn__black mr-2">KELUAR</a>
         </div>
     </div>             
 </div>

@@ -94,6 +94,12 @@
                   <?php echo $this->user_login['name'] ?>
                   </a>
                 </li>
+              <?php }else{ ?>  
+                <li>
+                  <a class="uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('login') ?>"> 
+                    MASUK
+                  </a>
+                </li>
               <?php } ?>
             </ul>
           </div>

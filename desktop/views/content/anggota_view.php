@@ -63,8 +63,6 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
       <?php $i++;} ?>
     </div>
 
-    <?php $this->load->view('content/register_view') ?>
-
     <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
     <?php if(!empty($anggota)) { ?>
     <?php foreach ($anggota as $key => $val) { ?>
