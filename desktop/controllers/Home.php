@@ -22,4 +22,9 @@ class Home extends MY_Controller
 	{
 		show_404();
 	}
+
+	public function test()
+	{
+		dd($_SERVER);
+	}
 }
