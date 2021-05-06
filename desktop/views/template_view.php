@@ -41,7 +41,6 @@
 
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;900&display=swap" rel="stylesheet"/>
-    <script type="text/javascript" src="<?php echo config_item('assets'); ?>js/jquery.min.js"></script>
     <style>
     .header, .header.scroller {
       color:white;
@@ -138,10 +137,11 @@
         </div>
       </div>
     </div>
-
     <div id="overlay"></div>
-
+    
     <?php echo isset($modals)?$modals:''; ?>
+
+    <script type="text/javascript" src="<?php echo config_item('assets'); ?>js/jquery.min.js"></script>
     <?php $this->load->view('script/general') ?>
     <?php echo isset($script)?$script:''; ?>
     <script src="<?php echo config_item('assets').'plugins/sweetalert/js/sweetalert.min.js'; ?>"></script>
