@@ -128,7 +128,7 @@
               <?php foreach ($members as $row) { ?>
               <li>
                 <a href="javascript:void(0)">
-                  <img src="<?php echo base_url($row->logo); ?>" alt="<?php echo htmlentities($row->farm) ?>" title="<?php echo htmlentities($row->farm) ?>" />
+                  <img src="<?php echo gen_thumb($row->logo,'100x100'); ?>" alt="<?php echo htmlentities($row->farm) ?>" title="<?php echo htmlentities($row->farm) ?>" />
                 </a>
               </li>
               <?php } ?>

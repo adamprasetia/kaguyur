@@ -35,7 +35,7 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
                 <div class="p-5 text-sm">
                   <div class="grid grid-cols-8 gap-10">
                     <div class="photoprofile col-span-2">
-                      <img class="imgfillImg" src="<?php echo base_url($row->logo) ?>" alt="" />
+                      <img class="imgfillImg" src="<?php echo gen_thumb($row->logo,'100x100') ?>" alt="" />
                     </div>
                     <div class="col-span-6">
                       <strong><?php echo $row->farm ?></strong>
