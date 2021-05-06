@@ -82,10 +82,10 @@
     <div class="form-group">
       <label>Status *</label>
       <select name="status" id="status" class="form-control">
-        <option value="PENDING" <?php echo $data->status=='PENDING'?'selected':''?>>PENDING</option>
-        <option value="VERIFIED" <?php echo $data->status=='VERIFIED'?'selected':''?>>VERIFIED</option>
-        <option value="BANNED" <?php echo $data->status=='BANNED'?'selected':''?>>BANNED</option>
-        <option value="DELETED" <?php echo $data->status=='DELETED'?'selected':''?>>DELETED</option>
+        <option value="PENDING" <?php echo isset($data->status) && $data->status=='PENDING'?'selected':''?>>PENDING</option>
+        <option value="VERIFIED" <?php echo isset($data->status) && $data->status=='VERIFIED'?'selected':''?>>VERIFIED</option>
+        <option value="BANNED" <?php echo isset($data->status) && $data->status=='BANNED'?'selected':''?>>BANNED</option>
+        <option value="DELETED" <?php echo isset($data->status) && $data->status=='DELETED'?'selected':''?>>DELETED</option>
       </select>
     </div>
     </form>

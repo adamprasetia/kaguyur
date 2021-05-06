@@ -111,6 +111,9 @@
             <?php if(in_array(1, $_SESSION['user_login']['module']) || in_array(5, $_SESSION['user_login']['module'])): ?>
             <li class="<?php echo ($this->uri->segment(1)=='gallery'?'active':''); ?>"><a href="<?php echo base_url('gallery'); ?>"><i class="fa fa-image"></i> <span>Gallery</span></a></li>
             <?php endif ?>
+            <?php if(in_array(1, $_SESSION['user_login']['module']) || in_array(6, $_SESSION['user_login']['module'])): ?>
+            <li class="<?php echo ($this->uri->segment(1)=='product'?'active':''); ?>"><a href="<?php echo base_url('product'); ?>"><i class="fa fa-product-hunt"></i> <span>product</span></a></li>
+            <?php endif ?>
             <li class="<?php echo ($this->uri->segment(1)=='photo'?'active':''); ?>"><a href="<?php echo base_url('photo'); ?>"><i class="fa fa-image"></i> <span>Photo</span></a></li>
             <li class="<?php echo ($this->uri->segment(1)=='video'?'active':''); ?>"><a href="<?php echo base_url('video'); ?>"><i class="fa fa-video-camera"></i> <span>Video</span></a></li>
             <?php if(in_array(1, $_SESSION['user_login']['module'])): ?>
