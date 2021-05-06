@@ -1,14 +1,10 @@
 <div class="section py-20 bg-cover bg-no-repeat mt-10">
   <!-- section -->
   <div class="container px-5 mx-auto">
-    <div>
-      <h1 class="font-bold uppercase">ANGGOTA</h1>
-      <div class="py-5">
-        <p class="mb-5">
+    <h1 class="font-bold uppercase">ANGGOTA</h1>
+      <p>
 Terbuka, Persahabatan, Solidaritas, Kreatif & Innovatif, Apresiatif, Dinamis, 
 Berbagi, Kekeluargaan serta Persatuan.</p>
-      </div>
-    </div>
 
     <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
       <?php $i=1;foreach ($member as $row) { ?>        

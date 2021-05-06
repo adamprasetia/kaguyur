@@ -112,18 +112,20 @@
     <div class="footer bg-black text-white">
       <div class="container px-5 mx-auto py-10">
         <div class="grid grid-cols-6">
-          <div class="col-span-6 md:col-span-3 flex items-end justify-center md:justify-start mb-10 md:mb-0">
+          <div class="col-span-6 md:col-span-3 flex items-end justify-center md:justify-start md:mb-0">
             <div class="w-32">
               <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" />
             </div>
           </div>  
-          <?php if(!empty($member)){ ?>
+          <?php 
+          $members = @json_decode(file_get_contents('./assets/json/member.json'));
+          if(!empty($members)){ ?>
           <div class="col-span-6 md:col-span-3">
-            <p class="text-center md:text-left px-3 mb-5">
+            <p class="text-center md:text-left px-3">
               Konten ini merupakan kerja sama dari
             </p>
             <ul class="flex flex-wrap content-start">
-              <?php foreach ($member as $row) { ?>
+              <?php foreach ($members as $row) { ?>
               <li>
                 <a href="javascript:void(0)">
                   <img src="<?php echo base_url($row->logo); ?>" alt="<?php echo htmlentities($row->farm) ?>" title="<?php echo htmlentities($row->farm) ?>" />
