@@ -117,10 +117,16 @@ class Gallery extends MY_Controller {
 	public function delete($id = '')
 	{
 		if ($id) {
-            $this->generate_json();
-            $this->generate_json($id);
-			$delete = $this->general_model->delete($this->table_name, $id);
-			echo json_encode(array('id'=>$id,'action'=>'delete','message'=>'Data Has Been Deleted'));
+            $data = array(
+				'status' => 0
+			);
+			$delete = $this->general_model->edit($this->table_name, $id, $data);
+            if($delete)
+			{
+                $this->generate_json();
+                $this->generate_json($id);
+                echo json_encode(array('id'=>$id,'action'=>'delete','message'=>'Data Has Been Deleted'));
+            }
 		}
 	}
 
