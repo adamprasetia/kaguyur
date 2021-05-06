@@ -147,4 +147,8 @@
 		}
 	}
 
+	function gen_thumb($src, $size='300x300')
+	{
+		return base_url(str_replace('/ori_', '/'.$size.'_',$src));
+	}
 ?>

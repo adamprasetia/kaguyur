@@ -9,7 +9,7 @@
             <a href="<?php echo base_url('galeri/'.$row->id.'/'.url_title($row->title,'-',true)) ?>">
             <div class="tns-item tns-slide-active">
                 <div class="slider__etalase__img etalase__img">
-                    <img class="imgfillImg" src="<?php echo base_url($row->cover) ?>" alt="<?php echo htmlentities($row->title) ?>">
+                    <img class="imgfillImg" src="<?php echo gen_thumb($row->cover,'300x300') ?>" alt="<?php echo htmlentities($row->title) ?>">
                 </div>
                 <div class="mt-2">
                     <p class="font-bold"><?php echo $row->title ?></p>

@@ -58,7 +58,7 @@ class Photo extends MY_Controller {
 				$result_upload = $this->upload_photo($filename);
 				if ($result_upload) {
 					$data = array(
-						'url' => 'assets/photo/'.date('Y/m/d/').$filename
+						'url' => 'assets/photo/'.date('Y/m/d/').'ori_'.$filename
 					);
 					$id = $this->general_model->add($this->data['page'],$data);
 					$total_upload++;
@@ -82,7 +82,7 @@ class Photo extends MY_Controller {
 			}
 		}
 		$config['upload_path'] = $upload_path;
-		$config['file_name'] = $filename;
+		$config['file_name'] = 'ori_'.$filename;
         $config['allowed_types'] = 'jpeg|jpg|png|webp';
         $config['max_size'] = 6014;
         $config['overwrite'] = false;
@@ -94,9 +94,37 @@ class Photo extends MY_Controller {
 			echo $this->upload->display_errors();exit;
         	return FALSE;
         }else{
-			//$this->resizeImage($filename, $upload_path);
+			$this->crop($filename, $upload_path);
 			return TRUE;
         }
+	}
+
+	public function crop($filename,$upload_path)
+	{
+		$this->load->library('image_lib');
+		$ratio = [
+			[300,300],
+			[320,240],
+			[100,100],
+		];
+		foreach ($ratio as $row) {			
+			$config['image_library'] = 'gd2';
+			$config['source_image'] = $upload_path.'/ori_'.$filename;
+			$config['new_image'] = $upload_path.'/'.$row[0].'x'.$row[1].'_'.$filename;
+			// $config['create_thumb'] = TRUE;
+			$config['maintain_ratio'] = FALSE;
+			$config['width']         = $row[0];
+			$config['height']       = $row[1];
+			$imageSize = $this->image_lib->get_image_properties($config['source_image'], TRUE);
+			$config['y_axis'] = ($imageSize['height'] - $config['height']) / 2;
+			$config['x_axis'] = ($imageSize['width'] - $config['width']) / 2;
+			$this->image_lib->initialize($config);
+	
+			if ( ! $this->image_lib->crop())
+			{	
+				echo $this->image_lib->display_errors();
+			}
+		}
 	}
 
 	private function _set_rules()

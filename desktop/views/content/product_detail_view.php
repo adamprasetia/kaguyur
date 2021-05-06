@@ -10,7 +10,7 @@
         <?php $i=1;foreach ($photo as $row) { ?>        
             <div class="tns-item tns-slide-active">
                 <div class="slider__etalase__img etalase__img">
-                    <img class="imgfillImg" src="<?php echo base_url($row) ?>">
+                    <img class="imgfillImg" src="<?php echo gen_thumb($row,'300x300') ?>">
                 </div>
             </div>
         <?php $i++;}} ?>

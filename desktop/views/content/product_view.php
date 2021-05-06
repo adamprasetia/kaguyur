@@ -10,7 +10,7 @@
             <a href="<?php echo base_url('produk/'.$row->id.'/'.url_title($row->name,'-',true)) ?>">
             <div class="tns-item tns-slide-active">
                 <div class="slider__etalase__img etalase__img">
-                    <img class="imgfillImg" src="<?php echo base_url($photo[0]) ?>" alt="<?php echo htmlentities($row->name) ?>">
+                    <img class="imgfillImg" src="<?php echo gen_thumb($photo[0],'300x300') ?>" alt="<?php echo htmlentities($row->name) ?>">
                 </div>
                 <div class="mt-2">
                     <p class="font-bold"><?php echo $row->name ?></p>

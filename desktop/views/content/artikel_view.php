@@ -9,7 +9,7 @@
                         <?php foreach ($article as $row) { ?>                            
                         <li class="grid grid-cols-8 gap-4 mb-5">
                             <div class="col-span-3 md:col-span-2">
-                                <img class="imgfillImg" src="<?php echo base_url($row->image) ?>" alt="" />
+                                <img class="imgfillImg" src="<?php echo gen_thumb($row->image,'300x300') ?>" alt="" />
                             </div>
                             <div class="col-span-5 md:col-span-6">
                                 <a href="<?php echo base_url('artikel/'.$row->id.'/'.url_title($row->title,'-',true))?>">
