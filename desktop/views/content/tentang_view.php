@@ -1,8 +1,7 @@
 <div class="section py-20 bg-cover bg-no-repeat mt-10">
-  <!-- section -->
-  <div class="container px-5 mx-auto">
+<!-- section -->
+<div class="container px-5 mx-auto">
         <h1 class="font-bold uppercase">TENTANG</h1>
-        <div class="py-5 md:py-10">
         <p>Komunitas Guppy Cianjur (KAGUYUR) didirikan pada tanggal 1 Mei 2021. dengan semangat untuk memajukan dan memperkenalkan ikan guppy di Kabupaten Cianjur</p>
         <p><strong>Logo</strong></p>
         <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" />
@@ -36,6 +35,5 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
         <p>Humas : Asep Bento</p>
         <p><strong>Sekretariat</strong></p>
         <p>Jl. Arwinda Baros (Nafish Farm) Karangtengah Cianjur</p>
-        </div>
   </div>
 </div>
