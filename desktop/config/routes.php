@@ -53,14 +53,4 @@ $route['default_controller'] 	= 'home';
 $route['404_override'] 			= 'home/page_404';
 $route['translate_uri_dashes'] 	= FALSE;
 
-$route['siap_vaksin'] 	= 'vaksin/index';
-$route['siap-vaksin'] 	= 'vaksin/index';
-$route['ramah_investasi'] 	= 'investasi/index';
-$route['ramah-investasi'] 	= 'investasi/index';
-$route['belanja'] 	= 'belanja/index';
-$route['jalan_jalan'] 	= 'jalan_jalan/index';
-$route['jalan-jalan'] 	= 'jalan_jalan/index';
-$route['jalan_jalan/daerah/(:num)/(:any)'] = 'jalan_jalan/daerah/$1/$2';
-$route['jalan-jalan/daerah/(:num)/(:any)'] = 'jalan_jalan/daerah/$1/$2';
-$route['artikel/(:num)'] = 'artikel/index/$1';
-$route['infografik/(:num)'] = 'infografik/index/$1';
+$route['artikel/(:num)/(:any)'] = 'artikel/detail/$1';

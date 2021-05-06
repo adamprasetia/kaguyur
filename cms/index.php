@@ -1,20 +1,6 @@
 <?php
 ob_start();
 date_default_timezone_set("Asia/Jakarta");
-if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-}else{
-	if($_SERVER['HTTP_HOST']!="localhost"){
-
-		$mark = explode('.', $_SERVER['SERVER_ADDR']);
-		if(is_array($mark)) {
-		    $data_center = $mark[1];
-		    $last_ip = end($mark);
-		    $mark = "{$data_center}.{$last_ip}";
-		}
-		echo "<!-- {$mark} -->";
-
-	}
-}
 /**
  * CodeIgniter
  *
@@ -69,13 +55,7 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	// if (strpos($_SERVER['HTTP_HOST'],'localhost')!==FALSE) {	
-	// 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-	// }else{
-	// 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');	 
-	// }
-
-	define('ENVIRONMENT', 'production');	
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
  *---------------------------------------------------------------

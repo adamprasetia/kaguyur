@@ -33,7 +33,7 @@
           <div class="input-group-addon">
             <i class="fa fa-user"></i>
           </div>
-          <input type="text" id="username" name="username" class="form-control" placeholder="Username">
+          <input type="text" id="email" name="email" class="form-control" placeholder="Email">
         </div>
       </div>
 
@@ -49,7 +49,7 @@
       <div class="row">
         <!-- /.col -->
         <div class="col-xs-4 pull-left" >
-          <a class="btn btn-default btn-block btn-flat" href="http:///www.terhubungdarirumah.com"><< Back</a>
+          <a class="btn btn-default btn-block btn-flat" href="<?php echo base_url() ?>"><< Back</a>
         </div>
         <div class="col-xs-4 pull-right" >
           <button type="button" class="btn btn-warning btn-block btn-flat btn_action" data-idle="Sign In" data-process="Login..." data-form="#form_data" data-redirect="<?php echo base_url(); ?>">Sign In</button>

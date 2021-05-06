@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Anggota extends MY_Controller
+class Artikel extends MY_Controller
 {
 	public function __construct()
 	{
@@ -11,12 +11,25 @@ class Anggota extends MY_Controller
 	public function index()
 	{	
 		$member = @json_decode(file_get_contents('./assets/json/member.json'));
-		$data['content'] = $this->load->view('content/anggota_view', [
-			'member'=>$member
+		$article = @json_decode(file_get_contents('./assets/json/article.json'));
+		$data['content'] = $this->load->view('content/artikel_view', [
+			'member'=>$member,
+			'article'=>$article,
 		], true);
 		
 		$this->load->view('template_view', $data);
 	}
+    public function detail($id)
+    {
+		$article = @json_decode(file_get_contents('./assets/json/article_'.$id.'.json'));
+        if(empty($article)){
+            show_404();
+            exit;
+        }
+		$data['content'] = $this->load->view('content/artikel_detail_view', $article, true);
+		
+		$this->load->view('template_view', $data);
+    }
 
 	public function register()
 	{

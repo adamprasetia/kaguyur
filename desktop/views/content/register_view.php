@@ -36,7 +36,7 @@
           <h3 class="font-bold uppercase text-md">
             DAFTARKAN <br />DIRIMU DI SINI
           </h3>
-          <small>#Kaguyur untuk Cianjur yang sejahtera</small>
+          <small>#Kaguyur Growth Together</small>
         </div>
         <div class="p-5 text-sm">
           <form method="post" id="form_data" action="<?php echo base_url('anggota/register'); ?>">
@@ -93,10 +93,10 @@
             </div>
             <div class="mb-3">
               <label class="font-semibold block">Password</label>
-              <input class="field w-full" type="text" name="password" id="password"/>
+              <input class="field w-full" type="password" name="password" id="password"/>
             </div>
             <div class="flex items-center justify-center my-5">
-              <button type="button" class="btn btn__black btn_action" id="btn_daftar" data-idle="DAFTAR" data-process="Saving..." data-form="#form_data" data-redirect="<?php echo current_url(); ?>">DAFTAR</button>
+              <button type="button" class="btn btn__black btn_action" id="btn_daftar" data-idle="DAFTAR" data-process="Tunggu Sebentar..." data-form="#form_data" data-redirect="<?php echo current_url(); ?>">DAFTAR</button>
             </div>
           </form>
         </div>
@@ -117,7 +117,7 @@
           <h3 class="font-bold uppercase text-md">
             LOGIN
           </h3>
-          <small>#Kaguyur untuk Cianjur yang sejahtera</small>
+          <small>#Kaguyur Growth Together</small>
         </div>
         <div class="p-5 text-sm">
           <form method="post" id="form_login" action="<?php echo base_url('login/do_login'); ?>">
@@ -127,10 +127,10 @@
             </div>
             <div class="mb-3">
               <label class="font-semibold block">Password</label>
-              <input class="field w-full" type="text" name="password" id="password"/>
+              <input class="field w-full" type="password" name="password" id="password"/>
             </div>
             <div class="flex items-center justify-center my-5">
-              <button type="button" class="btn btn__black btn_action" id="btn_daftar" data-idle="MASUK" data-process="Saving..." data-form="#form_login" data-redirect="<?php echo current_url(); ?>">MASUK</button>
+              <button type="button" class="btn btn__black btn_action" id="btn_daftar" data-idle="MASUK" data-process="Tunggu Sebentar..." data-form="#form_login" data-redirect="<?php echo current_url(); ?>">MASUK</button>
             </div>
           </form>
         </div>

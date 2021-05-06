@@ -7,7 +7,7 @@ class Article extends MY_Controller {
 	function __construct()
    	{
     	parent::__construct();
-    	$this->data['page'] = 'article';
+    	$this->table_name = 'article';
    	}
 
 	public function index()
@@ -20,8 +20,8 @@ class Article extends MY_Controller {
 			$where['LOWER(title) like'] = '%'.strtolower($search).'%';
 			$where['status !='] = 'DELETED';
 		}
-		$total = $this->global_model->count(['table'=>$this->data['page'],'where'=>$where]);
-		$news_view['data'] 	= $this->global_model->get(['table'=>$this->data['page'],'where'=>$where])->result();
+		$total = $this->global_model->count(['table'=>$this->table_name,'where'=>$where]);
+		$news_view['data'] 	= $this->global_model->get(['table'=>$this->table_name,'where'=>$where])->result();
 		$news_view['offset'] = $offset;
 		$news_view['paging'] = gen_paging($total,$this->limit);
 		$news_view['total'] 	= gen_total($total,$this->limit,$offset);
@@ -33,12 +33,14 @@ class Article extends MY_Controller {
 	private function _set_rules()
 	{
 		$this->form_validation->set_rules('title','Judul','trim|required');
+		$this->form_validation->set_rules('description','Deskripsi','trim|required');
 		$this->form_validation->set_rules('content', 'Content', 'trim|required');
 		$this->form_validation->set_rules('status', 'Status', 'trim|required');
 	}
 	private function _set_data()
 	{
 		$title 			= $this->input->post('title');
+		$description 	= $this->input->post('description');
 		$content 		= $this->input->post('content');
 		$status 		= $this->input->post('status');
 		
@@ -53,6 +55,7 @@ class Article extends MY_Controller {
         }
 		$data = array(
 			'title' => $title,
+			'description' => $description,
 			'content' => $content,
 			'image' => $photo,
 			'status' => $status,
@@ -86,14 +89,16 @@ class Article extends MY_Controller {
 			$data 					= $this->_set_data();
             if($data['status']=='PUBLISH'){
                 $data['published_date'] 	= date('Y-m-d H:i:s');    
-                $data['published_by'] 	= $_SESSION['session_login']['id'];
+                $data['published_by'] 	= $_SESSION['user_login']['id'];
             }
 			$data['created_date'] 	= date('Y-m-d H:i:s');
-			$data['created_by'] 	= $_SESSION['session_login']['id'];
+			$data['created_by'] 	= $_SESSION['user_login']['id'];
 
-			$id = $this->general_model->add($this->data['page'], $data);
+			$id = $this->general_model->add($this->table_name, $data);
 			if($id)
 			{
+				$this->generate_json();
+				$this->generate_json($id);
 				echo json_encode(array('id'=>$id,'action'=>'insert', 'message'=>'Data Has Been Added'));
 			}
 		}
@@ -105,7 +110,7 @@ class Article extends MY_Controller {
 		if ($this->form_validation->run()===FALSE) {
 			$news_view['title'] = 'Edit Article';
 			$news_view['action'] = base_url('article/edit/'.$id.'/'.$status);
-			$news_view['data'] = $this->general_model->get($this->data['page'], null, array('id'=>$id))->row();
+			$news_view['data'] = $this->general_model->get($this->table_name, null, array('id'=>$id))->row();
 			$data['content'] = $this->load->view('contents/form_article_view',$news_view,true);
 
 			$data['script'] = gen_script(array(
@@ -123,14 +128,18 @@ class Article extends MY_Controller {
 
 		}else{
 			$data = $this->_set_data();
+			$data['updated_by'] 	= $_SESSION['user_login']['id'];
+			$data['updated_date'] 	= date('Y-m-d H:i:s');    
             if($data['status']=='PUBLISH' && $status=='DRAFT'){
                 $data['published_date'] 	= date('Y-m-d H:i:s');    
-                $data['published_by'] 	= $_SESSION['session_login']['id'];
+                $data['published_by'] 	= $_SESSION['user_login']['id'];
             }
 
-			$edit = $this->general_model->edit($this->data['page'], $id, $data);
+			$edit = $this->general_model->edit($this->table_name, $id, $data);
 			if($edit)
 			{
+				$this->generate_json();
+				$this->generate_json($id);
 				echo json_encode(array('id'=>$id,'action'=>'update','message'=>'Data Has Been Chenged'));
 			}
 		}
@@ -142,11 +151,43 @@ class Article extends MY_Controller {
 			$data = array(
 				'status' => 'DELETED'
 			);
-			$delete = $this->general_model->edit($this->data['page'], $id, $data);
+			$delete = $this->general_model->edit($this->table_name, $id, $data);
 			if($delete)
 			{
 				echo json_encode(array('id'=>$id,'action'=>'delete','message'=>'Data Has Been Deleted'));
 			}
+		}
+	}
+
+	public function generate_json($id=0)
+	{
+		if(!empty($id)){
+			$data = $this->global_model->get([
+				'select'=>$this->table_name.'.*, member.name as author',
+				'table'=>$this->table_name,
+				'where'=>[
+					$this->table_name.'.status'=>'PUBLISH',
+					$this->table_name.'.id'=>$id
+				],
+				'limit'=>20,
+				'join'=>[
+					['member','article.created_by = member.id']
+				]
+			])->row_array();
+			create_json('article_'.$id.'.json', json_encode($data));	
+		}else{
+			$data = $this->global_model->get([
+				'select'=>'a.id,a.title,a.description,a.image,a.published_date, b.name as author',
+				'table'=>$this->table_name.' a',
+				'where'=>[
+					'a.status'=>'PUBLISH'
+				],
+				'limit'=>20,
+				'join'=>[
+					['member b','a.created_by = b.id']
+				]
+			])->result_array();
+			create_json('article.json', json_encode($data));
 		}
 	}
 }

@@ -144,12 +144,12 @@ class General_model extends CI_Model
 		}
 	}
 
-	function get_module($username){
+	function get_module($id){
 		$this->load->database();
 		$this->db->select('id_module');
-		$this->db->from('users A');
+		$this->db->from('member A');
 		$this->db->join('privilege_module B', 'A.id_privilege = B.id_privilege');
-		$this->db->where('username', $username);
+		$this->db->where('A.id', $id);
 		return $this->db->get()->result_array();
 	}
 

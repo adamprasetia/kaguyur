@@ -25,6 +25,10 @@
       <input type="text" id="phone" name="phone" class="form-control" value="<?php echo isset($data->phone)?$data->phone:''; ?>">
     </div>
     <div class="form-group">
+      <label>Email *</label>
+      <input type="text" id="email" name="email" class="form-control" value="<?php echo isset($data->email)?$data->email:''; ?>">
+    </div>
+    <div class="form-group">
       <label>Strain Guppy*</label>
       <textarea name="strain" id="strain" cols="30" rows="10" class="form-control"><?php echo isset($data->strain)?$data->strain:''; ?></textarea>
     </div>
@@ -65,6 +69,15 @@
           <input type="hidden" id="logo" name="logo" value="<?php echo isset($data->logo)?$data->logo:''; ?>">
         </div>
       </div>
+    </div>
+    <div class="form-group">
+        <label>Privilege *</label>
+        <select id="privilege" name="id_privilege" class="form-control">
+            <option value=""></option>
+            <?php foreach($privilege_list as $row): ?>
+            <option value="<?php echo $row->id ?>" <?php echo (isset($data->id_privilege) && $data->id_privilege==$row->id)?'selected':'' ?>><?php echo $row->name ?></option>
+            <?php endforeach ?>
+        </select>
     </div>
     <div class="form-group">
       <label>Status *</label>

@@ -80,7 +80,7 @@
                 <a class="<?php echo $s1=='anggota'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('anggota'); ?>"> ANGGOTA </a>
               </li>
               <li>
-                <a class="<?php echo $s1=='berita'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="#"> ARTIKEL </a>
+                <a class="<?php echo $s1=='artikel'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('artikel'); ?>"> ARTIKEL </a>
               </li>
               <li>
                 <a class="<?php echo $s1=='berita'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="#"> GALERI </a>

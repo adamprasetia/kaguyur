@@ -5,19 +5,19 @@ class Login extends CI_Controller {
 	function __construct()
    	{
     	parent::__construct();
-		$this->load->model('general_model');
+		$this->load->model('global_model');
    	}
 
    	private function _set_rules()
 	{
-		$this->form_validation->set_rules('username','Username','trim|required|callback_check_auth');
+		$this->form_validation->set_rules('email','Email','trim|required|callback_check_auth');
 		$this->form_validation->set_rules('password','Password','trim|required');
 	}
 
 
 	public function index()
 	{
-		if($this->session->userdata('session_login')){
+		if($this->session->userdata('user_login')){
     		redirect('dashboard');
     	}
 
@@ -40,27 +40,23 @@ class Login extends CI_Controller {
 
 	public function check_auth()
 	{
-		$username = $this->input->post('username');
+		$email = $this->input->post('email');
 		$password = md5($this->input->post('password'));
-		if($username == '' || $password == ''){
-			$this->form_validation->set_message('check_auth','Username and Password is required');
+		if($email == '' || $password == ''){
+			$this->form_validation->set_message('check_auth','Email and Password is required');
 			return false;
 		}
-
-		if($userdata = $this->general_model->login($username, $password))
+		$userdata = $this->global_model->get([
+			'table'=>'member',
+			'where'=>['email'=>$email]
+		])->row_array();
+		if($userdata && $userdata['password'] == $password)
 		{
-			$userdata = $this->general_model->get('users', '', ['username'=>$username])->row();
-			$data = array(
-				'id' => $userdata->id,
-			    'username'  => $username,
-				'logged_in' => TRUE,
-				'module' => []
-			);
-			$module = $this->general_model->get_module($username);
+			$module = $this->general_model->get_module($userdata['id']);
 			foreach ($module as $row) {
-				$data['module'][] = $row['id_module'];
+				$userdata['module'][] = $row['id_module'];
 			}
-			$this->session->set_userdata('session_login', $data);
+			$this->session->set_userdata('user_login', $userdata);
 			return true;
 		}
 		else
@@ -75,7 +71,7 @@ class Login extends CI_Controller {
 		$this->form_validation->set_rules('password','Password','trim|required');
 
 		if ($this->form_validation->run()===FALSE) {
-			$view_data['username'] = $this->session->userdata('session_login')['username'];
+			$view_data['username'] = $this->session->userdata('user_login')['username'];
 			$data['content'] = $this->load->view('contents/change_password_view', $view_data, true);
 
 			if(!validation_errors())
@@ -100,29 +96,9 @@ class Login extends CI_Controller {
 
 	public function logout(){
 
-		$this->session->unset_userdata('session_login');
+		$this->session->unset_userdata('user_login');
 		redirect(base_url('login'));
 
-	}
-
-	public function server(){
-		echo "<pre>";var_dump($_SERVER);exit;
-	}
-
-	public function cek(){
-		$this->session->set_userdata('session_login', ['test'=>'asd']);
-	}
-
-	public function get(){
-		dd($this->session->userdata('session_login'));
-	}
-
-	public function php(){
-		echo phpinfo();
-	}
-	public function path()
-	{
-		echo FCPATH;
 	}
 
 }

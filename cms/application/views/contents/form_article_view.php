@@ -10,6 +10,10 @@
             <?php endif; ?>
         </div>
         <div class="form-group">
+            <label>Description *</label>
+            <textarea id="description" name="description" class="form-control"><?php echo isset($data->description)?$data->description:'' ?></textarea>
+        </div>
+        <div class="form-group">
             <textarea id="content" name="content" class="form-control" rows="100"><?php echo isset($data->content)?$data->content:'' ?></textarea>
         </div>
         <div class="form-group">

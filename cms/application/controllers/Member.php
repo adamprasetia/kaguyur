@@ -61,12 +61,14 @@ class Member extends MY_Controller {
 			'address' => $this->input->post('address'),
 			'start' => $this->input->post('start'),
 			'phone' => $this->input->post('phone'),
+			'email' => $this->input->post('email'),
 			'strain' => $this->input->post('strain'),
 			'photo' => $this->input->post('photo'),
 			'logo' => $this->input->post('logo'),
 			'ig' => $this->input->post('ig'),
 			'tw' => $this->input->post('tw'),
 			'fb' => $this->input->post('fb'),
+			'id_privilege' => $this->input->post('id_privilege'),
 			'status' => $this->input->post('status')
 		];
 	}
@@ -78,7 +80,8 @@ class Member extends MY_Controller {
 			
 			$data['content'] = $this->load->view('contents/form_member_view',[
 				'action'=>base_url('member/add'),
-				'title'=>'Tambah Anggota'
+				'title'=>'Tambah Anggota',
+				'privilege_list' => $this->general_model->get('privilege', '*', '', 'name')->result()
 			],true);
 
 			if(!validation_errors())
@@ -110,6 +113,7 @@ class Member extends MY_Controller {
 			$master['data'] = $this->general_model->get($this->table_name, null, ['id'=>$id])->row();
 			$master['action'] = base_url('member/edit/'.$id);
 			$master['title'] = 'Edit Anggota';
+			$master['privilege_list'] = $this->general_model->get('privilege', '*', '', 'name')->result();
 
 			$data['content'] = $this->load->view('contents/form_member_view',$master,true);
 

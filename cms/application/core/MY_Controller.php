@@ -5,7 +5,7 @@ class MY_Controller extends CI_Controller {
 	function __construct()
 	{		
 		parent::__construct();
-		if (!$this->session->userdata('session_login')) {
+		if (!$this->session->userdata('user_login')) {
 			redirect('login');
 		}
 	}
