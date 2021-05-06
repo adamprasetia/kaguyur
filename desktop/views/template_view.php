@@ -83,10 +83,10 @@
                 <a class="<?php echo $s1=='artikel'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('artikel'); ?>"> ARTIKEL </a>
               </li>
               <li>
-                <a class="<?php echo $s1=='berita'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="#"> GALERI </a>
+                <a class="<?php echo $s1=='galeri'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('galeri'); ?>"> GALERI </a>
               </li>
               <li>
-                <a class="<?php echo $s1=='berita'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="#"> JUAL BELI </a>
+                <a class="<?php echo $s1=='produk'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('produk'); ?>"> PRODUK </a>
               </li>
               <?php if(!empty($this->user_login['name'])){ ?>
                 <li>
