@@ -18,7 +18,7 @@
 
     <meta property="og:title" content="<?php echo isset($meta['title']) ? $meta['title'] : 'Kaguyur'; ?>" />
     <meta property="og:type" content="<?php echo isset($meta['type']) ? $meta['type'] : ''; ?>" />
-    <meta property="og:url" content="<?php echo isset($meta['url']) ? $meta['url'] : ''; ?>" />
+    <meta property="og:url" content="<?php echo isset($meta['url']) ? $meta['url'] : current_url(); ?>" />
     <meta property="og:image" content="<?php echo config_item('assets'); ?>images/logo.jpg" />
     <meta property="og:site_name" content="-" />
     <meta property="og:description" content="<?php echo isset($meta['description'])?$meta['description']:'Komunitas Guppy Cianjur' ?>" />

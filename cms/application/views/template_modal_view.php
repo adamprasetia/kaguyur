@@ -29,10 +29,6 @@
   <script src="<?php echo config_item('assets_editor').'js/adminlte.min.js';?>"></script>
   <!-- SweetAlert -->
   <script src="<?php echo config_item('assets_editor').'plugins/sweetalert/js/sweetalert.min.js';?>"></script>
-  <!-- custom js general -->
-  <script src="<?php echo config_item('assets_editor').'script/general.js';?>"></script>
-   <!-- custom js general -->
-  <script src="<?php echo config_item('assets_editor').'script/headline.js';?>"></script>
   <?php echo isset($script)?$script:'' ?>
   </body>
 </html>

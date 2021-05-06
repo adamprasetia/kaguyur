@@ -154,6 +154,8 @@ class Article extends MY_Controller {
 			$delete = $this->general_model->edit($this->table_name, $id, $data);
 			if($delete)
 			{
+				$this->generate_json();
+				$this->generate_json($id);
 				echo json_encode(array('id'=>$id,'action'=>'delete','message'=>'Data Has Been Deleted'));
 			}
 		}
@@ -169,7 +171,6 @@ class Article extends MY_Controller {
 					$this->table_name.'.status'=>'PUBLISH',
 					$this->table_name.'.id'=>$id
 				],
-				'limit'=>20,
 				'join'=>[
 					['member','article.created_by = member.id']
 				]
