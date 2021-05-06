@@ -52,10 +52,6 @@ class Module extends MY_Controller {
 			$module_view['title'] = 'Tambah Module';
 			$data['content'] = $this->load->view('contents/form_module_view',$module_view,true);
 
-			$data['script'] = gen_script(array(
-				config_item('assets_editor').'script/module.js?v=1'
-			));
-
 			if(!validation_errors())
 			{
 				$this->load->view('template_view',$data);
@@ -84,10 +80,6 @@ class Module extends MY_Controller {
 			$module_view['module'] = $this->data['page'];
 			$module_view['data'] = $this->general_model->get($this->data['page'], null, array('id'=>$id))->row();
 			$data['content'] = $this->load->view('contents/form_module_view',$module_view,true);
-
-			$data['script'] = gen_script(array(
-				config_item('assets_editor').'script/module.js?v=1'
-			));
 
 			if(!validation_errors())
 			{
