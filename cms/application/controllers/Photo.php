@@ -107,9 +107,28 @@ class Photo extends MY_Controller {
 			[320,240],
 			[100,100],
 		];
-		foreach ($ratio as $row) {			
+		foreach ($ratio as $row) {	
+			// resize
 			$config['image_library'] = 'gd2';
 			$config['source_image'] = $upload_path.'/ori_'.$filename;
+			$config['new_image'] = $upload_path.'/'.$row[0].'x'.$row[1].'_'.$filename;
+			// $config['create_thumb'] = TRUE;
+			$config['maintain_ratio'] = TRUE;
+			$config['width']         = $row[0];
+			$config['height']       = $row[1];
+			$imageSize = $this->image_lib->get_image_properties($config['source_image'], TRUE);
+			$config['y_axis'] = ($imageSize['height'] - $config['height']) / 2;
+			$config['x_axis'] = ($imageSize['width'] - $config['width']) / 2;
+			$this->image_lib->initialize($config);
+	
+			if ( ! $this->image_lib->resize())
+			{	
+				echo $this->image_lib->display_errors();
+			}
+
+			// crop
+			$config['image_library'] = 'gd2';
+			$config['source_image'] = $upload_path.'/'.$row[0].'x'.$row[1].'_'.$filename;
 			$config['new_image'] = $upload_path.'/'.$row[0].'x'.$row[1].'_'.$filename;
 			// $config['create_thumb'] = TRUE;
 			$config['maintain_ratio'] = FALSE;
