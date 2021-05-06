@@ -71,7 +71,7 @@ class Login extends CI_Controller {
 		$this->form_validation->set_rules('password','Password','trim|required');
 
 		if ($this->form_validation->run()===FALSE) {
-			$view_data['username'] = $this->session->userdata('user_login')['username'];
+			$view_data['email'] = $this->session->userdata('user_login')['email'];
 			$data['content'] = $this->load->view('contents/change_password_view', $view_data, true);
 
 			if(!validation_errors())
@@ -85,7 +85,7 @@ class Login extends CI_Controller {
 
 		}else{
 
-			$edit = $this->general_model->change_password($this->input->post('username'), md5($this->input->post('password')));
+			$edit = $this->general_model->change_password($this->input->post('email'), md5($this->input->post('password')));
 			if($edit)
 			{
 				echo json_encode(array('action'=>'edit', 'message'=>'Password has been changed!'));

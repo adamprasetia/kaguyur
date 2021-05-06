@@ -6,8 +6,8 @@
         <div class="box-body">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label>Username</label>
-                    <input placeholder="Username" autocomplete="off" type="text" id="username" name="username" class="form-control" value="<?php echo isset($username)?$username:'' ?>" readonly>
+                    <label>Email</label>
+                    <input placeholder="email" autocomplete="off" type="text" id="email" name="email" class="form-control" value="<?php echo isset($email)?$email:'' ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label>New Password *</label>

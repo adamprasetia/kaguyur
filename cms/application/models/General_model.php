@@ -133,9 +133,9 @@ class General_model extends CI_Model
 		}
 	}
 
-	function change_password($username, $new_password){
+	function change_password($email, $new_password){
 		$this->load->database();
-		$this->db->where('username', $username);
+		$this->db->where('email', $email);
 		$this->db->set('password', $new_password);
 		if($this->db->update('users')){
 			return true;

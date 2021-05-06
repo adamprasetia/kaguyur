@@ -66,11 +66,13 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <!-- The user image in the navbar-->
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                  <img src="<?php echo gen_thumb($this->session->userdata('user_login')['logo'],'100x100') ?>" class="user-image" alt="User Image">
                   <span><?php echo $this->session->userdata('user_login')['name'] ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
                   <li class="user-header">
+                    <img src="<?php echo gen_thumb($this->session->userdata('user_login')['logo'],'300x300') ?>" class="img-circle" alt="User Image">
                     <p>
                       <?php echo $this->session->userdata('user_login')['name'] ?>
                     </p>

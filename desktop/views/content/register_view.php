@@ -184,7 +184,7 @@
     <div class="relative">
         <h3 class="text-md font-bold">Selamat Datang <?php echo $this->user_login['name'] ?>!</h3>
         <div class="mt-5 md:pr-20">
-          <img style="width:200px" src="<?php echo $this->user_login['logo'] ?>" alt="">
+          <img style="width:200px" src="<?php echo gen_thumb($this->user_login['logo'],'300x300') ?>" alt="">
           <p><?php echo $this->user_login['farm'] ?></p>
         </div>
         <div class="flex mt-10">
