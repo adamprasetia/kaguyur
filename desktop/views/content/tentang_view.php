@@ -34,6 +34,6 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
         <p>Bendahara : Jafar</p>
         <p>Humas : Asep Bento</p>
         <p><strong>Sekretariat</strong></p>
-        <p>Jl. Arwinda Baros (Nafish Farm) Karangtengah Cianjur</p>
+        <p>Jl. Arwinda Baros (Nafish Farm) Karangtengah Cianjur</p> 
   </div>
 </div>
