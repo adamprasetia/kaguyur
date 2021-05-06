@@ -10,10 +10,8 @@ class Artikel extends MY_Controller
 
 	public function index()
 	{	
-		$member = @json_decode(file_get_contents('./assets/json/member.json'));
 		$article = @json_decode(file_get_contents('./assets/json/article.json'));
 		$data['content'] = $this->load->view('content/artikel_view', [
-			'member'=>$member,
 			'article'=>$article,
 		], true);
 		

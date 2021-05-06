@@ -11,7 +11,8 @@ class Profile extends MY_Controller
 		}
 	}
 
-	public function index(){
+	public function index()
+	{
 		$this->load->model('global_model');		
 		$profile = $this->global_model->get([
 			'table'=>'member',
@@ -19,9 +20,7 @@ class Profile extends MY_Controller
 				'id'=>$this->user_login['id']
 			]
 		])->row();
-		$member = @json_decode(file_get_contents('./assets/json/member.json'));
 		$data['content'] = $this->load->view('content/profile_view', [
-			'member'=>$member,
 			'profile'=>$profile,
 		], true);
 		
@@ -36,9 +35,7 @@ class Profile extends MY_Controller
 				'id'=>$this->user_login['id']
 			]
 		])->row();
-		$member = @json_decode(file_get_contents('./assets/json/member.json'));
 		$data['content'] = $this->load->view('content/profile_edit_view', [
-			'member'=>$member,
 			'profile'=>$profile,
 		], true);
 		

@@ -6,7 +6,7 @@
     <p><?php echo $profile->farm ?></p>
     <p><?php echo $profile->address ?></p>
     <p><?php echo $profile->phone ?></p>
-    <p><br><strong>Strain</strong></p><br>
+    <p><br><strong>Strain</strong></p>
     <p><?php echo $profile->strain ?></p>
     <div class="flex mt-10">
       <a href="<?php echo base_url('profile/edit') ?>" class="btn btn__black mr-2">EDIT PROFIL</a>

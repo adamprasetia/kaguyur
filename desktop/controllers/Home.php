@@ -11,9 +11,8 @@ class Home extends MY_Controller
 
 	public function index()
 	{	
-		$member = @json_decode(file_get_contents('./assets/json/member.json'));
 		$data['content'] = $this->load->view('content/home_view', [
-			'member'=>$member
+			
 		], true);
 		
 		$this->load->view('template_view', $data);
