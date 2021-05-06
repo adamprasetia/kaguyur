@@ -76,6 +76,7 @@ class Member extends MY_Controller {
     public function add()
 	{
 		$this->_set_rules();
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 		if ($this->form_validation->run()===FALSE) {
 			
 			$data['content'] = $this->load->view('contents/form_member_view',[
@@ -108,6 +109,7 @@ class Member extends MY_Controller {
 	public function edit($id='')
 	{
 		$this->_set_rules();
+		$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|required|callback_unique_email['.$id.']');
 		if ($this->form_validation->run()===FALSE) {
 			
 			$master['data'] = $this->general_model->get($this->table_name, null, ['id'=>$id])->row();
@@ -147,6 +149,16 @@ class Member extends MY_Controller {
 				echo json_encode(['id'=>$id,'action'=>'delete','message'=>'Hapus data berhasil']);
 			}		
 		}	
+	}
+
+	public function unique_email($data,$id){
+		$user = $this->general_model->get('member', 'email', array('id'=>$id))->row();
+		$this->form_validation->set_message('unique_email','Email sudah dipakai');
+		$unique = $this->general_model->get('member', 'email', array('email'=>$data,'email !='=>$user->email));
+		if($unique && $unique->num_rows() > 0){
+			return false;
+		}
+		return true;
 	}
 
 	public function export()
