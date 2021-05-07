@@ -143,10 +143,12 @@ class Product extends MY_Controller {
 	{
 		if(!empty($id)){
 			$data = $this->global_model->get([
-				'table'=>$this->table_name,
+				'select'=>'a.*, b.logo, b.phone, b.farm',
+				'table'=>$this->table_name.' a',
 				'where'=>[
-					'id'=>$id
+					'a.id'=>$id
 				],
+				'join'=>[['member b','a.created_by = b.id']]
 			])->row_array();
 			create_json('product_'.$id.'.json', json_encode($data));	
 		}else{

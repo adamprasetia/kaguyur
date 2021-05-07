@@ -2,6 +2,12 @@
   <!-- section -->
   <div class="container px-5 mx-auto">
     <h1 class="font-bold uppercase"><?php echo $product->name ?></h1>    
+    <div class="flex">
+        <div>
+            <img class="w-10 relative" src="<?php echo gen_thumb($product->logo, '100x100') ?>" alt="<?php echo $product->farm ?>">
+        </div>
+    </div>
+
     <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
         <?php 
             if(!empty($product->photo)) { 
@@ -19,7 +25,7 @@
         <?php echo $product->description ?>
         <h1>Rp. <?php echo number_format($product->price) ?></h1>
         <div class="mt-5">
-        <a class="btn btn-black" href=""> 
+        <a class="btn btn-black" href="https://api.whatsapp.com/send?phone=<?php echo $product->phone ?>"> 
             BELI PRODUK
         </a>
         </div>
