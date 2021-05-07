@@ -95,7 +95,7 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-if (in_array($_SERVER['HTTP_HOST'], ['adamprasetia.skom.id','kaguyur.com'])) {
+if (in_array($_SERVER['HTTP_HOST'], ['adamprasetia.skom.id','kaguyur.com','www.kaguyur.com'])) {
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'umssahxz_kaguyur';
 	$db['default']['password'] = '{#urkHeSY;?o';
