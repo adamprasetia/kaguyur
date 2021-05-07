@@ -12,16 +12,16 @@
     </script>
 
     <meta charset="utf-8" />
-    <title><?php echo isset($meta['title']) ? $meta['title'] : 'Kaguyur'; ?></title>
-    <meta name="description" content="<?php echo isset($meta['description']) ? $meta['description'] : 'Komunitas Guppy Cianjur'; ?>" />
+    <title><?php echo isset($meta['title']) ? $meta['title'] : 'Kaguyur Offical Website'; ?></title>
+    <meta name="description" content="<?php echo isset($meta['description']) ? $meta['description'] : 'Komunitas Guppy Cianjur (KAGUYUR)'; ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta property="og:title" content="<?php echo isset($meta['title']) ? $meta['title'] : 'Kaguyur'; ?>" />
+    <meta property="og:title" content="<?php echo isset($meta['title']) ? $meta['title'] : 'Kaguyur Offical Website'; ?>" />
     <meta property="og:type" content="<?php echo isset($meta['type']) ? $meta['type'] : ''; ?>" />
     <meta property="og:url" content="<?php echo isset($meta['url']) ? $meta['url'] : current_url(); ?>" />
     <meta property="og:image" content="<?php echo config_item('assets'); ?>images/logo.jpg" />
     <meta property="og:site_name" content="-" />
-    <meta property="og:description" content="<?php echo isset($meta['description'])?$meta['description']:'Komunitas Guppy Cianjur' ?>" />
+    <meta property="og:description" content="<?php echo isset($meta['description'])?$meta['description']:'Komunitas Guppy Cianjur (KAGUYUR)' ?>" />
 
     <!-- S:tweeter card -->
     <meta name="twitter:card" content="summary_large_image" />
