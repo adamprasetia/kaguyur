@@ -66,10 +66,7 @@ function uploadFile($fieldname)
         $result_upload = do_uploadFile($filename, $type);
         $data = '';
         if ($result_upload) {
-            $data = 'assets/photo/'.date('Y/m/d/').$filename;
-            if($type == 'application/pdf'){
-                $data = 'assets/docs/itinerary/'.date('Y/m/d/').$filename;
-            }
+            $data = 'assets/photo/'.date('Y/m/d/').'ori_'.$filename;
             $total_upload++;
         }else{
             $total_fail++;
@@ -85,10 +82,6 @@ function uploadFile($fieldname)
 function do_uploadFile($filename = '', $type)
 {
     $upload_path = FCPATH.'assets/photo/'.date('Y/m/d');
-    if($type == 'application/pdf'){
-        $upload_path = FCPATH.'assets/docs/itinerary/'.date('Y/m/d');
-    }
-    // $upload_path = str_replace(['kgeditor/','\kgeditor'], '', $upload_path);
     if (!is_dir($upload_path)) {
         if(!@mkdir($upload_path, 0755, true)){
             $error = error_get_last();
@@ -96,7 +89,7 @@ function do_uploadFile($filename = '', $type)
         }
     }
     $config['upload_path'] = $upload_path;
-    $config['file_name'] = $filename;
+    $config['file_name'] = 'ori_'.$filename;
     $config['allowed_types'] = 'jpeg|jpg|png|pdf';
     $config['max_size'] = 2000000; // 2MB
     $config['overwrite'] = false;
@@ -107,8 +100,55 @@ function do_uploadFile($filename = '', $type)
     {
         return FALSE;
     }else{
-        //ci()->resizeImage($filename, $upload_path);
+        $this->crop($filename, $upload_path);
         return TRUE;
+    }
+}
+
+public function crop($filename,$upload_path)
+{
+    $this->load->library('image_lib');
+    $ratio = [
+        [300,300],
+        [320,240],
+        [100,100],
+    ];
+    foreach ($ratio as $row) {	
+        // resize
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $upload_path.'/ori_'.$filename;
+        $config['new_image'] = $upload_path.'/'.$row[0].'x'.$row[1].'_'.$filename;
+        // $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width']         = $row[0];
+        $config['height']       = $row[1];
+        $imageSize = $this->image_lib->get_image_properties($config['source_image'], TRUE);
+        $config['y_axis'] = ($imageSize['height'] - $config['height']) / 2;
+        $config['x_axis'] = ($imageSize['width'] - $config['width']) / 2;
+        $this->image_lib->initialize($config);
+
+        if ( ! $this->image_lib->resize())
+        {	
+            echo $this->image_lib->display_errors();
+        }
+
+        // crop
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $upload_path.'/'.$row[0].'x'.$row[1].'_'.$filename;
+        $config['new_image'] = $upload_path.'/'.$row[0].'x'.$row[1].'_'.$filename;
+        // $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = FALSE;
+        $config['width']         = $row[0];
+        $config['height']       = $row[1];
+        $imageSize = $this->image_lib->get_image_properties($config['source_image'], TRUE);
+        $config['y_axis'] = ($imageSize['height'] - $config['height']) / 2;
+        $config['x_axis'] = ($imageSize['width'] - $config['width']) / 2;
+        $this->image_lib->initialize($config);
+
+        if ( ! $this->image_lib->crop())
+        {	
+            echo $this->image_lib->display_errors();
+        }
     }
 }
 
