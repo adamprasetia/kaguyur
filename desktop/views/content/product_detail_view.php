@@ -2,11 +2,7 @@
   <!-- section -->
   <div class="container px-5 mx-auto">
     <h1 class="font-bold uppercase"><?php echo $product->name ?></h1>    
-    <div class="flex">
-        <div>
-            <img class="w-10 relative" src="<?php echo gen_thumb($product->logo, '100x100') ?>" alt="<?php echo $product->farm ?>">
-        </div>
-    </div>
+    <a href="<?php echo base_url('anggota/detail/'.$product->created_by) ?>"><img class="w-10 relative" src="<?php echo gen_thumb($product->logo, '100x100') ?>" alt="<?php echo $product->farm ?>"></a>
 
     <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
         <?php 
