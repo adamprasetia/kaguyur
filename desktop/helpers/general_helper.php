@@ -242,3 +242,47 @@ function gen_thumb($src, $size='300x300')
 {
     return base_url(str_replace('/ori_', '/'.$size.'_',$src));
 }
+
+function generate_json_anggota($id = '')
+{
+    ci()->load->model('global_model');
+    if(!empty($id)){
+        $member = ci()->global_model->get([
+            'table'=>'member',
+            'where'=>[
+                'id'=>$id
+            ]
+        ])->row_array();
+        create_json('member_'.$id.'.json', json_encode($member));
+    }else{
+        $member = ci()->global_model->get([
+            'table'=>'member',
+            'where'=>[
+                'status'=>'VERIFIED'
+            ]
+        ])->result_array();
+        create_json('member.json', json_encode($member));
+    }
+}
+
+function create_json($filename, $data)
+{
+    $path = str_replace(array('/cms', '\cms'), '', FCPATH);
+    $path .= 'assets/json/';
+    if (!is_dir($path)) {
+        if(!@mkdir($path, 0755, true)){
+            return FALSE;
+        }
+    }
+
+    $ci =& get_instance();
+    $ci->load->helper('file');
+    if (!write_file($path.$filename, $data))
+    {
+        return FALSE;
+    }
+    else
+    {
+        return TRUE;
+    }
+}

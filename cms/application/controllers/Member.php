@@ -101,6 +101,7 @@ class Member extends MY_Controller {
 			if($id)
 			{
 				$this->generate_json();
+				$this->generate_json($id);
 				echo json_encode(array('id'=>$id,'action'=>'insert', 'message'=>'Tambah data berhasil'));
 			}
 		}
@@ -135,6 +136,7 @@ class Member extends MY_Controller {
 			if($edit)
 			{	
 				$this->generate_json();
+				$this->generate_json($id);
 				echo json_encode(['id'=>$id,'action'=>'update','message'=>'Update data berhasil']);
 			}
 		}
@@ -146,6 +148,7 @@ class Member extends MY_Controller {
 			$delete = $this->general_model->edit($this->table_name, $id, ['status'=>'DELETED']);
 			if($delete){
 				$this->generate_json();
+				$this->generate_json($id);
 				echo json_encode(['id'=>$id,'action'=>'delete','message'=>'Hapus data berhasil']);
 			}		
 		}	
@@ -198,14 +201,24 @@ class Member extends MY_Controller {
 		echo $this->table->generate();
 	}
 
-	private function generate_json()
+	private function generate_json($id = '')
 	{
-		$member = $this->global_model->get([
-			'table'=>$this->table_name,
-			'where'=>[
-				'status'=>'VERIFIED'
-			]
-		])->result_array();
-		create_json('member.json', json_encode($member));
+		if(!empty($id)){
+			$member = $this->global_model->get([
+				'table'=>$this->table_name,
+				'where'=>[
+					'id'=>$id
+				]
+			])->row_array();
+			create_json('member_'.$id.'.json', json_encode($member));
+		}else{
+			$member = $this->global_model->get([
+				'table'=>$this->table_name,
+				'where'=>[
+					'status'=>'VERIFIED'
+				]
+			])->result_array();
+			create_json('member.json', json_encode($member));
+		}
 	}
 }

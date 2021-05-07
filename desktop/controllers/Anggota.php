@@ -69,6 +69,8 @@ class Anggota extends MY_Controller
 			$add = $this->general_model->add('member', $data);
 			if($add)
 			{	
+				generate_json_anggota();
+				generate_json_anggota($add);
 				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Registrasi berhasil']);
 			}else{
 				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Registrasi Gagal']);
@@ -117,9 +119,15 @@ class Anggota extends MY_Controller
 		return $status;
     }
     
-
-	public function page_404()
+	public function detail($id)
 	{
-		show_404();
+		$member = @json_decode(file_get_contents('./assets/json/member_'.$id.'.json'));
+		$data['content'] = $this->load->view('content/anggota_detail_view', [
+			'member'=>$member
+		], true);
+		
+		$this->load->view('template_view', $data);
 	}
+
+
 }

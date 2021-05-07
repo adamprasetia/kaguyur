@@ -96,6 +96,8 @@ class Profile extends MY_Controller
 			$edit = $this->general_model->edit('member', $id, $data);
 			if($edit)
 			{	
+				generate_json_anggota();
+				generate_json_anggota($id);
 				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Update profil berhasil']);
 			}else{
 				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Update profil Gagal']);
