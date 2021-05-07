@@ -37,7 +37,7 @@
 
     <!-- css -->
     <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/tailwind.css?v=2" />
-    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/styles.css?v=3" />
+    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/styles.css?v=4" />
     <link rel="stylesheet" href="<?php echo config_item('assets').'plugins/sweetalert/css/sweetalert.css'; ?>">
 
     <!-- font -->
