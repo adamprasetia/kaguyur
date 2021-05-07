@@ -100,14 +100,14 @@ function do_uploadFile($filename = '', $type)
     {
         return FALSE;
     }else{
-        $this->crop($filename, $upload_path);
+        crop($filename, $upload_path);
         return TRUE;
     }
 }
 
-public function crop($filename,$upload_path)
+function crop($filename,$upload_path)
 {
-    $this->load->library('image_lib');
+    ci()->load->library('image_lib');
     $ratio = [
         [300,300],
         [320,240],
@@ -122,14 +122,14 @@ public function crop($filename,$upload_path)
         $config['maintain_ratio'] = TRUE;
         $config['width']         = $row[0];
         $config['height']       = $row[1];
-        $imageSize = $this->image_lib->get_image_properties($config['source_image'], TRUE);
+        $imageSize = ci()->image_lib->get_image_properties($config['source_image'], TRUE);
         $config['y_axis'] = ($imageSize['height'] - $config['height']) / 2;
         $config['x_axis'] = ($imageSize['width'] - $config['width']) / 2;
-        $this->image_lib->initialize($config);
+        ci()->image_lib->initialize($config);
 
-        if ( ! $this->image_lib->resize())
+        if ( ! ci()->image_lib->resize())
         {	
-            echo $this->image_lib->display_errors();
+            echo ci()->image_lib->display_errors();
         }
 
         // crop
@@ -140,14 +140,14 @@ public function crop($filename,$upload_path)
         $config['maintain_ratio'] = FALSE;
         $config['width']         = $row[0];
         $config['height']       = $row[1];
-        $imageSize = $this->image_lib->get_image_properties($config['source_image'], TRUE);
+        $imageSize = ci()->image_lib->get_image_properties($config['source_image'], TRUE);
         $config['y_axis'] = ($imageSize['height'] - $config['height']) / 2;
         $config['x_axis'] = ($imageSize['width'] - $config['width']) / 2;
-        $this->image_lib->initialize($config);
+        ci()->image_lib->initialize($config);
 
-        if ( ! $this->image_lib->crop())
+        if ( ! ci()->image_lib->crop())
         {	
-            echo $this->image_lib->display_errors();
+            echo ci()->image_lib->display_errors();
         }
     }
 }
