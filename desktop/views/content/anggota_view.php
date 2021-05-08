@@ -12,7 +12,13 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
           <div class="tns-item tns-slide-active">
             <div data-micromodal-trigger="modal-itembelanja<?php echo $i ?>">
               <div class="slider__etalase__img etalase__img">
-                <img class="imgfillImg" src="<?php echo gen_thumb($row->photo,'300x300') ?>" alt="<?php echo $row->farm ?>">
+                <?php 
+                $photo = $row->photo;
+                if(empty($photo)){
+                  $photo = $row->logo;
+                }                
+                ?>
+                <img class="imgfillImg" src="<?php echo gen_thumb($photo,'300x300') ?>" alt="<?php echo $row->farm ?>">
               </div>
               <div class="mt-2">
                 <p class="font-bold"><?php echo $row->name ?></p>
