@@ -45,7 +45,7 @@ class Member extends MY_Controller {
 		$this->form_validation->set_rules('start', 'Mulai Budidaya Sejak', 'trim');
 		$this->form_validation->set_rules('phone', 'No Telepon/Wa', 'trim|required');
 		$this->form_validation->set_rules('strain','Strain Guppy','trim|required');
-		$this->form_validation->set_rules('photo','Pas Foto','trim|required');
+		$this->form_validation->set_rules('photo','Pas Foto','trim');
 		$this->form_validation->set_rules('logo','Logo','trim|required');
 		$this->form_validation->set_rules('ig', 'Instagram', 'trim');
 		$this->form_validation->set_rules('tw', 'Twitter', 'trim');
