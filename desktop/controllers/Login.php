@@ -61,4 +61,40 @@ class Login extends CI_Controller
         $this->session->unset_userdata('user_login');
         redirect('');
     }
+
+	public function forgote()
+	{
+		$this->load->model('global_model');
+		$this->load->library(['form_validation']);
+		$this->form_validation->set_rules('email', 'Email', 'trim|required');
+		$this->form_validation->set_message('required', '{field} harus diisi.');
+
+		if ($this->form_validation->run()===FALSE ){
+			if(validation_errors())
+			{
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>strip_tags(validation_errors())]);
+			}
+		}else{
+			$member = $this->global_model->get([
+				'table'=>'member',
+				'where'=>[
+					'email'=>$this->input->post('email', true)
+				]
+			]);
+			if($member->num_rows() > 0)
+			{	
+				// the message
+				$msg = "First line of text\nSecond line of text";
+
+				// use wordwrap() if lines are longer than 70 characters
+				$msg = wordwrap($msg,70);
+
+				// send email
+				mail($this->input->post('email', true), "Reset Password", $msg);
+				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Silakan cek kotak masuk email anda']);
+			}else{
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Email Tidak Terdaftar!']);
+			}
+		}		
+	}
 }
