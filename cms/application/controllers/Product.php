@@ -20,7 +20,7 @@ class Product extends MY_Controller {
 			$where['LOWER(name) like'] = '%'.strtolower($search).'%';
 		}
 		$total = $this->general_model->count($this->table_name,$where);
-		$module_view['data'] 	= $this->general_model->get($this->table_name, '', $where, '', $this->limit, $offset)->result();
+		$module_view['data'] 	= $this->general_model->get($this->table_name, '', $where, 'created_date desc', $this->limit, $offset)->result();
 		$module_view['offset'] = $offset;
 		$module_view['paging'] = gen_paging($total,$this->limit);
 		$module_view['total'] 	= gen_total($total,$this->limit,$offset);
@@ -33,8 +33,8 @@ class Product extends MY_Controller {
 	{
 		$this->form_validation->set_rules('name', 'Nama Produk', 'trim|required');
 		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
-		$this->form_validation->set_rules('price', 'Harga', 'trim|required');
-		$this->form_validation->set_rules('stock', 'Stock', 'trim|required');
+		$this->form_validation->set_rules('price', 'Harga', 'trim');
+		$this->form_validation->set_rules('stock', 'Stock', 'trim');
 		$this->form_validation->set_rules('photo[]', 'Photo', 'trim|required');
 		$this->form_validation->set_rules('status', 'Status', 'trim|required');
 	}
@@ -158,7 +158,9 @@ class Product extends MY_Controller {
 				'where'=>[
 					'status'=>'ACTIVE'
 				],
-				'limit'=>20,
+				'order'=>[
+					'created_date'=>'desc'
+				]
 			])->result_array();
 			create_json('product.json', json_encode($data));
 		}

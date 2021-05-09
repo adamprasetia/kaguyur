@@ -265,6 +265,51 @@ function generate_json_anggota($id = '')
     }
 }
 
+function generate_json_product($id = '')
+{
+    ci()->load->model('global_model');
+    if(!empty($id)){
+        $data = ci()->global_model->get([
+            'select'=>'a.*, b.logo, b.phone, b.farm',
+            'table'=>'product a',
+            'where'=>[
+                'a.id'=>$id
+            ],
+            'join'=>[['member b','a.created_by = b.id']]
+        ])->row_array();
+        create_json('product_'.$id.'.json', json_encode($data));
+    }else{
+        $data = ci()->global_model->get([
+            'table'=>'product',
+            'where'=>[
+                'status'=>'ACTIVE'
+            ],
+            'order'=>[
+                'created_date'=>'desc'
+            ]
+        ])->result_array();
+        create_json('product.json', json_encode($data));
+    }
+}
+
+function generate_json_product_member($id = '')
+{
+    ci()->load->model('global_model');
+    if(!empty($id)){
+        $data = ci()->global_model->get([
+            'table'=>'product',
+            'where'=>[
+                'status'=>'ACTIVE',
+                'created_by'=>$id
+            ],
+            'order'=>[
+                'created_date'=>'desc'
+            ]
+        ])->result_array();
+        create_json('product_member_'.$id.'.json', json_encode($data));
+    }
+}
+
 function create_json($filename, $data)
 {
     $path = str_replace(array('/cms', '\cms'), '', FCPATH);

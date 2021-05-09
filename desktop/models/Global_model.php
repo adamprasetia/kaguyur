@@ -27,6 +27,15 @@ class Global_model extends CI_Model {
                 $this->db->order_by($key, $value);
             }
         }
+        if(!empty($params['join'])){
+            foreach ($params['join'] as $row) {
+                if(!empty($row[2])){
+                    $this->db->join($row[0], $row[1], $row[2]);
+                }else{
+                    $this->db->join($row[0], $row[1]);
+                }
+            }
+        }
         if(!empty($params['search'])){
             $i = 1;
             foreach ($params['search'] as $key => $value) {

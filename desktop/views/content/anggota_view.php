@@ -16,7 +16,9 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
                 $photo = $row->photo;
                 if(empty($photo)){
                   $photo = $row->logo;
-                }                
+                }
+
+                $product = @json_decode(file_get_contents('./assets/json/product_member_'.$row->id.'.json'));
                 ?>
                 <img class="imgfillImg" src="<?php echo gen_thumb($photo,'300x300') ?>" alt="<?php echo $row->farm ?>">
               </div>
@@ -45,17 +47,35 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
                     </div>
                     <div class="col-span-6">
                       <strong><?php echo $row->farm ?></strong>
-                      <p class="text-sm deskripsis"><?php echo $row->name ?></p>
                       <p class="text-sm deskripsis"><?php echo $row->address ?></p>
                       <p class="text-sm deskripsis"><?php echo $row->phone ?></p>
                     </div>
                   </div>
                 </div>
-                <div class="text-center px-5 pb-5">
+                <?php if(!empty($product)){ ?>
+                <div class="grid grid-cols-3 grid-flow-col gap-4 p-5 photoproduk">
+                <?php $i=1;foreach ($product as $row_prod) { ?>
+                <?php $photo_produk = json_decode($row_prod->photo); ?>
+                  <div>
+                    <img class="imgfillImg" src="<?php echo $photo_produk[0] ?>" alt="">
+                  </div>                  
+                <?php if($i==3) break;$i++;} ?>
+                </div>
+                <?php }else{ ?>
+                  <div class="text-center px-5">
                   <p class="text-sm font-semibold">
                     Strain
-                  </p>
+                   </p>
                   <p><?php echo $row->strain ?></p>
+                  </div>
+                <?php } ?>
+                <div class="text-center px-5">
+                  <p class="text-sm font-semibold">
+                    Ayo dukung breeder lokal <br>dengan membeli produk-produk mereka
+                  </p>
+                </div>
+                <div class="flex items-center justify-center my-5">
+                  <a class="btn btn__black" href="https://api.whatsapp.com/send/?phone=<?php echo $row->phone ?>" target="_blank" rel="noopener noreferrer"> Beli produk</a>
                 </div>
               </main>
               <footer class="modal__footer"></footer>

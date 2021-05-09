@@ -122,8 +122,10 @@ class Anggota extends MY_Controller
 	public function detail($id)
 	{
 		$member = @json_decode(file_get_contents('./assets/json/member_'.$id.'.json'));
+		$product = @json_decode(file_get_contents('./assets/json/product_member_'.$id.'.json'));
 		$data['content'] = $this->load->view('content/anggota_detail_view', [
-			'member'=>$member
+			'member'=>$member,
+			'product'=>$product,
 		], true);
 		
 		$this->load->view('template_view', $data);

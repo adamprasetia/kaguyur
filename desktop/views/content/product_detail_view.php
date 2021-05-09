@@ -19,7 +19,9 @@
     </div>
     <div>
         <?php echo $product->description ?>
+        <?php if(!empty($product->price)){ ?>
         <h1>Rp. <?php echo number_format($product->price) ?></h1>
+        <?php } ?>
         <div class="mt-5">
         <a class="btn btn-black" href="https://api.whatsapp.com/send?phone=<?php echo $product->phone ?>"> 
             BELI PRODUK
