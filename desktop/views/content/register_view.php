@@ -65,12 +65,12 @@
             <div class="mb-3">
               <label class="font-semibold block">Pas Foto</label>
               <small>Pastikan ukuran file tidak lebih dari 200kb</small>
-              <input type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full"/>
+              <input onchange="check_size(this)" type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full"/>
             </div>
             <div class="mb-3">
               <label class="font-semibold block fp__">Logo</label>
               <small>Pastikan ukuran file tidak lebih dari 200kb</small>
-              <input type="file" name="logo" id="logo" accept="image/jpeg, image/png" class="field w-full"/>
+              <input onchange="check_size(this)" type="file" name="logo" id="logo" accept="image/jpeg, image/png" class="field w-full"/>
             </div>
 
             <strong class="pt-5 block">Link Media Sosial</strong>
@@ -258,7 +258,7 @@
             <div class="mb-3">
               <label class="font-semibold block">Foto *</label>
               <small>Pastikan ukuran file tidak lebih dari 200kb</small>
-              <input type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full"/>
+              <input onchange="check_size(this)" type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full"/>
             </div>
             <div class="mb-3">
               <label class="font-semibold block">Harga</label>
@@ -275,5 +275,20 @@
     </div>
   </div>
 </div>
-
 <?php endif ?>
+<script>
+function check_size(t)
+{
+  if(t.files[0].size > 204800){
+    swal({
+      title: 'Terjadi Kesalahan',
+      type: 'error',
+      text: 'Ukuran file tidak boleh lebih dari 200kb',
+      timer: 2000,
+      showConfirmButton: false
+    });
+
+    t.value = '';
+  }
+}
+</script>
