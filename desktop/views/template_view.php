@@ -96,7 +96,7 @@
                 </li>
               <?php }else{ ?>  
                 <li>
-                  <a class="uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('login') ?>"> 
+                  <a class="uppercase py-5 pl-5 font-semibold text-sm" href="javascript:void(0)" data-micromodal-trigger="modal-login"> 
                     MASUK
                   </a>
                 </li>
@@ -141,6 +141,7 @@
     <div id="overlay"></div>
     
     <?php echo isset($modals)?$modals:''; ?>
+    <?php $this->load->view('content/login_modal_view') ?>
 
     <script type="text/javascript" src="<?php echo config_item('assets'); ?>js/jquery.min.js"></script>
     <?php $this->load->view('script/general') ?>
