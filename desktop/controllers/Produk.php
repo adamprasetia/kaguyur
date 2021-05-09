@@ -42,8 +42,8 @@ class Produk extends MY_Controller
 
 		$this->load->model('general_model');
 		$this->load->library(['form_validation', 'upload']);
-		$this->form_validation->set_rules('name', 'Nama Lengkap', 'trim|required');
-		$this->form_validation->set_rules('description', 'Alamat', 'trim|required');
+		$this->form_validation->set_rules('name', 'Nama Produk', 'trim|required');
+		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
 		$this->form_validation->set_rules('photo','Foto','callback_required_photo');
 		$this->form_validation->set_rules('price','Harga','trim');
 		$this->form_validation->set_message('required', '{field} harus diisi.');
@@ -91,5 +91,86 @@ class Produk extends MY_Controller
 		}
 		return $status;
     }
+	public function optional_photo($foto){
+		$status = true;
+		if(!empty($_FILES['photo']['name'])){
+			if ($_FILES['photo']['size'] > 204800) {
+				$this->form_validation->set_message('required_photo','Pastikan ukuran file Foto tidak lebih dari 200KB');
+				$status = false;
+			}
+		}
+		return $status;
+    }
+
+	public function edit($id)
+	{
+		$product = @json_decode(file_get_contents('./assets/json/product_'.$id.'.json'));
+		if(!$product && $product->created_by == $this->user_login['id']){
+            show_404();
+            exit;
+        }
+		$data['content'] = $this->load->view('content/product_edit_view', [
+			'product'=>$product
+		], true);
+		
+		$this->load->view('template_view', $data);
+
+	}
+
+	public function update($id)
+	{
+		if(!$this->user_login['id']){
+			redirect('login');
+		}
+
+		$product = @json_decode(file_get_contents('./assets/json/product_'.$id.'.json'));
+        if(!$product || $product->created_by != $this->user_login['id']){
+            show_404();
+            exit;
+        }
+
+		$this->load->model('general_model');
+		$this->load->library(['form_validation', 'upload']);
+		$this->form_validation->set_rules('name', 'Nama Produk', 'trim|required');
+		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
+		$this->form_validation->set_rules('photo','Foto','callback_optional_photo');
+		$this->form_validation->set_rules('price','Harga','trim');
+		$this->form_validation->set_message('required', '{field} harus diisi.');
+
+		if ($this->form_validation->run()===FALSE ){
+			if(validation_errors())
+			{
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>strip_tags(validation_errors())]);
+			}
+
+		}else{						
+			$data = [
+				'name'=> $this->input->post('name', true),
+				'description'=> $this->input->post('description', true),
+				'price'=> $this->input->post('price', true),
+			];
+			if(!empty($_FILES['photo']['name'])){
+				$photo   = uploadFile('photo');	
+				if(!empty($photo['data'])){
+					$data['photo'] = json_encode([$photo['data']]);
+				}
+			}
+			$data['updated_by'] = $this->user_login['id'];
+			$data['updated_date'] = date('Y-m-d H:i:s');
+			$data['status'] = 'ACTIVE';
+
+			$add = $this->general_model->edit('product', $id, $data);
+			if($add)
+			{	
+				generate_json_product();
+				generate_json_product($id);
+				generate_json_product_member($this->user_login['id']);
+				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Edit produk berhasil']);
+			}else{
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Edit produk gagal']);
+			}
+		}		
+
+	}
 
 }

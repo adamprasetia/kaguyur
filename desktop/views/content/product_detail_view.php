@@ -26,6 +26,12 @@
         <a class="btn btn-black" href="https://api.whatsapp.com/send?phone=<?php echo $product->phone ?>"> 
             BELI PRODUK
         </a>
+        <?php if($product->created_by == $this->user_login['id']){ ?>
+        &nbsp;
+        <a class="btn btn-black" href="<?php echo base_url('produk/edit/'.$product->id) ?>"> 
+            EDIT PRODUK
+        </a>
+        <?php } ?>
         </div>
     </div>
   </div>
