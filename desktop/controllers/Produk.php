@@ -38,6 +38,11 @@ class Produk extends MY_Controller
 	{
 		if(!$this->user_login['id']){
 			redirect('login');
+			exit;
+		}
+		if($this->user_login['status'] != 'VERIFIED'){
+			redirect('');
+			exit;
 		}
 
 		$this->load->model('general_model');
