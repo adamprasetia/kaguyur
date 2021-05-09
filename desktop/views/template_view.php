@@ -143,7 +143,7 @@
     <?php echo isset($modals)?$modals:''; ?>
     <?php $this->load->view('content/login_modal_view') ?>
 
-    <script type="text/javascript" src="<?php echo config_item('assets'); ?>js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <?php $this->load->view('script/general') ?>
     <?php echo isset($script)?$script:''; ?>
     <script src="<?php echo config_item('assets').'plugins/sweetalert/js/sweetalert.min.js'; ?>"></script>

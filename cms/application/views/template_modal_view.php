@@ -19,7 +19,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <!-- jQuery 3 -->
-  <script src="<?php echo config_item('assets_editor').'js/jquery.min.js';?>"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 </head>
   <body class="hold-transition skin-blue sidebar-mini">
   <?php echo isset($content)?$content:'' ?>
