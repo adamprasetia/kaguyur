@@ -21,7 +21,7 @@
               <img class="imgfillImg" src="<?php echo gen_thumb($photo[0],'300x300') ?>" alt="<?php echo $row->name ?>">
             </div>
             <div>
-              <p class="font-bold"><?php echo $row->name ?></p>
+              <p style="margin-bottom:0px" class="font-bold"><?php echo $row->name ?></p>
               <?php if(!empty($row->price)){ ?>
               <small><?php echo 'Rp. '.number_format($row->price) ?></small>
               <?php } ?>

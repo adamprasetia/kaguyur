@@ -23,7 +23,7 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
                 <img class="imgfillImg" src="<?php echo gen_thumb($photo,'300x300') ?>" alt="<?php echo $row->farm ?>">
               </div>
               <div class="mt-2">
-                <p class="font-bold"><?php echo $row->name ?></p>
+                <p style="margin-bottom:0px" class="font-bold"><?php echo $row->name ?></p>
                 <small><?php echo $row->farm ?></small>
               </div>
             </div>
