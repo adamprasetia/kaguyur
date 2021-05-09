@@ -87,15 +87,13 @@ class Login extends CI_Controller
 				$msg = "
 				<p>Hi Guppy Lovers</p>
 				<p>Klik disini untuk mereset password</p>
-				<p>Terima Kasih</p>
-				<p>admin@kaguyur.com</p>
+				<p>Terima Kasih<br>admin@kaguyur.com</p>
 				";
-
-				// use wordwrap() if lines are longer than 70 characters
-				$msg = wordwrap($msg,70);
-
+				$headers = "MIME-Version: 1.0" . "\r\n"; 
+				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n"; 
+				$headers .= "From: Admin Kaguyur <admin@kaguyur.com>"; 
 				// send email
-				mail($this->input->post('email', true), "Reset Password", $msg, "From: admin@kaguyur.com");
+				mail($this->input->post('email', true), "Reset Password", $msg, $headers);
 				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Silakan cek kotak masuk email anda']);
 			}else{
 				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Email Tidak Terdaftar!']);
