@@ -104,7 +104,7 @@ class Login extends CI_Controller
             $member = $this->global_model->update([
                 'table'=>'member',
                 'id'=>$id,
-                'data'=n>[
+                'data'=>[
 					'password'=>md5($this->input->post('password',true))
 				],
             ]);
