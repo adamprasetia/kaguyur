@@ -10,6 +10,7 @@
         <p><strong>Strain</strong></p>
         <p><?php echo $member->strain ?></p>
     </div>
+    <?php if(!empty($product)){ ?>
     <p><strong>Produk</strong></p>
     <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
       <?php $i=1;foreach ($product as $row) { ?>        
@@ -29,5 +30,6 @@
         </a>
       <?php $i++;} ?>
     </div>
+    <?php } ?>
   </div>
 </div>
