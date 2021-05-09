@@ -20,13 +20,13 @@
             <div class="mb-3">
               <label class="font-semibold block">Password</label>
               <input class="field w-full" type="password" name="password" id="password"/>
-              <p><a href="javascript:void(0);" data-micromodal-close data-micromodal-trigger="modal-forgote">Lupa password ? klik disini</a></p>
+              <p><a href="javascript:void(0);" onclick="MicroModal.close('modal-login');" data-micromodal-trigger="modal-forgote">Lupa password ? klik disini</a></p>
             </div>
             <div class="flex items-center justify-center my-5">
               <button type="button" class="btn btn__black btn_action" id="btn_daftar" data-idle="MASUK" data-process="Tunggu Sebentar..." data-form="#form_login" data-redirect="<?php echo current_url(); ?>">MASUK</button>
             </div>
             <div class="text-center">
-            <p><a href="javascript:void(0);" data-micromodal-close data-micromodal-trigger="modal-register">Belum punya akun ? silakan daftar disini </a></p>
+              <p><a href="javascript:void(0);" onclick="MicroModal.close('modal-login');" data-micromodal-trigger="modal-register">Belum punya akun ? silakan daftar disini </a></p>
             </div>
           </form>
         </div>
