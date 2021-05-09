@@ -92,21 +92,18 @@ class Login extends CI_Controller
 			}
 
 		}else{
-            $member = $this->global_model->get([
-                'select'=>'id, farm, name, logo, phone, status, password',
+            $member = $this->global_model->update([
                 'table'=>'member',
-                'where'=>[
-                    'email'=>$this->input->post('email',true)
-                ]
+                'id'=>$id,
+                'data'=>[
+					'password'=>md5($this->input->post('password',true))
+				],
             ]);
-			$member = $member->row_array();
-			if($member && $member['password'] == md5($this->input->post('password',true)))
+			if($member)
 			{	
-                $this->load->library('session');
-                $this->session->set_userdata('user_login', $member);
-				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Login berhasil']);
+				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Reset password berhasil']);
 			}else{
-				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Email dan Password Tidak Terdaftar!']);
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Reset password gagal!']);
 			}
 		}		
 	}
