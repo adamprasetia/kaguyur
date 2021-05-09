@@ -23,7 +23,7 @@
         <h1>Rp. <?php echo number_format($product->price) ?></h1>
         <?php } ?>
         <div class="mt-5">
-        <a class="btn btn-black" href="https://api.whatsapp.com/send?phone=<?php echo $product->phone ?>"> 
+        <a class="btn btn-black" href="https://api.whatsapp.com/send?phone=<?php echo substr($product->phone,0,1)==0?substr_replace($product->phone,'+62',0,1):$product->phone ?>"> 
             BELI PRODUK
         </a>
         <?php if($product->created_by == $this->user_login['id']){ ?>
