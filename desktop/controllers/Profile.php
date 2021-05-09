@@ -14,14 +14,11 @@ class Profile extends MY_Controller
 	public function index()
 	{
 		$this->load->model('global_model');		
-		$profile = $this->global_model->get([
-			'table'=>'member',
-			'where'=>[
-				'id'=>$this->user_login['id']
-			]
-		])->row();
+		$profile = @json_decode(file_get_contents('./assets/json/member_'.$this->user_login['id'].'.json'));
+		$product = @json_decode(file_get_contents('./assets/json/product_member_'.$this->user_login['id'].'.json'));
 		$data['content'] = $this->load->view('content/profile_view', [
 			'profile'=>$profile,
+			'product'=>$product,
 		], true);
 		
 		$this->load->view('template_view', $data);
