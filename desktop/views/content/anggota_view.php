@@ -75,7 +75,7 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
                   </p>
                 </div>
                 <div class="flex items-center justify-center my-5">
-                  <a class="btn btn__black" href="https://api.whatsapp.com/send/?phone=<?php echo substr($row->phone,0,1)==0?substr_replace($row->phone,'+62',0,1):$row->phone ?>" target="_blank" rel="noopener noreferrer"> Beli produk</a>
+                  <a class="btn btn__black" href="https://api.whatsapp.com/send/?phone=<?php echo substr($row->phone,0,1)=='0'?substr_replace($row->phone,'+62',0,1):$row->phone ?>" target="_blank" rel="noopener noreferrer"> Beli produk</a>
                 </div>
               </main>
               <footer class="modal__footer"></footer>
