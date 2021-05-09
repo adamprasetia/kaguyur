@@ -57,7 +57,7 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
                 <?php $i=1;foreach ($product as $row_prod) { ?>
                 <?php $photo_produk = json_decode($row_prod->photo); ?>
                   <div>
-                    <img class="imgfillImg" src="<?php echo gen_thumb($photo_produk[0],'100x100') ?>" alt="">
+                    <a href="<?php echo base_url('produk/detail/'.$row_prod->id) ?>"><img class="imgfillImg" src="<?php echo gen_thumb($photo_produk[0],'100x100') ?>" alt=""></a>
                   </div>                  
                 <?php if($i==3) break;$i++;} ?>
                 </div>
