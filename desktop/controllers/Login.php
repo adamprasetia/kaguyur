@@ -18,6 +18,11 @@ class Login extends CI_Controller
 
 		$data['content'] = $this->load->view('content/login_view', [
 		], true);
+
+		$data['meta'] = [
+			'title'=> 'Login | Komunitas Guppy Cianjur (KAGUYUR)'
+		];
+
 		
 		$this->load->view('template_view', $data);
 	}
@@ -70,6 +75,10 @@ class Login extends CI_Controller
 			'id'=>$id,
 			'hash'=>$hash
 		], true);
+
+		$data['meta'] = [
+			'title'=> 'Reset Password | Komunitas Guppy Cianjur (KAGUYUR)'
+		];		
 		
 		$this->load->view('template_view', $data);
 	}
@@ -95,7 +104,7 @@ class Login extends CI_Controller
             $member = $this->global_model->update([
                 'table'=>'member',
                 'id'=>$id,
-                'data'=>[
+                'data'=n>[
 					'password'=>md5($this->input->post('password',true))
 				],
             ]);

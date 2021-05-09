@@ -18,6 +18,11 @@ class Produk extends MY_Controller
 		$data['content'] = $this->load->view('content/product_view', [
 			'product'=>$product
 		], true);
+
+		$data['meta'] = [
+			'title'=> 'Produk | Komunitas Guppy Cianjur (KAGUYUR)'
+		];
+
 		
 		$this->load->view('template_view', $data);
 	}
@@ -31,6 +36,11 @@ class Produk extends MY_Controller
 		$data['content'] = $this->load->view('content/product_detail_view', [
 			'product'=>$product
 		], true);
+
+		$data['meta'] = [
+			'title'=> $product->name.' | Komunitas Guppy Cianjur (KAGUYUR)'
+		];
+
 		
 		$this->load->view('template_view', $data);
 	}

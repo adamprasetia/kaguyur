@@ -14,6 +14,10 @@ class Artikel extends MY_Controller
 		$data['content'] = $this->load->view('content/artikel_view', [
 			'article'=>$article,
 		], true);
+
+		$data['meta'] = [
+			'title'=> 'Artikel | Komunitas Guppy Cianjur (KAGUYUR)'
+		];
 		
 		$this->load->view('template_view', $data);
 	}
@@ -25,6 +29,11 @@ class Artikel extends MY_Controller
             exit;
         }
 		$data['content'] = $this->load->view('content/artikel_detail_view', $article, true);
+
+		$data['meta'] = [
+			'title'=> $article->title.' | Komunitas Guppy Cianjur (KAGUYUR)'
+		];
+
 		
 		$this->load->view('template_view', $data);
     }

@@ -14,6 +14,10 @@ class Galeri extends MY_Controller
 		$data['content'] = $this->load->view('content/gallery_view', [
 			'gallery'=>$gallery
 		], true);
+
+		$data['meta'] = [
+			'title'=> 'Galeri | Komunitas Guppy Cianjur (KAGUYUR)'
+		];
 		
 		$this->load->view('template_view', $data);
 	}
@@ -23,6 +27,10 @@ class Galeri extends MY_Controller
 		$data['content'] = $this->load->view('content/gallery_detail_view', [
 			'gallery'=>$gallery
 		], true);
+
+		$data['meta'] = [
+			'title'=> $gallery->title.' | Komunitas Guppy Cianjur (KAGUYUR)'
+		];
 		
 		$this->load->view('template_view', $data);
 	}

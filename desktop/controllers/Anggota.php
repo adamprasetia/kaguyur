@@ -15,6 +15,10 @@ class Anggota extends MY_Controller
 			'member'=>$member
 		], true);
 		
+		$data['meta'] = [
+			'title'=> 'Anggota | Komunitas Guppy Cianjur (KAGUYUR)'
+		];
+
 		$this->load->view('template_view', $data);
 	}
 
@@ -127,6 +131,11 @@ class Anggota extends MY_Controller
 			'member'=>$member,
 			'product'=>$product,
 		], true);
+
+		$data['meta'] = [
+			'title'=> $member->farm.' | Komunitas Guppy Cianjur (KAGUYUR)'
+		];
+
 		
 		$this->load->view('template_view', $data);
 	}

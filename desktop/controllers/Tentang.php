@@ -12,7 +12,12 @@ class Tentang extends MY_Controller
 	public function index()
 	{	
 		$data['content'] = $this->load->view('content/tentang_view', [
+
 		], true);
+		
+		$data['meta'] = [
+			'title'=> 'Tentang Komunitas Guppy Cianjur (KAGUYUR)'
+		];
 		
 		$this->load->view('template_view', $data);
 	}
