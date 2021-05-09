@@ -147,7 +147,7 @@
     <?php $this->load->view('script/general') ?>
     <?php echo isset($script)?$script:''; ?>
     <script src="<?php echo config_item('assets').'plugins/sweetalert/js/sweetalert.min.js'; ?>"></script>
-    <script type="text/javascript" src="<?php echo config_item('assets'); ?>js/micromodal.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
     <script type="text/javascript" src="<?php echo config_item('assets'); ?>js/main.js?v=5"></script>
     <script type="text/javascript">
       function fb_share(e,o){return u=o,t=e,window.open("http://www.facebook.com/sharer.php?u="+encodeURIComponent(u)+"&t="+encodeURIComponent(t),"sharer","toolbar=0,status=0,width=626,height=436"),!1}function tweet_share(t){return u=t,window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(u),"sharer","toolbar=0,status=0,width=626,height=436"),!1}
