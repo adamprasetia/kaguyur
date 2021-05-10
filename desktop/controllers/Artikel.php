@@ -37,26 +37,72 @@ class Artikel extends MY_Controller
 		
 		$this->load->view('template_view', $data);
     }
-
-	public function register()
+	public function list()
 	{
+		check_login_status();
+		$this->load->model('global_model');
+		$data['content'] = $this->load->view('content/artikel_list_view', [
+			'data'=>$this->global_model->get([
+				'table'=>'article',
+				'where'=>[
+					'created_by'=>$this->user_login['id'],
+					'status !='=>'DELETED'
+				]
+			])->result()
+		], true);
+		
+		$this->load->view('template_view', $data);
+	}
+	public function add()
+	{
+		check_login_status();
+
+		$data['content'] = $this->load->view('content/artikel_edit_view', [
+			'title'=>'Tambah Artikel',
+			'action'=>base_url('artikel/do_add'),
+		], true);
+		
+		$data['script'] = $this->load->view('script/article','',true);
+		$this->load->view('template_view', $data);
+	}
+	public function edit($id, $status)
+	{
+		check_login_status();
+
+		$this->load->model('global_model');
+		$article = $this->global_model->get([
+			'table'=>'article',
+			'where'=>[
+				'id'=>$id
+			]
+		])->row();
+
+		if(empty($article) || $article->created_by != $this->user_login['id']){
+            show_404();
+            exit;
+        }
+
+		$data['content'] = $this->load->view('content/artikel_edit_view', [
+			'title'=>'Edit Artikel',
+			'data'=>$article,
+			'action'=>base_url('artikel/do_edit/'.$id.'/'.$status),
+		], true);
+		
+		$data['script'] = $this->load->view('script/article','',true);
+		$this->load->view('template_view', $data);
+	}
+
+	public function do_add()
+	{
+		check_login_status();
+		
 		$this->load->model('general_model');
 		$this->load->library(['form_validation', 'upload']);
-		$this->form_validation->set_rules('farm', 'Nama Farm', 'trim|required');
-		$this->form_validation->set_rules('name', 'Nama Lengkap', 'trim|required');
-		$this->form_validation->set_rules('address', 'Alamat', 'trim|required');
-		$this->form_validation->set_rules('start', 'Start', 'trim');
-		$this->form_validation->set_rules('phone', 'No Telepon/Wa', 'trim|required|callback_unique_tlp');
-		$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|required|callback_unique_email');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
-		$this->form_validation->set_rules('strain','Strain Guppy','trim|required');
-		$this->form_validation->set_rules('photo','Pas Foto','callback_required_photo');
-		$this->form_validation->set_rules('logo','Logo','callback_required_logo');
-		$this->form_validation->set_rules('ig', 'Instagram', 'trim');
-		$this->form_validation->set_rules('tw', 'Twitter', 'trim');
-		$this->form_validation->set_rules('fb', 'Facebook', 'trim');
+		$this->form_validation->set_rules('title', 'Judul', 'trim|required');
+		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
+		$this->form_validation->set_rules('content', 'Konten', 'trim|required');
+		$this->form_validation->set_rules('status', 'Status', 'trim|required');
 		$this->form_validation->set_message('required', '{field} harus diisi.');
-		$this->form_validation->set_message('valid_email', 'Format {field} salah.');
 
 		if ($this->form_validation->run()===FALSE ){
 			if(validation_errors())
@@ -64,79 +110,81 @@ class Artikel extends MY_Controller
 				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>strip_tags(validation_errors())]);
 			}
 
-		}else{			
-			$photo   = uploadFile('photo');
-			$logo   = uploadFile('logo');
-			
+		}else{						
 			$data = [
-				'farm'=> $this->input->post('farm', true),
-				'name'=> $this->input->post('name', true),
-				'address'=> $this->input->post('address', true),
-				'start'=> $this->input->post('start', true),
-				'phone'=> $this->input->post('phone', true),
-				'email'=> $this->input->post('email', true),
-				'password'=> md5($this->input->post('password', true)),
-				'strain'=> $this->input->post('strain', true),
-				'photo'=> $photo['data'],
-				'logo'=> $logo['data'],
-				'ig'=> $this->input->post('ig', true),
-				'tw'=> $this->input->post('tw', true),
-				'fb'=> $this->input->post('fb', true),
+				'title'=> $this->input->post('title', true),
+				'description'=> $this->input->post('description', true),
+				'content'=> $this->input->post('content', true),
+				'status'=> $this->input->post('status', true),
 			];
-			$data['date_created'] = date('Y-m-d H:i:s');
-			$data['status'] = 'PENDING';
+			$data['created_date'] = date('Y-m-d H:i:s');
+			$data['created_by'] = $this->user_login['id'];
 
-			$add = $this->general_model->add('member', $data);
+			$add = $this->general_model->add('article', $data);
 			if($add)
 			{	
-				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Registrasi berhasil']);
+				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Tambah artikel berhasil']);
 			}else{
-				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Registrasi Gagal']);
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Tambah artikel Gagal']);
 			}
 		}		
 	}
 
-	public function unique_tlp($data){
-		$this->form_validation->set_message('unique_tlp','No Telepon sudah dipakai');
-		$unique = $this->general_model->get('member', 'phone', array('phone'=>$data));
-		if($unique && $unique->num_rows() > 0){
-			return false;
-		}
-		return true;
-	}
+	public function do_edit($id, $status)
+	{
+		check_login_status();
+		
+		$this->load->model('global_model');
+		$article = $this->global_model->get([
+			'table'=>'article',
+			'where'=>[
+				'id'=>$id
+			]
+		])->row();
 
-	public function unique_email($data){
-		$this->form_validation->set_message('unique_email','Email sudah dipakai');
-		$unique = $this->general_model->get('member', 'email', array('email'=>$data));
-		if($unique && $unique->num_rows() > 0){
-			return false;
-		}
-		return true;
-	}
+        if(empty($article) || $article->created_by != $this->user_login['id']){
+            show_404();
+            exit;
+        }
 
-	public function required_photo($foto){
-		$status = true;
-		if(empty($_FILES['photo']['name'])){
-			$this->form_validation->set_message('required_photo','Pas Foto harus diisi'); 
-			$status = false;
-		}elseif ($_FILES['photo']['size'] > 204800) {
-			$this->form_validation->set_message('required_photo','Pas Foto max 200KB');
-			$status = false;
-		}
-		return $status;
-    }
-	public function required_logo($foto){
-		$status = true;
-		if(empty($_FILES['logo']['name'])){
-			$this->form_validation->set_message('required_logo','Logo harus diisi'); 
-			$status = false;
-		}elseif ($_FILES['logo']['size'] > 204800) {
-			$this->form_validation->set_message('required_logo','Logo max 200KB');
-			$status = false;
-		}
-		return $status;
-    }
-    
+		$this->load->model('general_model');
+		$this->load->library(['form_validation', 'upload']);
+		$this->form_validation->set_rules('title', 'Judul', 'trim|required');
+		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
+		$this->form_validation->set_rules('content', 'Konten', 'trim|required');
+		$this->form_validation->set_rules('status', 'Status', 'trim|required');
+		$this->form_validation->set_message('required', '{field} harus diisi.');
+
+		if ($this->form_validation->run()===FALSE ){
+			if(validation_errors())
+			{
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>strip_tags(validation_errors())]);
+			}
+
+		}else{						
+			$data = [
+				'title'=> $this->input->post('title', true),
+				'description'=> $this->input->post('description', true),
+				'content'=> $this->input->post('content', true),
+				'status'=> $this->input->post('status', true),
+			];
+			$data['updated_by'] = $this->user_login['id'];
+			$data['updated_date'] = date('Y-m-d H:i:s');
+
+			if($data['status']=='PUBLISH' && $status=='DRAFT'){
+                $data['published_date'] 	= date('Y-m-d H:i:s');    
+                $data['published_by'] 	= $_SESSION['user_login']['id'];
+            }
+
+			$add = $this->general_model->edit('article', $id, $data);
+			if($add)
+			{	
+				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Edit artikel berhasil']);
+			}else{
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Edit artikel Gagal']);
+			}
+		}		
+	}
 
 	public function page_404()
 	{

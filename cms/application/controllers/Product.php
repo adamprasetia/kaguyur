@@ -15,10 +15,11 @@ class Product extends MY_Controller {
 		$page 	= gen_page();
 		$offset = ($page-1)*$this->limit;
 		$search = $this->input->get('search');
-		$where 	= array();
+		$where 	= array('status !='=>'DELETED');
 		if ($search) {
 			$where['LOWER(name) like'] = '%'.strtolower($search).'%';
 		}
+		
 		$total = $this->general_model->count($this->table_name,$where);
 		$module_view['data'] 	= $this->general_model->get($this->table_name, '', $where, 'created_date desc', $this->limit, $offset)->result();
 		$module_view['offset'] = $offset;

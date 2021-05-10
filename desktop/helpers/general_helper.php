@@ -331,3 +331,15 @@ function create_json($filename, $data)
         return TRUE;
     }
 }
+
+function check_login_status()
+{
+    if(!ci()->user_login['id']){
+        redirect('login');
+        exit;
+    }
+    if(ci()->user_login['status'] != 'VERIFIED'){
+        redirect('');
+        exit;
+    }
+}

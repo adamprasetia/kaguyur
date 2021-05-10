@@ -73,7 +73,7 @@ class Article extends MY_Controller {
             ],true);
 
 			$data['script'] = gen_script(array(
-				config_item('assets_editor').'plugins/tinymce/js/tinymce/tinymce.min.js'
+				config_item('assets').'plugins/tinymce/js/tinymce/tinymce.min.js'
 			));
 
 			if(!validation_errors())
@@ -114,7 +114,7 @@ class Article extends MY_Controller {
 			$data['content'] = $this->load->view('contents/form_article_view',$news_view,true);
 
 			$data['script'] = gen_script(array(
-				config_item('assets_editor').'plugins/tinymce/js/tinymce/tinymce.min.js',
+				config_item('assets').'plugins/tinymce/js/tinymce/tinymce.min.js',
 			));
 
 			if(!validation_errors())
