@@ -39,14 +39,5 @@
           <a href="<?php echo base_url('login/logout') ?>" class="btn btn__black mr-2">KELUAR</a>
         </div>
     </div>             
-    <?php if($this->user_login['status'] == 'VERIFIED'): ?>
-    <div class="relative">
-        <p>Ayo promosikan ikan guppy kamu</p>
-        <div class="flex">
-          <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-product">TAMBAH PRODUK</a>
-        </div>
-    </div>    
-    <?php $this->load->view('content/product_modal_view') ?>         
-    <?php endif ?>
 </div>
 <?php endif ?>
