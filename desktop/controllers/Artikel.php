@@ -173,7 +173,7 @@ class Artikel extends MY_Controller
 
 			if($data['status']=='PUBLISH' && $status=='DRAFT'){
                 $data['published_date'] 	= date('Y-m-d H:i:s');    
-                $data['published_by'] 	= $_SESSION['user_login']['id'];
+                $data['published_by'] 	= $this->user_login['id'];
             }
 
 			$add = $this->general_model->edit('article', $id, $data);

@@ -292,6 +292,55 @@ function generate_json_product($id = '')
     }
 }
 
+function generate_json_forum($id = '')
+{
+    ci()->load->model('global_model');
+    if(!empty($id)){
+        $data = ci()->global_model->get([
+            'select'=>'a.*, b.logo, b.phone, b.farm, b.name as author',
+            'table'=>'forum a',
+            'where'=>[
+                'a.id'=>$id
+            ],
+            'join'=>[
+                ['member b','a.created_by = b.id']
+            ]
+        ])->row_array();
+        create_json('forum_'.$id.'.json', json_encode($data));
+    }else{
+        $data = ci()->global_model->get([
+            'table'=>'forum',
+            'where'=>[
+                'status'=>1
+            ],
+            'order'=>[
+                'created_date'=>'desc'
+            ]
+        ])->result_array();
+        create_json('forum.json', json_encode($data));
+    }
+}
+function generate_json_forum_response($id = '')
+{
+    ci()->load->model('global_model');
+    if(!empty($id)){
+        $data = ci()->global_model->get([
+            'select'=>'a.*, b.logo, b.phone, b.farm, b.name as author',
+            'table'=>'forum_response a',
+            'where'=>[
+                'a.id_forum'=>$id
+            ],
+            'join'=>[
+                ['member b','a.created_by = b.id']
+            ],
+            'order'=>[
+                'a.created_date'=>'asc'
+            ]
+        ])->result_array();
+    create_json('forum_response_'.$id.'.json', json_encode($data));
+    }
+}
+
 function generate_json_product_member($id = '')
 {
     ci()->load->model('global_model');
