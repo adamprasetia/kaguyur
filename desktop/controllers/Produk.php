@@ -73,10 +73,10 @@ class Produk extends MY_Controller
 			$photo   = uploadFile('photo');
 			
 			$data = [
-				'name'=> $this->input->post('name', true),
-				'description'=> $this->input->post('description', true),
+				'name'=> htmlentities($this->input->post('name', true)),
+				'description'=> htmlentities($this->input->post('description', true)),
 				'photo'=> json_encode([$photo['data']]),
-				'price'=> $this->input->post('price', true),
+				'price'=> htmlentities($this->input->post('price', true)),
 			];
 			$data['created_by'] = $this->user_login['id'];
 			$data['created_date'] = date('Y-m-d H:i:s');
@@ -160,9 +160,9 @@ class Produk extends MY_Controller
 
 		}else{						
 			$data = [
-				'name'=> $this->input->post('name', true),
-				'description'=> $this->input->post('description', true),
-				'price'=> $this->input->post('price', true),
+				'name'=> htmlentities($this->input->post('name', true)),
+				'description'=> htmlentities($this->input->post('description', true)),
+				'price'=> htmlentities($this->input->post('price', true)),
 			];
 			if(!empty($_FILES['photo']['name'])){
 				$photo   = uploadFile('photo');	

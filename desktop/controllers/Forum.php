@@ -148,8 +148,8 @@ class Forum extends MY_Controller
 
 		}else{						
 			$data = [
-				'title'=> $this->input->post('title', true),
-				'description'=> $this->input->post('description', true),
+				'title'=> htmlentities($this->input->post('title', true)),
+				'description'=> htmlentities($this->input->post('description', true)),
 			];
 			$data['created_date'] = date('Y-m-d H:i:s');
 			$data['created_by'] = $this->user_login['id'];
@@ -184,7 +184,7 @@ class Forum extends MY_Controller
 		}else{						
 			$data = [
                 'id_forum'=>$id,
-				'description'=> $this->input->post('description', true),
+				'description'=> htmlentities($this->input->post('description', true)),
 			];
 			$data['created_date'] = date('Y-m-d H:i:s');
 			$data['created_by'] = $this->user_login['id'];
@@ -234,8 +234,8 @@ class Forum extends MY_Controller
 
 		}else{						
 			$data = [
-				'title'=> $this->input->post('title', true),
-				'description'=> $this->input->post('description', true),
+				'title'=> htmlentities($this->input->post('title', true)),
+				'description'=> htmlentities($this->input->post('description', true)),
 			];
 			$data['updated_by'] = $this->user_login['id'];
 			$data['updated_date'] = date('Y-m-d H:i:s');

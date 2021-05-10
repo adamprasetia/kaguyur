@@ -53,19 +53,19 @@ class Anggota extends MY_Controller
 			$logo   = uploadFile('logo');
 			
 			$data = [
-				'farm'=> $this->input->post('farm', true),
-				'name'=> $this->input->post('name', true),
-				'address'=> $this->input->post('address', true),
-				'start'=> $this->input->post('start', true),
-				'phone'=> $this->input->post('phone', true),
-				'email'=> $this->input->post('email', true),
+				'farm'=> htmlentities($this->input->post('farm', true)),
+				'name'=> htmlentities($this->input->post('name', true)),
+				'address'=> htmlentities($this->input->post('address', true)),
+				'start'=> htmlentities($this->input->post('start', true)),
+				'phone'=> htmlentities($this->input->post('phone', true)),
+				'email'=> htmlentities($this->input->post('email', true)),
 				'password'=> md5($this->input->post('password', true)),
-				'strain'=> $this->input->post('strain', true),
+				'strain'=> htmlentities($this->input->post('strain', true)),
 				'photo'=> $photo['data'],
 				'logo'=> $logo['data'],
-				'ig'=> $this->input->post('ig', true),
-				'tw'=> $this->input->post('tw', true),
-				'fb'=> $this->input->post('fb', true),
+				'ig'=> htmlentities($this->input->post('ig', true)),
+				'tw'=> htmlentities($this->input->post('tw', true)),
+				'fb'=> htmlentities($this->input->post('fb', true)),
 			];
 			$data['date_created'] = date('Y-m-d H:i:s');
 			$data['status'] = 'PENDING';

@@ -7,7 +7,7 @@
                 <div class="mt-5">
                     <ul>
                         <?php foreach ($data as $row) { ?>                            
-                        <li class="grid grid-cols-8 gap-4 mb-5">
+                        <li class="grid grid-cols-12 gap-4 mb-5">
                             <div class="col-span-5 md:col-span-6">
                                 <a href="<?php echo base_url('forum/detail/'.$row->id.'/'.url_title($row->title,'-',true))?>">
                                     <h4 class="mb-2 text__wrap2"><?php echo $row->title ?></h4>
