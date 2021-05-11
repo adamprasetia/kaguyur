@@ -13,9 +13,9 @@
               <textarea class="field w-full" name="description" cols="30" rows="5"><?php echo isset($data->description)?$data->description:''; ?></textarea>
             </div>
             <div class="flex items-center justify-center my-5">
-                <button type="button" class="btn btn__black btn_action" id="btn_simpan" data-idle="KIRIM" data-process="Proses Pengiriman..." data-form="#form_data" data-redirect="<?php echo base_url('forum/list') ?>">KIRIM</button>
+                <button type="button" class="btn btn__black btn_action" id="btn_simpan" data-idle="KIRIM" data-process="Proses Pengiriman..." data-form="#form_data" data-redirect="<?php echo base_url('forum') ?>">KIRIM</button>
                 &nbsp;
-                <a href="<?php echo base_url('forum/list') ?>" class="btn btn__black">KEMBALI</a>
+                <a href="<?php echo base_url('forum') ?>" class="btn btn__black">KEMBALI</a>
             </div>
           </form>
         </div>

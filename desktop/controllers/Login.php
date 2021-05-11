@@ -15,8 +15,14 @@ class Login extends CI_Controller
 		if($this->user_login['id']){
 			redirect('');
 		}
+		$callback = base_url();
+		if($this->input->get('callback',true)){
+			$callback = $this->input->get('callback', true);
+		}
 
 		$data['content'] = $this->load->view('content/login_view', [
+			'action'=>base_url('login/do_login'),
+			'callback'=>$callback
 		], true);
 
 		$data['meta'] = [
@@ -54,7 +60,7 @@ class Login extends CI_Controller
 			{	
                 $this->load->library('session');
                 $this->session->set_userdata('user_login', $member);
-				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Login berhasil']);
+				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Login berhasil','redirect'=>$this->input->get('callback')]);
 			}else{
 				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Email dan Password Tidak Terdaftar!']);
 			}

@@ -5,6 +5,9 @@
         <div class="grid grid-cols-6 gap-10">
             <div class="col-span-6 md:col-span-3">
                 <div class="mt-5">
+                    <a href="<?php echo base_url('forum/add') ?>" class="btn btn__black">KIRIM PERTANYAAN</a>
+                </div>
+                <div class="mt-5">
                     <ul>
                         <?php foreach ($data as $row) { ?>                            
                         <li class="grid grid-cols-12 gap-4 mb-5">

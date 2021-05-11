@@ -64,14 +64,14 @@
             <strong class="pt-5 block">Akun</strong>
             <div class="mb-3">
               <label class="font-semibold block">Email</label>
-              <input class="field w-full" type="text" name="email" id="email"/>
+              <input class="field w-full" type="text" name="email"/>
             </div>
             <div class="mb-3">
               <label class="font-semibold block">Password</label>
-              <input class="field w-full" type="password" name="password" id="password"/>
+              <input class="field w-full" type="password" name="password"/>
             </div>
             <div class="flex items-center justify-center my-5">
-              <button type="button" class="btn btn__black btn_action" id="btn_daftar" data-idle="DAFTAR" data-process="Tunggu Sebentar..." data-form="#form_data" data-redirect="<?php echo current_url(); ?>">DAFTAR</button>
+              <button type="button" class="btn btn__black btn_action" data-idle="DAFTAR" data-process="Tunggu Sebentar..." data-form="#form_data" data-redirect="<?php echo current_url(); ?>">DAFTAR</button>
             </div>
           </form>
         </div>

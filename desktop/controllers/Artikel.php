@@ -39,7 +39,7 @@ class Artikel extends MY_Controller
     }
 	public function list()
 	{
-		check_login_status();
+		check_verified();
 		$this->load->model('global_model');
 		$data['content'] = $this->load->view('content/artikel_list_view', [
 			'data'=>$this->global_model->get([
@@ -55,7 +55,7 @@ class Artikel extends MY_Controller
 	}
 	public function add()
 	{
-		check_login_status();
+		check_verified();
 
 		$data['content'] = $this->load->view('content/artikel_edit_view', [
 			'title'=>'Tambah Artikel',
@@ -67,7 +67,7 @@ class Artikel extends MY_Controller
 	}
 	public function edit($id, $status)
 	{
-		check_login_status();
+		check_verified();
 
 		$this->load->model('global_model');
 		$article = $this->global_model->get([
@@ -77,10 +77,7 @@ class Artikel extends MY_Controller
 			]
 		])->row();
 
-		if(empty($article) || $article->created_by != $this->user_login['id']){
-            show_404();
-            exit;
-        }
+		check_owner($article->created_by);
 
 		$data['content'] = $this->load->view('content/artikel_edit_view', [
 			'title'=>'Edit Artikel',
@@ -94,7 +91,7 @@ class Artikel extends MY_Controller
 
 	public function do_add()
 	{
-		check_login_status();
+		check_verified();
 		
 		$this->load->model('general_model');
 		$this->load->library(['form_validation', 'upload']);
@@ -132,7 +129,7 @@ class Artikel extends MY_Controller
 
 	public function do_edit($id, $status)
 	{
-		check_login_status();
+		check_verified();
 		
 		$this->load->model('global_model');
 		$article = $this->global_model->get([
@@ -141,11 +138,8 @@ class Artikel extends MY_Controller
 				'id'=>$id
 			]
 		])->row();
-
-        if(empty($article) || $article->created_by != $this->user_login['id']){
-            show_404();
-            exit;
-        }
+		
+		check_owner($article->created_by);
 
 		$this->load->model('general_model');
 		$this->load->library(['form_validation', 'upload']);

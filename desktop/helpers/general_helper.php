@@ -381,14 +381,38 @@ function create_json($filename, $data)
     }
 }
 
-function check_login_status()
+function check_verified($status=false)
 {
-    if(!ci()->user_login['id']){
-        redirect('login');
-        exit;
-    }
     if(ci()->user_login['status'] != 'VERIFIED'){
+        if($status){
+            return false;
+        }
         redirect('');
         exit;
     }
+    return true;
+}
+function check_login($status=false)
+{
+    if(!ci()->user_login['id']){
+        if($status){
+            return false;
+        }
+
+        redirect('login?callback='.current_url());
+        exit;
+    }
+    return true;
+}
+function check_owner($id, $status=false)
+{
+    if(ci()->user_login['id'] != $id){
+        if($status){
+            return false;
+        }
+
+        show_404();
+        exit;
+    }
+    return true;
 }

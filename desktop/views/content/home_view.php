@@ -26,7 +26,11 @@
               </div>
               <p>Ayo bagikan pengetahuan yang kamu miliki seputar budidaya ikan guppy</p>
               <div class="flex">
-                <a href="<?php echo base_url('artikel/add') ?>" class="btn btn__black mr-2">TAMBAH ARTIKEL</a>
+                <a href="<?php echo base_url('artikel/add') ?>" class="btn btn__black mr-2">TULIS ARTIKEL</a>
+              </div>
+              <p>Punya pertanyaan seputar budiaya ikan guppy ?</p>
+              <div class="flex">
+                <a href="<?php echo base_url('forum/add') ?>" class="btn btn__black mr-2">KIRIM PERTANYAAN</a>
               </div>
           </div>    
           <?php $this->load->view('content/product_modal_view') ?>         

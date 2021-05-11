@@ -71,7 +71,8 @@ class Forum extends MY_Controller
     }
 	public function list()
 	{
-		check_login_status();
+		check_login();
+
 		$this->load->model('global_model');
 		$data['content'] = $this->load->view('content/forum_list_view', [
 			'data'=>$this->global_model->get([
@@ -91,10 +92,10 @@ class Forum extends MY_Controller
 	}
 	public function add()
 	{
-		check_login_status();
+		check_login();
 
 		$data['content'] = $this->load->view('content/forum_edit_view', [
-			'title'=>'Tambah Pertanyaan',
+			'title'=>'Kirim Pertanyaan',
 			'action'=>base_url('forum/do_add'),
 		], true);
 		
@@ -102,7 +103,7 @@ class Forum extends MY_Controller
 	}
 	public function edit($id)
 	{
-		check_login_status();
+		check_verified();
 
 		$this->load->model('global_model');
 		$forum = @json_decode(file_get_contents('./assets/json/forum_'.$id.'.json'));
@@ -116,10 +117,7 @@ class Forum extends MY_Controller
             ])->row();
         }
 
-		if(empty($forum) || $forum->created_by != $this->user_login['id']){
-            show_404();
-            exit;
-        }
+		check_owner($forum->created_by);
 
 		$data['content'] = $this->load->view('content/forum_edit_view', [
 			'title'=>'Edit Pertanyaan',
@@ -132,7 +130,7 @@ class Forum extends MY_Controller
 
 	public function do_add()
 	{
-		check_login_status();
+		check_login();
 		
 		$this->load->model('general_model');
 		$this->load->library(['form_validation', 'upload']);
@@ -159,16 +157,16 @@ class Forum extends MY_Controller
 			{	
                 generate_json_forum();
                 generate_json_forum($add);
-				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Tambah pertanyaan berhasil']);
+				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Pertanyaan berhasil dikirim']);
 			}else{
-				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Tambah pertanyaan Gagal']);
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Pertanyaan gagal dikirim']);
 			}
 		}		
 	}
 
     public function respon($id)
 	{
-		check_login_status();
+		check_login();
 		
 		$this->load->model('general_model');
 		$this->load->library(['form_validation', 'upload']);
@@ -202,7 +200,7 @@ class Forum extends MY_Controller
 
 	public function do_edit($id)
 	{
-		check_login_status();
+		check_login();
 		
 		$forum = @json_decode(file_get_contents('./assets/json/forum_'.$id.'.json'));
         if(empty($forum)){
@@ -215,10 +213,7 @@ class Forum extends MY_Controller
             ])->row();
         }
 
-        if(empty($forum) || $forum->created_by != $this->user_login['id']){
-            show_404();
-            exit;
-        }
+		check_owner($forum->created_by);
 
 		$this->load->model('general_model');
 		$this->load->library(['form_validation', 'upload']);
@@ -254,7 +249,7 @@ class Forum extends MY_Controller
 
     public function delete($id)
 	{
-		check_login_status();
+		check_login();
 		
         $forum = @json_decode(file_get_contents('./assets/json/forum_'.$id.'.json'));
         if(empty($forum)){
@@ -266,10 +261,7 @@ class Forum extends MY_Controller
             ])->row();
         }
 
-		if(empty($forum) || $forum->created_by != $this->user_login['id']){
-            show_404();
-            exit;
-        }
+		check_owner($forum->created_by);
 
 		$this->load->model('global_model');
 		$forum = $this->global_model->delete([

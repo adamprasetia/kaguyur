@@ -20,11 +20,11 @@ $('form').submit(function(e) {
   e.preventDefault();
 });
 
-$(document).on('click', '.btn_action', function() {
-  var form = $(this).attr('data-form');
+function action(t)
+{
+  var form = t.attr('data-form');
   var action = $(form).attr('action');
-  var redirect = $(this).attr('data-redirect');
-  var t = $(this);
+  var redirect = t.attr('data-redirect');
   if (action) {
     $.ajax({
       url: action,
@@ -84,6 +84,10 @@ $(document).on('click', '.btn_action', function() {
       window.location = redirect;
     }
   }
+
+}
+$(document).on('click', '.btn_action', function() {
+  action($(this))
 });
 
 function check_size(t)
