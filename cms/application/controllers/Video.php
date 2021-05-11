@@ -21,7 +21,7 @@ class Video extends MY_Controller {
 			$where['LOWER(title) like'] = '%'.$search.'%';
 		}
 		$total 			= $this->general_model->count($this->data['page'],$where);
-		$xdata['data'] 	= $this->general_model->get($this->data['page'], $select, $where, 'created_at desc',$this->limit, $offset)->result();
+		$xdata['data'] 	= $this->general_model->get($this->data['page'], '', $where, 'created_date desc',$this->limit, $offset)->result();
 
 		$xdata['offset'] 	= $offset;
 		$xdata['paging'] 	= gen_paging($total,$this->limit);
@@ -60,7 +60,8 @@ class Video extends MY_Controller {
 			}
 		}else{
 			$data = $this->_set_data();
-			$data['created_at'] = date('Y-m-d H:i:s');
+			$data['created_date'] 	= date('Y-m-d H:i:s');
+			$data['created_by'] 	= $_SESSION['user_login']['id'];
 
 			$id = $this->general_model->add($this->data['page'],$data);
 
@@ -115,6 +116,8 @@ class Video extends MY_Controller {
 			}
 		}else{
 			$data = $this->_set_data();
+			$data['updated_date'] 	= date('Y-m-d H:i:s');
+			$data['updated_by'] 	= $_SESSION['user_login']['id'];
 
 			$this->general_model->edit($this->data['page'],$id,$data);
 
