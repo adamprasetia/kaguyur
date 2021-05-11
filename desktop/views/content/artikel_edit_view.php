@@ -1,7 +1,7 @@
 <div class="section py-20 bg-cover bg-no-repeat mt-10">
     <!-- section -->
     <div class="container px-5 mx-auto">
-    <h1 class="font-bold uppercase"><?php echo $title ?></h1>
+    <h3 class="font-bold uppercase"><?php echo $title ?></h3>
     <div class="text-sm">
           <form method="post" id="form_data" action="<?php echo $action ?>">
             <div class="mb-3">
@@ -32,3 +32,4 @@
         </div>
     </div>
 </div>
+<?php $this->load->view('content/general_modal_view') ?>

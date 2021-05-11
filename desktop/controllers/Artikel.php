@@ -58,7 +58,7 @@ class Artikel extends MY_Controller
 		check_verified();
 
 		$data['content'] = $this->load->view('content/artikel_edit_view', [
-			'title'=>'Tambah Artikel',
+			'title'=>'Tulis Artikel',
 			'action'=>base_url('artikel/do_add'),
 		], true);
 		
@@ -107,11 +107,23 @@ class Artikel extends MY_Controller
 				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>strip_tags(validation_errors())]);
 			}
 
-		}else{						
+		}else{		
+			$content = $this->input->post('content', true);
+			// cari foto
+			if(preg_match_all('/<img[^>]+>/i',$content, $images))
+			{
+				if(isset($images[0][0]) && $images[0][0]){
+					preg_match( '/src="([^"]*)"/i', $images[0][0], $src );
+					$srchasil =  (isset($src[1])) ? $src[1] : "";
+					$image = substr($srchasil, strpos($srchasil, 'assets/'));
+				}
+			}
+				
 			$data = [
 				'title'=> $this->input->post('title', true),
 				'description'=> $this->input->post('description', true),
-				'content'=> $this->input->post('content', true),
+				'content'=> $content,
+				'image'=> $image,
 				'status'=> $this->input->post('status', true),
 			];
 			$data['created_date'] = date('Y-m-d H:i:s');
@@ -156,10 +168,22 @@ class Artikel extends MY_Controller
 			}
 
 		}else{						
+			$content = $this->input->post('content', true);
+			// cari foto
+			if(preg_match_all('/<img[^>]+>/i',$content, $images))
+			{
+				if(isset($images[0][0]) && $images[0][0]){
+					preg_match( '/src="([^"]*)"/i', $images[0][0], $src );
+					$srchasil =  (isset($src[1])) ? $src[1] : "";
+					$image = substr($srchasil, strpos($srchasil, 'assets/'));
+				}
+			}
+
 			$data = [
 				'title'=> $this->input->post('title', true),
 				'description'=> $this->input->post('description', true),
-				'content'=> $this->input->post('content', true),
+				'content'=> $content,
+				'image'=> $image,
 				'status'=> $this->input->post('status', true),
 			];
 			$data['updated_by'] = $this->user_login['id'];

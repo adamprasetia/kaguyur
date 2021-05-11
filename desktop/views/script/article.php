@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?php echo config_item('assets'); ?>plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript" src="<?php echo config_item('assets'); ?>plugins/tinymce/js/tinymce/tinymce.min.js?v=6"></script>
 <script>
 $(document).ready(function(){
     tinymce.init({
@@ -15,5 +15,22 @@ $(document).ready(function(){
             });
         }
     });
+
+    $("#modal-general-iframe").on('load',function () {
+        $(this).contents().find(".btn_add_photo").click(function(){
+            tinymce.execCommand('mceInsertContent', false, '<img width="100%" src="'+$(this).attr('data-image')+'">');
+            MicroModal.close('modal-general');
+        });
+
+        $(this).contents().find(".btn_add_video").click(function(){
+            tinymce.execCommand('mceInsertContent', false, '<iframe class="video" width="100%" height="100%" src="'+$(this).attr('data-embed')+'"></iframe>');
+            MicroModal.close('modal-general');
+        });
+
+    });
+
+
 });
+
+
 </script>

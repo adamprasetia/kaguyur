@@ -6,27 +6,48 @@ class Photo extends MY_Controller
 	public function __construct()
 	{
 	    parent::__construct();
+		check_verified();
 	}
 
 	public function index()
 	{	
         $this->load->model('global_model');
-        $photo = $this->global_model->get([
+		$query = [
             'table'=>'photo',
             'where'=>[
                 'status'=>1
             ],
             'order'=>[
                 'created_date'=>'desc'
-            ]
-        ])->result();
+			]
+        ];
+        $total = $this->global_model->count($query);
+		$query['limit'] = 12;
+		if($this->input->get('offset',true)){
+			$query['offset'] = $this->input->get('offset',true);
+		}
+        $photo = $this->global_model->get($query)->result();
+
+		$this->load->library('pagination');
+
+		$config['base_url'] = base_url('photo');
+		$config['total_rows'] = $total;
+		$config['per_page'] = 12;
+		$config['page_query_string'] = TRUE;
+		$config['query_string_segment'] = 'offset';
+		$config['display_pages'] = FALSE;
+		$config['prev_link'] = '<span class="btn btn__black">&lt;</span>';
+		$config['next_link'] = '<span class="btn btn__black">&gt;</span>';
+
+		$this->pagination->initialize($config);
 
         if(empty($photo)){
             show_404();
             exit;
         }
 		$data['content'] = $this->load->view('content/photo_view', [
-			'photo'=>$photo
+			'photo'=>$photo,
+			'paging'=>$this->pagination->create_links()
 		], true);
 
 		$data['meta'] = [
@@ -34,12 +55,10 @@ class Photo extends MY_Controller
 		];
 
 		$data['script'] = $this->load->view('script/photo','',true);
-		$this->load->view('template_view', $data);
+		$this->load->view('template_modal_view', $data);
 	}
 	public function add()
 	{
-        check_verified();
-
 		$this->load->model('general_model');
 		$this->load->library(['form_validation', 'upload']);
 		$this->form_validation->set_rules('photo','Foto','callback_required_photo');
@@ -94,74 +113,4 @@ class Photo extends MY_Controller
 		return $status;
     }
 
-	public function edit($id)
-	{
-        check_verified();
-
-        $this->load->model('global_model');
-        $photo = $this->global_model->get([
-            'table'=>'photo',
-            'where'=>[
-                'id'=>$id
-            ]
-        ])->row();
-
-        check_owner($photo->created_by);
-
-		$data['content'] = $this->load->view('content/photo_edit_view', [
-			'photo'=>$photo
-		], true);
-		
-		$this->load->view('template_view', $data);
-
-	}
-
-	public function update($id)
-	{
-        check_verified();
-
-		$this->load->model('global_model');
-
-        $photo = $this->global_model->get([
-            'table'=>'photo',
-            'where'=>[
-                'id'=>$id
-            ]
-        ])->row();
-
-        check_owner($photo->created_by);
-
-		$this->load->library(['form_validation', 'upload']);
-		$this->form_validation->set_rules('caption', 'Caption', 'trim');
-		$this->form_validation->set_rules('photo','Foto','callback_optional_photo');
-		$this->form_validation->set_message('required', '{field} harus diisi.');
-
-		if ($this->form_validation->run()===FALSE ){
-			if(validation_errors())
-			{
-				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>strip_tags(validation_errors())]);
-			}
-
-		}else{						
-			$data = [
-				'title'=> htmlentities($this->input->post('caption', true)),
-			];
-			if(!empty($_FILES['photo']['name'])){
-				$photo   = uploadFile('photo');	
-				if(!empty($photo['data'])){
-					$data['url'] = $photo['data'];
-				}
-			}
-			$data['updated_by'] = $this->user_login['id'];
-			$data['updated_date'] = date('Y-m-d H:i:s');
-
-			$edit = $this->global_model->edit('photo', $id, $data);
-			if($edit)
-			{	
-				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Edit foto berhasil']);
-			}else{
-				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Edit foto gagal']);
-			}
-		}		
-	}
 }

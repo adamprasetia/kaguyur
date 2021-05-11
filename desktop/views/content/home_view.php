@@ -18,7 +18,7 @@
         <div class="md:py-20">
           <?php $this->load->view('content/register_view') ?>
 
-          <?php if($this->user_login['status'] == 'VERIFIED'): ?>
+          <?php if(check_verified(true)): ?>
           <div class="relative">
               <p>Punya ikan guppy bagus ko di pelihara sendirian..., Ayo promosikan ikan guppy kamu</p>
               <div class="flex">
@@ -28,14 +28,15 @@
               <div class="flex">
                 <a href="<?php echo base_url('artikel/add') ?>" class="btn btn__black mr-2">TULIS ARTIKEL</a>
               </div>
-              <p>Punya pertanyaan seputar budiaya ikan guppy ?</p>
-              <div class="flex">
-                <a href="<?php echo base_url('forum/add') ?>" class="btn btn__black mr-2">KIRIM PERTANYAAN</a>
-              </div>
           </div>    
           <?php $this->load->view('content/product_modal_view') ?>         
           <?php endif ?>
-
+          <?php if(check_login(true)): ?>
+          <p>Punya pertanyaan seputar budiaya ikan guppy ?</p>
+          <div class="flex">
+            <a href="<?php echo base_url('forum/add') ?>" class="btn btn__black mr-2">KIRIM PERTANYAAN</a>
+          </div>
+          <?php endif ?>
         </div>
       </div>
     </div>
