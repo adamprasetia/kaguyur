@@ -31,7 +31,8 @@ class Artikel extends MY_Controller
 		$data['content'] = $this->load->view('content/artikel_detail_view', $article, true);
 
 		$data['meta'] = [
-			'title'=> $article->title.' | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> $article->title.' | Komunitas Guppy Cianjur (KAGUYUR)',
+			'image'=> base_url($article->image),
 		];
 
 		
