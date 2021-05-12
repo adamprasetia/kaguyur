@@ -19,7 +19,7 @@
                 ?>
               <img src="<?php echo isset($photo[0])?base_url($photo[0]):''; ?>" class="media-object" style="width: 200px;height: auto;border-radius: 10px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
               <?php endif ?>
-              <input type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full"/>
+              <input onchange="check_size(this)" type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full"/>
             </div>
             <div class="mb-3">
               <label class="font-semibold block">Harga</label>
