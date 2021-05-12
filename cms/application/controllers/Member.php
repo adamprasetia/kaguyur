@@ -172,7 +172,7 @@ class Member extends MY_Controller {
 		}
 
 		$where['status != '] = 'DELETED';
-		$result = $this->general_model->get($this->table_name,'',$where,'date_created desc')->result();
+		$result = $this->general_model->get($this->table_name,'',$where,'date_created asc')->result();
 
         $this->load->library('table');
 		header("Content-type: application/vnd-ms-excel");
