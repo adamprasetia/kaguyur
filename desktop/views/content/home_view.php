@@ -7,12 +7,12 @@
           <h1 class="font-bold uppercase">KAGUYUR</h1>
           <p class="mb-5"><b>K</b>OMUNIT<b>A</b>S <b>GU</b>PP<b>Y</b> CIANJ<b>UR</b></p>
         </div>
-
-        <img src="<?php echo config_item('assets'); ?>images/bukber.jpeg" alt="" />
+        <a href="<?php echo base_url('artikel/'.$article[0]->id.'/'.url_title($article[0]->title,'-','true')) ?>">
+        <img src="<?php echo base_url($article[0]->image) ?>" alt="" />
         <div class="py-5 md:py-10">
-          <p>Wadah untuk membangun kekompakan dan kebersamaan serta berbagi ilmu pengetahuan seputar ikan guppy</p>
-          <!-- <p><br><strong>Semangat memajukan dan mengenalkan ikan guppy di Cianjur! </strong></p> -->
+          <p><?php echo $article[0]->title ?></p>
         </div>
+        </a>
       </div>
       <div class="col-span-6 md:col-span-3">
         <div class="md:py-20">

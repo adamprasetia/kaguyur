@@ -11,8 +11,9 @@ class Home extends MY_Controller
 
 	public function index()
 	{	
+		$article = @json_decode(file_get_contents('./assets/json/article.json'));
 		$data['content'] = $this->load->view('content/home_view', [
-			
+			'article'=>$article
 		], true);
 		
 		$this->load->view('template_view', $data);
