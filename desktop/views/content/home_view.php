@@ -9,7 +9,7 @@
         </div>
         <a href="<?php echo base_url('artikel/'.$article[0]->id.'/'.url_title($article[0]->title,'-','true')) ?>">
         <img src="<?php echo base_url($article[0]->image) ?>" alt="" />
-        <div class="py-5 md:py-10">
+        <div>
           <p><?php echo $article[0]->title ?></p>
         </div>
         </a>
