@@ -96,7 +96,7 @@ function check_size(t)
     swal({
       title: 'Terjadi Kesalahan',
       type: 'error',
-      text: 'Ukuran file tidak boleh lebih dari 2 MB',
+      text: 'Ukuran file tidak boleh lebih dari 1 MB',
       timer: 2000,
       showConfirmButton: false
     });

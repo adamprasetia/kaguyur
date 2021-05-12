@@ -28,7 +28,7 @@ $('#input_file').change(function() {
                 if(str.fail>0){
                     title       = 'Something Wrong!';
                     tipe        = 'warning';
-                    message     = '<br />Check your Image! <br/> Only JPG & PNG type image allowed <br/> with Maximum size 2 MB';
+                    message     = '<br />Check your Image! <br/> Only JPG & PNG type image allowed <br/> with Maximum size 1 MB';
                 }
 
                 console.log(title, tipe, message, str.fail);

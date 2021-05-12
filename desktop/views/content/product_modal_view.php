@@ -23,7 +23,7 @@
             </div>
             <div class="mb-3">
               <label class="font-semibold block">Foto *</label>
-              <small>Pastikan ukuran file tidak lebih dari 2 MB</small>
+              <small>Pastikan ukuran file tidak lebih dari 1 MB</small>
               <input onchange="check_size(this)" type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full"/>
             </div>
             <div class="mb-3">
