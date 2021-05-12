@@ -96,11 +96,11 @@ class Photo extends MY_Controller
 	}
 	public function required_photo($foto){
 		$status = true;
-		if(empty($_FILES['photo']['name'])){
+		if(!isset($_FILES['photo']['name'])){
 			$this->form_validation->set_message('required_photo','Pas Foto harus diisi'); 
 			$status = false;
-		}elseif ($_FILES['photo']['size'] > 2048000) {
-			$this->form_validation->set_message('required_photo','Pastikan ukuran file Foto tidak lebih dari 2 MB');
+		}elseif ($_FILES['photo']['size'] > 1024000) {
+			$this->form_validation->set_message('required_photo','Pastikan ukuran file Foto tidak lebih dari 1 MB');
 			$status = false;
 		}
 		return $status;
@@ -108,8 +108,8 @@ class Photo extends MY_Controller
 	public function optional_photo($foto){
 		$status = true;
 		if(!empty($_FILES['photo']['name'])){
-			if ($_FILES['photo']['size'] > 2048000) {
-				$this->form_validation->set_message('required_photo','Pastikan ukuran file Foto tidak lebih dari 2 MB');
+			if ($_FILES['photo']['size'] > 1024000) {
+				$this->form_validation->set_message('required_photo','Pastikan ukuran file Foto tidak lebih dari 1 MB');
 				$status = false;
 			}
 		}

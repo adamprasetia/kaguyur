@@ -128,16 +128,16 @@ class Profile extends MY_Controller
 
 	public function required_photo($foto){
 		$status = true;
-		if (!empty($_FILES['photo']) && $_FILES['photo']['size'] > 2048000) {
-			$this->form_validation->set_message('required_photo','Pas Foto max 2 MB');
+		if (!empty($_FILES['photo']) && $_FILES['photo']['size'] > 1024000) {
+			$this->form_validation->set_message('required_photo','Pas Foto max 1 MB');
 			$status = false;
 		}
 		return $status;
     }
 	public function required_logo($foto){
 		$status = true;
-		if (!empty($_FILES['logo']) && $_FILES['logo']['size'] > 2048000) {
-			$this->form_validation->set_message('required_logo','Logo max 2 MB');
+		if (!empty($_FILES['logo']) && $_FILES['logo']['size'] > 1024000) {
+			$this->form_validation->set_message('required_logo','Logo max 1 MB');
 			$status = false;
 		}
 		return $status;

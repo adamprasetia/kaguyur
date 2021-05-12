@@ -113,8 +113,8 @@ class Anggota extends MY_Controller
 		if(empty($_FILES['photo']['name'])){
 			$this->form_validation->set_message('required_photo','Pas Foto harus diisi'); 
 			$status = false;
-		}elseif ($_FILES['photo']['size'] > 2048000) {
-			$this->form_validation->set_message('required_photo','Pas Foto max 2 MB');
+		}elseif ($_FILES['photo']['size'] > 1024000) {
+			$this->form_validation->set_message('required_photo','Pas Foto max 1 MB');
 			$status = false;
 		}
 		return $status;
@@ -124,8 +124,8 @@ class Anggota extends MY_Controller
 		if(empty($_FILES['logo']['name'])){
 			$this->form_validation->set_message('required_logo','Logo harus diisi'); 
 			$status = false;
-		}elseif ($_FILES['logo']['size'] > 2048000) {
-			$this->form_validation->set_message('required_logo','Logo max 2 MB');
+		}elseif ($_FILES['logo']['size'] > 1024000) {
+			$this->form_validation->set_message('required_logo','Logo max 1 MB');
 			$status = false;
 		}
 		return $status;

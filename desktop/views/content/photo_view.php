@@ -4,7 +4,7 @@
     <div class="mt-5">
         <button id="send-question" class="btn btn__black">UPLOAD PHOTO</button>
         <form style="display:none" id="form_data" method="post" action="<?php echo base_url('photo/add'); ?>">
-            <input onchange="check_size(this)" type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full" data-form="#form_data" data-redirect="<?php echo base_url('photo') ?>"/>
+            <input type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full" data-form="#form_data" data-redirect="<?php echo base_url('photo') ?>"/>
         </form>
     </div>
     <!-- <div class="grid grid-flow-row grid-rows-1 grid-cols-5 md:grid-cols-5 md:grid-rows-1 gap-4 my-5"> -->

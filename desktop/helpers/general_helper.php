@@ -91,14 +91,15 @@ function do_uploadFile($filename = '', $type)
     $config['upload_path'] = $upload_path;
     $config['file_name'] = 'ori_'.$filename;
     $config['allowed_types'] = 'jpeg|jpg|png|pdf';
-    $config['max_size'] = 2000000; // 2MB
+    $config['max_size'] = 1024000; // 2MB
     $config['overwrite'] = false;
 
     ci()->upload->initialize($config);
 
     if (!ci()->upload->do_upload())
     {
-        return FALSE;
+        echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>strip_tags(ci()->upload->display_errors())]);
+        exit;
     }else{
         crop($filename, $upload_path);
         return TRUE;

@@ -92,7 +92,7 @@ $(document).on('click', '.btn_action', function() {
 
 function check_size(t)
 {
-  if(t.files[0].size > 2048000){
+  if(t.files[0].size > 1024000){
     swal({
       title: 'Terjadi Kesalahan',
       type: 'error',
