@@ -24,6 +24,7 @@ class Artikel extends MY_Controller
     public function detail($id)
     {
 		$article = @json_decode(file_get_contents('./assets/json/article_'.$id.'.json'));
+		dd($article);
         if(empty($article)){
             show_404();
             exit;
