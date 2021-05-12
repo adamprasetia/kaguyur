@@ -39,12 +39,12 @@
             </div>
             <div class="mb-3">
               <label class="font-semibold block">Pas Foto</label>
-              <small>Pastikan ukuran file tidak lebih dari 200kb</small>
+              <small>Pastikan ukuran file tidak lebih dari 2 MB</small>
               <input onchange="check_size(this)" type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full"/>
             </div>
             <div class="mb-3">
               <label class="font-semibold block fp__">Logo</label>
-              <small>Pastikan ukuran file tidak lebih dari 200kb</small>
+              <small>Pastikan ukuran file tidak lebih dari 2 MB</small>
               <input onchange="check_size(this)" type="file" name="logo" id="logo" accept="image/jpeg, image/png" class="field w-full"/>
             </div>
 

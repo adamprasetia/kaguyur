@@ -92,11 +92,11 @@ $(document).on('click', '.btn_action', function() {
 
 function check_size(t)
 {
-  if(t.files[0].size > 204800){
+  if(t.files[0].size > 2048000){
     swal({
       title: 'Terjadi Kesalahan',
       type: 'error',
-      text: 'Ukuran file tidak boleh lebih dari 200kb',
+      text: 'Ukuran file tidak boleh lebih dari 2 MB',
       timer: 2000,
       showConfirmButton: false
     });

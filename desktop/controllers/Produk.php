@@ -71,6 +71,10 @@ class Produk extends MY_Controller
 
 		}else{			
 			$photo   = uploadFile('photo');
+			if(empty($photo['data'])){
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Upload photo produk gagal, silakan coba file foto yang lain']);
+				exit;
+			}
 			
 			$data = [
 				'name'=> htmlentities($this->input->post('name', true)),
@@ -100,8 +104,8 @@ class Produk extends MY_Controller
 		if(empty($_FILES['photo']['name'])){
 			$this->form_validation->set_message('required_photo','Pas Foto harus diisi'); 
 			$status = false;
-		}elseif ($_FILES['photo']['size'] > 204800) {
-			$this->form_validation->set_message('required_photo','Pastikan ukuran file Foto tidak lebih dari 200KB');
+		}elseif ($_FILES['photo']['size'] > 2048000) {
+			$this->form_validation->set_message('required_photo','Pastikan ukuran file Foto tidak lebih dari 2 MB');
 			$status = false;
 		}
 		return $status;
@@ -109,8 +113,8 @@ class Produk extends MY_Controller
 	public function optional_photo($foto){
 		$status = true;
 		if(!empty($_FILES['photo']['name'])){
-			if ($_FILES['photo']['size'] > 204800) {
-				$this->form_validation->set_message('required_photo','Pastikan ukuran file Foto tidak lebih dari 200KB');
+			if ($_FILES['photo']['size'] > 2048000) {
+				$this->form_validation->set_message('required_photo','Pastikan ukuran file Foto tidak lebih dari 2 MB');
 				$status = false;
 			}
 		}

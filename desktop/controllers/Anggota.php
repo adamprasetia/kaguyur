@@ -50,7 +50,15 @@ class Anggota extends MY_Controller
 
 		}else{			
 			$photo   = uploadFile('photo');
+			if(empty($photo['data'])){
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Upload pas foto gagal, silakan coba file foto yang lain']);
+				exit;
+			}
 			$logo   = uploadFile('logo');
+			if(empty($logo['data'])){
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Upload logo gagal, silakan coba file logo yang lain']);
+				exit;
+			}
 			
 			$data = [
 				'farm'=> htmlentities($this->input->post('farm', true)),
@@ -105,8 +113,8 @@ class Anggota extends MY_Controller
 		if(empty($_FILES['photo']['name'])){
 			$this->form_validation->set_message('required_photo','Pas Foto harus diisi'); 
 			$status = false;
-		}elseif ($_FILES['photo']['size'] > 204800) {
-			$this->form_validation->set_message('required_photo','Pas Foto max 200KB');
+		}elseif ($_FILES['photo']['size'] > 2048000) {
+			$this->form_validation->set_message('required_photo','Pas Foto max 2 MB');
 			$status = false;
 		}
 		return $status;
@@ -116,8 +124,8 @@ class Anggota extends MY_Controller
 		if(empty($_FILES['logo']['name'])){
 			$this->form_validation->set_message('required_logo','Logo harus diisi'); 
 			$status = false;
-		}elseif ($_FILES['logo']['size'] > 204800) {
-			$this->form_validation->set_message('required_logo','Logo max 200KB');
+		}elseif ($_FILES['logo']['size'] > 2048000) {
+			$this->form_validation->set_message('required_logo','Logo max 2 MB');
 			$status = false;
 		}
 		return $status;

@@ -79,12 +79,18 @@ class Profile extends MY_Controller
 				$photo   = uploadFile('photo');	
 				if(!empty($photo['data'])){
 					$data['photo'] = $photo['data'];
+				}else{
+					echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Upload pas foto Gagal, silakan coba foto yang lain']);
+					exit;
 				}
 			}
 			if(!empty($_FILES['logo']['name'])){
 				$logo   = uploadFile('logo');	
 				if(!empty($logo['data'])){
 					$data['logo'] = $logo['data'];
+				}else{
+					echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Upload logo Gagal, silakan coba foto yang lain']);
+					exit;
 				}
 			}
 			$data['date_updated'] = date('Y-m-d H:i:s');
@@ -122,16 +128,16 @@ class Profile extends MY_Controller
 
 	public function required_photo($foto){
 		$status = true;
-		if (!empty($_FILES['photo']) && $_FILES['photo']['size'] > 204800) {
-			$this->form_validation->set_message('required_photo','Pas Foto max 200KB');
+		if (!empty($_FILES['photo']) && $_FILES['photo']['size'] > 2048000) {
+			$this->form_validation->set_message('required_photo','Pas Foto max 2 MB');
 			$status = false;
 		}
 		return $status;
     }
 	public function required_logo($foto){
 		$status = true;
-		if (!empty($_FILES['logo']) && $_FILES['logo']['size'] > 204800) {
-			$this->form_validation->set_message('required_logo','Logo max 200KB');
+		if (!empty($_FILES['logo']) && $_FILES['logo']['size'] > 2048000) {
+			$this->form_validation->set_message('required_logo','Logo max 2 MB');
 			$status = false;
 		}
 		return $status;
