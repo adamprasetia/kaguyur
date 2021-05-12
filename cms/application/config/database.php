@@ -93,9 +93,12 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-if (in_array($_SERVER['HTTP_HOST'], ['adamprasetia.skom.id','kaguyur.com','www.kaguyur.com'])) {
+if (in_array($_SERVER['HTTP_HOST'], ['adamprasetia.skom.id','kaguyur.com','www.kaguyur.com','adamprasetia.com','www.adamprasetia.com'])) {
 	$db['default']['hostname'] = 'localhost';
-	$db['default']['username'] = 'umssahxz_kaguyur';
-	$db['default']['password'] = '{#urkHeSY;?o';
-	$db['default']['database'] = 'umssahxz_kaguyur';
+	// $db['default']['username'] = 'umssahxz_kaguyur';
+	// $db['default']['password'] = '{#urkHeSY;?o';
+	// $db['default']['database'] = 'umssahxz_kaguyur';
+	$db['default']['username'] = 'u1474150_kaguyur';
+	$db['default']['password'] = '&+-5SsjcyO)4';
+	$db['default']['database'] = 'u1474150_kaguyur';
 }
