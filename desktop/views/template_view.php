@@ -77,7 +77,7 @@
                 <a class="<?php echo $s1=='tentang'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('tentang'); ?>"> TENTANG </a>
               </li>
               <li>
-                <a class="<?php echo $s1=='anggota'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('anggota'); ?>"> ANGGOTA </a>
+                <!-- <a class="<?php echo $s1=='anggota'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('anggota'); ?>"> ANGGOTA </a> -->
               </li>
               <li>
                 <a class="<?php echo $s1=='artikel'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('artikel'); ?>"> ARTIKEL </a>
@@ -122,7 +122,7 @@
           </div>  
           <?php 
           $members = @json_decode(file_get_contents('./assets/json/member.json'));
-          if(!empty($members)){ ?>
+          if(!empty($memberss)){ ?>
           <div class="col-span-6 md:col-span-3">
             <p class="text-center md:text-left px-3">
               Konten ini merupakan kerja sama dari
