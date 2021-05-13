@@ -68,7 +68,7 @@
                     </div>
                   </div> 
                   </a>
-                <?php if($i==5) break;} ?>                                 
+                <?php $i++;if($i==5) break;} ?>                                 
               </div>
               <div class="mt-10 text-center">
                 <a href="<?php echo base_url('anggota') ?>" class="bg__yellow mt-2 text-black btn">ANGGOTA LAINNYA</a>
@@ -96,7 +96,7 @@
                       </div>
                     </div>
                   </a>
-                <?php if($i==5) break;endforeach ?>
+                <?php $i++;if($i==5) break;endforeach ?>
               </div>
               <div class="mt-10 text-center">
                 <a href="<?php echo base_url('produk') ?>" class="btn btn__black mt-2">PRODUK LAINNYA</a>
