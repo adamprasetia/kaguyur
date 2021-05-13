@@ -2,9 +2,14 @@
   <!-- section -->
   <div class="container px-5 mx-auto">
     <h1 class="font-bold uppercase"><?php echo $product->name ?></h1>    
-    <a href="<?php echo base_url('anggota/detail/'.$product->created_by) ?>"><img class="w-10 relative" src="<?php echo gen_thumb($product->logo, '100x100') ?>" alt="<?php echo $product->farm ?>"></a>
+    <div>
+    <a href="<?php echo base_url('anggota/detail/'.$product->created_by) ?>">
+        <img class="inline w-10 relative" src="<?php echo gen_thumb($product->logo, '100x100') ?>" alt="<?php echo $product->farm ?>">
+        <span style="line-height: 40px;"><?php echo $product->farm ?></span>
+    </a>
+    </div>
 
-    <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
+    <div class="grid grid-flow-row grid-rows-1 grid-cols-1 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
         <?php 
             if(!empty($product->photo)) { 
                 $photo = json_decode($product->photo);
@@ -12,7 +17,7 @@
         <?php $i=1;foreach ($photo as $row) { ?>        
             <div class="tns-item tns-slide-active">
                 <div class="slider__etalase__img etalase__img">
-                    <img class="imgfillImg" src="<?php echo gen_thumb($row,'300x300') ?>">
+                    <img class="imgfillImg" src="<?php echo base_url($row) ?>">
                 </div>
             </div>
         <?php $i++;}} ?>

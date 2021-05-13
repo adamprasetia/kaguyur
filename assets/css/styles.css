@@ -965,7 +965,8 @@ div:focus {
 }
 @media (max-width: 768px) {
     .etalase__img {
-        height: 100px;
+        /* height: 100px; */
+        height: auto;
     }
 }
 .footer ul li {
