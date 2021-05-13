@@ -54,12 +54,12 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
                 </div>
                 <?php if(!empty($product)){ ?>
                 <div class="grid grid-cols-3 grid-flow-col gap-4 p-5 photoproduk">
-                <?php $i=1;foreach ($product as $row_prod) { ?>
+                <?php $j=1;foreach ($product as $row_prod) { ?>
                 <?php $photo_produk = json_decode($row_prod->photo); ?>
                   <div>
                     <a href="<?php echo base_url('produk/detail/'.$row_prod->id) ?>"><img class="imgfillImg" src="<?php echo gen_thumb($photo_produk[0],'100x100') ?>" alt=""></a>
                   </div>                  
-                <?php if($i==3) break;$i++;} ?>
+                <?php if($j==3) break;$j++;} ?>
                 </div>
                 <?php }else{ ?>
                   <div class="text-center px-5">
