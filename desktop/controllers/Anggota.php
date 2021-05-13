@@ -11,6 +11,7 @@ class Anggota extends MY_Controller
 	public function index()
 	{	
 		$member = @json_decode(file_get_contents('./assets/json/member.json'));
+		$member = gen_random($member);
 		$data['content'] = $this->load->view('content/anggota_view', [
 			'member'=>$member
 		], true);
