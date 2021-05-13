@@ -2,14 +2,18 @@
   <!-- section -->
   <div class="container px-5 mx-auto">
     <!-- <h1 class="font-bold uppercase"><?php echo $member->name ?></h1>     -->
-    <div>
+    <div class="grid grid-cols-8 gap-4">
+      <div class="col-span-2 md:col-span-1">
         <img src="<?php echo gen_thumb($member->logo,'100x100') ?>" alt="<?php echo htmlentities($member->farm) ?>">
-        <p><?php echo $member->farm ?></p>
-        <p><?php echo $member->address ?></p>
-        <p><?php echo $member->phone ?></p>
-        <p><strong>Strain</strong></p>
-        <p><?php echo $member->strain ?></p>
+      </div>
+      <div class="col-span-6">
+        <span><strong><?php echo $member->farm ?></strong></span><br>
+        <span><?php echo $member->address ?></span><br>
+        <span><?php echo $member->phone ?></span>
+      </div>
     </div>
+    <p><strong>Strain</strong></p>
+    <p><?php echo $member->strain ?></p>
     <?php if(!empty($product)){ ?>
     <p><strong>Produk</strong></p>
     <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">

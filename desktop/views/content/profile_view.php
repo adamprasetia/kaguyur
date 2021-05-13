@@ -1,15 +1,18 @@
 <div class="section py-20 bg-cover bg-no-repeat mt-10">
   <!-- section -->
   <div class="container px-5 mx-auto">
-    <h1 class="font-bold uppercase"><?php echo $profile->name ?></h1>
-    <img class="w-32" src="<?php echo base_url($profile->logo) ?>" alt="" />
-    <p><?php echo $profile->farm ?></p>
-    <p><?php echo $profile->address ?></p>
-    <p><?php echo $profile->phone ?></p>
-    <p><br><strong>Strain</strong></p>
-    <p><?php echo $profile->strain ?></p>
-    <div class="flex mt-10">
-      <a href="<?php echo base_url('profile/edit') ?>" class="btn btn__black mr-2">EDIT PROFIL</a>
+    <div class="grid grid-cols-8 gap-4">
+      <div class="col-span-2 md:col-span-1">
+        <img src="<?php echo gen_thumb($profile->logo,'100x100') ?>" alt="<?php echo htmlentities($profile->farm) ?>">
+      </div>
+      <div class="col-span-6">
+        <span><strong><?php echo $profile->farm ?></strong></span><br>
+        <span><?php echo $profile->address ?></span><br>
+        <span><?php echo $profile->phone ?></span><br>
+      </div>
+    </div>
+    <div class="flex mt-5">
+    <a href="<?php echo base_url('profile/edit') ?>" class="btn btn__black">EDIT PROFIL</a>
     </div>
 
     <?php if(!empty($product)){ ?>

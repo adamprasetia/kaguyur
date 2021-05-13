@@ -131,7 +131,7 @@
             <ul class="flex flex-wrap content-start">
               <?php foreach ($members as $row) { ?>
               <li>
-                <a href="<?php echo base_url('anggota/detail/'.$row->id) ?>">
+                <a href="<?php echo base_url('anggota/detail/'.$row->id.'/'.url_title($row->farm,'-',true)) ?>">
                   <img src="<?php echo gen_thumb($row->logo,'100x100'); ?>" alt="<?php echo htmlentities($row->farm) ?>" title="<?php echo htmlentities($row->farm) ?>" />
                 </a>
               </li>
