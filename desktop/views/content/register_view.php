@@ -39,5 +39,5 @@
           <a href="<?php echo base_url('login/logout') ?>" class="btn btn__black mr-2">KELUAR</a>
         </div>
     </div>             
-</div>
+  </div>
 <?php endif ?>

@@ -16,8 +16,7 @@
         </a>
         
       </div>
-      <div class="col-span-6 md:col-span-3">
-        
+      <div class="col-span-6 md:col-span-3 mb-5">        
           <?php $this->load->view('content/register_view') ?>
 
           <?php if(check_verified(true)): ?>
@@ -39,7 +38,6 @@
             <a href="<?php echo base_url('forum/add') ?>" class="btn btn__black mr-2">KIRIM PERTANYAAN</a>
           </div>
           <?php endif ?>
-        
       </div>
     </div>
   </div>
