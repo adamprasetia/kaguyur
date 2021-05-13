@@ -15,7 +15,7 @@
               <p>Mari bergabung untuk memajukan dunia perguppian di Kabupaten Cianjur</p>
             </div>
         <div class="flex mt-10">
-            <a href="javascript:void(0);" class="btn btn__black mr-2" onclick="MicroModal.show('modal-login');">MASUK</a>
+            <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-login">MASUK</a>
             <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-register">DAFTAR</a>
         </div>
         <div class="flex mt-5">
