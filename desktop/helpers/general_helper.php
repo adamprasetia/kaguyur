@@ -450,3 +450,18 @@ function generate_json_article($id=0)
         create_json('article.json', json_encode($data));
     }
 }
+function gen_random($data, $count)
+{
+    $numbers = range(0, count($data)-1);
+    shuffle($numbers);
+    $return = [];
+    $i=1;
+    foreach ($numbers as $row) {
+        array_push($return, $data[$row]);
+        if($i==$count){
+            break;
+        }
+        $i++;
+    }
+    return $return;
+}

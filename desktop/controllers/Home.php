@@ -15,7 +15,7 @@ class Home extends MY_Controller
 		$forum = @json_decode(file_get_contents('./assets/json/forum.json'));
 		$product = @json_decode(file_get_contents('./assets/json/product.json'));
 		$member = @json_decode(file_get_contents('./assets/json/member.json'));
-		$member = array_rand($member, 5);
+		$member = gen_random($member, 5);
 		$data['content'] = $this->load->view('content/home_view', [
 			'article'=>$article,
 			'forum'=>$forum,
