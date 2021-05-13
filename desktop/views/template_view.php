@@ -92,9 +92,10 @@
                 <a class="<?php echo $s1=='produk'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('produk'); ?>"> PRODUK </a>
               </li>
               <?php if(!empty($this->user_login['name'])){ ?>
-                <li>
+                <li>                                  
                   <a class="<?php echo $s1=='profile'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('profile') ?>"> 
-                  <?php echo $this->user_login['name'] ?>
+                    <img style="margin-top:-5px" width="30px" class="inline" src="<?php echo gen_thumb($this->user_login['logo'],'100x100') ?>" alt="">
+                    <span><?php echo $this->user_login['name'] ?></span>
                   </a>
                 </li>
               <?php }else{ ?>  
