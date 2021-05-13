@@ -19,7 +19,7 @@
     <meta property="og:title" content="<?php echo isset($meta['title']) ? $meta['title'] : 'Komunitas Guppy Cianjur (KAGUYUR) Offical Website'; ?>" />
     <meta property="og:type" content="<?php echo isset($meta['type']) ? $meta['type'] : ''; ?>" />
     <meta property="og:url" content="<?php echo isset($meta['url']) ? $meta['url'] : current_url(); ?>" />
-    <meta property="og:image" content="<?php echo isset($meta['image'])?$meta['image']:config_item('assets'); ?>images/logo.jpg" />
+    <meta property="og:image" content="<?php echo isset($meta['image'])?$meta['image']:config_item('assets').'images/logo.jpg'; ?>" />
     <meta property="og:site_name" content="-" />
     <meta property="og:description" content="<?php echo isset($meta['description'])?$meta['description']:'Wadah untuk membangun kekompakan dan kebersamaan serta berbagi ilmu pengetahuan seputar ikan guppy' ?>" />
 
@@ -29,7 +29,7 @@
     <meta name="twitter:creator" content="@kaguyur">
     <meta name="twitter:title" content="<?php echo isset($meta['title'])?$meta['title']:'Komunitas Guppy Cianjur (KAGUYUR) Offical Website' ?>" />
     <meta name="twitter:description" content="<?php echo isset($meta['description'])?$meta['description']:'Wadah untuk membangun kekompakan dan kebersamaan serta berbagi ilmu pengetahuan seputar ikan guppy' ?>" />
-    <meta name="twitter:image" content="<?php echo isset($meta['image'])?$meta['image']:config_item('assets'); ?>images/logo2.jpg" />
+    <meta name="twitter:image" content="<?php echo isset($meta['image'])?$meta['image']:config_item('assets').'images/logo2.jpg'; ?>" />
     <!-- E:tweeter card -->
 
     <link rel="apple-touch-icon" href="<?php echo config_item('assets'); ?>images/favicon.ico"/>

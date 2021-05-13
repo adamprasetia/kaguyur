@@ -142,7 +142,9 @@ class Anggota extends MY_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> $member->farm.' | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> $member->farm.' | Komunitas Guppy Cianjur (KAGUYUR)',
+			'image'=> base_url($member->logo),
+			'description'=> $member->address
 		];
 
 		
