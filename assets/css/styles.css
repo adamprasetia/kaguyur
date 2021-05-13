@@ -525,6 +525,9 @@ div:focus {
 .bg__yellow {
     background-color: #cea84d;
 }
+.bg__white {
+    background-color: #fff;
+}
 .bg__blue {
     background-color: #03324c;
 }
