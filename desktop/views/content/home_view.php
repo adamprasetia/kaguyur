@@ -71,7 +71,7 @@
                 <?php $i++;if($i==5) break;} ?>                                 
               </div>
               <div class="mt-10 text-center">
-                <a href="<?php echo base_url('anggota') ?>" class="bg__yellow mt-2 text-black btn">ANGGOTA LAINNYA</a>
+                <a href="<?php echo base_url('anggota') ?>" style="font-weight:500" class="bg__yellow mt-2 text-black btn">ANGGOTA LAINNYA</a>
               </div>
             </div>
           </div>

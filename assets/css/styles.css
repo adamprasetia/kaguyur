@@ -446,6 +446,12 @@ div:focus {
 .tns-nav > .tns-nav-active {
     background: #000;
 }
+#slider-jagoan-ow > .tns-nav > .tns-nav-active {
+    background: #fff;
+}
+#slider-jagoan-ow > .tns-nav > [aria-controls] {
+    border: 1px solid #cea84d;
+}
 .tns-nav {
     position: absolute;
     bottom: -5px;
