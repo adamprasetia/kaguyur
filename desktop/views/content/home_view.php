@@ -82,11 +82,13 @@
             <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam aliquam repellendus, temporibus soluta deserunt placeat nobis, nostrum voluptates quaerat id quos velit at molestias perferendis! Fugiat enim maiores quo doloremque.</p> -->
             <div class="my-5">
               <div class="slider slider__etalase pb-5" id="slider-etalase">                
-                <?php $i=1;foreach ($product as $row) : ?>
+                <?php $i=1;foreach ($product as $row) : 
+                $photo_prod = json_decode($row->photo);
+                  ?>
                   <a href="<?php echo base_url('produk/detail/'.$row->id.'/'.url_title($row->id,'-',true)) ?>">
                     <div>
                       <div class="slider__etalase__img">
-                        <img class="imgfillImg" src="<?php echo gen_thumb($row->photo,'100x100') ?>" alt="<?php echo htmlentities($row->name) ?>" />
+                        <img class="imgfillImg" src="<?php echo gen_thumb($photo_prod[0],'100x100') ?>" alt="<?php echo htmlentities($row->name) ?>" />
                       </div>
                       <div class="mt-2">
                           <p class="font-bold text__wrap2 mb-0"><?php echo htmlentities($row->name) ?></p>
