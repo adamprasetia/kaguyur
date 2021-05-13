@@ -1,0 +1,1 @@
+<script type="text/javascript" src="<?php echo config_item('assets'); ?>js/tiny-slider.js"></script>

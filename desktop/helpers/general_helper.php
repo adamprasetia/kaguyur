@@ -417,3 +417,36 @@ function check_owner($id, $status=false)
     }
     return true;
 }
+function generate_json_article($id=0)
+{
+    ci()->load->model('global_model');
+    if(!empty($id)){
+        $data = ci()->global_model->get([
+            'select'=>'a.*, b.name as author',
+            'table'=>'article a',
+            'where'=>[
+                'a.id'=>$id
+            ],
+            'join'=>[
+                ['member b','a.created_by = b.id']
+            ]
+        ])->row_array();
+        create_json('article_'.$id.'.json', json_encode($data));	
+    }else{
+        $data = ci()->global_model->get([
+            'select'=>'a.id,a.title,a.description,a.image,a.published_date, b.name as author',
+            'table'=>'article a',
+            'where'=>[
+                'a.status'=>'PUBLISH'
+            ],
+            'limit'=>20,
+            'join'=>[
+                ['member b','a.created_by = b.id']
+            ],
+            'order'=>[
+                'a.published_date'=>'desc'
+            ]
+        ])->result_array();
+        create_json('article.json', json_encode($data));
+    }
+}

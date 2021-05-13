@@ -90,18 +90,45 @@ class Artikel extends MY_Controller
 		$this->load->view('template_view', $data);
 	}
 
-	public function do_add()
+	private function _set_rules()
 	{
-		check_verified();
-		
-		$this->load->model('general_model');
-		$this->load->library(['form_validation', 'upload']);
+		$this->load->library('form_validation');
 		$this->form_validation->set_rules('title', 'Judul', 'trim|required');
 		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
 		$this->form_validation->set_rules('content', 'Konten', 'trim|required');
 		$this->form_validation->set_rules('status', 'Status', 'trim|required');
 		$this->form_validation->set_message('required', '{field} harus diisi.');
+	}
+	private function _set_data()
+	{
+		$content = $this->input->post('content', true);
+			
+		$data = [
+			'title'=> $this->input->post('title', true),
+			'description'=> $this->input->post('description', true),
+			'content'=> $content,
+			'status'=> $this->input->post('status', true),
+		];
 
+		// cari foto
+		if(preg_match_all('/<img[^>]+>/i',$content, $images))
+		{
+			if(isset($images[0][0]) && $images[0][0]){
+				preg_match( '/src="([^"]*)"/i', $images[0][0], $src );
+				$srchasil =  (isset($src[1])) ? $src[1] : "";
+				$data['image'] = substr($srchasil, strpos($srchasil, 'assets/'));
+			}
+		}
+		
+
+		return $data;
+	}
+	public function do_add()
+	{
+		check_verified();
+		
+		$this->load->model('general_model');
+		$this->_set_rules();
 		if ($this->form_validation->run()===FALSE ){
 			if(validation_errors())
 			{
@@ -109,33 +136,22 @@ class Artikel extends MY_Controller
 			}
 
 		}else{		
-			$content = $this->input->post('content', true);
-			// cari foto
-			if(preg_match_all('/<img[^>]+>/i',$content, $images))
-			{
-				if(isset($images[0][0]) && $images[0][0]){
-					preg_match( '/src="([^"]*)"/i', $images[0][0], $src );
-					$srchasil =  (isset($src[1])) ? $src[1] : "";
-					$image = substr($srchasil, strpos($srchasil, 'assets/'));
-				}
-			}
-				
-			$data = [
-				'title'=> $this->input->post('title', true),
-				'description'=> $this->input->post('description', true),
-				'content'=> $content,
-				'image'=> $image,
-				'status'=> $this->input->post('status', true),
-			];
+			$data = $this->_set_data();
 			$data['created_date'] = date('Y-m-d H:i:s');
 			$data['created_by'] = $this->user_login['id'];
+			if($data['status']=='PUBLISH'){
+                $data['published_date'] 	= date('Y-m-d H:i:s');    
+                $data['published_by'] 	= $this->user_login['id'];
+            }
 
 			$add = $this->general_model->add('article', $data);
 			if($add)
 			{	
-				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Tambah artikel berhasil']);
+				generate_json_article($add);
+				generate_json_article();
+				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Artikel berhasil ditambah']);
 			}else{
-				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Tambah artikel Gagal']);
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Artikel Gagal ditambah']);
 			}
 		}		
 	}
@@ -155,12 +171,7 @@ class Artikel extends MY_Controller
 		check_owner($article->created_by);
 
 		$this->load->model('general_model');
-		$this->load->library(['form_validation', 'upload']);
-		$this->form_validation->set_rules('title', 'Judul', 'trim|required');
-		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
-		$this->form_validation->set_rules('content', 'Konten', 'trim|required');
-		$this->form_validation->set_rules('status', 'Status', 'trim|required');
-		$this->form_validation->set_message('required', '{field} harus diisi.');
+		$this->_set_rules();
 
 		if ($this->form_validation->run()===FALSE ){
 			if(validation_errors())
@@ -168,25 +179,8 @@ class Artikel extends MY_Controller
 				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>strip_tags(validation_errors())]);
 			}
 
-		}else{						
-			$content = $this->input->post('content', true);
-			// cari foto
-			if(preg_match_all('/<img[^>]+>/i',$content, $images))
-			{
-				if(isset($images[0][0]) && $images[0][0]){
-					preg_match( '/src="([^"]*)"/i', $images[0][0], $src );
-					$srchasil =  (isset($src[1])) ? $src[1] : "";
-					$image = substr($srchasil, strpos($srchasil, 'assets/'));
-				}
-			}
-
-			$data = [
-				'title'=> $this->input->post('title', true),
-				'description'=> $this->input->post('description', true),
-				'content'=> $content,
-				'image'=> $image,
-				'status'=> $this->input->post('status', true),
-			];
+		}else{		
+			$data = $this->_set_data();
 			$data['updated_by'] = $this->user_login['id'];
 			$data['updated_date'] = date('Y-m-d H:i:s');
 
@@ -198,9 +192,11 @@ class Artikel extends MY_Controller
 			$add = $this->general_model->edit('article', $id, $data);
 			if($add)
 			{	
-				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Edit artikel berhasil']);
+				generate_json_article($id);
+				generate_json_article();
+				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Artikel berhasil diupdate']);
 			}else{
-				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Edit artikel Gagal']);
+				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Artikel gagal diupdate']);
 			}
 		}		
 	}

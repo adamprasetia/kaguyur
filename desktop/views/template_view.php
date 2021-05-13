@@ -36,8 +36,8 @@
     <link rel="shortcut icon" href="<?php echo config_item('assets'); ?>images/favicon.ico"/>
 
     <!-- css -->
-    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/tailwind.css?v=2" />
-    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/styles.css?v=5" />
+    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/tailwind.css?v=3" />
+    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/styles.css?v=6" />
     <link rel="stylesheet" href="<?php echo config_item('assets').'plugins/sweetalert/css/sweetalert.css'; ?>">
 
     <!-- font -->
@@ -77,7 +77,7 @@
                 <a class="<?php echo $s1=='tentang'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('tentang'); ?>"> TENTANG </a>
               </li>
               <li>
-                <!-- <a class="<?php echo $s1=='anggota'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('anggota'); ?>"> ANGGOTA </a> -->
+                <a class="<?php echo $s1=='anggota'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('anggota'); ?>"> ANGGOTA </a>
               </li>
               <li>
                 <a class="<?php echo $s1=='artikel'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('artikel'); ?>"> ARTIKEL </a>
@@ -122,7 +122,7 @@
           </div>  
           <?php 
           $members = @json_decode(file_get_contents('./assets/json/member.json'));
-          if(!empty($memberss)){ ?>
+          if(!empty($members)){ ?>
           <div class="col-span-6 md:col-span-3">
             <p class="text-center md:text-left px-3">
               Konten ini merupakan kerja sama dari

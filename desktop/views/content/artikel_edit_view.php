@@ -24,7 +24,7 @@
                 </select>
             </div>
             <div class="flex items-center justify-center my-5">
-                <button type="button" class="btn btn__black btn_action" id="btn_simpan" data-idle="SIMPAN" data-process="Saving..." data-form="#form_data" data-redirect="<?php echo current_url(); ?>">SIMPAN</button>
+                <button type="button" class="btn btn__black btn_action" id="btn_simpan" data-idle="SIMPAN" data-process="Saving..." data-form="#form_data" data-redirect="<?php echo base_url('artikel/list') ?>">SIMPAN</button>
                 &nbsp;
                 <a href="<?php echo base_url('artikel/list') ?>" class="btn btn__black">KEMBALI</a>
             </div>
