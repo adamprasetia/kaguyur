@@ -77,9 +77,18 @@ class Login extends CI_Controller
 			redirect('');
 			exit;
 		}
+		$member = @json_decode(file_get_contents('./assets/json/member_'.$id.'.json'));
+		if(empty($member)){
+			$this->load->model('global_model');
+			$member = $this->global_model->get([
+				'table'=>'member',
+				'id'=>$id
+			])->row();
+		}
 		$data['content'] = $this->load->view('content/reset_password_view', [
 			'id'=>$id,
-			'hash'=>$hash
+			'hash'=>$hash,
+			'member'=>$member
 		], true);
 
 		$data['meta'] = [

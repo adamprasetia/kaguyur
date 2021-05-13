@@ -25,6 +25,7 @@
                         <th>Alamat</th>
                         <th>No Telepon/Wa</th>
                         <th>Status</th>
+                        <th>Reset Password</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,7 @@
                         <td><?php echo $value->address; ?></td>
                         <td><?php echo $value->phone; ?></td>
                         <td><?php echo $value->status; ?></td>
+                        <td><a href="<?php echo config_item('base_domain').'login/reset_password/'.$value->id.'/'.md5($value->id.'hs^35shKjsdh()'); ?>">Reset Password</a></td>
                     </tr>
                       <?php $no++; } ?>
                 </tbody>

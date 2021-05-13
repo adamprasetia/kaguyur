@@ -5,6 +5,11 @@
     <div class="text-sm">
         <form method="post" id="form_data" action="<?php echo base_url('login/do_reset_password/'.$id.'/'.$hash) ?>">
             <div class="mb-3">
+              <label class="font-semibold block">Nama : <?php echo $member->name ?></label>
+              <label class="font-semibold block">Nama Farm : <?php echo $member->farm ?></label>
+              <label class="font-semibold block">Email : <?php echo $member->email ?></label>
+            </div>
+            <div class="mb-3">
               <label class="font-semibold block">Password Baru</label>
               <input class="field w-full" type="password" name="password"/>
             </div>
