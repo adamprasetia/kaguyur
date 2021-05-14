@@ -447,7 +447,7 @@ div:focus {
     background: #000;
 }
 #slider-jagoan-ow > .tns-nav > .tns-nav-active {
-    background: #fff;
+    background: #cea84d;
 }
 #slider-jagoan-ow > .tns-nav > [aria-controls] {
     border: 1px solid #cea84d;

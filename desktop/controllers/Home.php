@@ -15,12 +15,14 @@ class Home extends MY_Controller
 		$forum = @json_decode(file_get_contents('./assets/json/forum.json'));
 		$product = @json_decode(file_get_contents('./assets/json/product.json'));
 		$member = @json_decode(file_get_contents('./assets/json/member.json'));
+		$infografik = @json_decode(file_get_contents('./assets/json/infografik.json'));
 		$member = gen_random($member, 5);
 		$data['content'] = $this->load->view('content/home_view', [
 			'article'=>$article,
 			'forum'=>$forum,
 			'product'=>$product,
 			'member'=>$member,
+			'infografik'=>$infografik,
 		], true);
 		
 		$data['script'] = $this->load->view('script/home','',true);

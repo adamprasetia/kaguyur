@@ -21,22 +21,12 @@
 
           <?php if(check_verified(true)): ?>
           <div class="relative">
-              <p>Punya ikan guppy bagus ko di pelihara sendirian..., Ayo promosikan ikan guppy kamu</p>
-              <div class="flex">
-                <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-product">TAMBAH PRODUK</a>
-              </div>
               <p>Ayo bagikan pengetahuan yang kamu miliki seputar budidaya ikan guppy</p>
               <div class="flex">
                 <a href="<?php echo base_url('artikel/add') ?>" class="btn btn__black mr-2">TULIS ARTIKEL</a>
               </div>
           </div>    
           <?php $this->load->view('content/product_modal_view') ?>         
-          <?php endif ?>
-          <?php if(check_login(true)): ?>
-          <p>Punya pertanyaan seputar budiaya ikan guppy ?</p>
-          <div class="flex">
-            <a href="<?php echo base_url('forum/add') ?>" class="btn btn__black mr-2">KIRIM PERTANYAAN</a>
-          </div>
           <?php endif ?>
       </div>
     </div>
@@ -101,7 +91,10 @@
                 <?php $i++;if($i==5) break;endforeach ?>
               </div>
               <div class="mt-10 text-center">
-                <a href="<?php echo base_url('produk') ?>" class="btn btn__black mt-2">PRODUK LAINNYA</a>
+                <?php if(check_verified(true)): ?>
+                <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-product"><span style="height: 45px;display: inline-block;">TAMBAH&nbsp;PRODUK MU</span></a>
+                <?php endif ?>
+                <a href="<?php echo base_url('produk') ?>" class="btn btn__black mt-10">PRODUK&nbsp;LAINNYA</a>
               </div>
             </div>
           </div>
@@ -113,7 +106,71 @@
   <div class="section pt-5 pb-10 md:py-10">
   <div class="container px-5 mx-auto">
     <div class="grid grid-cols-6 gap-10">
-      <?php if(!empty($article)): ?>
+    <?php if(check_login(true)):?>
+      <div class="col-span-6 md:col-span-3">
+        <div>
+          <h4 class="text-md font-bold">KIRIM PERTANYAAN</h4>
+          <div class="mt-5">
+            <p>Punya pertanyaan seputar budiaya ikan guppy ?</p>
+            <div class="my-5">
+            <form method="post" id="form_data" action="<?php echo base_url('forum/do_add') ?>">
+              <div class="mb-3">
+                <label class="font-semibold block">Pertanyaan</label>
+                <textarea class="field w-full" name="title" cols="30" rows="5"><?php echo isset($data->title)?$data->title:''; ?></textarea>
+              </div>
+              <div class="flex items-center justify-center my-5">
+                  <button type="button" class="btn btn__black btn_action" id="btn_simpan" data-idle="KIRIM" data-process="Proses Pengiriman..." data-form="#form_data" data-redirect="<?php echo current_url() ?>">KIRIM</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php endif ?>
+      <?php if (!empty($infografik)): ?>
+      <div class="col-span-6 md:col-span-3">
+        <div class="">
+          <h4 class="text-md font-bold">INFOGRAFIK</h4>
+          <div class="mt-5">
+            <div class="slider slider__square pb-5" id="slider-infografik">
+                <?php $i=1;foreach ($infografik as $row) { ?>                  
+                <div data-micromodal-trigger="modal-infografik-<?php echo $row->id ?>">
+                    <div class="slider__square__img">
+                        <img class="imgfillImg" src="<?php echo gen_thumb($row->image,'100x100') ?>" alt="<?php echo htmlentities($row->title) ?>"/>
+                    </div>
+                </div>
+                <?php $i++;if($i==5)break;} ?>
+            </div>
+          </div>
+          <a href="<?php echo base_url('infografik') ?>" class="text-sm font-semibold mt-5 block text-right">INFOGRAFIK LAINNYA</a>
+        </div>
+      </div>
+      <?php endif ?>
+    </div>
+  </div>
+</div>
+<!-- [modal-infografik] -->
+<?php $i=1;foreach ($infografik as $row) { ?>
+<div class="modal modal__dark micromodal-slide" id="modal-infografik-<?php echo $row->id ?>" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container modal__container__fix" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+            <header class="modal__header">
+                <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+            </header>
+            <main class="modal__content" id="modal-1-content">
+                <img src="<?php echo base_url($row->image) ?>" alt=""/>
+            </main>
+            <footer class="modal__footer"></footer>
+        </div>
+    </div>
+</div>
+<?php $i++;if($i==5)break;} ?>
+
+<!-- section -->
+<div class="section pt-0 pb-10 md:py-10">
+  <div class="container px-5 mx-auto">
+    <div class="grid grid-cols-6 gap-10">
+    <?php if(!empty($article)): ?>
       <div class="col-span-6 md:col-span-3">
         <h4 class="text-md font-bold">ARTIKEL</h4>
         <div class="mt-5">
@@ -137,6 +194,7 @@
         </div>
       </div>
       <?php endif ?>
+
       <?php if(!empty($forum)): ?>
       <div class="col-span-6 md:col-span-3">
         <h4 class="text-md font-bold">PERTANYAAN</h4>
@@ -157,6 +215,7 @@
         </div>
       </div>
       <?php endif ?>
+
     </div>
   </div>
 </div>
