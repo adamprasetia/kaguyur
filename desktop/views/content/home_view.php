@@ -1,23 +1,24 @@
 <div class="section pt-20 bg-cover bg-no-repeat mt-10">
   <!-- section -->
   <div class="container px-5 mx-auto">
-    <!-- <div>
+    <div class="mb-2">
       <h1 class="font-bold uppercase">KAGUYUR</h1>
       <b>K</b>OMUNIT<b>A</b>S <b>GU</b>PP<b>Y</b> CIANJ<b>UR</b>
-    </div> -->
-
+    </div>
     <div class="grid grid-cols-6 gap-6">
+      <?php if(!empty($article_pin)): ?>
       <div class="col-span-6 md:col-span-3 md:pr-10">
         <div class="headline mb-5">
-        <a href="<?php echo base_url('artikel/'.$article[0]->id.'/'.url_title($article[0]->title,'-','true')) ?>">
-        <img src="<?php echo base_url($article[0]->image) ?>" alt="" />
-        <div class="headline-box">
-          <?php echo $article[0]->title ?>
-          <div><small><?php echo format_dmy($article[0]->published_date) ?></small></div>
-        </div>
-        </a>
-        </div>        
+          <a href="<?php echo base_url('artikel/'.$article_pin[0]->id.'/'.url_title($article_pin[0]->title,'-','true')) ?>">
+            <img src="<?php echo base_url($article_pin[0]->image) ?>" alt="" />
+            <div class="headline-box">
+              <?php echo $article_pin[0]->title ?>
+              <div><small><?php echo format_dmy($article_pin[0]->published_date) ?></small></div>
+            </div>
+          </a>
+        </div>    
       </div>
+      <?php endif ?>    
       <div class="col-span-6 md:col-span-3 mb-5">        
           <?php $this->load->view('content/register_view') ?>
 

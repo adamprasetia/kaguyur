@@ -11,6 +11,7 @@ class Home extends MY_Controller
 
 	public function index()
 	{	
+		$article_pin = @json_decode(file_get_contents('./assets/json/article_pin.json'));
 		$article = @json_decode(file_get_contents('./assets/json/article.json'));
 		$forum = @json_decode(file_get_contents('./assets/json/forum.json'));
 		$product = @json_decode(file_get_contents('./assets/json/product.json'));
@@ -18,6 +19,7 @@ class Home extends MY_Controller
 		$infografik = @json_decode(file_get_contents('./assets/json/infografik.json'));
 		$member = gen_random($member, 5);
 		$data['content'] = $this->load->view('content/home_view', [
+			'article_pin'=>$article_pin,
 			'article'=>$article,
 			'forum'=>$forum,
 			'product'=>$product,

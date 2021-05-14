@@ -16,6 +16,10 @@
         <div class="form-group">
             <textarea id="content" name="content" class="form-control" rows="100"><?php echo isset($data->content)?$data->content:'' ?></textarea>
         </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="pin" name="pin" value="1" <?php echo isset($data->pin)?'checked':'' ?>>
+            <label class="form-check-label" for="pin">Pin</label>
+        </div>
         <div class="form-group">
         <label>Status *</label>
         <select name="status" id="status" class="form-control">

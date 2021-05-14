@@ -43,24 +43,26 @@ class Article extends MY_Controller {
 		$description 	= $this->input->post('description');
 		$content 		= $this->input->post('content');
 		$status 		= $this->input->post('status');
+		$pin 			= $this->input->post('pin');
 		
-		// cari foto
-		if(preg_match_all('/<img[^>]+>/i',$content, $images))
-        {
-            if(isset($images[0][0]) && $images[0][0]){
-				preg_match( '/src="([^"]*)"/i', $images[0][0], $src );
-				$srchasil =  (isset($src[1])) ? $src[1] : "";
-				$photo = substr($srchasil, strpos($srchasil, 'assets/'));
-            }
-        }
 		$data = array(
 			'title' => $title,
 			'description' => $description,
 			'content' => $content,
-			'image' => $photo,
 			'status' => $status,
+			'pin' => $pin,
 		);
 
+		// cari foto
+		if(preg_match_all('/<img[^>]+>/i',$content, $images))
+		{
+			if(isset($images[0][0]) && $images[0][0]){
+				preg_match( '/src="([^"]*)"/i', $images[0][0], $src );
+				$srchasil =  (isset($src[1])) ? $src[1] : "";
+				$data['image'] = substr($srchasil, strpos($srchasil, 'assets/'));
+			}
+		}
+		
 		return $data;
 	}
 	public function add($status='')
@@ -98,6 +100,7 @@ class Article extends MY_Controller {
 			if($id)
 			{
 				$this->generate_json();
+				$this->generate_json_pin();
 				$this->generate_json($id);
 				echo json_encode(array('id'=>$id,'action'=>'insert', 'message'=>'Data Has Been Added'));
 			}
@@ -139,6 +142,7 @@ class Article extends MY_Controller {
 			if($edit)
 			{
 				$this->generate_json();
+				$this->generate_json_pin();
 				$this->generate_json($id);
 				echo json_encode(array('id'=>$id,'action'=>'update','message'=>'Data Has Been Chenged'));
 			}
@@ -155,6 +159,7 @@ class Article extends MY_Controller {
 			if($delete)
 			{
 				$this->generate_json();
+				$this->generate_json_pin();
 				$this->generate_json($id);
 				echo json_encode(array('id'=>$id,'action'=>'delete','message'=>'Data Has Been Deleted'));
 			}
@@ -191,4 +196,25 @@ class Article extends MY_Controller {
 			create_json('article.json', json_encode($data));
 		}
 	}
+
+	public function generate_json_pin()
+	{
+		$data = $this->global_model->get([
+			'select'=>'a.id,a.title,a.description,a.image,a.published_date, b.name as author',
+			'table'=>$this->table_name.' a',
+			'where'=>[
+				'a.status'=>'PUBLISH',
+				'a.pin'=>1
+			],
+			'limit'=>20,
+			'join'=>[
+				['member b','a.created_by = b.id']
+			],
+			'order'=>[
+				'published_date'=>'desc'
+			]
+		])->result_array();
+		create_json('article_pin.json', json_encode($data));
+	}
+
 }
