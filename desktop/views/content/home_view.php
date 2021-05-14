@@ -36,7 +36,7 @@
 </div>
 
 <!-- section -->
-<div class="section py-10 relative mt-14 md:mt-0">
+<div class="section py-10 relative md:mt-0">
     <div class="bg__yellow absolute right-0 w-full  md:w-2/4 md:h-full h-2/4 bottom-0 md:top-0"></div>
     <div class="bg-black absolute left-0 w-full  md:w-2/4  md:h-full h-2/4 top-0"></div>
     <div class="container px-5 mx-auto relative">
