@@ -990,3 +990,15 @@ div:focus {
     width: auto;
 }
 /*# sourceMappingURL=styles.css.map */
+.headline {
+    position:relative;
+}
+.headline-box{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0,0,0,.7);
+    color: white;
+}
