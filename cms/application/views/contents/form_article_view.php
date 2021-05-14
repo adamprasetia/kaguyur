@@ -38,10 +38,10 @@ $(document).ready(function(){
         selector: '#content',
         height: 1000,
         menubar: false,
-        plugins: ['lists hr code photo video media paste link table'],
+        plugins: ['lists hr code photocms videocms media paste link table'],
         relative_urls: false,
         remove_script_host: false,
-        toolbar: 'bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | table | undo redo | link | photo | video | hr | code | formatselect fontsizeselect | media',
+        toolbar: 'bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | table | undo redo | link | photocms | videocms | hr | code | formatselect fontsizeselect | media',
         setup: function(editor) {
             editor.on('Change', function(e) {
                 $('#content').html(tinymce.get('content').getContent());
