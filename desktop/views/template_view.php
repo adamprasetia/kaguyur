@@ -116,7 +116,7 @@
     <div class="footer bg-black text-white">
       <div class="container px-5 mx-auto py-10">
         <div class="grid grid-cols-6">
-          <div class="col-span-6 md:col-span-3 flex items-end justify-center md:justify-start md:mb-0">
+          <div class="col-span-6 md:col-span-3 flex justify-center md:justify-start md:mb-0">
             <div class="w-32">
               <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" />
             </div>
