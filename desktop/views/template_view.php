@@ -127,7 +127,7 @@
           if(!empty($members)){ ?>
           <div class="col-span-6 md:col-span-3">
             <p class="text-center md:text-left px-3">
-              Konten ini merupakan kerja sama dari
+              Website ini hasil kerja sama dari
             </p>
             <ul class="flex flex-wrap content-start">
               <?php foreach ($members as $row) { ?>
