@@ -743,6 +743,9 @@ video {
 .p-5 {
   padding: 1.25rem;
 }
+.m-5 {
+  margin: 1.25rem;
+}
 
 .py-3 {
   padding-top: 0.75rem;

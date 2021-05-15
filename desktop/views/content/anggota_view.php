@@ -40,7 +40,7 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
                 <div class="bg-black p-5">
                   <img class="w-10" src="<?php echo config_item('assets').'images/logo2.jpg' ?>" alt="" />
                 </div>
-                <div class="p-5 text-sm">
+                <div class="m-5 text-sm">
                   <div class="grid grid-cols-8 gap-10">
                     <div class="photoprofile col-span-2">
                       <img class="imgfillImg" src="<?php echo gen_thumb($row->logo,'100x100') ?>" alt="" />
@@ -48,12 +48,19 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
                     <div class="col-span-6">
                       <strong><?php echo $row->farm ?></strong>
                       <p class="text-sm deskripsis"><?php echo $row->address ?></p>
-                      <p class="text-sm deskripsis"><?php echo $row->phone ?></p>
+                      <span class="text-sm deskripsis"><?php echo $row->phone ?></span>
                     </div>
                   </div>
                 </div>
+                <div class="text-center px-5">
+                  <span class="text-sm font-semibold">
+                    Strain
+                   </span><br>
+                  <span><?php echo $row->strain ?></span>
+                </div>
+
                 <?php if(!empty($product)){ ?>
-                <div class="grid grid-cols-3 grid-flow-col gap-4 p-5 photoproduk">
+                <div class="grid grid-cols-3 grid-flow-col gap-4 m-5 photoproduk">
                 <?php $j=1;foreach ($product as $row_prod) { ?>
                 <?php $photo_produk = json_decode($row_prod->photo); ?>
                   <div>
@@ -61,21 +68,9 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
                   </div>                  
                 <?php if($j==3) break;$j++;} ?>
                 </div>
-                <?php }else{ ?>
-                  <div class="text-center px-5">
-                  <p class="text-sm font-semibold">
-                    Strain
-                   </p>
-                  <p><?php echo $row->strain ?></p>
-                  </div>
                 <?php } ?>
-                <div class="text-center px-5">
-                  <p class="text-sm font-semibold">
-                    Ayo dukung breeder lokal <br>dengan membeli produk-produk mereka
-                  </p>
-                </div>
-                <div class="flex items-center justify-center my-5">
-                  <a class="btn btn__black" href="https://api.whatsapp.com/send/?phone=<?php echo substr($row->phone,0,1)=='0'?substr_replace($row->phone,'+62',0,1):$row->phone ?>" target="_blank" rel="noopener noreferrer"> Beli produk</a>
+                <div class="flex items-center justify-center mb-5">
+                  <a class="btn btn__black" href="<?php echo base_url('profile/'.$row->id.'/'.url_title($row->farm,'-',true)) ?>"> Selengkapnya</a>
                 </div>
               </main>
               <footer class="modal__footer"></footer>

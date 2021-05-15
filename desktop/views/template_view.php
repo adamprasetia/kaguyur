@@ -36,7 +36,7 @@
     <link rel="shortcut icon" href="<?php echo config_item('assets'); ?>images/favicon.ico"/>
 
     <!-- css -->
-    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/tailwind.css?v=3" />
+    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/tailwind.css?v=4" />
     <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/styles.css?v=10" />
     <link rel="stylesheet" href="<?php echo config_item('assets').'plugins/sweetalert/css/sweetalert.css'; ?>">
 
