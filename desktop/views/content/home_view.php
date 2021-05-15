@@ -21,16 +21,6 @@
       <?php endif ?>    
       <div class="col-span-6 md:col-span-3 mb-5">        
           <?php $this->load->view('content/register_view') ?>
-
-          <?php if(check_verified(true)): ?>
-          <div class="relative">
-              <p>Ayo bagikan pengetahuan yang kamu miliki seputar budidaya ikan guppy</p>
-              <div class="flex">
-                <a href="<?php echo base_url('artikel/add') ?>" class="btn btn__black mr-2">TULIS ARTIKEL</a>
-              </div>
-          </div>    
-          <?php $this->load->view('content/product_modal_view') ?>         
-          <?php endif ?>
       </div>
     </div>
   </div>
@@ -96,6 +86,7 @@
               <div class="mt-10 text-center">
                 <?php if(check_verified(true)): ?>
                 <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-product"><span style="height: 45px;display: inline-block;">TAMBAH&nbsp;PRODUK MU</span></a>
+                <?php $this->load->view('content/product_modal_view') ?>         
                 <?php endif ?>
                 <a href="<?php echo base_url('produk') ?>" class="btn btn__black mt-10">PRODUK&nbsp;LAINNYA</a>
               </div>
@@ -197,6 +188,15 @@
           </ul>
           <a href="<?php echo base_url('artikel') ?>" class="text-sm font-semibold mt-5 block text-right">ARTIKEL LAINNYA</a>
         </div>
+        <?php if(check_verified(true)): ?>
+          <div class="relative">
+              <p>Ayo bagikan pengetahuan seputar budidaya ikan guppy yang kamu miliki</p>
+              <div class="flex">
+                <a href="<?php echo base_url('artikel/add') ?>" class="btn btn__black mr-2">TULIS ARTIKEL</a>
+              </div>
+          </div>    
+  <?php endif ?>
+
       </div>
       <?php endif ?>
 
