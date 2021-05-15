@@ -130,26 +130,5 @@ class Anggota extends MY_Controller
 			$status = false;
 		}
 		return $status;
-    }
-    
-	public function detail($id)
-	{
-		$member = @json_decode(file_get_contents('./assets/json/member_'.$id.'.json'));
-		$product = @json_decode(file_get_contents('./assets/json/product_member_'.$id.'.json'));
-		$data['content'] = $this->load->view('content/anggota_detail_view', [
-			'member'=>$member,
-			'product'=>$product,
-		], true);
-
-		$data['meta'] = [
-			'title'=> $member->farm.' | Komunitas Guppy Cianjur (KAGUYUR)',
-			'image'=> base_url($member->logo),
-			'description'=> $member->address
-		];
-
-		
-		$this->load->view('template_view', $data);
-	}
-
-
+    }    
 }

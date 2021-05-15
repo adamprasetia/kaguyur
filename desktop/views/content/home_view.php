@@ -200,7 +200,7 @@
 
       <?php if(!empty($forum)): ?>
       <div class="col-span-6 md:col-span-3">
-        <h4 class="text-md font-bold">PERTANYAAN</h4>
+        <h4 class="text-md font-bold">FORUM</h4>
         <div class="mt-5">
           <ul>
             <?php foreach ($forum as $row) { ?>              

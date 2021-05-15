@@ -1,12 +1,3 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<style type="text/css">
-  .iconrefresh{position:absolute;top:50%;left:50%;font-size:30px;margin:0;}
-  .fa-refresh:before{color:white;content:"\f021";}
-  .sweet-alert { z-index: 1000000; !important }
-  .backdrop__ {position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000000;background-color:#000;}
-  .backdrop__in { opacity:.5; }
-  .backdrop__out { filter:alpha(opacity=0);opacity:0; }
-</style>
 <?php if(empty($this->user_login)): ?>
 <div class="col-span-6 md:col-span-3 relative mb-5">     
     <div class="relative">

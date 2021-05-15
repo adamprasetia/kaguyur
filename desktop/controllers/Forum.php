@@ -134,7 +134,7 @@ class Forum extends MY_Controller
 		
 		$this->load->model('general_model');
 		$this->load->library(['form_validation', 'upload']);
-		$this->form_validation->set_rules('title', 'Judul', 'trim|required');
+		$this->form_validation->set_rules('title', 'Pertanyaan', 'trim|required');
 		$this->form_validation->set_rules('description', 'Deskripsi', 'trim');
 		$this->form_validation->set_message('required', '{field} harus diisi.');
 

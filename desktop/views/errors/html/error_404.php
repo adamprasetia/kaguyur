@@ -126,16 +126,17 @@
           </div>  
           <?php 
           $members = @json_decode(file_get_contents('./assets/json/member.json'));
+          $members = gen_random($members);
           if(!empty($members)){ ?>
           <div class="col-span-6 md:col-span-3">
             <p class="text-center md:text-left px-3">
-              Konten ini merupakan kerja sama dari
+              Website ini hasil kerja sama dari
             </p>
             <ul class="flex flex-wrap content-start">
               <?php foreach ($members as $row) { ?>
               <li>
-                <a href="javascript:void(0)">
-                  <img src="<?php echo base_url($row->logo); ?>" alt="<?php echo htmlentities($row->farm) ?>" title="<?php echo htmlentities($row->farm) ?>" />
+                <a href="<?php echo base_url('profile/'.$row->id.'/'.url_title($row->farm,'-',true)) ?>">
+                  <img src="<?php echo gen_thumb($row->logo,'100x100'); ?>" alt="<?php echo htmlentities($row->farm) ?>" title="<?php echo htmlentities($row->farm) ?>" />
                 </a>
               </li>
               <?php } ?>

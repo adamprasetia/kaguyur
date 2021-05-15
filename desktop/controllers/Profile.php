@@ -6,20 +6,72 @@ class Profile extends MY_Controller
 	public function __construct()
 	{
 	    parent::__construct();
-		if(!$this->user_login['id']){
-			redirect('login');
-		}
 	}
 
-	public function index()
+	public function index($id='')
 	{
-		$this->load->model('global_model');		
-		$profile = @json_decode(file_get_contents('./assets/json/member_'.$this->user_login['id'].'.json'));
-		$product = @json_decode(file_get_contents('./assets/json/product_member_'.$this->user_login['id'].'.json'));
+		if(empty($id)){
+			$id = $this->user_login['id'];
+		}
+		$member = @json_decode(file_get_contents('./assets/json/member_'.$id.'.json'));
+		if(empty($member)){
+			$this->load->model('global_model');		
+			$member = $this->global_model->get([
+				'table'=>'member',
+				'where'=>[
+					'id'=>$id
+				]
+			])->row();
+		}
+		if(empty($member)){
+			show_404();
+			exit;
+		}
+		$product = @json_decode(file_get_contents('./assets/json/product_member_'.$id.'.json'));
+		if(empty($product)){
+			$this->load->model('global_model');		
+			$product = $this->global_model->get([
+				'table'=>'product',
+				'where'=>[
+					'created_by'=>$id
+				]
+			])->result();
+		}
+		$article = @json_decode(file_get_contents('./assets/json/article_member_'.$id.'.json'));
+		if(empty($article)){
+			$this->load->model('global_model');		
+			$article = $this->global_model->get([
+				'table'=>'article',
+				'where'=>[
+					'created_by'=>$id
+				]
+			])->result();
+		}
+		$forum = @json_decode(file_get_contents('./assets/json/forum_member_'.$id.'.json'));
+		if(empty($forum)){
+			$this->load->model('global_model');		
+			$forum = $this->global_model->get([
+				'table'=>'forum',
+				'where'=>[
+					'created_by'=>$id
+				],
+				'order'=>[
+					'created_date'=>'desc'
+				]
+			])->result();
+		}
 		$data['content'] = $this->load->view('content/profile_view', [
-			'profile'=>$profile,
+			'member'=>$member,
 			'product'=>$product,
+			'article'=>$article,
+			'forum'=>$forum,
 		], true);
+
+		$data['meta'] = [
+			'title'=> $member->farm.' | Komunitas Guppy Cianjur (KAGUYUR)',
+			'image'=> base_url($member->logo),
+			'description'=> $member->address
+		];
 		
 		$this->load->view('template_view', $data);
 	}
