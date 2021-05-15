@@ -190,7 +190,7 @@
         </div>
         <?php if(check_verified(true)): ?>
           <div class="relative">
-              <p>Ayo bagikan pengetahuan seputar budidaya ikan guppy yang kamu miliki</p>
+              <p>Ayo bagikan pengetahuan seputar ikan guppy yang kamu miliki</p>
               <div class="flex">
                 <a href="<?php echo base_url('artikel/add') ?>" class="btn btn__black mr-2">TULIS ARTIKEL</a>
               </div>
