@@ -52,7 +52,7 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
                     </div>
                   </div>
                 </div>
-                <div class="text-center px-5">
+                <div class="text-center m-5">
                   <span class="text-sm font-semibold">
                     Strain
                    </span><br>
