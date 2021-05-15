@@ -55,14 +55,14 @@
       </div>
     <?php endif ?>
     <div class="grid grid-cols-6 gap-10">
-      <div class="col-span-6 md:col-span-3">
+      <div class="col-span-6">
           <div class="mt-5">
               <ul>
                   <?php foreach ($article as $row) { ?>                            
                   <li class="grid grid-cols-8 gap-4 mb-5">
                       <?php if(!empty($row->image)): ?>
                       <div class="col-span-3 md:col-span-2">
-                          <img class="imgfillImg" src="<?php echo gen_thumb($row->image,'300x300') ?>" alt="" />
+                          <img class="imgfillImg" src="<?php echo gen_thumb($row->image,'100x100') ?>" alt="" />
                       </div>
                       <?php endif ?>
                       <div class="col-span-5 md:col-span-6">
@@ -89,7 +89,7 @@
       <?php $this->load->view('content/forum_modal_view') ?>         
     <?php endif ?>
     <div class="grid grid-cols-6 gap-10">
-        <div class="col-span-6 md:col-span-3">
+        <div class="col-span-6">
             <div class="mt-5">
                 <ul>
                     <?php foreach ($forum as $row) { ?>                            
