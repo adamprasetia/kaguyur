@@ -1,5 +1,19 @@
+<?php if(!empty($data->id)): ?>
 <div class="box box-default">
-  <div class="box-header with-border"><?php echo isset($title)?$title:''?></div>
+  <div class="box-header with-border">BARCODE</div>
+  <div class="box-body with-border">        
+    <img src="<?php echo config_item('base_domain').'assets/photo/barcode/'.$data->id.'.png'?>" alt="">
+  </div>
+  <div class="box-footer">        
+    <form id="form_barcode" action="<?php echo base_url('member/generate_barcode/'.$data->id) ?>">
+      <button type="button" class="btn_action btn btn-sm btn-primary" data-idle="Generate" data-form="#form_barcode" data-process="Tunggu Sebentar..." data-redirect="<?php echo base_url('member/edit/'.$data->id) ?>">GENERATE BARCODE</button>  
+    </form>
+  </div>
+</div>
+<?php endif ?>
+
+<div class="box box-default">
+<div class="box-header with-border"><?php echo isset($title)?$title:''?></div>
   <div class="box-body with-border">        
     <form id="form_data" action="<?php echo $action ?>">
     <div class="form-group">

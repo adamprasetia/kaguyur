@@ -221,4 +221,34 @@ class Member extends MY_Controller {
 			create_json('member.json', json_encode($member));
 		}
 	}
+
+	public function generate_barcode($id)
+	{
+		$member = $this->global_model->get([
+			'table'=>$this->table_name,
+			'where'=>[
+				'id'=>$id,
+				'status'=>'VERIFIED'
+			]
+		])->row();
+		if(!empty($member)){
+			$barcode = file_get_contents('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='.base_url('anggota/'.$member->id.'/'.url_title($member->farm, '-', true)));
+			if(!empty($barcode)){
+
+				$upload_path = FCPATH.'assets/photo/barcode/';
+				$upload_path = str_replace(array('cms/','\cms'), '', $upload_path);
+				if (!is_dir($upload_path)) {
+					if(!@mkdir($upload_path, 0755, true)){
+						$error = error_get_last();
+						echo json_encode(array('id'=>1,'action'=>'update', 'message'=>$error));
+					}
+				}
+		
+				$result = file_put_contents($upload_path.$id.'.png',$barcode);
+				if($result){
+					echo json_encode(['id'=>$id,'action'=>'update','message'=>'Generate barcode berhasil']);
+				}
+			}
+		}
+	}
 }
