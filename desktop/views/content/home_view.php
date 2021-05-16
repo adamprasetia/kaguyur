@@ -81,7 +81,7 @@
               </div>
               <div class="mt-10 text-center">
                 <?php if(check_verified(true)): ?>
-                <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-product"><span style="height: 45px;display: inline-block;">TAMBAH&nbsp;PRODUK MU</span></a>
+                <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-product"><span style="height: 45px;display: inline-block;">DAFTARKAN&nbsp;PRODUK MU</span></a>
                 <?php $this->load->view('content/product_modal_view') ?>         
                 <?php endif ?>
                 <a href="<?php echo base_url('produk') ?>" class="btn btn__black mt-10">PRODUK&nbsp;LAINNYA</a>
