@@ -20,6 +20,7 @@
                     <tr>
                         <th width="50">No</th>
                         <th>Judul</th>
+                        <th width="100">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,10 @@
                     <tr>
                         <td><?php echo $no; ?></td>
                         <td><a href="<?php echo base_url('infografik/edit/'.$value->id.'/'.$value->status); ?>"><?php echo $value->title; ?></a></td>
+                        <td>
+                            <a class="btn btn-default" href="<?php echo base_url('infografik/edit/'.$value->id); ?>"><i class="fa fa-edit"></i></a>
+                            <button class="btn btn-default" type="button" name="button" data-url="<?php echo base_url('infografik/delete/'.$value->id); ?>" onclick="return deleteData(this)"><i class="fa fa-trash"></i></button>
+                        </td>
                     </tr>
                       <?php $no++; } ?>
                 </tbody>
