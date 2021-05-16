@@ -952,6 +952,10 @@ video {
   grid-template-columns: repeat(8, minmax(0, 1fr));
 }
 
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
@@ -1188,6 +1192,11 @@ video {
   .lg\:w-60 {
     width: 15rem;
   }
+  
+  .lg\:col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
 }
 
 @media (min-width: 1100px) {

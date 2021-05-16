@@ -36,50 +36,28 @@
     <link rel="shortcut icon" href="<?php echo config_item('assets'); ?>images/favicon.ico"/>
 
     <!-- css -->
-    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/tailwind.css?v=4" />
-    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/styles.css?v=10" />
+    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/tailwind.css?v=5" />
+    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/styles.css?v=11" />
     <link rel="stylesheet" href="<?php echo config_item('assets').'plugins/sweetalert/css/sweetalert.css'; ?>">
 
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;900&display=swap" rel="stylesheet"/>
-    <style>
-    .header, .header.scroller {
-      color:white;
-      background:black;
-    }
-    @media (max-width: 768px){
-      .header, .header.scroller {
-      color:black;
-      }
-    }
-    </style>
-
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    .iconrefresh{position:absolute;top:50%;left:50%;font-size:30px;margin:0;}
-    .fa-refresh:before{color:white;content:"\f021";}
-    .sweet-alert { z-index: 1000000; !important }
-    .backdrop__ {position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000000;background-color:#000;}
-    .backdrop__in { opacity:.5; }
-    .backdrop__out { filter:alpha(opacity=0);opacity:0; }
-  </style>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
   </head>
 
   <body>
+    <?php $s1 = $this->uri->segment(1); ?>
     <div class="header">
       <div class="container px-5 mx-auto">
         <div class="grid grid-cols-6 relative">
-          <a class="col-span-2 md:col-span-1" href="<?php echo base_url(); ?>">
+          <div class="header__mobile lg:hidden mt-5">
+            <img src="<?php echo config_item('assets'); ?>images/menuwhite.svg" alt="" />
+          </div>
+          <a class="col-span-1" href="<?php echo base_url(); ?>">
             <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" style="width:50px"/>
           </a>
-          <div class="flex lg:hidden col-span-4 md:col-span-5 justify-end items-center">
-            <div class="header__mobile">
-              <img src="<?php echo config_item('assets'); ?>images/menuwhite.svg" alt="" />
-            </div>
-          </div>
-          <div class="header__menu hidden lg:flex col-span-5 justify-end items-center">
-            <?php $s1 = $this->uri->segment(1); ?>
+          <div class="header__menu__general header__menu hidden lg:flex col-span-4 justify-end items-center">
             <ul>
               <li>
                 <a class="<?php echo $s1==''?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url(); ?>"> BERANDA </a>
@@ -102,22 +80,33 @@
               <li>
                 <a class="<?php echo $s1=='produk'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('produk'); ?>"> PRODUK </a>
               </li>
+            </ul>
+          </div>
+          <div class="flex col-span-4 lg:col-span-1 justify-end items-center">
+            <div class="header__user__wrap">
               <?php if(!empty($this->user_login['name'])){ ?>
-                <li>                                  
-                  <a class="<?php echo $s1=='profile'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('profile') ?>"> 
+                  <a class="header__user uppercase py-5 pl-5 font-semibold text-sm" href="javascript:void(0)"> 
                     <img style="margin-top:-5px" width="30px" class="inline" src="<?php echo gen_thumb($this->user_login['logo'],'100x100') ?>" alt="">
-                    <span><?php echo $this->user_login['name'] ?></span>
+                    <!-- <span><?php echo $this->user_login['name'] ?></span> -->
                   </a>
-                </li>
               <?php }else{ ?>  
-                <li>
                   <a class="uppercase py-5 pl-5 font-semibold text-sm" href="javascript:void(0)" data-micromodal-trigger="modal-login"> 
                     MASUK
                   </a>
-                </li>
               <?php } ?>
+            </div>
+          </div>
+          <div class="header__menu__user header__menu hidden lg:hidden lg:flex col-span-5 justify-end items-center">
+            <ul>
+              <li>
+                <a class="uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('profile'); ?>"> PROFIL </a>
+              </li>
+              <li>
+                <a class="uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('login/logout'); ?>"> KELUAR </a>
+              </li>
             </ul>
           </div>
+
         </div>
       </div>
     </div>
@@ -167,7 +156,7 @@
     <?php echo isset($script)?$script:''; ?>
     <script src="<?php echo config_item('assets').'plugins/sweetalert/js/sweetalert.min.js'; ?>"></script>
     <script type="text/javascript" src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-    <script type="text/javascript" src="<?php echo config_item('assets'); ?>js/main.js?v=5"></script>
+    <script type="text/javascript" src="<?php echo config_item('assets'); ?>js/main.js?v=6"></script>
     <script type="text/javascript">
       function fb_share(e,o){return u=o,t=e,window.open("http://www.facebook.com/sharer.php?u="+encodeURIComponent(u)+"&t="+encodeURIComponent(t),"sharer","toolbar=0,status=0,width=626,height=436"),!1}function tweet_share(t){return u=t,window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(u),"sharer","toolbar=0,status=0,width=626,height=436"),!1}
     </script>

@@ -1,11 +1,18 @@
 var header__mobile = document.querySelector(".header__mobile");
-var header__menu = document.querySelector(".header__menu");
+var header__menu__general = document.querySelector(".header__menu__general");
+var header__menu__user = document.querySelector(".header__menu__user");
+var header__user = document.querySelector(".header__user");
 
-function classToggle() {
-  header__menu.classList.toggle("active");
-  console.log("asdasd");
+if(header__mobile){
+  header__mobile.addEventListener("click", function(){
+    header__menu__general.classList.toggle("active");
+  });
 }
-header__mobile.addEventListener("click", classToggle);
+if(header__user){
+  header__user.addEventListener("click", function(){
+    header__menu__user.classList.toggle("active");
+  });
+}
 
 // modal
 MicroModal.init({
@@ -17,20 +24,6 @@ MicroModal.init({
 //scroll
 const header = document.querySelector(".header");
 const header_height = header.offsetHeight;
-
-window.addEventListener("scroll", function () {
-  scrollpos = window.scrollY;
-
-  if (scrollpos >= header_height) {
-    //console.log("down");
-    header.classList.add("scroller");
-  } else {
-    //console.log("up");
-    header.classList.remove("scroller");
-  }
-
-  // console.log(scrollpos);
-});
 
 //slider
 var sliderEventId = document.querySelector("#slider-event");
