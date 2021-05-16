@@ -103,7 +103,7 @@ class Artikel extends MY_Controller
 		$this->form_validation->set_rules('title', 'Judul', 'trim|required');
 		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
 		$this->form_validation->set_rules('content', 'Konten', 'trim|required');
-		$this->form_validation->set_rules('status', 'Status', 'trim|required');
+		
 		$this->form_validation->set_message('required', '{field} harus diisi.');
 	}
 	private function _set_data()
