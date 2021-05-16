@@ -38,7 +38,7 @@
             <div class="my-5">
               <div class="slider slider__etalase pb-5" id="slider-jagoan">
                 <?php $i=1;foreach ($member as $row) { ?>
-                <a href="<?php echo base_url('anggota/detail/'.$row->id.'/'.url_title($row->farm,'-',true)) ?>">
+                <a href="<?php echo base_url('profile/'.$row->id.'/'.url_title($row->farm,'-',true)) ?>">
                   <div>
                     <div data-micromodal-trigger="modal-itembelanja0">
                       <div class="slider__etalase__img">
