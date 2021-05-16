@@ -736,6 +736,10 @@ video {
   margin-top: 5rem;
 }
 
+.mt-30 {
+  margin-top: 7.5rem;
+}
+
 .opacity-0 {
   opacity: 0;
 }
@@ -1119,6 +1123,11 @@ video {
     padding-right: 5rem;
   }
 
+  .md\:px-0 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   .md\:pt-0 {
     padding-top: 0px;
   }
@@ -1192,7 +1201,7 @@ video {
   .lg\:w-60 {
     width: 15rem;
   }
-  
+
   .lg\:col-span-1 {
     grid-column: span 1 / span 1;
   }

@@ -15,14 +15,6 @@
             <div class="mb-3">
               <textarea class="field w-full" id="content" name="content" cols="30" rows="5"><?php echo isset($data->content)?$data->content:''; ?></textarea>
             </div>
-            <div class="mb-3">
-              <label class="font-semibold block">Status</label>
-                <select name="status" id="status" class="form-control">
-                    <option value="DRAFT" <?php echo isset($data->status) && $data->status=='DRAFT'?'selected':''?>>DRAFT</option>
-                    <option value="PUBLISH" <?php echo isset($data->status) && $data->status=='PUBLISH'?'selected':''?>>PUBLISH</option>
-                    <option value="DELETED" <?php echo isset($data->status) && $data->status=='DELETED'?'selected':''?>>DELETED</option>
-                </select>
-            </div>
             <div class="flex items-center justify-center my-5">
                 <button type="button" class="btn btn__black btn_action" id="btn_simpan" data-idle="SIMPAN" data-process="Saving..." data-form="#form_data" data-redirect="<?php echo base_url('artikel/list') ?>">SIMPAN</button>
                 &nbsp;

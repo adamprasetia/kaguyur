@@ -1,7 +1,13 @@
 <div class="section py-20 bg-cover bg-no-repeat mt-10">
   <!-- section -->
   <div class="container px-5 mx-auto">
-    <h1 class="font-bold uppercase">GALERI</h1>
+      <div class="breadcumb mb-2">
+        <ul>
+          <li><a href="<?php echo base_url() ?>">Home</a></li>
+          <li><a href="<?php echo base_url('galeri') ?>">Galeri</a></li>
+        </ul>
+      </div>
+
 
     <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
         <?php if(!empty($gallery)) { ?>

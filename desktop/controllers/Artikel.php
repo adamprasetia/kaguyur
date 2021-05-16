@@ -28,6 +28,13 @@ class Artikel extends MY_Controller
             show_404();
             exit;
         }
+
+		//pisahin foto pertama
+		preg_match_all('/<img[^>]+>/i',$article->content, $foto);
+		if (isset($foto[0][0])) {
+			$article->content = str_replace($foto[0][0], '', $article->content);
+		}
+		
 		$data['content'] = $this->load->view('content/artikel_detail_view', $article, true);
 
 		$data['meta'] = [
@@ -107,7 +114,7 @@ class Artikel extends MY_Controller
 			'title'=> $this->input->post('title', true),
 			'description'=> $this->input->post('description', true),
 			'content'=> $content,
-			'status'=> $this->input->post('status', true),
+			'status'=> 'DRAFT',
 		];
 
 		// cari foto
@@ -139,10 +146,6 @@ class Artikel extends MY_Controller
 			$data = $this->_set_data();
 			$data['created_date'] = date('Y-m-d H:i:s');
 			$data['created_by'] = $this->user_login['id'];
-			if($data['status']=='PUBLISH'){
-                $data['published_date'] 	= date('Y-m-d H:i:s');    
-                $data['published_by'] 	= $this->user_login['id'];
-            }
 
 			$add = $this->general_model->add('article', $data);
 			if($add)
@@ -183,11 +186,6 @@ class Artikel extends MY_Controller
 			$data = $this->_set_data();
 			$data['updated_by'] = $this->user_login['id'];
 			$data['updated_date'] = date('Y-m-d H:i:s');
-
-			if($data['status']=='PUBLISH' && $status=='DRAFT'){
-                $data['published_date'] 	= date('Y-m-d H:i:s');    
-                $data['published_by'] 	= $this->user_login['id'];
-            }
 
 			$add = $this->general_model->edit('article', $id, $data);
 			if($add)

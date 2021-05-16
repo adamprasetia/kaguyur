@@ -1,7 +1,12 @@
 <div class="section py-20 bg-cover bg-no-repeat mt-10">
   <!-- section -->
   <div class="container px-5 mx-auto">
-    <h1 class="font-bold uppercase">ANGGOTA</h1>
+    <div class="breadcumb mb-2">
+        <ul>
+          <li><a href="<?php echo base_url() ?>">Home</a></li>
+          <li><a href="<?php echo base_url('anggota') ?>">Anggota</a></li>
+        </ul>
+      </div>
       <p>
 Terbuka, Persahabatan, Solidaritas, Kreatif & Innovatif, Apresiatif, Dinamis, 
 Berbagi, Kekeluargaan serta Persatuan.</p>

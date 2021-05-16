@@ -1,14 +1,10 @@
-<div class="section pt-20 bg-cover bg-no-repeat mt-10">
+<div class="section pt-20 bg-cover bg-no-repeat mt-5">
   <!-- section -->
-  <div class="container px-5 mx-auto">
-    <div class="mb-2">
-      <h1 class="font-bold uppercase">KAGUYUR</h1>
-      <b>K</b>OMUNIT<b>A</b>S <b>GU</b>PP<b>Y</b> CIANJ<b>UR</b>
-    </div>
-    <div class="grid grid-cols-6 gap-6">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-6 gap-6 mb-2">
       <?php if(!empty($article_pin)): ?>
       <div class="col-span-6 md:col-span-3 md:pr-10">
-        <div class="headline mb-5">
+        <div class="headline">
           <a href="<?php echo base_url('artikel/'.$article_pin[0]->id.'/'.url_title($article_pin[0]->title,'-','true')) ?>">
             <img src="<?php echo base_url($article_pin[0]->image) ?>" alt="" />
             <div class="headline-box">
@@ -19,7 +15,7 @@
         </div>    
       </div>
       <?php endif ?>    
-      <div class="col-span-6 md:col-span-3 mb-5">        
+      <div class="col-span-6 px-5 md:col-span-3">        
           <?php $this->load->view('content/register_view') ?>
       </div>
     </div>

@@ -1,7 +1,12 @@
 <div class="section py-20 bg-cover bg-no-repeat mt-10">
     <!-- section -->
     <div class="container px-5 mx-auto">
-        <h1 class="font-bold uppercase">ARTIKEL</h1>
+        <div class="breadcumb">
+            <ul>
+                <li><a href="<?php echo base_url() ?>">Home</a></li>
+                <li><a href="<?php echo base_url('artikel') ?>">Artikel</a></li>
+            </ul>
+        </div>
         <div class="grid grid-cols-6 gap-10">
             <div class="col-span-6 md:col-span-3">
                 <div class="mt-5">
