@@ -465,3 +465,21 @@ function gen_random($data, $count = 0)
     }
     return $return;
 }
+
+function get_query_string($remove = '')
+{
+    $query_string = $_GET;
+    if ($remove) {
+        if (is_array($remove)) {
+            foreach ($remove as $key => $value) {
+                unset($query_string[$value]);
+            }
+        }else{
+            unset($query_string[$remove]);
+        }
+    }
+    if ($query_string) {
+        return '?'.http_build_query($query_string);
+    }
+    return '';
+}

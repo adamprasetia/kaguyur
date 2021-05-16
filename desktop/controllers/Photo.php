@@ -30,14 +30,16 @@ class Photo extends MY_Controller
 
 		$this->load->library('pagination');
 
-		$config['base_url'] = base_url('photo');
+		$config['base_url'] = base_url('photo').get_query_string('offset');
 		$config['total_rows'] = $total;
-		$config['per_page'] = 12;
+		$config['per_page'] = $query['limit'];
 		$config['page_query_string'] = TRUE;
 		$config['query_string_segment'] = 'offset';
 		$config['display_pages'] = FALSE;
 		$config['prev_link'] = '<span class="btn btn__black">&lt;</span>';
 		$config['next_link'] = '<span class="btn btn__black">&gt;</span>';
+		$config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
 
 		$this->pagination->initialize($config);
 

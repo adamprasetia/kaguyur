@@ -10,13 +10,46 @@ class Produk extends MY_Controller
 
 	public function index()
 	{	
-		$product = @json_decode(file_get_contents('./assets/json/product.json'));
-        if(!$product){
-            show_404();
-            exit;
-        }
+		$this->load->model('global_model');
+		$query = [
+			'table'=>'product',
+			'order'=>[
+				'created_date'=>'desc'
+			]
+		];
+		$search = $this->input->get('search', true);
+		if(!empty($search)){
+			$query['search'] = [
+				'name'=>$search,
+				'description'=>$search
+			];
+		}
+		$total = $this->global_model->count($query);
+		$query['limit'] = 20;
+		if($this->input->get('offset',true)){
+			$query['offset'] = $this->input->get('offset',true);
+		}
+
+		$product = $this->global_model->get($query)->result();
+
+		$this->load->library('pagination');
+
+		$config['base_url'] = base_url('produk').get_query_string('offset');
+		$config['total_rows'] = $total;
+		$config['per_page'] = $query['limit'];
+		$config['page_query_string'] = TRUE;
+		$config['query_string_segment'] = 'offset';
+		$config['display_pages'] = FALSE;
+		$config['prev_link'] = '<span class="btn btn__black">&lt;</span>';
+		$config['next_link'] = '<span class="btn btn__black">&gt;</span>';
+		$config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+
+		$this->pagination->initialize($config);
+
 		$data['content'] = $this->load->view('content/product_view', [
-			'product'=>$product
+			'product'=>$product,
+			'paging'=>$this->pagination->create_links()
 		], true);
 
 		$data['meta'] = [
