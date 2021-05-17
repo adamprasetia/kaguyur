@@ -8,7 +8,7 @@
       <?php if(!empty($article_pin)): ?>
       <div class="col-span-6 md:col-span-3 md:pr-10">
         <div class="headline">
-          <a href="<?php echo base_url('artikel/'.$article_pin[0]->id.'/'.url_title($article_pin[0]->title,'-','true')) ?>">
+          <a href="<?php echo base_url('artikel/'.$article_pin[0]->id.'/'.url_title($article_pin[0]->title,'-',true)) ?>">
             <img src="<?php echo base_url($article_pin[0]->image) ?>" alt="" />
             <div class="headline-box">
               <?php echo $article_pin[0]->title ?>
@@ -64,7 +64,7 @@
               <?php $i=1;foreach ($product as $row) : 
               $photo_prod = json_decode($row->photo);
                 ?>
-                <a href="<?php echo base_url('produk/detail/'.$row->id.'/'.url_title($row->id,'-',true)) ?>">
+                <a href="<?php echo base_url('produk/'.$row->id.'/'.url_title($row->name,'-',true)) ?>">
                   <div>
                     <div class="slider__etalase__img">
                       <img class="imgfillImg" src="<?php echo gen_thumb($photo_prod[0],'100x100') ?>" alt="<?php echo htmlentities($row->name) ?>" />
