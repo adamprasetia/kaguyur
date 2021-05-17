@@ -47,13 +47,8 @@
     </div>
     <?php } ?>
     
-    <?php if(!empty($article)){ ?>
+    <?php if(!empty($article) && check_verified(true)){ ?>
     <p><strong>Artikel</strong></p>
-    <?php if($member->id==$this->user_login['id']): ?>
-      <div class="mt-5">
-      <a href="<?php echo base_url('artikel/add') ?>" class="btn btn__black">TULIS ARTIKEL</a>
-      </div>
-    <?php endif ?>
     <div class="grid grid-cols-6 gap-10">
       <div class="col-span-6">
           <div class="mt-5">
