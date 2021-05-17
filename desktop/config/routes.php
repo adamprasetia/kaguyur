@@ -57,3 +57,4 @@ $route['artikel/(:num)/(:any)'] = 'artikel/detail/$1';
 $route['galeri/(:num)/(:any)'] = 'galeri/detail/$1';
 $route['produk/(:num)/(:any)'] = 'produk/detail/$1';
 $route['profile/(:num)/(:any)'] = 'profile/index/$1';
+$route['forum/(:num)/(:any)'] = 'forum/detail/$1';

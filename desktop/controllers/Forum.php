@@ -191,6 +191,13 @@ class Forum extends MY_Controller
 			if($add)
 			{	
                 generate_json_forum_response($id);
+				// notif
+				$forum = @json_decode(file_get_contents('./assets/json/forum_'.$id.'.json'));
+				if(!empty($forum)){
+					$this->load->helper('text');
+					gen_notif($forum->created_by, $this->user_login['name'].' mengomentari postingan '.word_limiter($forum->title,4),base_url('forum/'.$id.'/'.url_title($forum->title,'-',true)));
+				}
+	
 				echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Jawaban anda berhasil terkirim']);
 			}else{
 				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Jawaban anda gagal terkirim']);

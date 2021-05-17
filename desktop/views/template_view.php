@@ -37,7 +37,7 @@
 
     <!-- css -->
     <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/tailwind.css?v=6" />
-    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/styles.css?v=12" />
+    <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/styles.css?v=13" />
     <link rel="stylesheet" href="<?php echo config_item('assets').'plugins/sweetalert/css/sweetalert.css'; ?>">
 
     <!-- font -->
@@ -88,6 +88,10 @@
                   <a class="header__user uppercase py-5 pl-5 font-semibold text-sm" href="javascript:void(0)"> 
                     <img style="margin-top:-5px" width="30px" class="inline" src="<?php echo gen_thumb($this->user_login['logo'],'100x100') ?>" alt="">
                     <!-- <span><?php echo $this->user_login['name'] ?></span> -->
+                    <?php $check_notif = check_notif(); ?>
+                    <?php if($check_notif):?>
+                    <span style="top:10px;left:40px" class="jerawat"></span>
+                    <?php endif ?>
                   </a>
               <?php }else{ ?>  
                   <a class="uppercase py-5 pl-5 font-semibold text-sm" href="javascript:void(0)" data-micromodal-trigger="modal-login"> 
@@ -100,6 +104,12 @@
             <ul>
               <li>
                 <a class="uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('profile'); ?>"> PROFIL </a>
+              </li>
+              <li style="position: relative;">
+                <a class="uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('notifikasi'); ?>"> NOTIFIKASI </a>
+                <?php if($check_notif):?>
+                  <span style="top:10px;left:100px" class="jerawat"></span>
+                <?php endif ?>
               </li>
               <li>
                 <a class="uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('login/logout'); ?>"> KELUAR </a>

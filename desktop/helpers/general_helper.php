@@ -483,3 +483,37 @@ function get_query_string($remove = '')
     }
     return '';
 }
+function gen_notif($member_id, $message, $action)
+{
+    if($member_id == ci()->user_login['id']){
+        return false;
+    }
+    $data = [];
+    $notif = @json_decode(file_get_contents('./assets/json/notif_'.$member_id.'.json'),true);
+    if(!empty($notif)){
+        $data = $notif;
+    }
+    array_unshift($data, [
+        'message'=>$message,
+        'action'=>$action,
+        'created_date'=>date('Y-m-d H:i:s'),
+        'status'=>0
+    ]);
+    $output = array_slice($data, 0, 10); 
+    create_json('notif_'.$member_id.'.json', json_encode($output));
+}
+function check_notif()
+{
+    if(check_login()){
+        $notif = @json_decode(file_get_contents('./assets/json/notif_'.ci()->user_login['id'].'.json'));
+        if(!empty($notif)){
+            foreach ($notif as $row) {
+                if($row->status == 0){
+                    return true;
+                    break;
+                }
+            }
+        }
+    }
+    return false;
+}
