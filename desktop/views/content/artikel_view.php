@@ -27,6 +27,7 @@
                         <?php } ?>
                     </ul>
                 </div>
+                <?php $this->load->view('content/artikel_gate_view') ?>
             </div>
         </div>
     </div>

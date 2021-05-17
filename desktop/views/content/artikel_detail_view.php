@@ -19,5 +19,8 @@
       <p><strong>Penulis</strong></p>
       <?php echo $author ?>
     </div>
+    <div class="mt-10 px-3">
+    <?php $this->load->view('content/artikel_gate_view') ?>
+    </div>
   </div>
 </div>

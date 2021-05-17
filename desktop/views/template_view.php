@@ -95,7 +95,7 @@
                   </a>
               <?php }else{ ?>  
                   <a class="uppercase py-5 pl-5 font-semibold text-sm" href="javascript:void(0)" data-micromodal-trigger="modal-login"> 
-                    MASUK
+                    LOGIN
                   </a>
               <?php } ?>
             </div>
@@ -105,6 +105,11 @@
               <li>
                 <a class="uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('profile'); ?>"> PROFIL </a>
               </li>
+              <?php if(check_login(true)): ?>
+              <li>
+                <a class="uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url().'login/reset_password/'.$this->user_login['id'].'/'.md5($this->user_login['id'].'hs^35shKjsdh()'); ?>"> GANTI PASSWORD </a>
+              </li>
+              <?php endif ?>
               <li style="position: relative;">
                 <a class="uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('notifikasi'); ?>"> NOTIFIKASI </a>
                 <?php if($check_notif):?>
@@ -112,7 +117,7 @@
                 <?php endif ?>
               </li>
               <li>
-                <a class="uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('login/logout'); ?>"> KELUAR </a>
+                <a class="uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('login/logout'); ?>"> LOGOUT </a>
               </li>
             </ul>
           </div>

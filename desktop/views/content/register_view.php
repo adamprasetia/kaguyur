@@ -6,7 +6,7 @@
               <p>Mari bergabung untuk memajukan dunia perguppian di Kabupaten Cianjur</p>
             </div>
         <div class="flex mt-10">
-            <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-login">MASUK</a>
+            <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-login">LOGIN</a>
             <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-register">DAFTAR</a>
         </div>
         <div class="flex mt-5">
@@ -30,7 +30,7 @@
     </div>
     <div class="flex mt-2">
       <a href="<?php echo base_url('profile') ?>" class="btn btn__black mr-2">LIHAT PROFIL</a>
-      <a href="<?php echo base_url('login/logout') ?>" class="btn btn__black mr-2">KELUAR</a>
+      <a href="<?php echo base_url('login/logout') ?>" class="btn btn__black mr-2">LOGOUT</a>
     </div>
   </div>
 <?php endif ?>
