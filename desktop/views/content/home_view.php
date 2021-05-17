@@ -110,7 +110,7 @@
               </div>
               <?php endif ?>
               <div class="col-span-5 md:col-span-6">
-                  <a href="<?php echo base_url('artikel/detail/'.$row->id.'/'.url_title($row->title,'-',true)) ?>">
+                  <a href="<?php echo base_url('artikel/'.$row->id.'/'.url_title($row->title,'-',true)) ?>">
                       <h4 class="mb-2 text__wrap2"><?php echo $row->title ?></h4>
                       <p class="text-sm text__wrap3"><?php echo $row->description ?></p>
                       <small><?php echo format_dmy($row->published_date) ?></small>
@@ -134,7 +134,7 @@
             <?php foreach ($forum as $row) { ?>              
             <li class="grid grid-cols-8 gap-4 mb-5">
               <div class="col-span-6">
-                  <a href="<?php echo base_url('forum/detail/'.$row->id.'/'.url_title($row->title,'-',true)) ?>">
+                  <a href="<?php echo base_url('forum/'.$row->id.'/'.url_title($row->title,'-',true)) ?>">
                       <h4 class="text__wrap2"><?php echo $row->title ?></h4>
                       <small><?php echo format_dmy($row->created_date) ?></small>
                   </a>
