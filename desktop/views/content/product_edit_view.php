@@ -25,10 +25,18 @@
               <label class="font-semibold block">Harga</label>
               <input type="text" name="fb" id="fb" class="field w-full" value="<?php echo isset($product->price)?$product->price:''; ?>"/>
             </div>
+            <div class="mb-3">
+              <label class="font-semibold block">Status</label>
+              <select name="status" id="status" >
+                <option value="ACTIVE" <?php echo isset($product->status) && $product->status=='ACTIVE'?'selected':''?>>ACTIVE</option>
+                <option value="NOT ACTIVE" <?php echo isset($product->status) && $product->status=='NOT ACTIVE'?'selected':''?>>NOT ACTIVE</option>
+                <option value="DELETED" <?php echo isset($product->status) && $product->status=='DELETED'?'selected':''?>>DELETED</option>
+              </select>
+            </div>
             <div class="flex items-center justify-center my-5">
                 <button type="button" class="btn btn__black btn_action" id="btn_simpan" data-idle="SIMPAN" data-process="Saving..." data-form="#form_data" data-redirect="<?php echo current_url(); ?>">SIMPAN</button>
                 &nbsp;
-                <a href="<?php echo base_url('anggota/detail/'.$this->user_login['id']) ?>" class="btn btn__black">KEMBALI</a>
+                <a href="<?php echo base_url('profile') ?>" class="btn btn__black">KEMBALI</a>
             </div>
           </form>
         </div>

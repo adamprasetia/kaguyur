@@ -69,11 +69,11 @@ class Produk extends MY_Controller
 		$data['content'] = $this->load->view('content/product_detail_view', [
 			'product'=>$product
 		], true);
-$photo = json_decode($product->photo);
+		$photo = json_decode($product->photo);
 		$data['meta'] = [
 			'title'=> $product->name.' | Komunitas Guppy Cianjur (KAGUYUR)', 
-'image'=>base_url($photo[0]), 
-'description'=>$product->description, 
+			'image'=>base_url($photo[0]), 
+			'description'=>$product->description, 
 		];
 
 		
@@ -96,6 +96,7 @@ $photo = json_decode($product->photo);
 		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
 		$this->form_validation->set_rules('photo','Foto','callback_required_photo');
 		$this->form_validation->set_rules('price','Harga','trim');
+		$this->form_validation->set_rules('status','Status','trim|required');
 		$this->form_validation->set_message('required', '{field} harus diisi.');
 
 		if ($this->form_validation->run()===FALSE ){
@@ -116,10 +117,10 @@ $photo = json_decode($product->photo);
 				'description'=> htmlentities($this->input->post('description', true)),
 				'photo'=> json_encode([$photo['data']]),
 				'price'=> htmlentities($this->input->post('price', true)),
+				'status'=> htmlentities($this->input->post('status', true)),
 			];
 			$data['created_by'] = $this->user_login['id'];
 			$data['created_date'] = date('Y-m-d H:i:s');
-			$data['status'] = 'ACTIVE';
 
 			$add = $this->general_model->add('product', $data);
 			if($add)
@@ -189,6 +190,7 @@ $photo = json_decode($product->photo);
 		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
 		$this->form_validation->set_rules('photo','Foto','callback_optional_photo');
 		$this->form_validation->set_rules('price','Harga','trim');
+		$this->form_validation->set_rules('status','Status','trim|required');
 		$this->form_validation->set_message('required', '{field} harus diisi.');
 
 		if ($this->form_validation->run()===FALSE ){
@@ -202,6 +204,7 @@ $photo = json_decode($product->photo);
 				'name'=> htmlentities($this->input->post('name', true)),
 				'description'=> htmlentities($this->input->post('description', true)),
 				'price'=> htmlentities($this->input->post('price', true)),
+				'status'=> htmlentities($this->input->post('status', true)),
 			];
 			if(!empty($_FILES['photo']['name'])){
 				$photo   = uploadFile('photo');	
@@ -211,7 +214,6 @@ $photo = json_decode($product->photo);
 			}
 			$data['updated_by'] = $this->user_login['id'];
 			$data['updated_date'] = date('Y-m-d H:i:s');
-			$data['status'] = 'ACTIVE';
 
 			$add = $this->general_model->edit('product', $id, $data);
 			if($add)

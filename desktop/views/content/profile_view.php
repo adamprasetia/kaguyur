@@ -30,7 +30,7 @@
     <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
       <?php $i=1;foreach ($product as $row) { ?>        
         <?php $photo = json_decode($row->photo) ?>        
-        <a href="<?php echo base_url('produk/detail/'.$row->id) ?>">
+        <a href="<?php echo base_url('produk/'.$row->id.'/'.url_title($row->name,'-',true)) ?>">
         <div class="tns-item tns-slide-active">            
             <div class="slider__etalase__img etalase__img">
               <img class="imgfillImg" src="<?php echo gen_thumb($photo[0],'300x300') ?>" alt="<?php echo $row->name ?>">

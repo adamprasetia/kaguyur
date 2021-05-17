@@ -33,7 +33,11 @@ class Profile extends MY_Controller
 			$product = $this->global_model->get([
 				'table'=>'product',
 				'where'=>[
-					'created_by'=>$id
+					'created_by'=>$id,
+					'status'=>'ACTIVE'
+				],
+				'order'=>[
+					'created_date'=>'desc'
 				]
 			])->result();
 		}
