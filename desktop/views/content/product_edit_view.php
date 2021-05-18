@@ -23,7 +23,7 @@
             </div>
             <div class="mb-3">
               <?php if(!empty($product->video_id)){ ?>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $product->video_id ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <iframe width="100%" height="240" src="https://www.youtube.com/embed/<?php echo $product->video_id ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               <?php } ?>
 
               <label class="font-semibold block">Url Youtube</label>
