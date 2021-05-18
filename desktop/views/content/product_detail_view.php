@@ -1,8 +1,14 @@
 <div class="section py-20 bg-cover bg-no-repeat mt-10">
   <!-- section -->
   <div class="container px-5 mx-auto">
-    <h1 class="font-bold uppercase"><?php echo $product->name ?></h1>    
+  <div class="my-5">
+        <a class="btn" href="<?php echo base_url('produk/edit/'.$product->id); ?>"> 
+            EDIT PRODUK
+        </a>
+        </div>
     <div>
+  <h1 class="font-bold uppercase"><?php echo $product->name ?></h1>  
+  
     <a href="<?php echo base_url('profile/'.$product->created_by.'/'.url_title($member->farm,'-',true)) ?>">
         <img class="inline w-10 relative" src="<?php echo gen_thumb($member->logo, '100x100') ?>" alt="<?php echo htmlentities($member->farm) ?>">
         <span style="line-height: 40px;"><?php echo $member->farm ?></span>
