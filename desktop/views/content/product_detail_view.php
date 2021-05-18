@@ -1,7 +1,7 @@
 <div class="section py-20 bg-cover bg-no-repeat mt-10">
   <!-- section -->
   <div class="container px-5 mx-auto">
-<?php if(check_owner($product->created_by, true): ? >
+<?php if(check_owner($product->created_by, true)): ? >
   <div class="my-5">
         <a class="btn" href="<?php echo base_url('produk/edit/'.$product->id); ?>"> 
             EDIT PRODUK
