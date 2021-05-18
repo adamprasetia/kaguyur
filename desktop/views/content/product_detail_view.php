@@ -1,12 +1,14 @@
 <div class="section py-20 bg-cover bg-no-repeat mt-10">
   <!-- section -->
   <div class="container px-5 mx-auto">
+<?php if(check_owner($product->created_by, true): ? >
   <div class="my-5">
         <a class="btn" href="<?php echo base_url('produk/edit/'.$product->id); ?>"> 
             EDIT PRODUK
         </a>
         </div>
     <div>
+<?php endif ?>
   <h1 class="font-bold uppercase"><?php echo $product->name ?></h1>  
   
     <a href="<?php echo base_url('profile/'.$product->created_by.'/'.url_title($member->farm,'-',true)) ?>">
