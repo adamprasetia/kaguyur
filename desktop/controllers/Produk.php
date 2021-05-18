@@ -217,9 +217,14 @@ class Produk extends MY_Controller
 		}else{		
 			$video = htmlentities($this->input->post('video', true));
 			if(!empty($video)){
-				$query_string 	= array();
-				parse_str(parse_url($video, PHP_URL_QUERY), $query_string);
-				$video_id 		= @$query_string["v"];
+				if(strpos($video, 'youtu.be')!== false){
+					$path = parse_url($video);
+					$video_id = ltrim($path['path'], '/');
+				}else{
+					$query_string 	= array();
+					parse_str(parse_url($video, PHP_URL_QUERY), $query_string);
+					$video_id 		= @$query_string["v"];
+				}
 			}
 				
 			$data = [
