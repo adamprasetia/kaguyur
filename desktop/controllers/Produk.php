@@ -95,6 +95,7 @@ class Produk extends MY_Controller
 		$this->form_validation->set_rules('name', 'Nama Produk', 'trim|required');
 		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
 		$this->form_validation->set_rules('photo','Foto','callback_required_photo');
+		$this->form_validation->set_rules('video','Video','trim');
 		$this->form_validation->set_rules('price','Harga','trim');
 		$this->form_validation->set_rules('status','Status','trim|required');
 		$this->form_validation->set_message('required', '{field} harus diisi.');
@@ -111,11 +112,20 @@ class Produk extends MY_Controller
 				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Upload photo produk gagal, silakan coba file foto yang lain']);
 				exit;
 			}
-			
+
+			$video = htmlentities($this->input->post('video', true));
+			if(!empty($video)){
+				$query_string 	= array();
+				parse_str(parse_url($video, PHP_URL_QUERY), $query_string);
+				$video_id 		= @$query_string["v"];
+			}
+	
 			$data = [
 				'name'=> htmlentities($this->input->post('name', true)),
 				'description'=> htmlentities($this->input->post('description', true)),
 				'photo'=> json_encode([$photo['data']]),
+				'video'=> $video,
+				'video_id'=> $video_id,
 				'price'=> htmlentities($this->input->post('price', true)),
 				'status'=> htmlentities($this->input->post('status', true)),
 			];
@@ -189,6 +199,7 @@ class Produk extends MY_Controller
 		$this->form_validation->set_rules('name', 'Nama Produk', 'trim|required');
 		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
 		$this->form_validation->set_rules('photo','Foto','callback_optional_photo');
+		$this->form_validation->set_rules('video','Video','trim');
 		$this->form_validation->set_rules('price','Harga','trim');
 		$this->form_validation->set_rules('status','Status','trim|required');
 		$this->form_validation->set_message('required', '{field} harus diisi.');
@@ -199,10 +210,19 @@ class Produk extends MY_Controller
 				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>strip_tags(validation_errors())]);
 			}
 
-		}else{						
+		}else{		
+			$video = htmlentities($this->input->post('video', true));
+			if(!empty($video)){
+				$query_string 	= array();
+				parse_str(parse_url($video, PHP_URL_QUERY), $query_string);
+				$video_id 		= @$query_string["v"];
+			}
+				
 			$data = [
 				'name'=> htmlentities($this->input->post('name', true)),
 				'description'=> htmlentities($this->input->post('description', true)),
+				'video'=> htmlentities($this->input->post('video', true)),
+				'video_id'=> $video_id,
 				'price'=> htmlentities($this->input->post('price', true)),
 				'status'=> htmlentities($this->input->post('status', true)),
 			];

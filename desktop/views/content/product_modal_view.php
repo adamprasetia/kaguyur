@@ -22,6 +22,10 @@
               <textarea class="field w-full" name="description" cols="30" rows="10"></textarea>
             </div>
             <div class="mb-3">
+              <label class="font-semibold block">Link Video (Youtube)</label>
+              <input class="field w-full" type="text" name="video" id="video"/>
+            </div>
+            <div class="mb-3">
               <label class="font-semibold block">Foto *</label>
               <small>Pastikan ukuran file tidak lebih dari 1 MB</small>
               <input onchange="check_size(this)" type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full"/>

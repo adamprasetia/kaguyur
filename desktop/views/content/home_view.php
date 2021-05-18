@@ -32,7 +32,7 @@
         <div>
           <h3 class="text-white text-md font-bold">ANGGOTA</h3>
           <div class="my-5">
-            <div class="slider slider__etalase pb-5" id="slider-jagoan">
+            <div class="slider slider__etalase pb-5" id="slider-anggota">
               <?php $i=1;foreach ($member as $row) { ?>
               <a href="<?php echo base_url('profile/'.$row->id.'/'.url_title($row->farm,'-',true)) ?>">
                 <div>

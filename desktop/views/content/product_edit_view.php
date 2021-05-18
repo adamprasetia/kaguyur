@@ -22,6 +22,14 @@
               <input onchange="check_size(this)" type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full"/>
             </div>
             <div class="mb-3">
+              <?php if(!empty($product->video_id)){ ?>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $product->video_id ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <?php } ?>
+
+              <label class="font-semibold block">Url Youtube</label>
+              <input class="field w-full" type="text" name="video" id="video" value="<?php echo isset($product->video)?$product->video:''; ?>"/>
+            </div>
+            <div class="mb-3">
               <label class="font-semibold block">Harga</label>
               <input type="text" name="fb" id="fb" class="field w-full" value="<?php echo isset($product->price)?$product->price:''; ?>"/>
             </div>

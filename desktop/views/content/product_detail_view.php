@@ -9,18 +9,29 @@
     </a>
     </div>
 
-    <div class="grid grid-flow-row grid-rows-1 grid-cols-1 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
-        <?php 
-            if(!empty($product->photo)) { 
-                $photo = json_decode($product->photo);
-        ?>
-        <?php $i=1;foreach ($photo as $row) { ?>        
-            <div class="tns-item tns-slide-active">
+    <div class="grid grid-flow-row grid-rows-1 grid-cols-6 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
+        <div class="col-span-6 md:col-span-3">
+        <div class="slider slider__etalase pb-5" id="slider-product">                
+            <?php 
+                if(!empty($product->photo)) { 
+                    $photo = json_decode($product->photo);
+            ?>
+            <?php $i=1;foreach ($photo as $row) { ?>        
+                <div>
+                    <div class="slider__etalase__img etalase__img">
+                        <img class="imgfillImg" src="<?php echo base_url($row) ?>">
+                    </div>
+                </div>
+            <?php $i++;}} ?>
+            <?php if(!empty($product->video_id)){ ?>
+            <div>
                 <div class="slider__etalase__img etalase__img">
-                    <img class="imgfillImg" src="<?php echo base_url($row) ?>">
+                    <iframe width="100%" style="height:240px" src="https://www.youtube.com/embed/<?php echo $product->video_id ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
-        <?php $i++;}} ?>
+            <?php } ?>
+        </div>
+        </div>
     </div>
     <div>
         <?php echo $product->description ?>
@@ -41,3 +52,22 @@
     </div>
   </div>
 </div>
+<script type="text/javascript" src="<?php echo config_item('assets'); ?>js/tiny-slider.js"></script>
+<script>
+var sliderEtalaseId = document.querySelector("#slider-product");
+if (sliderEtalaseId != null) {
+  var sliderEtalaseId = tns({
+    container: "#slider-product",
+    loop: false,
+    items: 1,
+    gutter: 15,
+    controls: false,
+    mouseDrag: true,
+    responsive: {
+      768: {
+        items: 3,
+      },
+    },
+  });
+}
+</script>
