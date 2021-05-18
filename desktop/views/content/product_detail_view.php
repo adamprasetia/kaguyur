@@ -91,7 +91,7 @@ if (sliderEtalaseId != null) {
     mouseDrag: true,
     responsive: {
       768: {
-        items: 3,
+        items: 2,
       },
     },
   });
