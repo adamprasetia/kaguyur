@@ -43,7 +43,7 @@
         <?php } ?>
         <div class="mt-5">
         <a class="btn btn__wa" href="https://api.whatsapp.com/send?phone=<?php echo substr($product->phone,0,1)=='0'?substr_replace($product->phone,'+62',0,1):$product->phone ?>"> 
-            WHATSAPP PENJUAL
+            KIRIM WHATSAPP
         </a>
         </div>
     </div>
