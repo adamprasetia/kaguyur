@@ -63,13 +63,15 @@ class Produk extends MY_Controller
 	{
 		$product = @json_decode(file_get_contents('./assets/json/product_'.$id.'.json'));
 		$member = @json_decode(file_get_contents('./assets/json/member_'.$product->created_by.'.json'));
+		$product_member = @json_decode(file_get_contents('./assets/json/product_member_'.$product->created_by.'.json'));
         if(!$product){
             show_404();
             exit;
         }
 		$data['content'] = $this->load->view('content/product_detail_view', [
 			'product'=>$product,
-			'member'=>$member
+			'member'=>$member,
+			'product_member'=>$product_member
 		], true);
 		$photo = json_decode($product->photo);
 		$data['meta'] = [

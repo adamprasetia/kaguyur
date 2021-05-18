@@ -41,11 +41,33 @@
         <?php if(!empty($product->price)){ ?>
         <h1>Rp. <?php echo number_format($product->price) ?></h1>
         <?php } ?>
-        <div class="mt-5">
-        <a class="btn btn__wa" href="https://api.whatsapp.com/send?phone=<?php echo substr($product->phone,0,1)=='0'?substr_replace($product->phone,'+62',0,1):$product->phone ?>"> 
+        <div class="my-5">
+        <a class="btn btn__wa" href="https://api.whatsapp.com/send?phone=<?php echo substr($member->phone,0,1)=='0'?substr_replace($member->phone,'+62',0,1):$member->phone ?>"> 
             KIRIM WHATSAPP
         </a>
         </div>
+        <?php if(!empty($product_member)):?>
+        <p><strong>Produk Lainnya</strong></p>
+        <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
+        <?php $i=1;foreach ($product_member as $row) { ?>        
+            <?php if($row->id == $product->id){continue;} ?>
+            <?php $photo = json_decode($row->photo) ?>        
+            <a href="<?php echo base_url('produk/'.$row->id.'/'.url_title($row->name,'-',true)) ?>">
+            <div class="tns-item tns-slide-active">            
+                <div class="slider__etalase__img etalase__img">
+                <img class="imgfillImg" src="<?php echo gen_thumb($photo[0],'300x300') ?>" alt="<?php echo $row->name ?>">
+                </div>
+                <div>
+                <p style="margin-bottom:0px" class="font-bold"><?php echo $row->name ?></p>
+                <?php if(!empty($row->price)){ ?>
+                <small><?php echo 'Rp. '.number_format($row->price) ?></small>
+                <?php } ?>
+                </div>            
+            </div>
+            </a>
+        <?php $i++;} ?>
+        </div>
+        <?php endif?>
     </div>
   </div>
 </div>
