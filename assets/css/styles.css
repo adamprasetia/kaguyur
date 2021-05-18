@@ -647,6 +647,9 @@ div:focus {
 .btn__black {
     background-color: #000;
 }
+.btn__wa{
+    background-color: #1bd741;
+}
 .z-min1 {
     z-index: -1;
 }

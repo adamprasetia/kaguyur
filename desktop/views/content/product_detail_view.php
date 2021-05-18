@@ -3,9 +3,9 @@
   <div class="container px-5 mx-auto">
     <h1 class="font-bold uppercase"><?php echo $product->name ?></h1>    
     <div>
-    <a href="<?php echo base_url('anggota/detail/'.$product->created_by) ?>">
-        <img class="inline w-10 relative" src="<?php echo gen_thumb($product->logo, '100x100') ?>" alt="<?php echo $product->farm ?>">
-        <span style="line-height: 40px;"><?php echo $product->farm ?></span>
+    <a href="<?php echo base_url('profile/'.$product->created_by.'/'.url_title($member->farm,'-',true)) ?>">
+        <img class="inline w-10 relative" src="<?php echo gen_thumb($member->logo, '100x100') ?>" alt="<?php echo htmlentities($member->farm) ?>">
+        <span style="line-height: 40px;"><?php echo $member->farm ?></span>
     </a>
     </div>
 
@@ -34,20 +34,17 @@
         </div>
     </div>
     <div>
+        <p><strong>Deskripsi</strong></p>
         <?php echo $product->description ?>
+        <p><strong>Lokasi</strong></p>
+        <?php echo $member->address ?>
         <?php if(!empty($product->price)){ ?>
         <h1>Rp. <?php echo number_format($product->price) ?></h1>
         <?php } ?>
         <div class="mt-5">
-        <a class="btn btn-black" href="https://api.whatsapp.com/send?phone=<?php echo substr($product->phone,0,1)=='0'?substr_replace($product->phone,'+62',0,1):$product->phone ?>"> 
-            BELI PRODUK
+        <a class="btn btn__wa" href="https://api.whatsapp.com/send?phone=<?php echo substr($product->phone,0,1)=='0'?substr_replace($product->phone,'+62',0,1):$product->phone ?>"> 
+            WHATSAPP PENJUAL
         </a>
-        <?php if($product->created_by == $this->user_login['id']){ ?>
-        &nbsp;
-        <a class="btn btn-black" href="<?php echo base_url('produk/edit/'.$product->id) ?>"> 
-            EDIT PRODUK
-        </a>
-        <?php } ?>
         </div>
     </div>
   </div>
