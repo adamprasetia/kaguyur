@@ -39,7 +39,8 @@ class Artikel extends MY_Controller
 
 		$data['meta'] = [
 			'title'=> $article->title.' | Komunitas Guppy Cianjur (KAGUYUR)',
-			'image'=> base_url($article->image),
+			'description'=> $article->description,
+			'image'=> gen_thumb($article->image,'320x240'),
 		];
 
 		
