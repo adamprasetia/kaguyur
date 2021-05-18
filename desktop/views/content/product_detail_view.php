@@ -19,6 +19,14 @@
     <div class="grid grid-flow-row grid-rows-1 grid-cols-6 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
         <div class="col-span-6 md:col-span-3">
         <div class="slider slider__etalase pb-5" id="slider-product">                
+            <?php if(!empty($product->video_id)){ ?>
+            <div>
+                <div class="slider__etalase__img etalase__img">
+                    <iframe width="100%" style="height:240px" src="https://www.youtube.com/embed/<?php echo $product->video_id ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <?php } ?>
+
             <?php 
                 if(!empty($product->photo)) { 
                     $photo = json_decode($product->photo);
@@ -30,13 +38,6 @@
                     </div>
                 </div>
             <?php $i++;}} ?>
-            <?php if(!empty($product->video_id)){ ?>
-            <div>
-                <div class="slider__etalase__img etalase__img">
-                    <iframe width="100%" style="height:240px" src="https://www.youtube.com/embed/<?php echo $product->video_id ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            <?php } ?>
         </div>
         </div>
     </div>
