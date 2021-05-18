@@ -56,15 +56,27 @@ iframe {
     border: none;
     vertical-align: top;
 }
-li,
-ul,
-ol {
+.header li,
+.header ul,
+.header ol,
+.breadcumb li,
+.breadcumb ul,
+.breadcumb ol,
+.grid ul,
+.footer li,
+.footer ul,
+.footer ol 
+{
     margin: 0;
     padding: 0;
     list-style: none;
 }
-ul li,
-ul li a {
+.header ul li,
+.header ul li a,
+.breadcumb ul li,
+.breadcumb ul li a,
+.footer ul li,
+.footer ul li a {
     display: inline-block;
     list-style: none;
     vertical-align: top;
