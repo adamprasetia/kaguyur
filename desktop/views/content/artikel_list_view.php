@@ -11,9 +11,11 @@
                     <ul>
                         <?php foreach ($data as $row) { ?>                            
                         <li class="grid grid-cols-8 gap-4 mb-5">
+                            <?php if(!empty($row->image)): ?>
                             <div class="col-span-3 md:col-span-2">
                                 <img class="imgfillImg" src="<?php echo gen_thumb($row->image,'300x300') ?>" alt="" />
                             </div>
+                            <?php endif ?>
                             <div class="col-span-5 md:col-span-6">
                                 <a href="<?php echo base_url('artikel/edit/'.$row->id.'/'.$row->status) ?>">
                                     <h4 class="mb-2 text__wrap2"><?php echo $row->title ?></h4>
