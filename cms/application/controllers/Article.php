@@ -21,7 +21,7 @@ class Article extends MY_Controller {
 			$where['status !='] = 'DELETED';
 		}
 		$total = $this->global_model->count(['table'=>$this->table_name,'where'=>$where]);
-		$news_view['data'] 	= $this->global_model->get(['table'=>$this->table_name,'where'=>$where])->result();
+		$news_view['data'] 	= $this->global_model->get(['table'=>$this->table_name,'where'=>$where,'order'=>['created_date'=>'desc']])->result();
 		$news_view['offset'] = $offset;
 		$news_view['paging'] = gen_paging($total,$this->limit);
 		$news_view['total'] 	= gen_total($total,$this->limit,$offset);
