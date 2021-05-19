@@ -9,7 +9,7 @@
         <span><strong><?php echo $member->farm ?></strong></span><br>
         <span><?php echo $member->address ?></span><br>
         <span><?php echo $member->phone ?></span><br>
-        <span>Status : <strong class="color-<?php echo strtolower($this->user_login['status']) ?>"><?php echo $this->user_login['status'] ?></span></strong>
+        <span>Status : <strong class="color-<?php echo strtolower($member->status) ?>"><?php echo $member->status ?></span></strong>
       </div>
     </div>
     <p><strong>Strain</strong></p>
