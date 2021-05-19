@@ -191,7 +191,10 @@ class Article extends MY_Controller {
 				'limit'=>20,
 				'join'=>[
 					['member b','a.created_by = b.id']
-				]
+				],
+				'order'=>[
+					'a.published_date'=>'desc'
+				]	
 			])->result_array();
 			create_json('article.json', json_encode($data));
 		}
@@ -211,7 +214,7 @@ class Article extends MY_Controller {
 				['member b','a.created_by = b.id']
 			],
 			'order'=>[
-				'published_date'=>'desc'
+				'a.published_date'=>'desc'
 			]
 		])->result_array();
 		create_json('article_pin.json', json_encode($data));
