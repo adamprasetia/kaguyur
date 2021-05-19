@@ -4,14 +4,14 @@
         <div class="form-group">
             <input type="hidden" id="input_id" name="input_id" value="<?php echo isset($data->id)?$data->id:'' ?>">
             <label>Judul *</label>
-            <input type="text" id="title" name="title" class="form-control" value="<?php echo isset($data->title)?$data->title:'' ?>">
+            <input type="text" id="title" name="title" class="form-control" value="<?php echo isset($data->title)?htmlentities($data->title):'' ?>">
             <?php if (isset($data->status) && $data->status=='PUBLISH'): ?>
                 <label class="label label-default">Publish at <?php echo format_dmy($data->published_date) ?></label>
             <?php endif; ?>
         </div>
         <div class="form-group">
             <label>Description *</label>
-            <textarea id="description" name="description" class="form-control"><?php echo isset($data->description)?$data->description:'' ?></textarea>
+            <textarea id="description" name="description" class="form-control"><?php echo isset($data->description)?htmlentities($data->description):'' ?></textarea>
         </div>
         <div class="form-group">
             <textarea id="content" name="content" class="form-control" rows="100"><?php echo isset($data->content)?$data->content:'' ?></textarea>
@@ -21,6 +21,10 @@
             <label class="form-check-label" for="pin">Pin</label>
         </div>
         <div class="form-group">
+            <label>Tag *</label>
+            <textarea id="tag" name="tag" class="form-control"><?php echo isset($data->tag)?htmlentities($data->tag):'' ?></textarea>
+        </div>
+        <div class="form-group">
         <label>Status *</label>
         <select name="status" id="status" class="form-control">
             <option value="DRAFT" <?php echo $data->status=='DRAFT'?'selected':''?>>DRAFT</option>
@@ -28,7 +32,6 @@
             <option value="DELETED" <?php echo $data->status=='DELETED'?'selected':''?>>DELETED</option>
         </select>
         </div>
-
         </form>
     </div>
     <div class="box-footer">

@@ -35,25 +35,30 @@ class Article extends MY_Controller {
 		$this->form_validation->set_rules('title','Judul','trim|required');
 		$this->form_validation->set_rules('description','Deskripsi','trim|required');
 		$this->form_validation->set_rules('content', 'Content', 'trim|required');
+		$this->form_validation->set_rules('tag', 'Tag', 'trim|required');
 		$this->form_validation->set_rules('status', 'Status', 'trim|required');
+		$this->form_validation->set_message('required', '{field} harus diisi.');
 	}
 	private function _set_data()
 	{
-		$title 			= $this->input->post('title');
-		$description 	= $this->input->post('description');
-		$content 		= $this->input->post('content');
-		$status 		= $this->input->post('status');
-		$pin 			= $this->input->post('pin');
+		$title 			= $this->input->post('title', true);
+		$description 	= $this->input->post('description', true);
+		$content 		= $this->input->post('content', true);
+		$tag 			= $this->input->post('tag', true);
+		$status 		= $this->input->post('status', true);
+		$pin 			= $this->input->post('pin', true);
 		
 		$data = array(
 			'title' => $title,
 			'description' => $description,
 			'content' => $content,
+			'tag' => $tag,
 			'status' => $status,
 			'pin' => $pin,
 		);
 
 		// cari foto
+		$data['image'] = '';
 		if(preg_match_all('/<img[^>]+>/i',$content, $images))
 		{
 			if(isset($images[0][0]) && $images[0][0]){

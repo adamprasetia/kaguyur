@@ -38,8 +38,9 @@ class Artikel extends MY_Controller
 		$data['content'] = $this->load->view('content/artikel_detail_view', $article, true);
 
 		$data['meta'] = [
-			'title'=> $article->title.' | Komunitas Guppy Cianjur (KAGUYUR)',
+			'title'=> $article->title.' | Kaguyur.com',
 			'description'=> $article->description,
+			'keywords'=> $article->tag,
 			'image'=> gen_thumb($article->image,'320x240'),
 		];
 
@@ -104,6 +105,7 @@ class Artikel extends MY_Controller
 		$this->form_validation->set_rules('title', 'Judul', 'trim|required');
 		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
 		$this->form_validation->set_rules('content', 'Konten', 'trim|required');
+		$this->form_validation->set_rules('tag', 'Tag', 'trim|required');
 		
 		$this->form_validation->set_message('required', '{field} harus diisi.');
 	}
@@ -112,13 +114,15 @@ class Artikel extends MY_Controller
 		$content = $this->input->post('content', true);
 			
 		$data = [
-			'title'=> $this->input->post('title', true),
-			'description'=> $this->input->post('description', true),
+			'title'=> htmlentities($this->input->post('title', true)),
+			'description'=> htmlentities($this->input->post('description', true)),
 			'content'=> $content,
+			'tag'=> htmlentities($this->input->post('tag', true)),
 			'status'=> 'DRAFT',
 		];
 
 		// cari foto
+		$data['image'] = '';
 		if(preg_match_all('/<img[^>]+>/i',$content, $images))
 		{
 			if(isset($images[0][0]) && $images[0][0]){

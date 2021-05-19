@@ -14,6 +14,7 @@
     <meta charset="utf-8" />
     <title><?php echo isset($meta['title']) ? $meta['title'] : 'Komunitas Guppy Cianjur (KAGUYUR) Offical Website'; ?></title>
     <meta name="description" content="<?php echo isset($meta['description']) ? $meta['description'] : 'Wadah untuk membangun kekompakan dan kebersamaan serta berbagi ilmu pengetahuan seputar ikan guppy'; ?>" />
+    <meta name="keywords" content="<?php echo isset($meta['keywords']) ? $meta['keywords'] : 'budidaya, ikan guppy, komunitas, hobby, black moscow, afr, prtde, lace, mozaik, jual guppy, sharing, guppy kualitas, finroot, white spot, sisik nanas, sipon, amoniak, obat biru, ketapang, aquarium,ember, bak kulkas'; ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta property="og:title" content="<?php echo isset($meta['title']) ? $meta['title'] : 'Komunitas Guppy Cianjur (KAGUYUR) Offical Website'; ?>" />
