@@ -23,19 +23,17 @@ class Artikel extends MY_Controller
 	}
     public function detail($id)
     {
+		$article_lain = @json_decode(file_get_contents('./assets/json/article.json'));
 		$article = @json_decode(file_get_contents('./assets/json/article_'.$id.'.json'));
         if(empty($article)){
             show_404();
             exit;
         }
-
-		//pisahin foto pertama
-		preg_match_all('/<img[^>]+>/i',$article->content, $foto);
-		if (isset($foto[0][0])) {
-			$article->content = str_replace($foto[0][0], '', $article->content);
-		}
 		
-		$data['content'] = $this->load->view('content/artikel_detail_view', $article, true);
+		$data['content'] = $this->load->view('content/artikel_detail_view', [
+			'article'=>$article,
+			'article_lain'=>$article_lain
+		], true);
 
 		$data['meta'] = [
 			'title'=> $article->title.' | Kaguyur.com',
