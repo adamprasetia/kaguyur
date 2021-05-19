@@ -14,6 +14,19 @@
             <textarea id="description" name="description" class="form-control"><?php echo isset($data->description)?htmlentities($data->description):'' ?></textarea>
         </div>
         <div class="form-group">
+            <label>Image *</label>
+            <br/>
+            <input type="button" name="choose" id="choose" class="btn btn-default btn-sm btn-dialog" value="Choose Photo" data-title="Pilih Cover" data-url="<?php echo base_url('photo').'?modals=true'; ?>">
+        </div>
+        <div class="form-group">
+            <div class="media">
+                <div class="media-left">
+                <img id="image_img" src="<?php echo isset($data->image)?config_item('base_domain').$data->image:''; ?>" class="media-object" style="width: 300px;height: auto;border-radius: 10px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+                <input type="hidden" id="image" name="image" value="<?php echo isset($data->image)?$data->image:''; ?>">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
             <textarea id="content" name="content" class="form-control" rows="100"><?php echo isset($data->content)?$data->content:'' ?></textarea>
         </div>
         <div class="form-check">
@@ -39,44 +52,4 @@
         <button type="button" class="btn_close btn btn-sm btn-default" data-idle="Close" data-process="Closing..." data-redirect="<?php echo base_url('article/index').get_query_string() ?>"><i class="fa fa-close"></i> Close</button>
     </div>
 </div>
-<script>
-$(document).ready(function(){
-    tinymce.init({
-        selector: '#content',
-        height: 1000,
-        menubar: false,
-        plugins: ['lists hr code photocms videocms media paste link table'],
-        relative_urls: false,
-        remove_script_host: false,
-        toolbar: 'bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | table | undo redo | link | photocms | videocms | hr | code | formatselect fontsizeselect | media',
-        setup: function(editor) {
-            editor.on('Change', function(e) {
-                $('#content').html(tinymce.get('content').getContent());
-            });
-        }
-    });
-
-    $("#general-modal-iframe").on('load',function () {
-        $(this).contents().find(".btn_add_photo").click(function(){
-            var id = $(this).attr('data-id');
-            var id_tinymce = $(this).attr('data-id-tinymce');
-            var imagedata = $("#general-modal-iframe").contents().find('.imagedata-'+id).data();
-            tinymce.get(id_tinymce).execCommand('mceInsertContent', false, '<img width="100%" src="'+base_domain+imagedata.src+'">');
-            $('#general-modal').modal('hide');
-        });
-
-        $(this).contents().find(".btn_add_video").click(function(){
-            var id = $(this).attr('data-id');
-            var videodata = $("#general-modal-iframe").contents().find('.videodata-'+id).data();
-            console.log(videodata);
-            tinymce.execCommand('mceInsertContent', false, '<iframe class="video" width="100%" height="100%" src="'+videodata.embed+'"></iframe>');
-            $('#general-modal').modal('hide');
-        });
-
-    });
-
-    
-
-});
-
-</script>
+<?php $this->load->view('script/article') ?>

@@ -117,7 +117,7 @@ class Produk extends MY_Controller
 				exit;
 			}
 
-			$video = htmlentities($this->input->post('video', true));
+			$video = $this->input->post('video', true);
 			if(!empty($video)){
 				$query_string 	= array();
 				parse_str(parse_url($video, PHP_URL_QUERY), $query_string);
@@ -125,13 +125,13 @@ class Produk extends MY_Controller
 			}
 	
 			$data = [
-				'name'=> htmlentities($this->input->post('name', true)),
-				'description'=> htmlentities($this->input->post('description', true)),
+				'name'=> $this->input->post('name', true),
+				'description'=> $this->input->post('description', true),
 				'photo'=> json_encode([$photo['data']]),
 				'video'=> $video,
 				'video_id'=> $video_id,
-				'price'=> htmlentities($this->input->post('price', true)),
-				'status'=> htmlentities($this->input->post('status', true)),
+				'price'=> $this->input->post('price', true),
+				'status'=> $this->input->post('status', true),
 			];
 			$data['created_by'] = $this->user_login['id'];
 			$data['created_date'] = date('Y-m-d H:i:s');
@@ -215,7 +215,7 @@ class Produk extends MY_Controller
 			}
 
 		}else{		
-			$video = htmlentities($this->input->post('video', true));
+			$video = $this->input->post('video', true);
 			if(!empty($video)){
 				if(strpos($video, 'youtu.be')!== false){
 					$path = parse_url($video);
@@ -228,12 +228,12 @@ class Produk extends MY_Controller
 			}
 				
 			$data = [
-				'name'=> htmlentities($this->input->post('name', true)),
-				'description'=> htmlentities($this->input->post('description', true)),
-				'video'=> htmlentities($this->input->post('video', true)),
+				'name'=> $this->input->post('name', true),
+				'description'=> $this->input->post('description', true),
+				'video'=> $this->input->post('video', true),
 				'video_id'=> $video_id,
-				'price'=> htmlentities($this->input->post('price', true)),
-				'status'=> htmlentities($this->input->post('status', true)),
+				'price'=> $this->input->post('price', true),
+				'status'=> $this->input->post('status', true),
 			];
 			if(!empty($_FILES['photo']['name'])){
 				$photo   = uploadFile('photo');	

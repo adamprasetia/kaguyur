@@ -114,25 +114,13 @@ class Artikel extends MY_Controller
 		$content = $this->input->post('content', true);
 			
 		$data = [
-			'title'=> htmlentities($this->input->post('title', true)),
-			'description'=> htmlentities($this->input->post('description', true)),
+			'title'=> $this->input->post('title', true),
+			'description'=> $this->input->post('description', true),
+			'image'=> $this->input->post('image', true),
 			'content'=> $content,
-			'tag'=> htmlentities($this->input->post('tag', true)),
+			'tag'=> $this->input->post('tag', true),
 			'status'=> 'DRAFT',
-		];
-
-		// cari foto
-		$data['image'] = '';
-		if(preg_match_all('/<img[^>]+>/i',$content, $images))
-		{
-			if(isset($images[0][0]) && $images[0][0]){
-				preg_match( '/src="([^"]*)"/i', $images[0][0], $src );
-				$srchasil =  (isset($src[1])) ? $src[1] : "";
-				$data['image'] = substr($srchasil, strpos($srchasil, 'assets/'));
-			}
-		}
-		
-
+		];		
 		return $data;
 	}
 	public function do_add()

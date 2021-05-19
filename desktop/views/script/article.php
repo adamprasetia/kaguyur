@@ -17,8 +17,15 @@ $(document).ready(function(){
     });
 
     $("#modal-general-iframe").on('load',function () {
+        var title = $('#modal-general-title').html();
         $(this).contents().find(".btn_add_photo").click(function(){
-            tinymce.execCommand('mceInsertContent', false, '<img width="100%" src="'+$(this).attr('data-image')+'">');
+            if(title == 'Photo'){
+                tinymce.execCommand('mceInsertContent', false, '<img width="100%" src="'+$(this).attr('data-image')+'">');
+            }else if(title == 'Pilih Image'){
+                var src = $(this).attr('data-src');                                            
+                $('#image_img').attr('src','<?php echo base_url() ?>'+src);
+                $('#image').val(src);    
+            }
             MicroModal.close('modal-general');
         });
 
@@ -29,7 +36,13 @@ $(document).ready(function(){
 
     });
 
-
+    $('body').on('click', '.btn-dialog', function() {
+        var title = $(this).attr('data-title');
+        var src = $(this).attr('data-url');
+        $('#modal-general-title').html(title);
+        $('#modal-general-iframe').attr('src', src);
+        MicroModal.show('modal-general');
+    });
 });
 
 

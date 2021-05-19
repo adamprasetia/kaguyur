@@ -13,6 +13,12 @@
               <textarea class="field w-full" name="description" cols="30" rows="5"><?php echo isset($data->description)?htmlentities($data->description):''; ?></textarea>
             </div>
             <div class="mb-3">
+              <label class="font-semibold block">Image</label>
+              <img id="image_img" src="<?php echo isset($data->image)?base_url($data->image):''; ?>">
+              <input type="hidden" id="image" name="image" value="<?php echo isset($data->image)?$data->image:''; ?>">
+              <input type="button" name="choose" id="choose" class="btn btn-default btn-sm btn-dialog" value="Pilih Image" data-title="Pilih Image" data-url="<?php echo base_url('photo').'?modals=true'; ?>">
+            </div>
+            <div class="mb-3">
               <textarea class="field w-full" id="content" name="content" cols="30" rows="5"><?php echo isset($data->content)?$data->content:''; ?></textarea>
             </div>
             <div class="mb-3">

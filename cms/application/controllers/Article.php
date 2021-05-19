@@ -43,6 +43,7 @@ class Article extends MY_Controller {
 	{
 		$title 			= $this->input->post('title', true);
 		$description 	= $this->input->post('description', true);
+		$image 			= $this->input->post('image', true);
 		$content 		= $this->input->post('content', true);
 		$tag 			= $this->input->post('tag', true);
 		$status 		= $this->input->post('status', true);
@@ -51,22 +52,12 @@ class Article extends MY_Controller {
 		$data = array(
 			'title' => $title,
 			'description' => $description,
+			'image' => $image,
 			'content' => $content,
 			'tag' => $tag,
 			'status' => $status,
 			'pin' => $pin,
 		);
-
-		// cari foto
-		$data['image'] = '';
-		if(preg_match_all('/<img[^>]+>/i',$content, $images))
-		{
-			if(isset($images[0][0]) && $images[0][0]){
-				preg_match( '/src="([^"]*)"/i', $images[0][0], $src );
-				$srchasil =  (isset($src[1])) ? $src[1] : "";
-				$data['image'] = substr($srchasil, strpos($srchasil, 'assets/'));
-			}
-		}
 		
 		return $data;
 	}
