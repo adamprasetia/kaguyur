@@ -23,9 +23,10 @@
       <div class="col-span-2 md:col-span-1">
         <img src="<?php echo gen_thumb($this->user_login['logo'],'100x100') ?>" alt="<?php echo htmlentities($this->user_login['farm']) ?>">
       </div>
-      <div class="col-span-6 mt-2">
+      <div class="col-span-6">
         <span><strong><?php echo $this->user_login['name'] ?></strong></span><br>
         <span><?php echo $this->user_login['farm'] ?></span><br>
+        <span>Status : <strong class="color-<?php echo strtolower($this->user_login['status']) ?>"><?php echo $this->user_login['status'] ?></span></strong>
       </div>
     </div>
     <div class="flex mt-2">

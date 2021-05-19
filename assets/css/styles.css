@@ -1125,3 +1125,9 @@ div:focus {
     color: #fff;
     transition: .5s cubic-bezier(.17,.67,.83,.67) 3s;
 }
+.color-verified{
+    color: green;
+}
+.color-pending {
+    color : #cea84d
+}
