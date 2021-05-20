@@ -116,23 +116,21 @@ class Produk extends MY_Controller
 				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Upload photo produk gagal, silakan coba file foto yang lain']);
 				exit;
 			}
-
-			$video = $this->input->post('video', true);
-			if(!empty($video)){
-				$query_string 	= array();
-				parse_str(parse_url($video, PHP_URL_QUERY), $query_string);
-				$video_id 		= @$query_string["v"];
-			}
-	
+			$video = $this->input->post('video', true);	
 			$data = [
 				'name'=> $this->input->post('name', true),
 				'description'=> $this->input->post('description', true),
 				'photo'=> json_encode([$photo['data']]),
 				'video'=> $video,
-				'video_id'=> $video_id,
 				'price'=> $this->input->post('price', true),
 				'status'=> 'ACTIVE',
 			];
+			if(!empty($video)){
+				$query_string 	= array();
+				parse_str(parse_url($video, PHP_URL_QUERY), $query_string);
+				$data['video_id'] = @$query_string["v"];
+			}
+
 			$data['created_by'] = $this->user_login['id'];
 			$data['created_date'] = date('Y-m-d H:i:s');
 
