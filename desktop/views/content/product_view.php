@@ -42,7 +42,10 @@
                     <img class="imgfillImg" src="<?php echo gen_thumb($photo[0],'300x300') ?>" alt="<?php echo htmlentities($row->name) ?>">
                 </div>
                 <div class="mt-2">
-                    <p class="font-bold"><?php echo $row->name ?></p>
+                    <span><?php echo $row->name ?></span><br>
+                    <?php if (!empty($row->price)) {?>                            
+                      <small class="font-bold">Rp. <?php echo number_format($row->price) ?></small>
+                    <?php } ?>
                 </div>
             </div>
             </a>

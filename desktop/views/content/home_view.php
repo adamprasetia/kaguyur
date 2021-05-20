@@ -70,9 +70,9 @@
                       <img class="imgfillImg" src="<?php echo gen_thumb($photo_prod[0],'100x100') ?>" alt="<?php echo htmlentities($row->name) ?>" />
                     </div>
                     <div class="mt-2">
-                        <p class="font-bold text__wrap2 mb-0"><?php echo htmlentities($row->name) ?></p>
+                        <p class="text__wrap2 mb-0"><?php echo htmlentities($row->name) ?></p>
                         <?php if (!empty($row->price)) {?>                            
-                          <small><?php echo number_format($row->price) ?></small>
+                          <small class="font-bold">Rp. <?php echo number_format($row->price) ?></small>
                         <?php } ?>
                     </div>
                   </div>
