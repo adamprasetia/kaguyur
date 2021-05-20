@@ -30,7 +30,7 @@
             <textarea id="content" name="content" class="form-control" rows="100"><?php echo isset($data->content)?$data->content:'' ?></textarea>
         </div>
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="pin" name="pin" value="1" <?php echo isset($data->pin)?'checked':'' ?>>
+            <input type="checkbox" class="form-check-input" id="pin" name="pin" value="1" <?php echo !empty($data->pin)?'checked':'' ?>>
             <label class="form-check-label" for="pin">Pin</label>
         </div>
         <div class="form-group">
