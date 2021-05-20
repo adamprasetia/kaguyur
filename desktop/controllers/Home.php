@@ -18,6 +18,7 @@ class Home extends MY_Controller
 		$member = @json_decode(file_get_contents('./assets/json/member.json'));
 		$infografik = @json_decode(file_get_contents('./assets/json/infografik.json'));
 		$member = gen_random($member, 5);
+		$product = gen_random($product, 5);
 		$data['content'] = $this->load->view('content/home_view', [
 			'article_pin'=>$article_pin,
 			'article'=>$article,
