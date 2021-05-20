@@ -13,7 +13,7 @@
               <select class="field w-full" name="category" id="category" >
                 <option value="IKAN GUPPY" <?php echo isset($product->category) && $product->category=='IKAN GUPPY'?'selected':''?>>IKAN GUPPY</option>
                 <option value="PERALATAN & AKSESORI" <?php echo isset($product->category) && $product->category=='PERALATAN & AKSESORI'?'selected':''?>>PERALATAN & AKSESORI</option>
-                <option value="PAKAN" <?php echo isset($product->category) && $product->category=='PAKAN'?'selected':''?>>PAKAN</option>
+                <option value="PAKAN & OBAT" <?php echo isset($product->category) && $product->category=='PAKAN & OBAT'?'selected':''?>>PAKAN & OBAT</option>
               </select>
             </div>
             <div class="mb-3">
