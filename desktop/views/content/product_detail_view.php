@@ -37,7 +37,7 @@
             <?php $i=1;foreach ($photo as $row) { ?>        
                 <div>
                     <div class="slider__etalase__img etalase__img">
-                        <img class="imgfillImg" src="<?php echo base_url($row) ?>">
+                        <img class="imgfillImg" src="<?php echo gen_thumb($row,'320x240') ?>">
                     </div>
                 </div>
             <?php $i++;}} ?>
