@@ -101,7 +101,7 @@ class Produk extends MY_Controller
 		$this->form_validation->set_rules('photo','Foto','callback_required_photo');
 		$this->form_validation->set_rules('video','Video','trim');
 		$this->form_validation->set_rules('price','Harga','trim');
-		$this->form_validation->set_rules('status','Status','trim|required');
+		$this->form_validation->set_rules('status','Status','trim');
 		$this->form_validation->set_message('required', '{field} harus diisi.');
 
 		if ($this->form_validation->run()===FALSE ){
@@ -131,7 +131,7 @@ class Produk extends MY_Controller
 				'video'=> $video,
 				'video_id'=> $video_id,
 				'price'=> $this->input->post('price', true),
-				'status'=> $this->input->post('status', true),
+				'status'=> 'ACTIVE',
 			];
 			$data['created_by'] = $this->user_login['id'];
 			$data['created_date'] = date('Y-m-d H:i:s');
