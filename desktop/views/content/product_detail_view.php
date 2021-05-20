@@ -9,11 +9,14 @@
         </div>
     <?php endif ?>
     <div>
-    <h1 class="font-bold uppercase"><?php echo $product->name ?></h1>  
-    <a href="<?php echo base_url('profile/'.$product->created_by.'/'.url_title($member->farm,'-',true)) ?>">
-        <img class="inline w-10 relative" src="<?php echo gen_thumb($member->logo, '100x100') ?>" alt="<?php echo htmlentities($member->farm) ?>">
-        <span style="line-height: 40px;"><?php echo $member->farm ?></span>
-    </a>
+        <h1 class="read__title"><?php echo $product->name ?></h1>  
+        <p class="read__date"><?php echo format_dmy($product->created_date) ?></p>
+        <div class="mt-5">
+        <a href="<?php echo base_url('profile/'.$product->created_by.'/'.url_title($member->farm,'-',true)) ?>">
+            <img class="inline w-10 relative" src="<?php echo gen_thumb($member->logo, '100x100') ?>" alt="<?php echo htmlentities($member->farm) ?>">
+            <span style="line-height: 40px;"><?php echo $member->farm ?></span>
+        </a>
+        </div>
     </div>
 
     <div class="grid grid-flow-row grid-rows-1 grid-cols-6 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
@@ -42,7 +45,6 @@
         </div>
     </div>
     <div>
-        <p><strong>Deskripsi</strong></p>
         <?php echo $product->description ?>
         <p><strong>Lokasi</strong></p>
         <?php echo $member->address ?>
@@ -51,7 +53,7 @@
         <?php } ?>
         <div class="my-5">
         <a class="btn btn__wa" href="https://api.whatsapp.com/send?phone=<?php echo substr($member->phone,0,1)=='0'?substr_replace($member->phone,'+62',0,1):$member->phone ?>"> 
-            KIRIM WHATSAPP
+            HUBUNGI PENJUAL
         </a>
         </div>
         <?php if(!empty($product_member)):?>

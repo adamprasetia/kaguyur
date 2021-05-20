@@ -75,7 +75,7 @@ class Produk extends MY_Controller
 		], true);
 		$photo = json_decode($product->photo);
 		$data['meta'] = [
-			'title'=> $product->name.' | Komunitas Guppy Cianjur (KAGUYUR)', 
+			'title'=> $product->name.' | Kaguyur.com', 
 			'image'=>base_url($photo[0]), 
 			'description'=>$product->description, 
 		];
