@@ -47,7 +47,7 @@
                   </div>
                 </div> 
                 </a>
-              <?php $i++;if($i==5) break;} ?>                                 
+              <?php if($i==5) break;$i++;} ?>                                 
             </div>
             <div class="mt-10 text-center">
               <a href="<?php echo base_url('anggota') ?>" style="font-weight:500" class="bg__yellow mt-2 text-black btn">ANGGOTA LAINNYA</a>
@@ -77,7 +77,7 @@
                     </div>
                   </div>
                 </a>
-              <?php $i++;if($i==5) break;endforeach ?>
+              <?php if($i==5) break;$i++;endforeach ?>
             </div>
             <div class="mt-10 text-center">
               <?php if(check_verified(true)): ?>
