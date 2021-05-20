@@ -16,6 +16,14 @@
       <input type="number" id="price" name="price" class="form-control" value="<?php echo isset($data->price)?$data->price:''; ?>">
     </div>
     <div class="form-group">
+      <label>Kategori *</label>
+      <select name="category" id="category" class="form-control">
+        <option value="IKAN GUPPY" <?php echo isset($data->category) && $data->category=='IKAN GUPPY'?'selected':''?>>IKAN GUPPY</option>
+        <option value="PERALATAN & AKSESORI" <?php echo isset($data->category) && $data->category=='PERALATAN & AKSESORI'?'selected':''?>>PERALATAN & AKSESORI</option>
+        <option value="PAKAN & OBAT" <?php echo isset($data->category) && $data->category=='PAKAN & OBAT'?'selected':''?>>PAKAN & OBAT</option>
+      </select>
+    </div>
+    <div class="form-group">
       <label>Stok *</label>
       <input type="number" id="stock" name="stock" class="form-control" value="<?php echo isset($data->stock)?$data->stock:''; ?>">
     </div>

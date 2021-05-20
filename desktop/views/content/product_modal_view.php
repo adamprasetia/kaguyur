@@ -18,6 +18,14 @@
               <input class="field w-full" type="text" name="name" id="name"/>
             </div>
             <div class="mb-3">
+              <label class="font-semibold block">Kategori *</label>
+              <select class="field w-full" name="category" id="category" >
+                <option value="IKAN GUPPY" <?php echo isset($product->category) && $product->category=='IKAN GUPPY'?'selected':''?>>IKAN GUPPY</option>
+                <option value="PERALATAN & AKSESORI" <?php echo isset($product->category) && $product->category=='PERALATAN & AKSESORI'?'selected':''?>>PERALATAN & AKSESORI</option>
+                <option value="PAKAN & OBAT" <?php echo isset($product->category) && $product->category=='PAKAN & OBAT'?'selected':''?>>PAKAN & OBAT</option>
+              </select>
+            </div>
+            <div class="mb-3">
               <label class="font-semibold block">Deskripsi *</label>
               <textarea class="field w-full" name="description" cols="30" rows="10"></textarea>
             </div>

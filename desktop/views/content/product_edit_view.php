@@ -9,6 +9,14 @@
               <input class="field w-full" type="text" name="name" id="name" value="<?php echo isset($product->name)?$product->name:''; ?>"/>
             </div>
             <div class="mb-3">
+              <label class="font-semibold block">Kategori</label>
+              <select class="field w-full" name="category" id="category" >
+                <option value="IKAN GUPPY" <?php echo isset($product->category) && $product->category=='IKAN GUPPY'?'selected':''?>>IKAN GUPPY</option>
+                <option value="PERALATAN & AKSESORI" <?php echo isset($product->category) && $product->category=='PERALATAN & AKSESORI'?'selected':''?>>PERALATAN & AKSESORI</option>
+                <option value="PAKAN" <?php echo isset($product->category) && $product->category=='PAKAN'?'selected':''?>>PAKAN</option>
+              </select>
+            </div>
+            <div class="mb-3">
               <label class="font-semibold block">Deskripsi</label>
               <textarea class="field w-full" name="description" cols="30" rows="10"><?php echo isset($product->description)?$product->description:''; ?></textarea>
             </div>
@@ -35,7 +43,7 @@
             </div>
             <div class="mb-3">
               <label class="font-semibold block">Status</label>
-              <select name="status" id="status" >
+              <select class="field w-full" name="status" id="status" >
                 <option value="ACTIVE" <?php echo isset($product->status) && $product->status=='ACTIVE'?'selected':''?>>ACTIVE</option>
                 <option value="NOT ACTIVE" <?php echo isset($product->status) && $product->status=='NOT ACTIVE'?'selected':''?>>NOT ACTIVE</option>
                 <option value="DELETED" <?php echo isset($product->status) && $product->status=='DELETED'?'selected':''?>>DELETED</option>

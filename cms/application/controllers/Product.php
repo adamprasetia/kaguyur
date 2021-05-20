@@ -35,6 +35,7 @@ class Product extends MY_Controller {
 		$this->form_validation->set_rules('name', 'Nama Produk', 'trim|required');
 		$this->form_validation->set_rules('description', 'Deskripsi', 'trim|required');
 		$this->form_validation->set_rules('price', 'Harga', 'trim');
+		$this->form_validation->set_rules('category', 'Kategori', 'trim|required');
 		$this->form_validation->set_rules('stock', 'Stock', 'trim');
 		$this->form_validation->set_rules('photo[]', 'Photo', 'trim|required');
 		$this->form_validation->set_rules('status', 'Status', 'trim|required');
@@ -44,6 +45,7 @@ class Product extends MY_Controller {
 		$name 		= $this->input->post('name');
 		$description 		= $this->input->post('description');
 		$price 		= $this->input->post('price');
+		$category 		= $this->input->post('category');
 		$stock 		= $this->input->post('stock');
 		$photo 		= $this->input->post('photo');
 		$status 		= $this->input->post('status');
@@ -52,6 +54,7 @@ class Product extends MY_Controller {
 			'name' => $name,
 			'description' => $description,
 			'price' => $price,
+			'category' => $category,
 			'stock' => $stock,
 			'status' => $status,
 			'photo' => json_encode($photo),

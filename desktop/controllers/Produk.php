@@ -101,6 +101,7 @@ class Produk extends MY_Controller
 		$this->form_validation->set_rules('photo','Foto','callback_required_photo');
 		$this->form_validation->set_rules('video','Video','trim');
 		$this->form_validation->set_rules('price','Harga','trim');
+		$this->form_validation->set_rules('category','Kategori','trim|required');
 		$this->form_validation->set_rules('status','Status','trim');
 		$this->form_validation->set_message('required', '{field} harus diisi.');
 
@@ -123,6 +124,7 @@ class Produk extends MY_Controller
 				'photo'=> json_encode([$photo['data']]),
 				'video'=> $video,
 				'price'=> $this->input->post('price', true),
+				'category'=> $this->input->post('category', true),
 				'status'=> 'ACTIVE',
 			];
 			if(!empty($video)){
@@ -203,6 +205,7 @@ class Produk extends MY_Controller
 		$this->form_validation->set_rules('photo','Foto','callback_optional_photo');
 		$this->form_validation->set_rules('video','Video','trim');
 		$this->form_validation->set_rules('price','Harga','trim');
+		$this->form_validation->set_rules('category','Kategori','trim|required');
 		$this->form_validation->set_rules('status','Status','trim|required');
 		$this->form_validation->set_message('required', '{field} harus diisi.');
 
@@ -214,25 +217,26 @@ class Produk extends MY_Controller
 
 		}else{		
 			$video = $this->input->post('video', true);
-			if(!empty($video)){
-				if(strpos($video, 'youtu.be')!== false){
-					$path = parse_url($video);
-					$video_id = ltrim($path['path'], '/');
-				}else{
-					$query_string 	= array();
-					parse_str(parse_url($video, PHP_URL_QUERY), $query_string);
-					$video_id 		= @$query_string["v"];
-				}
-			}
 				
 			$data = [
 				'name'=> $this->input->post('name', true),
 				'description'=> $this->input->post('description', true),
-				'video'=> $this->input->post('video', true),
-				'video_id'=> $video_id,
+				'video'=> $video,
 				'price'=> $this->input->post('price', true),
+				'category'=> $this->input->post('category', true),
 				'status'=> $this->input->post('status', true),
 			];
+			if(!empty($video)){
+				if(strpos($video, 'youtu.be')!== false){
+					$path = parse_url($video);
+					$data['video_id'] = ltrim($path['path'], '/');
+				}else{
+					$query_string 	= array();
+					parse_str(parse_url($video, PHP_URL_QUERY), $query_string);
+					$data['video_id'] 		= @$query_string["v"];
+				}
+			}
+
 			if(!empty($_FILES['photo']['name'])){
 				$photo   = uploadFile('photo');	
 				if(!empty($photo['data'])){
