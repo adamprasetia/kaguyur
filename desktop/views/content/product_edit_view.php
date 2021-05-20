@@ -39,7 +39,7 @@
             </div>
             <div class="mb-3">
               <label class="font-semibold block">Harga</label>
-              <input type="text" name="fb" id="fb" class="field w-full" value="<?php echo isset($product->price)?$product->price:''; ?>"/>
+              <input type="text" name="price" id="price" class="field w-full" value="<?php echo isset($product->price)?$product->price:''; ?>"/>
             </div>
             <div class="mb-3">
               <label class="font-semibold block">Status</label>
