@@ -40,7 +40,7 @@ class Artikel extends MY_Controller
 			'description'=> $article->description,
 			'keywords'=> $article->tag,
 			'image'=> gen_thumb($article->image,'320x240'),
-			'canonical'=>'https://www.kaguyur.com/artikel/'.$article->tag.'/'.url_title($article->title,'-',true)
+			'canonical'=>'https://www.kaguyur.com/artikel/'.$article->id.'/'.url_title($article->title,'-',true)
 		];
 
 		
