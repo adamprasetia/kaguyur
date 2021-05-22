@@ -50,14 +50,19 @@ class Login extends CI_Controller {
 			'table'=>'member',
 			'where'=>['email'=>$email]
 		])->row_array();
-		if($userdata && $userdata['password'] == $password)
+		if($userdata && $userdata['password'] == $password && $userdata['status']=='VERIFIED')
 		{
 			$module = $this->general_model->get_module($userdata['id']);
-			foreach ($module as $row) {
-				$userdata['module'][] = $row['id_module'];
+			if($module){
+				foreach ($module as $row) {
+					$userdata['module'][] = $row['id_module'];
+				}
+				$this->session->set_userdata('user_login', $userdata);
+				return true;
+			}else{
+				$this->form_validation->set_message('check_auth','Wrong Username dan Password');
+				return false;
 			}
-			$this->session->set_userdata('user_login', $userdata);
-			return true;
 		}
 		else
 		{

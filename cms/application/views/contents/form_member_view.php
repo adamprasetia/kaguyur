@@ -98,6 +98,7 @@
       <select name="status" id="status" class="form-control">
         <option value="PENDING" <?php echo isset($data->status) && $data->status=='PENDING'?'selected':''?>>PENDING</option>
         <option value="VERIFIED" <?php echo isset($data->status) && $data->status=='VERIFIED'?'selected':''?>>VERIFIED</option>
+        <option value="NOT VERIFIED" <?php echo isset($data->status) && $data->status=='NOT VERIFIED'?'selected':''?>>NOT VERIFIED</option>
         <option value="BANNED" <?php echo isset($data->status) && $data->status=='BANNED'?'selected':''?>>BANNED</option>
         <option value="DELETED" <?php echo isset($data->status) && $data->status=='DELETED'?'selected':''?>>DELETED</option>
       </select>

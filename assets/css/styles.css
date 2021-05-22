@@ -1129,5 +1129,8 @@ div:focus {
     color: green;
 }
 .color-pending {
-    color : #cea84d
+    color : #cea84d;
+}
+.color-banned {
+    color : red;
 }

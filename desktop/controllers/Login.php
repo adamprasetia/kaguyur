@@ -56,7 +56,7 @@ class Login extends CI_Controller
                 ]
             ]);
 			$member = $member->row_array();
-			if($member && $member['password'] == md5($this->input->post('password',true)))
+			if($member && $member['password'] == md5($this->input->post('password',true)) && in_array($member['status'],['PENDING','VERIFIED']))
 			{	
                 $this->load->library('session');
                 $this->session->set_userdata('user_login', $member);
