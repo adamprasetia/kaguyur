@@ -18,7 +18,7 @@ class Sitemap extends CI_Controller {
         $module = ['artikel','produk','anggota','forum'];
         foreach ($module as $row) {            
             $xml->startBranch('sitemap');
-            $xml->addNode('loc', base_url($row.'/sitemap.xml'));
+            $xml->addNode('loc', 'https://www.kaguyur.com/'.$row.'/sitemap.xml');
             $xml->addNode('lastmod',date('c',time()));
             $xml->endBranch('sitemap');
         }
@@ -46,7 +46,7 @@ class Sitemap extends CI_Controller {
 		foreach ($data as $row) 
 		{
 			$xml->startBranch('url');	
-				$xml->addNode('loc', base_url('artikel/'.$row->id.'/'.url_title($row->title,'-',true)));
+				$xml->addNode('loc', 'https://www.kaguyur.com/artikel/'.$row->id.'/'.url_title($row->title,'-',true));
 			$xml->endBranch('url');	
 		}
 
@@ -74,7 +74,7 @@ class Sitemap extends CI_Controller {
 		foreach ($data as $row) 
 		{
 			$xml->startBranch('url');	
-				$xml->addNode('loc', base_url('produk/'.$row->id.'/'.url_title($row->name,'-',true)));
+				$xml->addNode('loc', 'https://www.kaguyur.com/produk/'.$row->id.'/'.url_title($row->name,'-',true));
 			$xml->endBranch('url');	
 		}
 
@@ -102,7 +102,7 @@ class Sitemap extends CI_Controller {
 		foreach ($data as $row) 
 		{
 			$xml->startBranch('url');	
-				$xml->addNode('loc', base_url('forum/'.$row->id.'/'.url_title($row->title,'-',true)));
+				$xml->addNode('loc', 'https://www.kaguyur.com/forum/'.$row->id.'/'.url_title($row->title,'-',true));
 			$xml->endBranch('url');	
 		}
 
@@ -130,7 +130,7 @@ class Sitemap extends CI_Controller {
 		foreach ($data as $row) 
 		{
 			$xml->startBranch('url');	
-				$xml->addNode('loc', base_url('profile/'.$row->id.'/'.url_title($row->farm,'-',true)));
+				$xml->addNode('loc', 'https://www.kaguyur.com/profile/'.$row->id.'/'.url_title($row->farm,'-',true));
 			$xml->endBranch('url');	
 		}
 
