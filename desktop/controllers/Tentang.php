@@ -16,7 +16,9 @@ class Tentang extends MY_Controller
 		], true);
 		
 		$data['meta'] = [
-			'title'=> 'Tentang Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> 'Tentang Komunitas Guppy Cianjur (KAGUYUR) | Kaguyur.com',
+			'description'=>'',
+			'canonical'=>'https://www.kaguyur.com/tentang'
 		];
 		
 		$this->load->view('template_view', $data);

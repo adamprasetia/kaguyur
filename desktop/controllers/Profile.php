@@ -74,7 +74,8 @@ class Profile extends MY_Controller
 		$data['meta'] = [
 			'title'=> $member->farm.' | Komunitas Guppy Cianjur (KAGUYUR)',
 			'image'=> base_url($member->logo),
-			'description'=> $member->address
+			'description'=> $member->address,
+			'canonical'=>'https://www.kaguyur.com/profile/'.$member->id.'/'.url_title($member->farm,'-',true)
 		];
 		
 		$this->load->view('template_view', $data);

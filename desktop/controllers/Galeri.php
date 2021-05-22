@@ -16,7 +16,9 @@ class Galeri extends MY_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> 'Galeri | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> 'Galeri | Komunitas Guppy Cianjur (KAGUYUR)',
+			'description'=>'Kumpulan foto dan galeri kegiatan komunitas guppy cianjur (KAGUYUR)',
+			'canonical'=>'https://www.kaguyur.com/galeri'
 		];
 		
 		$this->load->view('template_view', $data);
@@ -29,7 +31,9 @@ class Galeri extends MY_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> $gallery->title.' | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> $gallery->title.' | Komunitas Guppy Cianjur (KAGUYUR)',
+			'description' =>$gallery->title,
+			'canonical'=>'https://www.kaguyur.com/galeri/'.$gallery->id.'/'.url_title($gallery->title,'-',true)
 		];
 		
 		$this->load->view('template_view', $data);

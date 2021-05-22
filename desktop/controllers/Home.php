@@ -29,6 +29,11 @@ class Home extends MY_Controller
 		], true);
 		
 		$data['script'] = $this->load->view('script/home','',true);
+
+		$data['meta'] = [
+			'canonical'=>'https://www.kaguyur.com'
+		];
+		
 		$this->load->view('template_view', $data);
 	}
 

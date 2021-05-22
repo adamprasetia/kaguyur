@@ -34,7 +34,9 @@ class Forum extends MY_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> 'Forum | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> 'Forum | Komunitas Guppy Cianjur (KAGUYUR)',
+			'description' => 'Forum diskusi tanya jawab seputar dunia ikan guppy',
+			'canonical'=>'https://www.kaguyur.com/forum'
 		];
 		
 		$this->load->view('template_view', $data);
@@ -63,7 +65,8 @@ class Forum extends MY_Controller
         ], true);
 
 		$data['meta'] = [
-			'title'=> $forum->title.' | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> $forum->title.' | Komunitas Guppy Cianjur (KAGUYUR)',
+			'canonical'=>'https://www.kaguyur.com/forum/'.$forum->id.'/'.url_title($forum->title,'-',true)
 		];
 
 		

@@ -33,6 +33,7 @@
     <meta name="twitter:image" content="<?php echo isset($meta['image'])?$meta['image']:config_item('assets').'images/logo2.jpg'; ?>" />
     <!-- E:tweeter card -->
 
+    <link rel="canonical" href="<?php echo isset($meta['canonical'])?$meta['canonical']:current_url(); ?>" />
     <link rel="apple-touch-icon" href="<?php echo config_item('assets'); ?>images/favicon.ico"/>
     <link rel="shortcut icon" href="<?php echo config_item('assets'); ?>images/favicon.ico"/>
 
