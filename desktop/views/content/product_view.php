@@ -8,7 +8,7 @@
       </ul>
     </div>
 
-    <form method="get" id="form_data" action="<?php echo base_url('produk'); ?>">
+    <form method="get" id="form_data_pencarian" action="<?php echo base_url('produk'); ?>">
       <div class="mb-3">
         <input class="field w-full" type="text" name="search" id="search" placeholder="Pencarian..." value="<?php echo htmlentities($this->input->get('search',true)) ?>"/>
       </div>
@@ -27,7 +27,7 @@
           console.log('sss');
           // Trigger the button element with a click
           // document.getElementById("myBtn").click();
-          document.getElementById("form_data").submit();
+          document.getElementById("form_data_pencarian").submit();
         }
       });
     </script>
