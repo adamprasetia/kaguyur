@@ -32,6 +32,20 @@
       });
     </script>
 
+    <?php if(check_verified(true)): ?>
+    <div class="mt-10">    
+      <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-product"><span style="height: 45px;display: inline-block;">DAFTARKAN&nbsp;PRODUK MU</span></a>
+    </div>
+    <?php $this->load->view('content/product_modal_view') ?>         
+    <?php else: ?>
+    <p>Ingin produk kamu tampil di sini?, ayo gabung bersama kami</p>
+    <div class="flex mb-2">
+        <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-register">DAFTAR DISINI</a>
+        <a href="javascript:void(0);" class="btn mr-2" data-micromodal-trigger="modal-register-syarat">Syarat &amp; Ketentuan</a>
+    </div>
+    <?php $this->load->view('content/register_modal_view') ?>
+    <?php endif ?>
+
     <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
         <?php if(!empty($product)) { ?>
         <?php $i=1;foreach ($product as $row) { ?>        

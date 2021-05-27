@@ -74,6 +74,9 @@
               <button type="button" class="btn btn__black btn_action" data-idle="DAFTAR" data-process="Tunggu Sebentar..." data-form="#form_data" data-redirect="<?php echo current_url(); ?>">DAFTAR</button>
             </div>
           </form>
+          <div class="text-center">
+            <p><a href="javascript:void(0);" onclick="MicroModal.close('modal-register');" data-micromodal-trigger="modal-login">Sudah punya akun ? silakan login disini </a></p>
+          </div>
         </div>
       </main>
       <footer class="modal__footer"></footer>
