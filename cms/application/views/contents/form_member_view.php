@@ -3,7 +3,7 @@
   <div class="box-header with-border">BARCODE</div>
   <?php if(!empty($data->barcode)): ?>
   <div class="box-body with-border">        
-    <img src="<?php echo config_item('base_domain').$data->barcode ?>" alt="">
+    <img src="<?php echo config_item('base_domain').$data->barcode.'?'.date('YmdHis') ?>" alt="">
   </div>
   <?php endif ?>
   <div class="box-footer">        

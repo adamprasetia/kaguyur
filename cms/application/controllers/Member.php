@@ -191,7 +191,7 @@ class Member extends MY_Controller {
 				$row->strain,
 				!empty($row->photo)?base_url($row->photo):'',
 				!empty($row->logo)?base_url($row->logo):'',
-				!empty($row->barcode)?base_url($row->barcode):'',
+				!empty($row->barcode)?base_url($row->barcode).'?'.date('YmdHis'):'',
 				$row->ig,
 				$row->tw,
 				$row->fb,
