@@ -5,13 +5,12 @@
   <div class="box-body with-border">        
     <img src="<?php echo config_item('base_domain').$data->barcode ?>" alt="">
   </div>
-  <?php else: ?>
+  <?php endif ?>
   <div class="box-footer">        
     <form id="form_barcode" action="<?php echo base_url('member/generate_barcode/'.$data->id) ?>">
       <button type="button" class="btn_action btn btn-sm btn-primary" data-idle="Generate" data-form="#form_barcode" data-process="Tunggu Sebentar..." data-redirect="<?php echo base_url('member/edit/'.$data->id) ?>">GENERATE BARCODE</button>  
     </form>
   </div>
-  <?php endif ?>
 </div>
 <?php endif ?>
 

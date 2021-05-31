@@ -233,7 +233,7 @@ class Member extends MY_Controller {
 			]
 		])->row();
 		if(!empty($member)){
-			$barcode = file_get_contents('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='.base_url('anggota/'.$member->id.'/'.url_title($member->farm, '-', true)));
+			$barcode = file_get_contents('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='.config_item('base_domain').'anggota/'.$member->id.'/'.url_title($member->farm, '-', true));
 			if(!empty($barcode)){
 
 				$upload_path = FCPATH.'assets/photo/barcode/';
