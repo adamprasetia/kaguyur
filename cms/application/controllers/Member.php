@@ -178,7 +178,7 @@ class Member extends MY_Controller {
 		header("Content-type: application/vnd-ms-excel");
 		header("Content-Disposition: attachment; filename=list-member-export-".date('Ymd').".xls");
 
-		$this->table->set_heading('no', 'farm', 'name', 'alamat', 'phone', 'strain', 'photo', 'logo', 'ig', 'tw', 'fb', 'status', 'date_created');
+		$this->table->set_heading('no', 'farm', 'name', 'alamat', 'phone', 'strain', 'photo', 'logo', 'barcode','ig', 'tw', 'fb', 'status', 'date_created');
 
 		$i=1;
 		foreach ($result as $key => $row) {
@@ -189,8 +189,9 @@ class Member extends MY_Controller {
 				$row->address,
 				"'".$row->phone,
 				$row->strain,
-				base_url($row->photo),
-				base_url($row->logo),
+				!empty($row->photo)?base_url($row->photo):'',
+				!empty($row->logo)?base_url($row->logo):'',
+				!empty($row->barcode)?base_url($row->barcode):'',
 				$row->ig,
 				$row->tw,
 				$row->fb,
@@ -246,9 +247,32 @@ class Member extends MY_Controller {
 		
 				$result = file_put_contents($upload_path.$id.'.png',$barcode);
 				if($result){
+					$this->global_model->update([
+						'table'=>$this->table_name,
+						'data'=>[
+							'barcode'=>'assets/photo/barcode/'.$id.'.png'
+						],
+						'id'=>$id
+					]);
 					echo json_encode(['id'=>$id,'action'=>'update','message'=>'Generate barcode berhasil']);
 				}
 			}
+		}
+	}
+	public function generate_barcode_all()
+	{
+		$this->load->model('global_model');
+		$member = $this->global_model->get([
+			'table'=>$this->table_name,
+			'where'=>[
+				'status'=>'VERIFIED',
+				'barcode IS NULL'=>null
+			]
+		])->result();
+		$i = 0;
+		foreach ($member as $row) {
+			$this->generate_barcode($row->id);
+			$i++;
 		}
 	}
 }
