@@ -29,9 +29,7 @@ class Produk extends MY_Controller
 		}
 		$category = $this->input->get('category', true);
 		if(!empty($category)){
-			$query['where'] = [
-				'category'=>urldecode($category),
-			];
+			$query['where']['category'] = urldecode($category);
 		}
 		$total = $this->global_model->count($query);
 		$query['limit'] = 20;
