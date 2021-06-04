@@ -52,7 +52,7 @@
         <h1>Rp. <?php echo number_format($product->price) ?></h1>
         <?php } ?>
         <div class="my-5">
-        <a class="btn btn__wa" href="https://api.whatsapp.com/send?phone=<?php echo substr($member->phone,0,1)=='0'?substr_replace($member->phone,'+62',0,1):$member->phone ?>"> 
+        <a class="btn btn__wa" href="https://api.whatsapp.com/send?phone=<?php echo substr($member->phone,0,1)=='0'?substr_replace($member->phone,'+62',0,1):$member->phone ?>&text=<?php echo urlencode('Haloo, boleh minta informasi lebih lanjut tentang produk ini '.current_url()) ?>"> 
             HUBUNGI PENJUAL
         </a>
         </div>
