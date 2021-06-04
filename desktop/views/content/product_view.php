@@ -37,6 +37,8 @@
       <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-product"><span style="height: 45px;display: inline-block;">DAFTARKAN&nbsp;PRODUK MU</span></a>
     </div>
     <?php $this->load->view('content/product_modal_view') ?>         
+    <?php elseif(check_login(true)): ?>
+
     <?php else: ?>
     <p>Ingin produk kamu tampil di sini?, ayo gabung bersama kami</p>
     <div class="flex mb-2">
@@ -45,6 +47,13 @@
     </div>
     <?php $this->load->view('content/register_modal_view') ?>
     <?php endif ?>
+
+    <p>Filter Berdasarkan Kategori</p>
+    <div class="flex mb-2">
+        <a href="<?php echo base_url('produk?category=').urlencode('Ikan Guppy') ?>" class="btn <?php echo $this->input->get('category',true)==urldecode('Ikan Guppy')?'':'btn__black'?> mr-2">IKAN GUPPY</a>
+        <a href="<?php echo base_url('produk?category=').urlencode('Peralatan & Aksesori') ?>" class="btn <?php echo $this->input->get('category',true)==urldecode('Peralatan & Aksesori')?'':'btn__black'?> mr-2">PERALATAN & AKSESORI</a>
+        <a href="<?php echo base_url('produk?category=').urlencode('Pakan & Obat') ?>" class="btn <?php echo $this->input->get('category',true)==urldecode('Pakan & Obat')?'':'btn__black'?> mr-2">PAKAN & OBAT</a>
+    </div>
 
     <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">
         <?php if(!empty($product)) { ?>

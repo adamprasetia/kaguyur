@@ -13,15 +13,24 @@ class Produk extends MY_Controller
 		$this->load->model('global_model');
 		$query = [
 			'table'=>'product',
+			'where'=>[
+				'status'=>'ACTIVE'
+			],
 			'order'=>[
 				'created_date'=>'desc'
-			]
+			],
 		];
 		$search = $this->input->get('search', true);
 		if(!empty($search)){
 			$query['search'] = [
 				'name'=>$search,
 				'description'=>$search
+			];
+		}
+		$category = $this->input->get('category', true);
+		if(!empty($category)){
+			$query['where'] = [
+				'category'=>urldecode($category),
 			];
 		}
 		$total = $this->global_model->count($query);
