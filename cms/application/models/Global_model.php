@@ -38,6 +38,7 @@ class Global_model extends CI_Model {
         }
         if(!empty($params['search'])){
             $i = 1;
+            $this->db->group_start();
             foreach ($params['search'] as $key => $value) {
                 if($i==1){
                     $this->db->like($key, $value);
@@ -46,6 +47,7 @@ class Global_model extends CI_Model {
                 }
                 $i++;
             }
+            $this->db->group_end();
         }
         if(!empty($params['where'])){
             foreach ($params['where'] as $key => $value) {

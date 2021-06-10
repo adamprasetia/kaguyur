@@ -10,9 +10,51 @@ class Artikel extends MY_Controller
 
 	public function index()
 	{	
-		$article = @json_decode(file_get_contents('./assets/json/article.json'));
+		$query = [
+			'table'=>'article',
+			'where'=>[
+				'status'=>'PUBLISH'
+			],
+			'order'=>[
+				'published_date'=>'desc'
+			],
+		];
+		$search = $this->input->get('search', true);
+		if(!empty($search)){
+			$query['search'] = [
+				'title'=>$search,
+				'description'=>$search,
+				'content'=>$search,
+				'tag'=>$search,
+			];
+		}
+		$this->load->model('global_model');
+		$total = $this->global_model->count($query);
+		$query['limit'] = 20;
+		if($this->input->get('offset',true)){
+			$query['offset'] = $this->input->get('offset',true);
+		}
+
+		$article = $this->global_model->get($query)->result();	
+
+		$this->load->library('pagination');
+
+		$config['base_url'] = base_url('artikel').get_query_string('offset');
+		$config['total_rows'] = $total;
+		$config['per_page'] = $query['limit'];
+		$config['page_query_string'] = TRUE;
+		$config['query_string_segment'] = 'offset';
+		$config['display_pages'] = FALSE;
+		$config['prev_link'] = '<span class="btn btn__black">&lt;</span>';
+		$config['next_link'] = '<span class="btn btn__black">&gt;</span>';
+		$config['last_link'] = FALSE;
+		$config['first_link'] = FALSE;
+
+		$this->pagination->initialize($config);
+
 		$data['content'] = $this->load->view('content/artikel_view', [
 			'article'=>$article,
+			'paging'=>$this->pagination->create_links(),
 		], true);
 
 		$data['meta'] = [

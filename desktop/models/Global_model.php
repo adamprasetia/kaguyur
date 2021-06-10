@@ -37,6 +37,7 @@ class Global_model extends CI_Model {
             }
         }
         if(!empty($params['search'])){
+            $this->db->group_start();
             $i = 1;
             foreach ($params['search'] as $key => $value) {
                 if($i==1){
@@ -46,6 +47,7 @@ class Global_model extends CI_Model {
                 }
                 $i++;
             }
+            $this->db->group_end();
         }
         if(!empty($params['where'])){
             foreach ($params['where'] as $key => $value) {

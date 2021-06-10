@@ -7,6 +7,30 @@
                 <li><a href="<?php echo base_url('artikel') ?>">Artikel</a></li>
             </ul>
         </div>
+        <form method="get" id="form_data_pencarian" action="<?php echo base_url('artikel'); ?>">
+        <div class="mb-3">
+            <input class="field w-full" type="text" name="search" id="search" placeholder="Pencarian..." value="<?php echo htmlentities($this->input->get('search',true)) ?>"/>
+        </div>
+        </form>
+        <script>
+        // Get the input field
+        var input = document.getElementById("search");
+
+        // Execute a function when the user releases a key on the keyboard
+        input.addEventListener("keyup", function(event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            // document.getElementById("myBtn").click();
+            document.getElementById("form_data_pencarian").submit();
+            }
+        });
+        </script>
+
+        <?php $this->load->view('content/artikel_gate_view') ?>
+
         <div class="grid grid-cols-6 gap-10">
             <div class="col-span-6 md:col-span-3">
                 <div class="mt-5">
@@ -29,8 +53,10 @@
                         <?php } ?>
                     </ul>
                 </div>
-                <?php $this->load->view('content/artikel_gate_view') ?>
             </div>
+        </div>
+        <div class="paging">
+          <?php echo $paging ?>      
         </div>
     </div>
 </div>
