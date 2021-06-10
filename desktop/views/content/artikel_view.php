@@ -33,6 +33,7 @@
 
         <div class="grid grid-cols-6 gap-10">
             <div class="col-span-6 md:col-span-3">
+            <?php if(!empty($article)):?>
                 <div class="mt-5">
                     <ul>
                         <?php foreach ($article as $row) { ?>                            
@@ -53,6 +54,9 @@
                         <?php } ?>
                     </ul>
                 </div>
+                <?php else:?>
+                    <p>Maaf, kami tidak menemukan produk yang anda cari</p>
+                <?php endif?>
             </div>
         </div>
         <div class="paging">
