@@ -40,9 +40,9 @@
         <div class="form-group">
         <label>Status *</label>
         <select name="status" id="status" class="form-control">
-            <option value="DRAFT" <?php echo $data->status=='DRAFT'?'selected':''?>>DRAFT</option>
-            <option value="PUBLISH" <?php echo $data->status=='PUBLISH'?'selected':''?>>PUBLISH</option>
-            <option value="DELETED" <?php echo $data->status=='DELETED'?'selected':''?>>DELETED</option>
+            <option value="DRAFT" <?php echo isset($data->status) && $data->status=='DRAFT'?'selected':''?>>DRAFT</option>
+            <option value="PUBLISH" <?php echo isset($data->status) && $data->status=='PUBLISH'?'selected':''?>>PUBLISH</option>
+            <option value="DELETED" <?php echo isset($data->status) && $data->status=='DELETED'?'selected':''?>>DELETED</option>
         </select>
         </div>
         </form>

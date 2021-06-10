@@ -27,33 +27,44 @@ class Profile extends MY_Controller
 			show_404();
 			exit;
 		}
-		$product = @json_decode(file_get_contents('./assets/json/product_member_'.$id.'.json'));
-		if(empty($product)){
-			$this->load->model('global_model');		
-			$product = $this->global_model->get([
-				'table'=>'product',
-				'where'=>[
-					'created_by'=>$id,
-					'status'=>'ACTIVE'
-				],
-				'order'=>[
-					'created_date'=>'desc'
-				]
-			])->result();
+		$query = [
+			'table'=>'product',
+			'where'=>[
+				'created_by'=>$id,
+				'status <> '=>'DELETED',
+			],
+			'order'=>[
+				'created_date'=>'desc'
+			]
+		];
+		$this->load->model('global_model');	
+		if($this->user_login['id'] == $id){
+			$product = $this->global_model->get($query)->result();
+		}else{
+			$product = @json_decode(file_get_contents('./assets/json/product_member_'.$id.'.json'));
+			if(empty($product)){
+				$query['where']['status'] = 'ACTIVE';
+				$product = $this->global_model->get($query)->result();
+			}
 		}
-		$article = @json_decode(file_get_contents('./assets/json/article_member_'.$id.'.json'));
-		if(empty($article)){
-			$this->load->model('global_model');		
-			$article = $this->global_model->get([
-				'table'=>'article',
-				'where'=>[
-					'created_by'=>$id
-				]
-			])->result();
+
+		$query = [
+			'table'=>'article',
+			'where'=>[
+				'created_by'=>$id
+			]
+		];
+		if($this->user_login['id'] == $id){
+			$article = $this->global_model->get($query)->result();
+		}else{
+			$article = @json_decode(file_get_contents('./assets/json/article_member_'.$id.'.json'));
+			if(empty($article)){
+				$query['where']['status'] = 'PUBLISH';
+				$article = $this->global_model->get($query)->result();
+			}
 		}
 		$forum = @json_decode(file_get_contents('./assets/json/forum_member_'.$id.'.json'));
 		if(empty($forum)){
-			$this->load->model('global_model');		
 			$forum = $this->global_model->get([
 				'table'=>'forum',
 				'where'=>[

@@ -37,7 +37,7 @@
               <img class="imgfillImg" src="<?php echo gen_thumb($photo[0],'300x300') ?>" alt="<?php echo $row->name ?>">
             </div>
             <div>
-              <p style="margin-bottom:0px"><?php echo $row->name ?></p>
+              <p style="margin-bottom:0px"><?php echo $row->name ?> <?php echo $row->status != 'ACTIVE'?'('.$row->status.')':'' ?></p>
               <?php if(!empty($row->price)){ ?>
               <small class="font-bold"><?php echo 'Rp. '.number_format($row->price) ?></small>
               <?php } ?>
@@ -48,7 +48,7 @@
     </div>
     <?php } ?>
     
-    <?php if(!empty($article) && check_verified(true)){ ?>
+    <?php if(!empty($article)){ ?>
     <p><strong>Artikel</strong></p>
     <div class="grid grid-cols-6 gap-10">
       <div class="col-span-6">
