@@ -44,7 +44,7 @@ class Article extends MY_Controller {
 		$title 			= $this->input->post('title', true);
 		$description 	= $this->input->post('description', true);
 		$image 			= $this->input->post('image', true);
-		$content 		= $this->input->post('content', true);
+		$content 		= $this->input->post('content');
 		$tag 			= $this->input->post('tag', true);
 		$status 		= $this->input->post('status', true);
 		$pin 			= $this->input->post('pin', true);
