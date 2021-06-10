@@ -26,7 +26,7 @@
         </div>    
       </div>
       <?php endif ?>    
-      <div class="col-span-6 px-5 md:col-span-3">        
+      <div class="col-span-6 md:col-span-3">        
         <ul>
           <?php $i=1;foreach ($article as $row) { ?>              
           <li class="grid grid-cols-8 gap-4 mb-5">
