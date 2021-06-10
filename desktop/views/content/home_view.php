@@ -2,14 +2,22 @@
   <!-- section -->
   <div class="container mx-auto">
     <div class="grid grid-cols-6 gap-4">
-      <div class="col-span-6 px-5 md:col-span-3">        
+      <div class="col-span-6 px-5 md:col-span-6">        
         <?php $this->load->view('content/register_view') ?>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="section bg-cover bg-no-repeat mb-2">
+  <!-- section -->
+  <div class="container mx-auto">
+    <div class="grid grid-cols-6 gap-4">
       <?php if(!empty($article_pin)): ?>
       <div class="col-span-6 md:col-span-3 md:pr-10">
         <div class="headline">
           <a href="<?php echo base_url('artikel/'.$article_pin[0]->id.'/'.url_title($article_pin[0]->title,'-',true)) ?>">
-            <img src="<?php echo base_url($article_pin[0]->image) ?>" alt="" />
+            <img width="100%" src="<?php echo base_url($article_pin[0]->image) ?>" alt="" />
             <div class="headline-box">
               <?php echo $article_pin[0]->title ?>
               <div><small><?php echo format_dmy($article_pin[0]->published_date) ?></small></div>
@@ -18,6 +26,28 @@
         </div>    
       </div>
       <?php endif ?>    
+      <div class="col-span-6 px-5 md:col-span-3">        
+        <div class="mt-5">
+          <ul>
+            <?php $i=1;foreach ($article as $row) { ?>              
+            <li class="grid grid-cols-8 gap-4 mb-5">
+              <?php if(!empty($row->image)): ?>
+              <div class="col-span-3 md:col-span-2">
+                  <img class="imgfillImg" src="<?php echo gen_thumb($row->image,'100x100') ?>" alt="<?php echo htmlentities($row->title) ?>">
+              </div>
+              <?php endif ?>
+              <div class="col-span-5 md:col-span-6">
+                  <a href="<?php echo base_url('artikel/'.$row->id.'/'.url_title($row->title,'-',true)) ?>">
+                      <h4 class="mb-2 text__wrap2"><?php echo $row->title ?></h4>
+                      <p class="text-sm text__wrap3"><?php echo $row->description ?></p>
+                      <small><?php echo format_dmy($row->published_date) ?></small>
+                  </a>
+              </div>
+            </li>
+            <?php $i++;if($i==3)break;} ?>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

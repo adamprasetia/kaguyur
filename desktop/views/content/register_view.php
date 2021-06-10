@@ -2,10 +2,10 @@
 <div class="col-span-6 md:col-span-3 relative mb-5">     
     <div class="relative">
         <h3 class="text-md font-bold">Anda seorang penghoby atau breeder ikan guppy yang berdomisili di Kabupaten Cianjur ?</h3>
-            <div class="mt-5 md:pr-20">
-              <p>Mari bergabung untuk memajukan dunia perguppian di Kabupaten Cianjur</p>
-            </div>
-        <div class="flex mt-10">
+        <div class="mt-5">
+          <p>Mari bergabung untuk memajukan dunia perguppian di Kabupaten Cianjur</p>
+        </div>
+        <div class="flex mt-5">
             <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-login">LOGIN</a>
             <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-register">DAFTAR</a>
         </div>
@@ -19,6 +19,7 @@
 
 <?php else: ?>
   <div class="col-span-6 md:col-span-3 relative mb-5">     
+    <a href="<?php echo base_url('profile') ?>">
     <div class="grid grid-cols-8 gap-4">
       <div class="col-span-2 md:col-span-1">
         <img src="<?php echo gen_thumb($this->user_login['logo'],'100x100') ?>" alt="<?php echo htmlentities($this->user_login['farm']) ?>">
@@ -29,9 +30,6 @@
         <span>Status : <strong class="color-<?php echo strtolower($this->user_login['status']) ?>"><?php echo $this->user_login['status'] ?></span></strong>
       </div>
     </div>
-    <div class="flex mt-2">
-      <a href="<?php echo base_url('profile') ?>" class="btn btn__black mr-2">LIHAT PROFIL</a>
-      <a href="<?php echo base_url('login/logout') ?>" class="btn btn__black mr-2">LOGOUT</a>
-    </div>
+    </a>
   </div>
 <?php endif ?>
