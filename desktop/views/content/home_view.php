@@ -43,7 +43,7 @@
                 </a>
             </div>
           </li>
-          <?php $i++;if($i==3)break;} ?>
+          <?php if($i==2)break;$i++;} ?>
         </ul>        
       </div>
     </div>
@@ -130,7 +130,12 @@
         <h4 class="text-md font-bold">ARTIKEL</h4>
         <div class="mt-5">
           <ul>
-            <?php foreach ($article as $row) { ?>              
+            <?php $i=0;foreach ($article as $row) { 
+              $i++;
+              if($i<=2){
+                continue;
+              }
+            ?>              
             <li class="grid grid-cols-8 gap-4 mb-5">
               <?php if(!empty($row->image)): ?>
               <div class="col-span-3 md:col-span-2">
