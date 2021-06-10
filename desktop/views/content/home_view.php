@@ -14,7 +14,7 @@
   <div class="container mx-auto">
     <div class="grid grid-cols-6 px-5 gap-2">
       <?php if(!empty($article_pin)): ?>
-      <div class="col-span-6 md:col-span-3 md:pr-10">
+      <div class="col-span-6 md:col-span-3 md:pr-10 mb-5">
         <div class="headline">
           <a href="<?php echo base_url('artikel/'.$article_pin[0]->id.'/'.url_title($article_pin[0]->title,'-',true)) ?>">
             <img width="100%" src="<?php echo base_url($article_pin[0]->image) ?>" alt="" />
