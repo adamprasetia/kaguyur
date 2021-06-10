@@ -12,7 +12,7 @@
 <div class="section bg-cover bg-no-repeat mb-2">
   <!-- section -->
   <div class="container mx-auto">
-    <div class="grid grid-cols-6 gap-4">
+    <div class="grid grid-cols-6 px-5 gap-4">
       <?php if(!empty($article_pin)): ?>
       <div class="col-span-6 md:col-span-3 md:pr-10">
         <div class="headline">
