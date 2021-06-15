@@ -34,11 +34,20 @@ mendorong perkembangan Ikan Hias Guppy Cianjur.</p>
 nilai- nilai organisasi dalam beraktifitas dan mengembangkan KAGUYUR yakni;
 Terbuka, Persahabatan, Solidaritas, Kreatif & Innovatif, Apresiatif, Dinamis, 
 Berbagi, Kekeluargaan serta Persatuan.</p>
+        <p><strong>Dewan Pembina/Penasihat</strong></p>
+        <ol style="list-style:decimal">
+            <li><p>Mohamad Imam Hartadi</p></li>
+            <li><p>Erik Sunarya</p></li>
+            <li><p>Biondi Tanoman</p></li>
+        </ol>
         <p><strong>Struktur Organisasi</strong></p>
         <p>Ketua : Budi Cahyadi</p>
-        <p>Sekretaris : Faisal</p>
-        <p>Bendahara : Jafar</p>
-        <p>Humas : Asep Bento</p>
+        <p>Sekretaris : Fuzi Guntara</p>
+        <p>Bendahara : Adi Ahmad</p>
+        <p>Humas : Asep Hasan Basri</p>
+        <p>Pembinaan dan Budidaya : Karisna (Ari)</p>
+        <p>IT : Adam Prasetia</p>
+        <p>Sosial : Ihsan Pamungkas</p>
         <p><strong>Sekretariat</strong></p>
         <p>Jl. Arwinda Baros (Nafish Farm) Karangtengah Cianjur</p> 
     </div>

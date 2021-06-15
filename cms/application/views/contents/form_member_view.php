@@ -68,7 +68,7 @@
     <div class="form-group">
       <div class="media">
         <div class="media-left">
-          <img id="photo_img" src="<?php echo isset($data->photo)?config_item('base_domain').$data->photo:''; ?>" class="media-object" style="width: 300px;height: auto;border-radius: 10px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+          <img id="photo_img" src="<?php echo isset($data->photo)?gen_thumb($data->photo,'300x300'):''; ?>" class="media-object" style="width: 300px;height: auto;border-radius: 10px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
           <input type="hidden" id="photo" name="photo" value="<?php echo isset($data->photo)?$data->photo:''; ?>">
         </div>
       </div>
@@ -81,7 +81,7 @@
     <div class="form-group">
       <div class="media">
         <div class="media-left">
-          <img id="logo_img" src="<?php echo isset($data->logo)?config_item('base_domain').$data->logo:''; ?>" class="media-object" style="width: 300px;height: auto;border-radius: 10px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
+          <img id="logo_img" src="<?php echo isset($data->logo)?gen_thumb($data->logo,'300x300'):''; ?>" class="media-object" style="width: 300px;height: auto;border-radius: 10px;box-shadow: 0 1px 3px rgba(0,0,0,.15);">
           <input type="hidden" id="logo" name="logo" value="<?php echo isset($data->logo)?$data->logo:''; ?>">
         </div>
       </div>
