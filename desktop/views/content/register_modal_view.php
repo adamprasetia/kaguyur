@@ -103,6 +103,12 @@
               <li>
                 Memelihara dan Menjaga nama baik Komunitas
               </li>
+              <li>
+                Dilarang membuat konten diluar ikan guppy
+              </li>
+              <li>
+                Dilarang menjual produk yang tidak berhubugan dengan ikan guppy
+              </li>
             </ol>
           </p>
         </div>
