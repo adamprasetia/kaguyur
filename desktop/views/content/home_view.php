@@ -4,10 +4,14 @@
     <div class="grid grid-cols-6 gap-4">
       <div class="col-span-6 px-5 md:col-span-6">        
         <?php $this->load->view('content/register_view') ?>
+        <?php if(empty($member->email_ver)): ?>
+        <?php $this->load->view('content/email_ver_modal_view') ?>         
+        <?php endif ?>
       </div>
     </div>
   </div>
 </div>
+
 
 <div class="section bg-cover bg-no-repeat mb-2">
   <!-- section -->

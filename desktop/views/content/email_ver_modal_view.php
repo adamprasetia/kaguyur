@@ -1,3 +1,8 @@
+<p class="color-banned">Email kamu belum terverifikasi, silakan melakukan verifikasi dengan klik tombol di bawah ini</p>
+<div class="flex mt-5">
+<a href="javascript:void(0)" data-micromodal-trigger="modal-email-ver" class="btn btn__black">VERIFIKASI EMAIL</a>
+</div>
+
 <div class="modal modal__dark micromodal-slide" id="modal-email-ver" aria-hidden="true">
   <div class="modal__overlay" tabindex="-1" data-micromodal-close>
     <div class="modal__container modal__container__fix" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">

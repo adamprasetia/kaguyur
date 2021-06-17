@@ -19,10 +19,6 @@
     <a href="<?php echo base_url('profile/edit') ?>" class="btn btn__black">EDIT PROFIL</a>
     </div>
     <?php if(empty($member->email_ver)): ?>
-    <p class="color-banned">Email anda belum terverifikasi, silakan melakukan verifikasi dengan klik tombol di bawah ini</p>
-    <div class="flex mt-5">
-    <a href="javascript:void(0)" data-micromodal-trigger="modal-email-ver" class="btn btn__black">VERIFIKASI EMAIL</a>
-    </div>
     <?php $this->load->view('content/email_ver_modal_view') ?>         
     <?php endif ?>
     <?php endif ?>
