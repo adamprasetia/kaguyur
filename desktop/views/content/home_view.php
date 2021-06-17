@@ -4,7 +4,7 @@
     <div class="grid grid-cols-6 gap-4">
       <div class="col-span-6 px-5 md:col-span-6">        
         <?php $this->load->view('content/register_view') ?>
-        <?php if(empty($member_login->email_ver)): ?>
+        <?php if(check_login(true) && empty($member_login->email_ver)): ?>
         <?php $this->load->view('content/email_ver_modal_view') ?>         
         <?php endif ?>
       </div>
