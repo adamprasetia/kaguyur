@@ -40,6 +40,7 @@ class Verifikasi extends MY_Controller
         $id = $this->user_login['id'];
         $result = send_email_ver($id);
         if(!empty($result)){
+            generate_json_anggota($id);
             echo json_encode(['tipe'=>'success', 'title'=>'Success!','message'=>'Silakan cek kotak masuk email anda','redirect'=>$this->input->get('callback')]);
         }else{
             echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Pengiriman email verifikasi gagal, silakan coba beberapa saat lagi']);
