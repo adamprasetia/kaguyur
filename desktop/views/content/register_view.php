@@ -1,9 +1,9 @@
 <?php if(empty($this->user_login)): ?>
 <div class="col-span-6 md:col-span-3 relative mb-5">     
     <div class="relative">
-        <h3 class="text-md font-bold">Anda seorang penghoby atau breeder ikan guppy yang berdomisili di Kabupaten Cianjur ?</h3>
+        <h3 class="text-md font-bold">Kamu seorang penggemar/pembudidaya ikan guppy ?</h3>
         <div class="mt-5">
-          <p>Mari bergabung untuk memajukan dunia perguppian di Kabupaten Cianjur</p>
+          <p>Mari bergabung bergabung bersama kami untuk memajukan dunia perguppian di Indonesia</p>
         </div>
         <div class="flex mt-5">
             <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-login">LOGIN</a>

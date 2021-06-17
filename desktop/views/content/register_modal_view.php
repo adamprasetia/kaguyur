@@ -94,28 +94,17 @@
           <h3 class="font-bold uppercase text-sm">SYARAT DAN KETENTUAN</h3>
         </div>
         <div class="p-5 bg__gray2 text-sm text-white">
-          <p class="font-bold">SYARAT</p>
+          <p class="font-bold">SYARAT DAN KETENTUAN</p>
           <p>
             <ol>
-              <li>
-                Berdomisili di Kabupaten Cianjur
-              </li>
               <li>
                 Penggemar dan pembudidaya Ikan Hias Guppy yang Aktif
               </li>
+              <li>
+                Memelihara dan Menjaga nama baik Komunitas
+              </li>
             </ol>
           </p>
-          <p class="mt-5 font-bold">KETENTUAN</p>
-          <p>
-            <ol>
-              <li>
-                Mentaati AD/ART KAGUYUR
-              </li>
-              <li>
-                Memelihara dan Menjaga nama baik KAGUYUR
-              </li>
-            </ol>
-        </p>
         </div>
       </main>
       <footer class="modal__footer"></footer>
