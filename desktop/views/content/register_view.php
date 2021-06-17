@@ -3,7 +3,7 @@
     <div class="relative">
         <h3 class="text-md font-bold">Kamu seorang penggemar/pembudidaya ikan guppy ?</h3>
         <div class="mt-5">
-          <p>Mari bergabung bergabung bersama kami untuk memajukan dunia perguppian di Indonesia</p>
+          <p>Mari bergabung bersama kami untuk sama-sama membangun dan memajukan dunia perguppian di Indonesia</p>
         </div>
         <div class="flex mt-5">
             <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-login">LOGIN</a>
