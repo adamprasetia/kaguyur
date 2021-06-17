@@ -49,7 +49,7 @@ class Login extends CI_Controller
 
 		}else{
             $member = $this->global_model->get([
-                'select'=>'id, farm, name, logo, phone, status, password',
+                'select'=>'id, farm, name, logo, phone, email, email_ver, status, password',
                 'table'=>'member',
                 'where'=>[
                     'email'=>$this->input->post('email',true)

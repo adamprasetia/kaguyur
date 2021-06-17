@@ -5,7 +5,7 @@ function dd($str = ''){
 }
 
 function ci(){
-    $ci = &get_instance() ;
+    $ci = &get_instance();
     return $ci;
 }
 
@@ -516,4 +516,33 @@ function check_notif()
         }
     }
     return false;
+}
+
+function send_email_ver($id)
+{
+    ci()->load->model('global_model');
+    $member = ci()->global_model->get([
+        'table'=>'member',
+        'where'=>[
+            'id'=>$id,
+            'email_ver <>'=>1
+        ]
+    ]);
+    if($member->num_rows() > 0)
+    {	
+        // the message
+        $msg = '
+        <p>Hi '.$member->row()->name.'</p>
+        <p>Klik <a href="'.base_url('verifikasi/email/'.$member->row()->id.'/'.md5($member->row()->id.'hs^35shKjsdh()')).'">disini</a> untuk verifikasi email</p>
+        <p>Terima Kasih<br>admin@kaguyur.com</p>
+        ';
+        $headers = "MIME-Version: 1.0" . "\r\n"; 
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n"; 
+        $headers .= "From: Admin Kaguyur <admin@kaguyur.com>"; 
+        // send email
+        mail($member->row()->email, "Verifikasi Email", $msg, $headers);
+        return true;
+    }else{
+        return false;
+    }
 }
