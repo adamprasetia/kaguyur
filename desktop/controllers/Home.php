@@ -16,6 +16,10 @@ class Home extends MY_Controller
 		$forum = @json_decode(file_get_contents('./assets/json/forum.json'));
 		$product = @json_decode(file_get_contents('./assets/json/product.json'));
 		$member = @json_decode(file_get_contents('./assets/json/member.json'));
+		$member_login = false;
+		if(!empty($this->user_login['id'])){
+			$member_login = @json_decode(file_get_contents('./assets/json/member_'.$this->user_login['id'].'.json'));
+		}
 		$infografik = @json_decode(file_get_contents('./assets/json/infografik.json'));
 		$member = gen_random($member, 5);
 		$product = gen_random($product, 5);
@@ -25,6 +29,7 @@ class Home extends MY_Controller
 			'forum'=>$forum,
 			'product'=>$product,
 			'member'=>$member,
+			'member_login'=>$member_login,
 			'infografik'=>$infografik,
 		], true);
 		
