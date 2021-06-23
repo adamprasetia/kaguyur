@@ -7,21 +7,12 @@
         <li><a href="<?php echo base_url('latber') ?>">Latber</a></li>
     </ul>
     </div>
-    <p>Latihan bersama kontes ikan guppy Cianjur</p>
+    <p>Latihan Bersama Komunitas Guppy Cianjur (KAGUYUR)</p>
     <?php if(check_verified(true)): ?>
     <div class="mt-10">    
       <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-latber"><span style="height: 45px;display: inline-block;">DAFTARKAN&nbsp;GUPPY MU</span></a>
     </div>
     <?php $this->load->view('content/latber_modal_view') ?>         
-    <?php elseif(check_login(true)): ?>
-
-    <?php else: ?>
-    <p>Ingin berpartisipasi disini ?, ayo gabung bersama kami</p>
-    <div class="flex mb-2">
-        <a href="javascript:void(0);" class="btn btn__black mr-2" data-micromodal-trigger="modal-register">DAFTAR DISINI</a>
-        <a href="javascript:void(0);" class="btn mr-2" data-micromodal-trigger="modal-register-syarat">Syarat &amp; Ketentuan</a>
-    </div>
-    <?php $this->load->view('content/register_modal_view') ?>
     <?php endif ?>
 
     <div class="grid grid-flow-row grid-rows-1 grid-cols-2 md:grid-cols-5 md:grid-rows-1 gap-4 my-5">

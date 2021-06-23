@@ -14,12 +14,18 @@ class Latber extends MY_Controller
         $latber = $this->global_model->get([
             'table'=>'latber',
         ])->result();
-        $this->load->view('template_view',[
-            'content'=>$this->load->view('content/latber_view', [
-                'latber'=>$latber
-            ], true)
-        ]);
 
+        $data['content'] = $this->load->view('content/latber_view', [
+			'latber'=>$latber
+		], true);
+		
+		$data['meta'] = [
+			'title'=> 'Latber | Komunitas Guppy Cianjur (KAGUYUR)',
+			'description'=>'Latihan Bersama Komunitas Guppy Cianjur (KAGUYUR)',
+			'canonical'=>'https://www.kaguyur.com/latber'
+		];
+
+		$this->load->view('template_view', $data);
 	}
     function _cek_class($class)
     {
