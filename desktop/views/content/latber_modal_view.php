@@ -17,7 +17,7 @@
               <label class="font-semibold block">Kelas *</label>
               <select class="field w-full" name="class" id="class" >
                 <option value="SOLID">SOLID</option>
-                <option value="CORAK">CORAK</option>
+                <option value="PATTERN">PATTERN</option>
               </select>
             </div>
             <div class="mb-3">
