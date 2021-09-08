@@ -51,6 +51,7 @@ class Latber extends MY_Controller
                 'phone'=>$this->input->post('phone', true),
                 'address'=>$this->input->post('address', true),
                 'class'=>$this->input->post('class', true),
+                'status'=>'PENDING',
                 'created_at'=>date('Y-m-d H:i:s')
             ];
 
