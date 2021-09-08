@@ -9,7 +9,7 @@
           <h3 class="font-bold uppercase text-md">
             PENDAFTARAN
           </h3>
-          <small>#Kaguyur Growth Together</small>
+          <small>Edukasi Guppy Kontes & Peresmian FGI Cianjur 2021</small>
         </div>
         <div class="p-5 text-sm">
           <form method="post" id="form_latber" action="<?php echo base_url('latber/register'); ?>">
@@ -29,13 +29,9 @@
               <label class="font-semibold block">Kelas *</label>
               <select class="field w-full" name="class" id="class" >
                 <option value="">- Pilih Kelas -</option>
-                <option value="SOLID (DELTA TAIL)"> </option>
-                <option value="TUXEDO (DELTA TAIL)">TUXEDO (DELTA TAIL)</option>
-                <option value="COBRA (DELTA TAIL)">COBRA (DELTA TAIL)</option>
-                <option value="GRASS (DELTA TAIL)">GRASS (DELTA TAIL)</option>
-                <option value="LACE (DELTA TAIL)">LACE (DELTA TAIL)</option>
-                <option value="METAL HEAD (DELTA TAIL)">METAL HEAD (DELTA TAIL)</option>
-                <option value="PEMULA">PEMULA</option>
+                <?php foreach ($class as $row) { ?>                  
+                <option value="<?php echo $row->name ?>"><?php echo $row->name ?></option>
+                <?php } ?>
               </select>
             </div>
             <div class="flex items-center justify-center my-5">

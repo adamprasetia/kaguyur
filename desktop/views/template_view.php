@@ -58,11 +58,7 @@
             <img src="<?php echo config_item('assets'); ?>images/menuwhite.svg" alt="" />
           </div>
           <a class="col-span-1" href="<?php echo base_url(); ?>">
-            <?php if($this->uri->segment(1) == 'latber'): ?>
-            <img src="<?php echo config_item('assets'); ?>images/logo_fgc.jpg" alt="" style="width:50px;margin:10px 0;"/>
-            <?php else: ?>
-            <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" style="width:50px"/>
-            <?php endif ?>
+              <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" style="width:50px"/>
           </a>
           <div class="header__menu__general header__menu hidden lg:flex col-span-4 justify-end items-center">
             <ul>
