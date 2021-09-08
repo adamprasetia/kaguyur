@@ -83,6 +83,9 @@
               <li>
                 <a class="<?php echo $s1=='produk'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('produk'); ?>"> PRODUK </a>
               </li>
+              <li>
+                <a class="<?php echo $s1=='latber'?'active':''; ?> uppercase py-5 pl-5 font-semibold text-sm" href="<?php echo base_url('latber'); ?>"> LATBER </a>
+              </li>
             </ul>
           </div>
           <div class="flex col-span-4 lg:col-span-1 justify-end items-center">

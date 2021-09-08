@@ -14,15 +14,29 @@
         <div class="p-5 text-sm">
           <form method="post" id="form_latber" action="<?php echo base_url('latber/register'); ?>">
             <div class="mb-3">
-              <label class="font-semibold block">Kelas *</label>
-              <select class="field w-full" name="class" id="class" >
-                <option value="SOLID">SOLID</option>
-                <option value="PATTERN">PATTERN</option>
-              </select>
+              <label class="font-semibold block">Nama Lengkap *</label>
+              <input class="field w-full" type="text" name="fullname" id="fullname"/>
             </div>
             <div class="mb-3">
-              <label class="font-semibold block">Link Video (Youtube)</label>
-              <input class="field w-full" type="text" name="video" id="video"/>
+              <label class="font-semibold block">Nomor Telepon/Wa *</label>
+              <input class="field w-full" type="text" name="phone" id="phone"/>
+            </div>
+            <div class="mb-3">
+              <label class="font-semibold block">Alamat *</label>
+              <textarea class="field w-full" name="address" cols="30" rows="10"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="font-semibold block">Kelas *</label>
+              <select class="field w-full" name="class" id="class" >
+                <option value="">- Pilih Kelas -</option>
+                <option value="SOLID (DELTA TAIL)"> </option>
+                <option value="TUXEDO (DELTA TAIL)">TUXEDO (DELTA TAIL)</option>
+                <option value="COBRA (DELTA TAIL)">COBRA (DELTA TAIL)</option>
+                <option value="GRASS (DELTA TAIL)">GRASS (DELTA TAIL)</option>
+                <option value="LACE (DELTA TAIL)">LACE (DELTA TAIL)</option>
+                <option value="METAL HEAD (DELTA TAIL)">METAL HEAD (DELTA TAIL)</option>
+                <option value="PEMULA">PEMULA</option>
+              </select>
             </div>
             <div class="flex items-center justify-center my-5">
               <button type="button" class="btn btn__black btn_action" data-idle="DAFTAR" data-process="Tunggu Sebentar..." data-form="#form_latber" data-redirect="<?php echo current_url(); ?>">DAFTAR</button>
