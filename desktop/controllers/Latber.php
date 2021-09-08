@@ -11,18 +11,19 @@ class Latber extends MY_Controller
 	public function index()
 	{
         $this->load->model('global_model');
-        $latber = $this->global_model->get([
-            'table'=>'latber',
+        $class = $this->global_model->get([
+            'table'=>'latber_class',
         ])->result();
 
         $data['content'] = $this->load->view('content/latber_view', [
-			'latber'=>$latber
+			'class'=>$class
 		], true);
 		
 		$data['meta'] = [
-			'title'=> 'Edukasi Guppy Kontes & Peresmian FGI Cianjur 2021',
+			'title'=> 'Latber | Fancy Guppy Cianjur 2021',
 			'description'=>'Edukasi Guppy Kontes & Peresmian FGI Cianjur 2021',
-			'canonical'=>'https://www.kaguyur.com/latber'
+			'canonical'=>'https://www.kaguyur.com/latber',
+			'image'=>base_url('assets/images/logo_fgc.jpg'),
 		];
 
 		$this->load->view('template_view', $data);

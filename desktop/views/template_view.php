@@ -58,7 +58,11 @@
             <img src="<?php echo config_item('assets'); ?>images/menuwhite.svg" alt="" />
           </div>
           <a class="col-span-1" href="<?php echo base_url(); ?>">
+            <?php if($this->uri->segment(1) == 'latber'): ?>
+            <img src="<?php echo config_item('assets'); ?>images/logo_fgc.jpg" alt="" style="width:50px;margin:10px 0;"/>
+            <?php else: ?>
             <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" style="width:50px"/>
+            <?php endif ?>
           </a>
           <div class="header__menu__general header__menu hidden lg:flex col-span-4 justify-end items-center">
             <ul>
@@ -138,7 +142,11 @@
         <div class="grid grid-cols-6">
           <div class="col-span-6 md:col-span-3 flex justify-center md:justify-start md:mb-0">
             <div class="w-32">
-              <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" />
+              <?php if($this->uri->segment(1) == 'latber'): ?>
+                <img src="<?php echo config_item('assets'); ?>images/logo_fgc.jpg" alt="" />
+              <?php else: ?>
+                <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" />
+              <?php endif ?>
             </div>
           </div>  
           <?php 
