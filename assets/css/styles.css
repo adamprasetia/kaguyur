@@ -1134,3 +1134,6 @@ div:focus {
 .color-banned {
     color : red;
 }
+h2{
+    font-size: 17px;
+}
