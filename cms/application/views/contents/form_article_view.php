@@ -37,9 +37,9 @@
                 }
             </style>
             <div id="wrap-content" class="form-control">
-                <div id="content-div">
+                <textarea id="content-div">
                     <?php echo isset($data->content)?$data->content:'' ?>
-                </div>            
+                </textarea>            
             </div>
         </div>
         <div class="form-check">
