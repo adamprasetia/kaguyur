@@ -4,7 +4,7 @@ $(document).ready(function(){
         selector: '#content-div',
         height: 1000,
         menubar: false,
-        inline: true,
+        //inline: true,
         plugins: ['lists hr code photocms videocms media paste link table'],
         relative_urls: false,
         remove_script_host: false,
