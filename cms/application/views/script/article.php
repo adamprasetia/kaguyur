@@ -1,7 +1,7 @@
 <script>
 $(document).ready(function(){
     tinymce.init({
-        selector: '#content-div',
+        selector: '#content-wrap',
         height: 1000,
         menubar: false,
         //inline: true,
