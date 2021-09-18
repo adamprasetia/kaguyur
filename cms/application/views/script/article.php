@@ -11,7 +11,7 @@ $(document).ready(function(){
         toolbar: 'bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | table | undo redo | link | photocms | videocms | hr | code | formatselect fontsizeselect | media',
         setup: function(editor) {
             editor.on('Change', function(e) {
-                $('#content').html(tinymce.get('content-div').getContent());
+                $('#content').html(tinymce.get('content-wrap').getContent());
             });
         }
     });
