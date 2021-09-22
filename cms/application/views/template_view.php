@@ -120,7 +120,7 @@
             <?php if(in_array(1, $_SESSION['user_login']['module']) || in_array(7, $_SESSION['user_login']['module'])): ?>
             <li class="<?php echo ($this->uri->segment(1)=='infografik'?'active':''); ?>"><a href="<?php echo base_url('infografik'); ?>"><i class="fa fa-image"></i> <span>Infografik</span></a></li>
             <?php endif ?>
-            <?php if(in_array(1, $_SESSION['user_login']['module'])): ?>
+            <?php if(in_array(1, $_SESSION['user_login']['module']) || in_array(8, $_SESSION['user_login']['module'])): ?>
             <li class="<?php echo ($this->uri->segment(1)=='latber'?'active':''); ?>"><a href="<?php echo base_url('latber'); ?>"><i class="fa fa-user"></i> <span>Latber</span></a></li>
             <?php endif ?>
             <li class="<?php echo ($this->uri->segment(1)=='photo'?'active':''); ?>"><a href="<?php echo base_url('photo'); ?>"><i class="fa fa-image"></i> <span>Photo</span></a></li>
