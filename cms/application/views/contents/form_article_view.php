@@ -28,19 +28,9 @@
         </div>
         <div class="form-group">
             <textarea style="display:none" id="content" name="content" class="form-control" rows="100"><?php echo isset($data->content)?$data->content:'' ?></textarea>
-            <style>
-                #wrap-content{
-                    height: auto;
-                }
-                #wrap-content iframe{
-                    width:100%;
-                }
-            </style>
-            <div id="wrap-content" class="form-control">
-                <div id="content-div">
-                    <?php echo isset($data->content)?$data->content:'' ?>
-                </div>            
-            </div>
+            <textarea id="content-wrap">
+               <?php echo isset($data->content)?$data->content:'' ?>
+            </textarea>            
         </div>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="pin" name="pin" value="1" <?php echo !empty($data->pin)?'checked':'' ?>>
