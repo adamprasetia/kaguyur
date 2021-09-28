@@ -31,7 +31,7 @@ class Verifikasi extends MY_Controller
         ], true);
 
         $data['meta'] = [
-            'title'=> 'Verifikasi Email | Komunitas Guppy Cianjur (KAGUYUR)'
+            'title'=> 'Verifikasi Email | Fancy Guppy Cianjur'
         ];		
         
         $this->load->view('template_view', $data);

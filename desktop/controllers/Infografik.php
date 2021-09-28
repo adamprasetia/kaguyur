@@ -16,7 +16,7 @@ class Infografik extends MY_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> 'Infografik | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> 'Infografik | Fancy Guppy Cianjur'
 		];
 		
 		$this->load->view('template_view', $data);

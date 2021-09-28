@@ -51,7 +51,7 @@ class Video extends MY_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> 'Video | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> 'Video | Fancy Guppy Cianjur'
 		];
 
 		$this->load->view('template_modal_view', $data);

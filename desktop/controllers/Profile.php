@@ -83,7 +83,7 @@ class Profile extends MY_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> $member->farm.' | Komunitas Guppy Cianjur (KAGUYUR)',
+			'title'=> $member->farm.' | Fancy Guppy Cianjur',
 			'image'=> base_url($member->logo),
 			'description'=> $member->address,
 			'canonical'=>'https://www.kaguyur.com/profile/'.$member->id.'/'.url_title($member->farm,'-',true)

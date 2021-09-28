@@ -17,7 +17,7 @@ class Anggota extends MY_Controller
 		], true);
 		
 		$data['meta'] = [
-			'title'=> 'Anggota | Komunitas Guppy Cianjur (KAGUYUR)',
+			'title'=> 'Anggota | Fancy Guppy Cianjur',
 			'description'=>'Terbuka, Persahabatan, Solidaritas, Kreatif & Innovatif, Apresiatif, Dinamis, Berbagi, Kekeluargaan serta Persatuan.',
 			'canonical'=>'https://www.kaguyur.com/anggota'
 		];

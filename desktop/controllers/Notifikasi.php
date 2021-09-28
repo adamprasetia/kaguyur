@@ -17,7 +17,7 @@ class Notifikasi extends MY_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> 'Notifikasi | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> 'Notifikasi | Fancy Guppy Cianjur'
 		];
 		
 		$this->load->view('template_view', $data);

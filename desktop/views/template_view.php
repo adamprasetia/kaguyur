@@ -9,15 +9,14 @@
     })(window,document,'script','dataLayer','GTM-T3JZFTZ');</script>
     <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
-    <title><?php echo isset($meta['title']) ? $meta['title'] : 'Komunitas Guppy Cianjur (KAGUYUR) Offical Website'; ?></title>
     <meta name="description" content="<?php echo isset($meta['description']) ? $meta['description'] : 'Wadah untuk membangun kekompakan dan kebersamaan serta berbagi ilmu pengetahuan seputar ikan guppy'; ?>" />
     <meta name="keywords" content="<?php echo isset($meta['keywords']) ? $meta['keywords'] : 'budidaya, ikan guppy, komunitas, hobby, black moscow, afr, prtde, lace, mozaik, jual guppy, sharing, guppy kualitas, finroot, white spot, sisik nanas, sipon, amoniak, obat biru, ketapang, aquarium,ember, bak kulkas'; ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta property="og:title" content="<?php echo isset($meta['title']) ? $meta['title'] : 'Komunitas Guppy Cianjur (KAGUYUR) Offical Website'; ?>" />
+    <meta property="og:title" content="<?php echo isset($meta['title']) ? $meta['title'] : 'Fancy Guppy Cianjur | Offical Website'; ?>" />
     <meta property="og:type" content="<?php echo isset($meta['type']) ? $meta['type'] : ''; ?>" />
     <meta property="og:url" content="<?php echo isset($meta['url']) ? $meta['url'] : current_url(); ?>" />
-    <meta property="og:image" content="<?php echo isset($meta['image'])?$meta['image']:config_item('assets').'images/logo.jpg'; ?>" />
+    <meta property="og:image" content="<?php echo isset($meta['image'])?$meta['image']:config_item('assets').'images/logo_fgc.jpg'; ?>" />
     <meta property="og:site_name" content="-" />
     <meta property="og:description" content="<?php echo isset($meta['description'])?$meta['description']:'Wadah untuk membangun kekompakan dan kebersamaan serta berbagi ilmu pengetahuan seputar ikan guppy' ?>" />
 
@@ -25,14 +24,14 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@kaguyur" />
     <meta name="twitter:creator" content="@kaguyur">
-    <meta name="twitter:title" content="<?php echo isset($meta['title'])?$meta['title']:'Komunitas Guppy Cianjur (KAGUYUR) Offical Website' ?>" />
+    <meta name="twitter:title" content="<?php echo isset($meta['title'])?$meta['title']:'Fancy Guppy Cianjur | Offical Website' ?>" />
     <meta name="twitter:description" content="<?php echo isset($meta['description'])?$meta['description']:'Wadah untuk membangun kekompakan dan kebersamaan serta berbagi ilmu pengetahuan seputar ikan guppy' ?>" />
-    <meta name="twitter:image" content="<?php echo isset($meta['image'])?$meta['image']:config_item('assets').'images/logo2.jpg'; ?>" />
+    <meta name="twitter:image" content="<?php echo isset($meta['image'])?$meta['image']:config_item('assets').'images/logo_fgc.jpg'; ?>" />
     <!-- E:tweeter card -->
 
     <link rel="canonical" href="<?php echo isset($meta['canonical'])?$meta['canonical']:current_url(); ?>" />
-    <link rel="apple-touch-icon" href="<?php echo config_item('assets'); ?>images/favicon.ico"/>
-    <link rel="shortcut icon" href="<?php echo config_item('assets'); ?>images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="<?php echo config_item('assets'); ?>images/favicon.ico?v=2"/>
+    <link rel="shortcut icon" href="<?php echo config_item('assets'); ?>images/favicon.ico?v=2"/>
 
     <!-- css -->
     <link rel="stylesheet" href="<?php echo config_item('assets'); ?>css/tailwind.css?v=8" />
@@ -42,6 +41,8 @@
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;900&display=swap" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <title><?php echo isset($meta['title']) ? $meta['title'] : 'Fancy Guppy Cianjur Offical Website'; ?></title>
 
   </head>
 
@@ -54,11 +55,11 @@
     <div class="header">
       <div class="container px-5 mx-auto">
         <div class="grid grid-cols-6 relative">
-          <div class="header__mobile lg:hidden mt-5">
+          <div class="header__mobile lg:hidden" style="margin-top:10px">
             <img src="<?php echo config_item('assets'); ?>images/menuwhite.svg" alt="" />
           </div>
           <a class="col-span-1" href="<?php echo base_url(); ?>">
-              <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" style="width:50px"/>
+              <img src="<?php echo config_item('assets'); ?>images/logo_fgc.jpg" alt="" style="width:80px"/>
           </a>
           <div class="header__menu__general header__menu hidden lg:flex col-span-4 justify-end items-center">
             <ul>
@@ -138,11 +139,7 @@
         <div class="grid grid-cols-6">
           <div class="col-span-6 md:col-span-3 flex justify-center md:justify-start md:mb-0">
             <div class="w-32">
-              <?php if($this->uri->segment(1) == 'latber'): ?>
-                <img src="<?php echo config_item('assets'); ?>images/logo_fgc.jpg" alt="" />
-              <?php else: ?>
-                <img src="<?php echo config_item('assets'); ?>images/logo.jpg" alt="" />
-              <?php endif ?>
+              <img src="<?php echo config_item('assets'); ?>images/logo_fgc.jpg" alt="" />
             </div>
           </div>  
           <?php 

@@ -60,7 +60,7 @@ class Produk extends MY_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> 'Produk | Komunitas Guppy Cianjur (KAGUYUR)',
+			'title'=> 'Produk | Fancy Guppy Cianjur',
 			'description' => 'Kumpulan produk-produk dari anggota kaguyur yang sudah terverifikasi dan berdomisili di Kabupaten Cianjur',
 			'canonical'=>'https://www.kaguyur.com/produk'
 		];

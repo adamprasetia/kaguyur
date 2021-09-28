@@ -53,7 +53,7 @@ class Photo extends MY_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> 'Photo | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> 'Photo | Fancy Guppy Cianjur'
 		];
 
 		$data['script'] = $this->load->view('script/photo','',true);

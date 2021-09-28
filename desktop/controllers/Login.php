@@ -26,7 +26,7 @@ class Login extends CI_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> 'Login | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> 'Login | Fancy Guppy Cianjur'
 		];
 
 		
@@ -92,7 +92,7 @@ class Login extends CI_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> 'Reset Password | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> 'Reset Password | Fancy Guppy Cianjur'
 		];		
 		
 		$this->load->view('template_view', $data);

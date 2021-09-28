@@ -58,7 +58,7 @@ class Artikel extends MY_Controller
 		], true);
 
 		$data['meta'] = [
-			'title'=> 'Artikel | Komunitas Guppy Cianjur (KAGUYUR)'
+			'title'=> 'Artikel | Fancy Guppy Cianjur'
 		];
 		
 		$this->load->view('template_view', $data);
