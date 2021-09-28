@@ -38,16 +38,16 @@ Berbagi, Kekeluargaan serta Persatuan.</p>
         <ol style="list-style:decimal">
             <li><p>Mohamad Imam Hartadi</p></li>
             <li><p>Erik Sunarya</p></li>
-            <li><p>Biondi Tanoman</p></li>
+          
         </ol>
         <p><strong>Struktur Organisasi</strong></p>
         <p>Ketua : Budi Cahyadi</p>
         <p>Sekretaris : Fuzi Guntara</p>
-        <p>Bendahara : Adi Ahmad</p>
-        <p>Humas : Asep Hasan Basri</p>
+        <p>Bendahara : Biondi Tanoman</p>
+        <p>Humas : Jajang Suryana, Mochamad Abduh</p>
         <p>Pembinaan dan Budidaya : Karisna (Ari)</p>
-        <p>IT : Adam Prasetia</p>
-        <p>Sosial : Ihsan Pamungkas</p>
+        <p>IT & Publikasi : Adam Prasetia, Asep Muhamad Siregar </p>
+ 
         <p><strong>Sekretariat</strong></p>
         <p>Jl. Arwinda Baros (Nafish Farm) Karangtengah Cianjur</p> 
     </div>
