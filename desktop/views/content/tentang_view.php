@@ -8,7 +8,7 @@
         </ul>
     </div>
     <div>
-        <p>Fancy Guppy Cianjur didirikan pada tanggal 17 September 2021. dengan semangat untuk memajukan dan memperkenalkan ikan guppy di Kabupaten Cianjur</p>
+        <p>Fancy Guppy Cianjur resmi menjadi keluarga besar Fancy Guppy Indonesia yang dideklarasikan pada tanggal 8 September 2021. dengan semangat untuk memajukan dan memperkenalkan ikan guppy di Indonesia</p>
         <p><strong>Logo</strong></p>
         <img src="<?php echo config_item('assets'); ?>images/logo_fgc.jpg" alt="" />
         <p><strong>Visi</strong></p>
