@@ -33,6 +33,7 @@ class Privilege extends MY_Controller {
 	{
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');
 		$this->form_validation->set_rules('module[]', 'Module', 'trim|required');
+		$this->form_validation->set_rules('komunitas[]', 'Komunitas', 'trim|required');
 	}
 	private function _set_data()
 	{
@@ -50,6 +51,7 @@ class Privilege extends MY_Controller {
 		if ($this->form_validation->run()===FALSE) {
 			$privilege_view['module'] = $this->data['page'];
 			$privilege_view['module_list'] = $this->general_model->get('module', '*', '', 'name')->result();
+			$privilege_view['komunitas_list'] = $this->general_model->get('komunitas', '*', ['status'=>'VERIFIED'], 'name')->result();
 			$privilege_view['action'] = base_url('privilege/add');
 			$privilege_view['title'] = 'Tambah Privilege';
 			$data['content'] = $this->load->view('contents/form_privilege_view',$privilege_view,true);
@@ -72,6 +74,10 @@ class Privilege extends MY_Controller {
 				foreach ($modules as $row) {
 					$this->general_model->add_no_return('privilege_module', ['id_privilege'=>$id, 'id_module'=>$row]);
 				}
+				$komunitas = $this->input->post('komunitas');
+				foreach ($komunitas as $row) {
+					$this->general_model->add_no_return('privilege_komunitas', ['id_privilege'=>$id, 'id_komunitas'=>$row]);
+				}
 				echo json_encode(array('id'=>$id,'action'=>'insert', 'message'=>'Data Has Been Added'));
 			}
 		}
@@ -90,7 +96,13 @@ class Privilege extends MY_Controller {
 			foreach ($data_module as $row) {
 				$privilege_view['data_module'][] = $row['id_module'];
 			}
+			$privilege_view['data_komunitas'] = [];
+			$data_komunitas = $this->general_model->get('privilege_komunitas', 'id_komunitas', array('id_privilege'=>$id))->result_array();
+			foreach ($data_komunitas as $row) {
+				$privilege_view['data_komunitas'][] = $row['id_komunitas'];
+			}
 			$privilege_view['module_list'] = $this->general_model->get('module', '*', '', 'name')->result();
+			$privilege_view['komunitas_list'] = $this->general_model->get('komunitas', '*', ['status'=>'VERIFIED'], 'name')->result();
 			$data['content'] = $this->load->view('contents/form_privilege_view',$privilege_view,true);
 
 			if(!validation_errors())
@@ -116,6 +128,11 @@ class Privilege extends MY_Controller {
 				foreach ($modules as $row) {
 					$this->general_model->add_no_return('privilege_module', ['id_privilege'=>$id, 'id_module'=>$row]);
 				}
+				$komunitas = $this->input->post('komunitas');
+				$this->general_model->delete_from_field('privilege_komunitas', 'id_privilege', $id);
+				foreach ($komunitas as $row) {
+					$this->general_model->add_no_return('privilege_komunitas', ['id_privilege'=>$id, 'id_komunitas'=>$row]);
+				}
 				echo json_encode(array('id'=>$id,'action'=>'update','message'=>'Data Has Been Chenged'));
 			}
 		}
@@ -125,6 +142,7 @@ class Privilege extends MY_Controller {
 	{
 		if ($id) {
 			$this->general_model->delete_from_field('privilege_module', 'id_privilege', $id);
+			$this->general_model->delete_from_field('privilege_komunitas', 'id_privilege', $id);
 			$delete = $this->general_model->delete($this->data['page'], $id);
 			echo json_encode(array('id'=>$id,'action'=>'delete','message'=>'Data Has Been Deleted'));
 		}

@@ -21,6 +21,19 @@
                 </div>
                 <?php endforeach ?>
             </div>
+
+            <div class="form-group">
+                <label>Komunitas *</label>
+                <?php foreach($komunitas_list as $row): ?>
+                <div class="form-check">
+                    <input name="komunitas[]" class="form-check-input" type="checkbox" <?php echo (isset($data_komunitas) && in_array($row->id, $data_komunitas))?'checked':'' ?> value="<?php echo $row->id ?>">
+                    <label class="form-check-label">
+                    <?php echo $row->name ?>
+                    </label>
+                </div>
+                <?php endforeach ?>
+            </div>
+
         </form>                    
     </div>
     <div class="box-footer">

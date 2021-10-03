@@ -10,24 +10,29 @@ class Member extends MY_Controller {
     	$this->limit = 15;
     	$this->table_name = 'member';
    	}
-
-	public function index()
-	{	
+	private function filter()
+	{
 		$search = $this->input->get('search');
 		if($search){
-			$where['LOWER(name) like'] = '%'.strtolower($search).'%';
+			$this->db->where('LOWER(name) like', '%'.strtolower($search).'%');
 		}
 
-		$where['status != '] = 'DELETED';
+		$this->db->where('status !=', 'DELETED');
 		if($this->input->get('status',true)){
-			$where['status'] = $this->input->get('status',true);
+			$this->db->where('status', $this->input->get('status',true));
 		}
+		$this->db->where_in('id_komunitas', $this->komunitas_access);
+	}
+	public function index()
+	{	
+		$this->filter();
+		$total = $this->db->count_all_results($this->table_name);
 		$page = gen_page();
 		$offset = ($page-1)*$this->limit;
-
-		$total = $this->general_model->count($this->table_name, $where);
-
-		$master['detail'] = $this->general_model->get($this->table_name, '', $where, 'date_created desc', $this->limit, $offset)->result();
+		
+		$this->filter();
+		$this->db->limit($this->limit, $offset);
+		$master['detail'] = $this->db->get($this->table_name)->result();
 		$master['offset'] = $offset;
 		$master['paging'] = gen_paging($total, $this->limit);
 		$master['total']  = gen_total($total, $this->limit, $offset);
@@ -69,6 +74,7 @@ class Member extends MY_Controller {
 			'tw' => $this->input->post('tw'),
 			'fb' => $this->input->post('fb'),
 			'id_privilege' => $this->input->post('id_privilege'),
+			'id_komunitas' => $this->input->post('id_komunitas'),
 			'status' => $this->input->post('status')
 		];
 	}
@@ -82,7 +88,8 @@ class Member extends MY_Controller {
 			$data['content'] = $this->load->view('contents/form_member_view',[
 				'action'=>base_url('member/add'),
 				'title'=>'Tambah Anggota',
-				'privilege_list' => $this->general_model->get('privilege', '*', '', 'name')->result()
+				'privilege_list' => $this->general_model->get('privilege', '*', '', 'name')->result(),
+				'komunitas_list' => $this->db->select('id,name')->where('status !=', 'DELETED')->where_in('id', $this->komunitas_access)->get('komunitas')->result()
 			],true);
 
 			if(!validation_errors())
@@ -117,6 +124,7 @@ class Member extends MY_Controller {
 			$master['action'] = base_url('member/edit/'.$id);
 			$master['title'] = 'Edit Anggota';
 			$master['privilege_list'] = $this->general_model->get('privilege', '*', '', 'name')->result();
+			$master['komunitas_list'] = $this->db->select('id,name')->where('status !=', 'DELETED')->where_in('id', $this->komunitas_access)->get('komunitas')->result();
 
 			$data['content'] = $this->load->view('contents/form_member_view',$master,true);
 

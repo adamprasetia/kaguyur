@@ -55,7 +55,11 @@ class Login extends CI_Controller {
 			$module = $this->general_model->get_module($userdata['id']);
 			if($module){
 				foreach ($module as $row) {
-					$userdata['module'][] = $row['id_module'];
+					$userdata['module'][] = $row['name'];
+				}
+				$komunitas = $this->general_model->get_komunitas($userdata['id']);
+				foreach ($komunitas as $row) {
+					$userdata['komunitas'][] = array('id'=>$row['id_komunitas'],'name'=>$row['name']);
 				}
 				$this->session->set_userdata('user_login', $userdata);
 				return true;

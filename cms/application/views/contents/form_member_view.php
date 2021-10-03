@@ -96,6 +96,15 @@
         </select>
     </div>
     <div class="form-group">
+        <label>Komunitas *</label>
+        <select id="komunitas" name="id_komunitas" class="form-control">
+            <option value=""></option>
+            <?php foreach($komunitas_list as $row): ?>
+            <option value="<?php echo $row->id ?>" <?php echo (isset($data->id_komunitas) && $data->id_komunitas==$row->id)?'selected':'' ?>><?php echo $row->name ?></option>
+            <?php endforeach ?>
+        </select>
+    </div>
+    <div class="form-group">
       <label>Status *</label>
       <select name="status" id="status" class="form-control">
         <option value="PENDING" <?php echo isset($data->status) && $data->status=='PENDING'?'selected':''?>>PENDING</option>

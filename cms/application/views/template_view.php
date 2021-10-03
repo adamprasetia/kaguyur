@@ -105,27 +105,30 @@
             <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="<?php echo ($this->uri->segment(1)=='' || $this->uri->segment(1)=='dashboard'?'active':''); ?>"><a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
-            <?php if(in_array(1, $_SESSION['user_login']['module']) || in_array(2, $_SESSION['user_login']['module'])): ?>
+            <?php if(in_array('Admin', $_SESSION['user_login']['module']) || in_array('Komunitas', $_SESSION['user_login']['module'])): ?>
+            <li class="<?php echo ($this->uri->segment(1)=='komunitas'?'active':''); ?>"><a href="<?php echo base_url('komunitas'); ?>"><i class="fa fa-users"></i> <span>Komunitas</span></a></li>
+            <?php endif ?>
+            <?php if(in_array('Admin', $_SESSION['user_login']['module']) || in_array('Anggota', $_SESSION['user_login']['module'])): ?>
             <li class="<?php echo ($this->uri->segment(1)=='member'?'active':''); ?>"><a href="<?php echo base_url('member'); ?>"><i class="fa fa-user"></i> <span>Anggota</span></a></li>
             <?php endif ?>
-            <?php if(in_array(1, $_SESSION['user_login']['module']) || in_array(4, $_SESSION['user_login']['module'])): ?>
+            <?php if(in_array('Admin', $_SESSION['user_login']['module']) || in_array('Artikel', $_SESSION['user_login']['module'])): ?>
             <li class="<?php echo ($this->uri->segment(1)=='article'?'active':''); ?>"><a href="<?php echo base_url('article'); ?>"><i class="fa fa-newspaper-o"></i> <span>Artikel</span></a></li>
             <?php endif ?>
-            <?php if(in_array(1, $_SESSION['user_login']['module']) || in_array(5, $_SESSION['user_login']['module'])): ?>
+            <?php if(in_array('Admin', $_SESSION['user_login']['module']) || in_array('Module', $_SESSION['user_login']['module'])): ?>
             <li class="<?php echo ($this->uri->segment(1)=='gallery'?'active':''); ?>"><a href="<?php echo base_url('gallery'); ?>"><i class="fa fa-image"></i> <span>Gallery</span></a></li>
             <?php endif ?>
-            <?php if(in_array(1, $_SESSION['user_login']['module']) || in_array(6, $_SESSION['user_login']['module'])): ?>
+            <?php if(in_array('Admin', $_SESSION['user_login']['module']) || in_array('Produk', $_SESSION['user_login']['module'])): ?>
             <li class="<?php echo ($this->uri->segment(1)=='product'?'active':''); ?>"><a href="<?php echo base_url('product'); ?>"><i class="fa fa-product-hunt"></i> <span>Produk</span></a></li>
             <?php endif ?>
-            <?php if(in_array(1, $_SESSION['user_login']['module']) || in_array(7, $_SESSION['user_login']['module'])): ?>
+            <?php if(in_array('Admin', $_SESSION['user_login']['module']) || in_array('Infografik', $_SESSION['user_login']['module'])): ?>
             <li class="<?php echo ($this->uri->segment(1)=='infografik'?'active':''); ?>"><a href="<?php echo base_url('infografik'); ?>"><i class="fa fa-image"></i> <span>Infografik</span></a></li>
             <?php endif ?>
-            <?php if(in_array(1, $_SESSION['user_login']['module']) || in_array(8, $_SESSION['user_login']['module'])): ?>
-            <li class="<?php echo ($this->uri->segment(1)=='latber'?'active':''); ?>"><a href="<?php echo base_url('latber'); ?>"><i class="fa fa-user"></i> <span>Latber</span></a></li>
+            <?php if(in_array('Admin', $_SESSION['user_login']['module']) || in_array('Latber', $_SESSION['user_login']['module'])): ?>
+            <li class="<?php echo ($this->uri->segment(1)=='latber'?'active':''); ?>"><a href="<?php echo base_url('latber'); ?>"><i class="fa fa-calendar"></i> <span>Latber</span></a></li>
             <?php endif ?>
             <li class="<?php echo ($this->uri->segment(1)=='photo'?'active':''); ?>"><a href="<?php echo base_url('photo'); ?>"><i class="fa fa-image"></i> <span>Photo</span></a></li>
             <li class="<?php echo ($this->uri->segment(1)=='video'?'active':''); ?>"><a href="<?php echo base_url('video'); ?>"><i class="fa fa-video-camera"></i> <span>Video</span></a></li>
-            <?php if(in_array(1, $_SESSION['user_login']['module'])): ?>
+            <?php if(in_array('Admin', $_SESSION['user_login']['module'])): ?>
             <li class="header">ADMIN</li>
             <li class="<?php echo ($this->uri->segment(1)=='privilege'?'active':''); ?>"><a href="<?php echo base_url('privilege'); ?>"><i class="fa fa-cog"></i> <span>Privilege</span></a></li>
             <li class="<?php echo ($this->uri->segment(1)=='module'?'active':''); ?>"><a href="<?php echo base_url('module'); ?>"><i class="fa fa-cog"></i> <span>Module</span></a></li>
