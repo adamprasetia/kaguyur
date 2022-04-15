@@ -44,16 +44,16 @@ class Anggota extends MY_Controller
 			}
 
 		}else{			
-			$photo   = uploadFile('photo');
-			if(empty($photo['data'])){
-				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Upload pas foto gagal, silakan coba file foto yang lain']);
-				exit;
-			}
-			$logo   = uploadFile('logo');
-			if(empty($logo['data'])){
-				echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Upload logo gagal, silakan coba file logo yang lain']);
-				exit;
-			}
+			// $photo   = uploadFile('photo');
+			// if(empty($photo['data'])){
+			// 	echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Upload pas foto gagal, silakan coba file foto yang lain']);
+			// 	exit;
+			// }
+			// $logo   = uploadFile('logo');
+			// if(empty($logo['data'])){
+			// 	echo json_encode(['tipe'=>"error", 'title'=>'Terjadi kesalahan!', 'message'=>'Upload logo gagal, silakan coba file logo yang lain']);
+			// 	exit;
+			// }
 			
 			$data = [
 				'name'=> $this->input->post('name', true),
