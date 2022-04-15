@@ -14,54 +14,17 @@
         <div class="p-5 text-sm">
           <form method="post" id="form_data" action="<?php echo base_url('anggota/register'); ?>">
             <div class="mb-3">
-              <label class="font-semibold block">Nama Farm</label>
-              <input class="field w-full" type="text" name="farm" id="farm"/>
-            </div>
-            <div class="mb-3">
               <label class="font-semibold block">Nama Lengkap</label>
               <input class="field w-full" type="text" name="name" id="name"/>
             </div>
             <div class="mb-3">
               <label class="font-semibold block">Alamat</label>
-              <textarea class="field w-full" name="address" cols="30" rows="10"></textarea>
-            </div>
-            <div class="mb-3">
-              <label class="font-semibold block">Mulai Budidaya Sejak</label>
-              <input class="field w-full" type="text" name="start" id="start"/>
+              <textarea class="field w-full" name="address" cols="30" rows="2"></textarea>
             </div>
             <div class="mb-3">
               <label class="font-semibold block">No Telepon/Wa</label>
               <input class="field w-full" type="text" name="phone" id="phone"/>
             </div>
-            <div class="mb-3">
-              <label class="font-semibold block">Strain Guppy</label>
-              <textarea class="field w-full" name="strain" cols="30" rows="10" placeholder="Black moscow, AFR, Blue Grass ..."></textarea>
-            </div>
-            <div class="mb-3">
-              <label class="font-semibold block">Pas Foto</label>
-              <small>Pastikan ukuran file tidak lebih dari 1 MB</small>
-              <input onchange="check_size(this)" type="file" name="photo" id="photo" accept="image/jpeg, image/png" class="field w-full"/>
-            </div>
-            <div class="mb-3">
-              <label class="font-semibold block fp__">Logo</label>
-              <small>Pastikan ukuran file tidak lebih dari 1 MB</small>
-              <input onchange="check_size(this)" type="file" name="logo" id="logo" accept="image/jpeg, image/png" class="field w-full"/>
-            </div>
-
-            <strong class="pt-5 block">Link Media Sosial</strong>
-            <div class="mb-3">
-              <label class="font-semibold block">Facebook</label>
-              <input type="text" name="fb" id="fb" class="field w-full"/>
-            </div>
-            <div class="mb-3">
-              <label class="font-semibold block">Instagram</label>
-              <input type="text" name="ig" id="ig" class="field w-full"/>
-            </div>
-            <div class="mb-3">
-              <label class="font-semibold block">Twitter</label>
-              <input type="text" name="tw" id="tw" class="field w-full"/>
-            </div>
-            <strong class="pt-5 block">Akun</strong>
             <div class="mb-3">
               <label class="font-semibold block">Email</label>
               <input class="field w-full" type="text" name="email"/>

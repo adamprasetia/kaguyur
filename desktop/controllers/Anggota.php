@@ -29,19 +29,11 @@ class Anggota extends MY_Controller
 	{
 		$this->load->model('general_model');
 		$this->load->library(['form_validation', 'upload']);
-		$this->form_validation->set_rules('farm', 'Nama Farm', 'trim|required');
 		$this->form_validation->set_rules('name', 'Nama Lengkap', 'trim|required');
 		$this->form_validation->set_rules('address', 'Alamat', 'trim|required');
-		$this->form_validation->set_rules('start', 'Start', 'trim');
 		$this->form_validation->set_rules('phone', 'No Telepon/Wa', 'trim|required|callback_unique_tlp');
 		$this->form_validation->set_rules('email', 'Email', 'trim|valid_email|required|callback_unique_email');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
-		$this->form_validation->set_rules('strain','Strain Guppy','trim|required');
-		$this->form_validation->set_rules('photo','Pas Foto','callback_required_photo');
-		$this->form_validation->set_rules('logo','Logo','callback_required_logo');
-		$this->form_validation->set_rules('ig', 'Instagram', 'trim');
-		$this->form_validation->set_rules('tw', 'Twitter', 'trim');
-		$this->form_validation->set_rules('fb', 'Facebook', 'trim');
 		$this->form_validation->set_message('required', '{field} harus diisi.');
 		$this->form_validation->set_message('valid_email', 'Format {field} salah.');
 
@@ -64,19 +56,11 @@ class Anggota extends MY_Controller
 			}
 			
 			$data = [
-				'farm'=> $this->input->post('farm', true),
 				'name'=> $this->input->post('name', true),
 				'address'=> $this->input->post('address', true),
-				'start'=> $this->input->post('start', true),
 				'phone'=> $this->input->post('phone', true),
 				'email'=> $this->input->post('email', true),
 				'password'=> md5($this->input->post('password', true)),
-				'strain'=> $this->input->post('strain', true),
-				'photo'=> $photo['data'],
-				'logo'=> $logo['data'],
-				'ig'=> $this->input->post('ig', true),
-				'tw'=> $this->input->post('tw', true),
-				'fb'=> $this->input->post('fb', true),
 			];
 			$data['date_created'] = date('Y-m-d H:i:s');
 			$data['status'] = 'PENDING';
