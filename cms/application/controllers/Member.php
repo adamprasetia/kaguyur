@@ -21,7 +21,6 @@ class Member extends MY_Controller {
 		if($this->input->get('status',true)){
 			$this->db->where('status', $this->input->get('status',true));
 		}
-		$this->db->where_in('id_komunitas', $this->komunitas_access);
 	}
 	public function index()
 	{	
@@ -44,17 +43,18 @@ class Member extends MY_Controller {
 
 	private function _set_rules()
 	{
-		$this->form_validation->set_rules('farm', 'Nama Farm', 'trim|required');
+		$this->form_validation->set_rules('farm', 'Nama Farm', 'trim');
 		$this->form_validation->set_rules('name', 'Nama Lengkap', 'trim|required');
 		$this->form_validation->set_rules('address', 'Alamat', 'trim|required');
 		$this->form_validation->set_rules('start', 'Mulai Budidaya Sejak', 'trim');
 		$this->form_validation->set_rules('phone', 'No Telepon/Wa', 'trim|required');
-		$this->form_validation->set_rules('strain','Strain Guppy','trim|required');
+		$this->form_validation->set_rules('strain','Strain Guppy','trim');
 		$this->form_validation->set_rules('photo','Pas Foto','trim');
-		$this->form_validation->set_rules('logo','Logo','trim|required');
+		$this->form_validation->set_rules('logo','Logo','trim');
 		$this->form_validation->set_rules('ig', 'Instagram', 'trim');
 		$this->form_validation->set_rules('tw', 'Twitter', 'trim');
 		$this->form_validation->set_rules('fb', 'Facebook', 'trim');
+		$this->form_validation->set_rules('id_komunitas', 'Komunitas', 'trim');
         $this->form_validation->set_message('required', '{field} harus diisi.');
 	}
 
@@ -89,7 +89,7 @@ class Member extends MY_Controller {
 				'action'=>base_url('member/add'),
 				'title'=>'Tambah Anggota',
 				'privilege_list' => $this->general_model->get('privilege', '*', '', 'name')->result(),
-				'komunitas_list' => $this->db->select('id,name')->where('status !=', 'DELETED')->where_in('id', $this->komunitas_access)->get('komunitas')->result()
+				'komunitas_list' => $this->db->select('id,name')->get('komunitas')->result()
 			],true);
 
 			if(!validation_errors())
@@ -124,7 +124,7 @@ class Member extends MY_Controller {
 			$master['action'] = base_url('member/edit/'.$id);
 			$master['title'] = 'Edit Anggota';
 			$master['privilege_list'] = $this->general_model->get('privilege', '*', '', 'name')->result();
-			$master['komunitas_list'] = $this->db->select('id,name')->where('status !=', 'DELETED')->where_in('id', $this->komunitas_access)->get('komunitas')->result();
+			$master['komunitas_list'] = $this->db->select('id,name')->get('komunitas')->result();
 
 			$data['content'] = $this->load->view('contents/form_member_view',$master,true);
 

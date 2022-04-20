@@ -156,7 +156,7 @@ class General_model extends CI_Model
 
 	function get_komunitas($id){
 		$this->load->database();
-		$this->db->select('id_komunitas,C.name');
+		$this->db->select('A.id_komunitas,C.name');
 		$this->db->from('member A');
 		$this->db->join('privilege_komunitas B', 'A.id_privilege = B.id_privilege');
 		$this->db->join('komunitas C', 'B.id_komunitas = C.id');

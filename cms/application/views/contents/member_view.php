@@ -20,12 +20,10 @@
                 <thead>
                     <tr>
                         <th width="50">No</th>
-                        <th>Nama Farm</th>
                         <th>Nama Lengkap</th>
                         <th>Alamat</th>
                         <th>No Telepon/Wa</th>
                         <th>Status</th>
-                        <th>Reset Password</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,12 +33,10 @@
                       ?>
                     <tr>
                         <td><?php echo $no; ?></td>
-                        <td><a href="<?php echo base_url('member/edit/'.$value->id); ?>"><?php echo $value->farm; ?></a></td>
-                        <td><?php echo $value->name; ?></td>
+                        <td><a href="<?php echo base_url('member/edit/'.$value->id); ?>"><?php echo $value->name; ?></a></td>
                         <td><?php echo $value->address; ?></td>
                         <td><?php echo $value->phone; ?></td>
                         <td><?php echo $value->status; ?></td>
-                        <td><a href="<?php echo config_item('base_domain').'login/reset_password/'.$value->id.'/'.md5($value->id.'hs^35shKjsdh()'); ?>">Reset Password</a></td>
                     </tr>
                       <?php $no++; } ?>
                 </tbody>
